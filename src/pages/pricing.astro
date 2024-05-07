@@ -1,0 +1,203 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+import Features3 from '~/components/widgets/Features3.astro';
+
+
+const metadata = {
+  title: 'Pricing',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <HeroText
+    tagline=""
+    title="Pricing"
+    subtitle="Choose the perfect plan that aligns with your publishing goals."
+  />
+
+  <!-- Pricing Widget ******************* -->
+
+  <Prices
+    title=""
+    subtitle=""
+    prices={[
+      {
+        title: 'Starter',
+        subtitle: 'Optimal choice for personal use',
+        price: 39,
+        period: 'per year',
+        items: [
+          
+          {
+            description: 'Upto 400 exports',
+          },
+          {
+            description: 'Upto 2 sites',
+          },
+          {
+            description: 'Single user',
+          },
+          {
+            description: '200 Image compressions',
+          },
+          {
+            description: '200 image captions',
+          },
+          {
+            description: '200 internal link credits',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Buy now',
+          href: 'https://portal.thinksolv.com/buy/14f286f1-a7d7-4d10-9259-c43a26f7e6e6?media=0&enabled=354899',
+        },
+      },
+      {
+        title: 'Pro',
+        subtitle: 'Optimal choice for small publishing teams',
+        price: 99,
+        period: 'Per year',
+        items: [
+        
+          {
+            description: 'Upto 1000 exports',
+          },
+          {
+            description: 'Upto 5 sites ',
+          },
+          {
+            description: 'Upto 3 users',
+          },
+          {
+            description: '500 Image compressions',
+          },
+          {
+            description: '500 image captions',
+          },
+          {
+            description: '500 internal link credits',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Buy now',
+          href: 'https://portal.thinksolv.com/buy/0643d931-c6d3-4a6d-9023-81ee78864d87?media=0&enabled=354900',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'Optimal choice for publishing companies',
+        price: 199 ,
+        period: 'Per year',
+        items: [
+        {
+            description: '2500 exports',
+          },
+          {
+            description: 'Upto 10 sites ',
+          },
+          {
+            description: 'Upto 5 users',
+          },
+          {
+            description: '1000 Image compressions',
+          },
+          {
+            description: '1000 image captions',
+          },
+          {
+            description: '1000 internal link credits',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Buy now',
+          href: 'https://portal.thinksolv.com/buy/6f9a346e-bcfb-4e34-a171-a11e916da9ec?media=0&enabled=354901',
+        },
+      },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Price-related features"
+    subtitle="Discover the advantages of choosing our plans"
+    columns={2}
+    items={[
+      
+      {
+        title: 'Secure Payment Methods',
+        description: 'Secure payment gateways to protect your financial information during transactions.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Instant Access',
+        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
+        icon: 'tabler:accessible',
+      },
+      {
+        title: 'Upgrade Value',
+        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
+        icon: 'tabler:chevrons-up',
+      },
+      {
+        title: 'Support',
+        description: 'Questions answered via email within 8 hours every calendar day.',
+        icon: 'tabler:headset',
+      },
+    ]}
+    classes={{ container: 'max-w-5xl' }}
+  />
+
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Pricing FAQs"
+    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    columns={1}
+    items={[
+      {
+        title: 'Do the plans come with customer support?',
+        description:
+          'Absolutely, all plans include access to our dedicated email customer support to assist you with any queries or concerns.',
+      },
+     
+      {
+        title: 'Can I switch between plans?',
+        description:
+          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+      },
+      {
+        title: 'Are there any hidden fees beyond the displayed cost?',
+        description:
+          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+      },
+      {
+        title: 'Are there any custom plans available if we have high usage requirements?',
+        description:
+          'Yes, for businesses with exceptionally high usage requirements, we offer customized Enterprise plans. Contact us today to discuss your specific needs and receive a tailored pricing quote.',
+      },
+
+      
+
+
+    ]}
+  />
+  <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+</Layout>
