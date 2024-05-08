@@ -2,7 +2,9 @@ site:
   name: Docs to Markdown Pro
   site: 'https://www.docstomarkdown.pro'
   base: '/'
-  trailingSlash: false
+  ## Do not change the trailslash to False. Because, the previous wordpress site had the ending slash and all the URLS indexed in Google were including slash. 
+  ## Astro sites doesn't automatically redirect the urls without trailslash to with trail slash.. If changed to false, then the urls will show 404
+  trailingSlash: true
 
   googleSiteVerificationId: 
 

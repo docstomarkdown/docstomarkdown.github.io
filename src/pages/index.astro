@@ -1,174 +1,437 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from "~/layouts/PageLayout.astro";
 
-import FAQs from '~/components/widgets/FAQs.astro';
+import FAQs from "~/components/widgets/FAQs.astro";
 
-import DocsToMarkdownHero from '../components/landing/DocsToMarkdownHero.astro';
+import DocsToMarkdownHero from "../components/landing/DocsToMarkdownHero.astro";
 
 const metadata = {
-  title: 'Google Docs to Wordpress',
+  title: "Google Docs to Wordpress",
   ignoreTitleTemplate: true,
 };
-
 ---
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+/>
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <DocsToMarkdownHero />
-  
 
   <div class="bg-white py-24 sm:py-32" style="width:100%">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8" >
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:text-center">
-        <h2 class="text-base font-semibold leading-7 text-blue-600">Publish faster and Save your time</h2>
-        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need publish SEO optimized Posts from Google Docs</p>
-        <p class="mt-6 text-lg leading-8 text-gray-600">Focus on creating great content, let Docs to WordPress Pro handle the rest</p>
+        <h2 class="text-base font-semibold leading-7 text-blue-600">
+          Streamline your workflow and Save your time
+        </h2>
+        <p
+          class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+        >
+          Everything you need to work with Google Docs, Markdown and HTML
+        </p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Focus on creating great content, let Docs to Markdown Pro handle the
+          rest
+        </p>
       </div>
 
       <div class="mx-auto mt-16 max-w-4xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-        <dl class="grid max-w-xxl grid-cols-1 gap-x-8 gap-y-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-
+        <dl
+          class="grid max-w-xxl grid-cols-1 gap-x-8 gap-y-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
+        >
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 448 512" width="14" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 448 512"
+                  width="14"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
+                    fill="#ffffff"></path></svg
+                >
               </div>
               Safe and Secure
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Safe and Secure
-                Your data and credentials are encrypted using a 32-bit encryption key and stored securely, using Google’s industry-leading security measures.<br><br>
-                
-                Your unique 32-bit encryption key is protected within the User Properties service, ensuring your information is completely isolated and accessible only to you.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Safe and Secure Your data and credentials are stored securely
+              within your own Google account, using Google’s industry-leading
+              security measures.<br /><br />
+
+              Specifically, everything is protected within the User Properties
+              service, ensuring your information is completely isolated and
+              accessible only to you.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white"  viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M288 32C128.9 32 0 160.9 0 320c0 52.8 14.3 102.3 39.1 144.8 5.6 9.6 16.3 15.2 27.4 15.2h443c11.1 0 21.8-5.6 27.4-15.2C561.8 422.3 576 372.8 576 320c0-159.1-128.9-288-288-288zm0 64c14.7 0 26.6 10.1 30.3 23.7-1.1 2.3-2.6 4.2-3.5 6.7l-9.2 27.7c-5.1 3.5-11 6-17.6 6-17.7 0-32-14.3-32-32S270.3 96 288 96zM96 384c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm48-160c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm246.8-72.4l-61.3 184C343.1 347.3 352 364.5 352 384c0 11.7-3.4 22.6-8.9 32H232.9c-5.5-9.5-8.9-20.3-8.9-32 0-33.9 26.5-61.4 59.9-63.6l61.3-184c4.2-12.6 17.7-19.5 30.4-15.2 12.6 4.2 19.4 17.8 15.2 30.4zm14.7 57.2l15.5-46.6c3.5-1.3 7.1-2.2 11.1-2.2 17.7 0 32 14.3 32 32s-14.3 32-32 32c-11.4 0-20.9-6.3-26.6-15.2zM480 384c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="14"
+                  viewBox="0 0 512 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M192 104.8c0-9.2-5.8-17.3-13.2-22.8C167.2 73.3 160 61.3 160 48c0-26.5 28.7-48 64-48s64 21.5 64 48c0 13.3-7.2 25.3-18.8 34c-7.4 5.5-13.2 13.6-13.2 22.8c0 12.8 10.4 23.2 23.2 23.2H336c26.5 0 48 21.5 48 48v56.8c0 12.8 10.4 23.2 23.2 23.2c9.2 0 17.3-5.8 22.8-13.2c8.7-11.6 20.7-18.8 34-18.8c26.5 0 48 28.7 48 64s-21.5 64-48 64c-13.3 0-25.3-7.2-34-18.8c-5.5-7.4-13.6-13.2-22.8-13.2c-12.8 0-23.2 10.4-23.2 23.2V464c0 26.5-21.5 48-48 48H279.2c-12.8 0-23.2-10.4-23.2-23.2c0-9.2 5.8-17.3 13.2-22.8c11.6-8.7 18.8-20.7 18.8-34c0-26.5-28.7-48-64-48s-64 21.5-64 48c0 13.3 7.2 25.3 18.8 34c7.4 5.5 13.2 13.6 13.2 22.8c0 12.8-10.4 23.2-23.2 23.2H48c-26.5 0-48-21.5-48-48V343.2C0 330.4 10.4 320 23.2 320c9.2 0 17.3 5.8 22.8 13.2C54.7 344.8 66.7 352 80 352c26.5 0 48-28.7 48-64s-21.5-64-48-64c-13.3 0-25.3 7.2-34 18.8C40.5 250.2 32.4 256 23.2 256C10.4 256 0 245.6 0 232.8V176c0-26.5 21.5-48 48-48H168.8c12.8 0 23.2-10.4 23.2-23.2z"
+                  ></path></svg
+                >
               </div>
-              SEO Suggestions
-            </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Checks all the necessary SEO suggestions, including focus keyword placement in the title, content, keyword density, content readability, alt text in images, meta descriptions, and all the necessary SEO best practices, and suggests corrections.</dd>
-          </div>
-          <div class="relative pl-16">
-            <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z" fill="#ffffff"></path></svg>
-              </div>
-              Semantic internal links using AI
-            </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Internal links help Google find, index and understand all of the pages on your site. <br><br>Finding potential keywords and adding an internal link to them manually is hard, especially when your site has more articles. But this is an important activity to improve the SEO. <br><br>In a single click, the tool finds potential keywords within the content and creates internal links appropriately using AI. If a keyword exists in more than one subheading, an internal link will be created in the most relevant section, improving the SEO of your content. <br><br>This all happens in seconds, not minutes.</dd>
-          </div>
-          <div class="relative pl-16">
-            <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" fill="#ffffff"></path></svg>
-              </div>
-              Link suggestions with contextual data
+              Reusable blocks
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-                Adding Related posts at the end of the article for further reading will keep the readers on your site and boost dwell time, an important signal for SEO. However, finding relevant internal posts manually becomes difficult as the site grows with multiple authors and articles. <br><br>In a single click, the tool suggests Related posts with relevance score, existing number of internal links, published date and update date. <br><br>This helps in adding highly relevant posts as Related posts and the data assists in balanced internal link distribution.</dd>
+              Allows you to create and insert reusable blocks like boilerplate
+              text, code, or images into your documents with a single click,
+              boosting your productivity and streamlining your workflow.
+              <br /><br />
+              This ensures consistent content and design throughout your documents,
+              significantly speeding up content development.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 512 512" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M456 224H312c-13.3 0-24-10.7-24-24V56c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2l40 40L442.3 5.7C446 2 450.9 0 456 0s10 2 13.7 5.7l36.7 36.7C510 46 512 50.9 512 56s-2 10-5.7 13.7L433 143l40 40c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8zm0 64c9.7 0 18.5 5.8 22.2 14.8s1.7 19.3-5.2 26.2l-40 40 73.4 73.4c3.6 3.6 5.7 8.5 5.7 13.7s-2 10-5.7 13.7l-36.7 36.7C466 510 461.1 512 456 512s-10-2-13.7-5.7L369 433l-40 40c-6.9 6.9-17.2 8.9-26.2 5.2s-14.8-12.5-14.8-22.2V312c0-13.3 10.7-24 24-24H456zm-256 0c13.3 0 24 10.7 24 24V456c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-40-40L69.7 506.3C66 510 61.1 512 56 512s-10-2-13.7-5.7L5.7 469.7C2 466 0 461.1 0 456s2-10 5.7-13.7L79 369 39 329c-6.9-6.9-8.9-17.2-5.2-26.2s12.5-14.8 22.2-14.8H200zM56 224c-9.7 0-18.5-5.8-22.2-14.8s-1.7-19.3 5.2-26.2l40-40L5.7 69.7C2 66 0 61.1 0 56s2-10 5.7-13.7L42.3 5.7C46 2 50.9 0 56 0s10 2 13.7 5.7L143 79l40-40c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2V200c0 13.3-10.7 24-24 24H56z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 640 512"
+                  width="20"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"
+                    fill="#ffffff"></path></svg
+                >
+              </div>
+              Convert Google Docs to Markdown or HTML
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Effortlessly produces publish-ready Markdown file from your Google
+              Docs content.<br /><br />
+
+              It also seamlessly handles image integration, ensuring correct
+              image paths within the Markdown file and conveniently packaging
+              everything—images and Markdown file—into a ready-to-use ZIP file.
+            </dd>
+          </div>
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="14"
+                  viewBox="0 0 448 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M439.6 236.1L244 40.5a28.9 28.9 0 0 0 -40.8 0l-40.7 40.6 51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.2 199v121.9c25.3 12.5 22.3 41.9 9.1 55a34.3 34.3 0 0 1 -48.6 0c-17.6-17.6-11.1-46.9 11.3-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1a28.9 28.9 0 0 0 0 40.8l195.6 195.6a28.9 28.9 0 0 0 40.8 0l194.7-194.7a28.9 28.9 0 0 0 0-40.8z"
+                  ></path></svg
+                >
+              </div>
+              Git integration
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Converts Google Docs to Markdown and pushes to GitHub or GitLab in
+              just one click, including images.<br /><br />
+
+              This streamlines your Docs-as-Code pipeline, perfect for users of
+              static site generators such as MkDocs, Hugo, or Jekyll or similar.
+              Also saves you precious time and effort.
+            </dd>
+          </div>
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="#ffffff"
+                    d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                  ></path></svg
+                >
+              </div>
+              Table of Contents Support
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Converts the Google Docs Table of Contents to HTML table of
+              contents and adds id to the headings in the output. You can
+              directly publish
+            </dd>
+          </div>
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z"
+                  ></path></svg
+                >
+              </div>
+              Automatic conversion support
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              If you're frequently converting documents, you can enable the auto
+              conversion. The Google Docs content will be converted to Markdown
+              format upon launching the add-on, saving you a click for each
+              Markdown conversion.
+            </dd>
+          </div>
+
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 640 512"
+                  width="20"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"
+                    fill="#ffffff"></path></svg
+                >
+              </div>
+              Convert Markdown to Google Docs
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Helps you convert the Markdown text into Google Docs for further
+              editing/updates using the Google Docs Editor
+            </dd>
+          </div>
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 384 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"
+                    fill="#ffffff"></path></svg
+                >
+              </div>
+              Convert HTML to Google Docs
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Helps you convert the HTML text into Google Docs for further
+              editing/updates in the Google Docs editor.
+            </dd>
+          </div>
+
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 512 512"
+                  width="16"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M456 224H312c-13.3 0-24-10.7-24-24V56c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2l40 40L442.3 5.7C446 2 450.9 0 456 0s10 2 13.7 5.7l36.7 36.7C510 46 512 50.9 512 56s-2 10-5.7 13.7L433 143l40 40c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8zm0 64c9.7 0 18.5 5.8 22.2 14.8s1.7 19.3-5.2 26.2l-40 40 73.4 73.4c3.6 3.6 5.7 8.5 5.7 13.7s-2 10-5.7 13.7l-36.7 36.7C466 510 461.1 512 456 512s-10-2-13.7-5.7L369 433l-40 40c-6.9 6.9-17.2 8.9-26.2 5.2s-14.8-12.5-14.8-22.2V312c0-13.3 10.7-24 24-24H456zm-256 0c13.3 0 24 10.7 24 24V456c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-40-40L69.7 506.3C66 510 61.1 512 56 512s-10-2-13.7-5.7L5.7 469.7C2 466 0 461.1 0 456s2-10 5.7-13.7L79 369 39 329c-6.9-6.9-8.9-17.2-5.2-26.2s12.5-14.8 22.2-14.8H200zM56 224c-9.7 0-18.5-5.8-22.2-14.8s-1.7-19.3 5.2-26.2l40-40L5.7 69.7C2 66 0 61.1 0 56s2-10 5.7-13.7L42.3 5.7C46 2 50.9 0 56 0s10 2 13.7 5.7L143 79l40-40c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2V200c0 13.3-10.7 24-24 24H56z"
+                    fill="#ffffff"></path></svg
+                >
               </div>
               Automatic image compression
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">The tool automatically compresses images before publishing to WordPress, keeping your media library sleek and your website blazing fast.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              The tool automatically compresses images before publishing to Git,
+              keeping your repo sleek and your website blazing fast.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><path fill="#ffffff" d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"
+                  ></path></svg
+                >
               </div>
               Image Alt Text generation using AI
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Automatically generates AI captions for your images, saving you time and effort, improving accessibility for visually impaired users and assisting those on slow networks and improving SEO.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Automatically generates AI captions for your images, saving you
+              time and effort, improving accessibility for visually impaired
+              users and assisting those on slow networks and improving SEO.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M91.3 76h186l-7 18.9h-179c-39.7 0-71.9 31.6-71.9 70.3v205.4c0 35.4 24.9 70.3 84 70.3V460H91.3C41.2 460 0 419.8 0 370.5V165.2C0 115.9 40.7 76 91.3 76zm229.1-56h66.5C243.1 398.1 241.2 418.9 202.2 459.3c-20.8 21.6-49.3 31.7-78.3 32.7v-51.1c49.2-7.7 64.6-49.9 64.6-75.3 0-20.1 .6-12.6-82.1-223.2h61.4L218.2 299 320.4 20zM448 161.5V460H234c6.6-9.6 10.7-16.3 12.1-19.4h182.5V161.5c0-32.5-17.1-51.9-48.2-62.9l6.7-17.6c41.7 13.6 60.9 43.1 60.9 80.5z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="20"
+                  viewBox="0 0 640 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                  ></path></svg
+                >
               </div>
-              Yoast Support
+              Cloud image hosting
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Allows you to set Yoast focus keyword and meta descriptions directly from the Google Docs editor Add-on. <br><br>This keeps the Yoast data consistent for posts, regardless of whether you publish from Google Docs or the WordPress dashboard.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              While converting the Docs to Markdown, the tool allows you to
+              upload the images to AWS cloud and automatically generate image
+              URLs in your Markdown, eliminating the need to upload images to
+              your server and update paths manually.
+              <br /><br />
+              This enables efficient image storage and access, preventing bloated
+              Git repositories and streamlining workflows.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M64 32C28.7 32 0 60.7 0 96V288 448c0 17.7 14.3 32 32 32s32-14.3 32-32V320h95.3L261.8 466.4c10.1 14.5 30.1 18 44.6 7.9s18-30.1 7.9-44.6L230.1 309.5C282.8 288.1 320 236.4 320 176c0-79.5-64.5-144-144-144H64zM176 256H64V96H176c44.2 0 80 35.8 80 80s-35.8 80-80 80z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="16"
+                  viewBox="0 0 512 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                  ></path></svg
+                >
               </div>
-              Rank Math support
+              Blazing-fast image deliveries
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Allows you to set Rank Math focus keyword and meta descriptions directly from the Google Docs editor Add-on. <br><br>This keeps the Rank Math data consistent for posts, regardless of whether you publish from Google Docs or the WordPress dashboard.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Cloud-hosted images are distributed via a cloud CDN across 400+
+              global AWS CloudFront locations, ensuring lightning-fast loading
+              times and delivering a smooth user experience.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 512 512" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M192 104.8c0-9.2-5.8-17.3-13.2-22.8C167.2 73.3 160 61.3 160 48c0-26.5 28.7-48 64-48s64 21.5 64 48c0 13.3-7.2 25.3-18.8 34c-7.4 5.5-13.2 13.6-13.2 22.8c0 12.8 10.4 23.2 23.2 23.2H336c26.5 0 48 21.5 48 48v56.8c0 12.8 10.4 23.2 23.2 23.2c9.2 0 17.3-5.8 22.8-13.2c8.7-11.6 20.7-18.8 34-18.8c26.5 0 48 28.7 48 64s-21.5 64-48 64c-13.3 0-25.3-7.2-34-18.8c-5.5-7.4-13.6-13.2-22.8-13.2c-12.8 0-23.2 10.4-23.2 23.2V464c0 26.5-21.5 48-48 48H279.2c-12.8 0-23.2-10.4-23.2-23.2c0-9.2 5.8-17.3 13.2-22.8c11.6-8.7 18.8-20.7 18.8-34c0-26.5-28.7-48-64-48s-64 21.5-64 48c0 13.3 7.2 25.3 18.8 34c7.4 5.5 13.2 13.6 13.2 22.8c0 12.8-10.4 23.2-23.2 23.2H48c-26.5 0-48-21.5-48-48V343.2C0 330.4 10.4 320 23.2 320c9.2 0 17.3 5.8 22.8 13.2C54.7 344.8 66.7 352 80 352c26.5 0 48-28.7 48-64s-21.5-64-48-64c-13.3 0-25.3 7.2-34 18.8C40.5 250.2 32.4 256 23.2 256C10.4 256 0 245.6 0 232.8V176c0-26.5 21.5-48 48-48H168.8c12.8 0 23.2-10.4 23.2-23.2z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V428.7c-2.7 1.1-5.4 2-8.2 2.7l-60.1 15c-3 .7-6 1.2-9 1.4c-.9 .1-1.8 .2-2.7 .2H240c-6.1 0-11.6-3.4-14.3-8.8l-8.8-17.7c-1.7-3.4-5.1-5.5-8.8-5.5s-7.2 2.1-8.8 5.5l-8.8 17.7c-2.9 5.9-9.2 9.4-15.7 8.8s-12.1-5.1-13.9-11.3L144 381l-9.8 32.8c-6.1 20.3-24.8 34.2-46 34.2H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h8.2c7.1 0 13.3-4.6 15.3-11.4l14.9-49.5c3.4-11.3 13.8-19.1 25.6-19.1s22.2 7.8 25.6 19.1l11.6 38.6c7.4-6.2 16.8-9.7 26.8-9.7c15.9 0 30.4 9 37.5 23.2l4.4 8.8h8.9c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7L384 203.6V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM549.8 139.7c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM311.9 321c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L512.1 262.7l-71-71L311.9 321z"
+                  ></path></svg
+                >
               </div>
-              Custom Post Types
+              Automatic Front Matter generation
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Compatible for publishing any type of WordPress Posts such as Pages, Posts, or any custom posts that you create on your site.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Automatically generates metadata (Front Matter) for Hugo, Jekyll,
+              and other static site generators to manage content, simplify site
+              building, and boost SEO.
+              <br /><br />
+              This crucial data helps organize and automate content presentation,
+              navigation, and search engine optimization, leading to increased visibility
+              and organic traffic.
+            </dd>
           </div>
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                <svg class="h-5 w-5 text-white" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z" fill="#ffffff"></path></svg>
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  viewBox="0 0 512 512"
+                  width="16"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
+                    d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm161.5-86.1c-12.2-5.2-26.3 .4-31.5 12.6s.4 26.3 12.6 31.5l11.9 5.1c17.3 7.4 35.2 12.9 53.6 16.3v50.1c0 4.3-.7 8.6-2.1 12.6l-28.7 86.1c-4.2 12.6 2.6 26.2 15.2 30.4s26.2-2.6 30.4-15.2l24.4-73.2c1.3-3.8 4.8-6.4 8.8-6.4s7.6 2.6 8.8 6.4l24.4 73.2c4.2 12.6 17.8 19.4 30.4 15.2s19.4-17.8 15.2-30.4l-28.7-86.1c-1.4-4.1-2.1-8.3-2.1-12.6V235.5c18.4-3.5 36.3-8.9 53.6-16.3l11.9-5.1c12.2-5.2 17.8-19.3 12.6-31.5s-19.3-17.8-31.5-12.6L338.7 175c-26.1 11.2-54.2 17-82.7 17s-56.5-5.8-82.7-17l-11.9-5.1zM256 160a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                    fill="#ffffff"></path></svg
+                >
               </div>
-              Classic & Gutenberg Editor Support
+              Accessibility checks
             </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">Compatible with both Classic and Gutenberg WordPress editors. <br><br>If your site uses the Classic editor, the content is published as plain HTML. If it’s using Gutenberg, the content is published as Gutenberg blocks.</dd>
-          </div>
-          <div class="relative pl-16">
-            <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-               
-                <svg class="h-5 w-5 text-white"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path fill="#ffffff" d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/></svg>  
-            </div>
-              Content Link Tracking Using Google Sheets 
-            </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">When you publish a post, an entry is published to a consolidated Google Sheets. <br><br>This way it is easy for you to check which Google Docs is Published to Which WordPress post. You can directly open the Google Docs from this sheet to update the content and push the update to WordPress in a single click.</dd>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Ensures accessibility from the start with automatic WCAG checks
+              for image alt text and heading levels. Your content will be
+              inclusive and will reach a wider audience.
+              <br /><br />
+              This also boosts SEO, helping more people find your content easily.
+            </dd>
           </div>
         </dl>
       </div>
     </div>
   </div>
-  
+
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
     subtitle=""
     tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+    classes={{ container: "max-w-6xl" }}
     items={[
       {
-        title: 'Why Docs to WordPress Pro?',
+        title: "Why Docs to Markdown Pro?",
         description:
-          "It is not just a tool to push content from Google Docs to WordPress, but helps you optimize for SEO before publishing to WordPress",
+          "Docs to Markdown Pro is a hoslistic Google Docs to Markdown Converter. It has support for Google native table of Contents, supports auto conversion to save you time when you convert multiple documents. It also allows you to download the images in the zip file, avoiding most manual work. ",
       },
       {
-        title: 'Do i need to login to any other portal to use this tool?',
+        title: "Do i need to login to any other portal to use this tool?",
         description:
-          'No, you can publish directly from the Google Docs Editor Side bar. No need to login to a separate portal.',
+          "No, you can convert directly from the Google Docs Editor Side bar. No need to login to a separate portal.",
       },
       {
-        title: 'What do I need to start?',
+        title: "What do I need to start?",
         description:
-          'Install the <a style="color:#2772ed;" href=https://workspace.google.com/marketplace/app/docs_to_wp_pro/346830534164?utm_source=docstowp.pro&utm_medium=app_home_faq&utm_id=app_home">Docs to WordPress Pro</a> add on from the Google Workspace Marketplace, add your site and start enjoying one click publishing.',
-      },
-      {
-        title: 'Is it mandatory to install the Docs to WP Pro add from the WordPress plugins repository?',
-        description:
-          "No, it is not mandatory to install the <b>Docs to WP Pro</b> Wordpress plugin , unless you want to update the Yoast or RankMath Meta description for your posts.",
+          'Install the <a style="color:#2772ed;" href=https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?utm_source=docstomarkdown.pro&utm_medium=app_home_faq&utm_id=app_home">Docs to Markdown Pro</a> add on from the Google Workspace Marketplace, start converting. Its that easy.',
       },
       
     ]}
   />
-
-  
 </Layout>

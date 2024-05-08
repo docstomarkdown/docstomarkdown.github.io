@@ -321,6 +321,214 @@ body .home-icons-grid {
 
 
 /*end css for home page before and after gdocs to md */
+
+/*CSS for Online Converter Tools*/
+
+.twocols {
+    display: flex;
+    position: relative;
+  }
+  
+  .twocols .input-field {
+    flex: 1; /* This will make both elements take up equal space */
+    margin-right: 10px; /* Adjust margin between the elements */
+    height:600px;
+    background-color: #f4f4f4; /* Set background color to white */
+    border: 1px solid #ccc; /* Add a 1px solid border with color #ccc */
+    border-radius: 4px; /* Add border-radius for rounded corners */
+    padding: 6px 10px; /* Add padding to match default textarea */
+    resize: vertical; /* Allow vertical resizing like a textarea */
+    overflow-y: auto; /* Add scrollbars if content overflows vertically */
+    position: relative;
+  
+  }
+  .twocols .editor-container {
+      height: 600px;
+      position: relative;
+      border: 1px solid lightgray;
+  }
+  
+  .twocols .right-editor-placeholder {
+      color: #888;
+      font-size: 22px;
+      font-weight: bold;
+      opacity: 0.5;
+      padding: 0 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -50%);
+      padding: 10px;
+      pointer-events: none;
+      z-index: 1;
+  }
+  
+  .div-instructions {
+    color: #888;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.5;
+    padding: 0 1em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+  
+  .text-left-instructions {
+    color: #888;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.5;
+    padding: 0 1em;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+  
+  .text-right-instructions {
+    color: #888;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.5;
+    padding: 0 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+  .text-instructions {
+    color: #888;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.5;
+    padding: 0 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+  
+  .output-container {
+    position: relative;
+  }
+  
+  .twocols .input-field:first-child {
+    margin-left: 50px; /* Remove margin for the last element to avoid extra space */
+      
+   margin-bottom: 10px;
+  }
+  
+  .twocols .input-field:last-child {
+    margin-right: 50px; /* Remove margin for the last element to avoid extra space */
+  margin-bottom: 10px;
+  }
+  
+  .twocols .with-right-margin{
+      margin-right: 50px; /* Remove margin for the last element to avoid extra space */
+      margin-bottom: 10px;	
+  }
+  
+  .twocols .with-left-margin{
+      margin-right: 50px; /* Remove margin for the last element to avoid extra space */
+      margin-bottom: 10px;	
+  }
+  
+  .twocols  .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #999; /* Adjust color as needed */
+      pointer-events: none; /* This prevents the message from interfering with input */
+  }
+  
+  .initial-text {
+      text-align: center; /* Center the text horizontally */
+      color: #999; /* Adjust color as needed */
+  }
+  .tool-button-container{
+       margin-right: 50px;
+  }
+  .tool-styled-button {
+      background-color: #f0f0f0; /* Green - 0F9D58 */
+      border: none;
+      color: black;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition-duration: 0.4s;
+  }
+  
+  .tool-styled-button:hover {
+      background-color: #2772ed; /* Darker Green 45a049*/
+  }
+  
+  .tool-styled-button:active {
+      background-color: #f0f0f0; /* Set your new background color here */
+  }
+  .copy-tooltip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .div-instructions,
+    .text-left-instructions {
+      left: 0; font-size: 18px;
+    }
+    
+    .text-right-instructions {
+      left: 100%;
+      transform: translateX(-100%);
+         font-size: 18px;
+    }
+    .tool-styled-button {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .div-instructions,
+    .text-left-instructions,
+    .text-right-instructions,
+    .text-instructions {
+      font-size: 14px;
+    }
+    
+    .tool-styled-button {
+      font-size: 10px;
+      padding: 6px 10px;
+    }	
+  }
+  
+/*END CSS for online converter tools*/
+
+
+
 /* To deprecated */
 
 .dd *:first-child {
