@@ -134,7 +134,7 @@ The [Markdown Table of Contents Generator online tool](https://www.docstomarkdow
 
 <figure>
 
-![Markdown table of contents generator tool image](./src/assets/images/image-1-1024x452.png)
+![Markdown table of contents generator tool image](/image-1-1024x452.png)
 
 <figcaption>
 

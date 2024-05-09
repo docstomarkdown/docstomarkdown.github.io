@@ -38,7 +38,7 @@ The image will be centered and displayed in the center of the screen as follows:
 
 <figure>
 
-![Centering an image in the readme.md file n GitHub](./src/assets/images/qq5-centering-image-readmemd-file-n-github.png)
+![Centering an image in the readme.md file n GitHub](/qq5-centering-image-readmemd-file-n-github.png)
 
 <figcaption>
 
@@ -91,7 +91,7 @@ This will place the images side by side horizontally as shown below:
 
 <figure>
 
-![Placing Images Side by Side and Centering Them Horizontally](./src/assets/images/XmG-placing-images-side-side-centering-horizontally.png)
+![Placing Images Side by Side and Centering Them Horizontally](/XmG-placing-images-side-side-centering-horizontally.png)
 
 <figcaption>
 

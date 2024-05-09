@@ -29,7 +29,7 @@ While both methods work, **using a dedicated image folder provides a cleaner str
 
 The following image shows the folder structure when the images have a dedicated folder called _assets_.
 
-![](./src/assets/images/image-2.png)
+![](/image-2.png)
 
 ## Markdown Image Syntax for Displaying Local Images
 
@@ -69,7 +69,7 @@ This will render the following HTML code when published(An image tag with the ti
 
 The following image shows how the image is displayed with Caption.
 
-![](./src/assets/images/image-3.png)
+![](/image-3.png)
 
 ## Using Absolute Paths vs Relative Local image paths
 
