@@ -1,14 +1,13 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import Prices from '~/components/widgets/Pricing.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import Prices from "~/components/widgets/Pricing.astro";
+import FAQs from "~/components/widgets/FAQs.astro";
 
-import Features3 from '~/components/widgets/Features3.astro';
-
+import Features3 from "~/components/widgets/Features3.astro";
 
 const metadata = {
-  title: 'Pricing',
+  title: "Pricing",
 };
 ---
 
@@ -18,7 +17,7 @@ const metadata = {
   <HeroText
     tagline=""
     title="Pricing"
-    subtitle="Choose the perfect plan that aligns with your publishing goals."
+    subtitle="Choose the perfect plan that aligns with your conversion goals"
   />
 
   <!-- Pricing Widget ******************* -->
@@ -28,100 +27,104 @@ const metadata = {
     subtitle=""
     prices={[
       {
-        title: 'Starter',
-        subtitle: 'Optimal choice for personal use',
-        price: 39,
-        period: 'per year',
+        title: "Starter",
+        subtitle: "Optimal choice for personal use",
+        price: 29,
+        period: "per year",
         items: [
-          
           {
-            description: 'Upto 400 exports',
+            description:
+              "1000 conversions(Docs to Markdown or HTML or Vice versa)",
           },
           {
-            description: 'Upto 2 sites',
+            description: "Single user",
           },
           {
-            description: 'Single user',
+            description: "150 Git pushes",
           },
           {
-            description: '200 Image compressions',
+            description: "1 Git repository",
           },
           {
-            description: '200 image captions',
-          },
-          {
-            description: '200 internal link credits',
+            description: "5 Reusable blocks",
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Buy now',
-          href: 'https://portal.thinksolv.com/buy/14f286f1-a7d7-4d10-9259-c43a26f7e6e6?media=0&enabled=354899',
+          target: "_blank",
+          text: "Buy now",
+          href: "https://portal.thinksolv.com/buy/14f286f1-a7d7-4d10-9259-c43a26f7e6e6?media=0&enabled=354899",
         },
       },
       {
-        title: 'Pro',
-        subtitle: 'Optimal choice for small publishing teams',
-        price: 99,
-        period: 'Per year',
+        title: "Pro",
+        subtitle: "Optimal choice for small teams",
+        price: 89,
+        period: "Per year",
         items: [
-        
           {
-            description: 'Upto 1000 exports',
+            description:
+              "3500 conversions(Docs to Markdown or HTML or Vice versa)",
           },
           {
-            description: 'Upto 5 sites ',
+            description: "Upto 3 users",
           },
           {
-            description: 'Upto 3 users',
+            description: "450 Git pushes",
           },
           {
-            description: '500 Image compressions',
+            description: "3 Git repositories",
           },
           {
-            description: '500 image captions',
+            description: "1000 image compressions",
           },
           {
-            description: '500 internal link credits',
+            description: "1000 image caption generation using AI",
+          },
+          {
+            description: "10 Reusable blocks",
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Buy now',
-          href: 'https://portal.thinksolv.com/buy/0643d931-c6d3-4a6d-9023-81ee78864d87?media=0&enabled=354900',
+          target: "_blank",
+          text: "Buy now",
+          href: "https://portal.thinksolv.com/buy/0643d931-c6d3-4a6d-9023-81ee78864d87?media=0&enabled=354900",
         },
         hasRibbon: true,
-        ribbonTitle: 'popular',
+        ribbonTitle: "popular",
       },
       {
-        title: 'Enterprise',
-        subtitle: 'Optimal choice for publishing companies',
-        price: 199 ,
-        period: 'Per year',
+        title: "Enterprise",
+        subtitle: "Optimal choice for large companies",
+        price: 129,
+        period: "Per year",
         items: [
-        {
-            description: '2500 exports',
+          {
+            description:
+              "5000 conversions(Docs to Markdown or HTML or Vice versa)",
           },
           {
-            description: 'Upto 10 sites ',
+            description: "Upto 5 users",
           },
           {
-            description: 'Upto 5 users',
+            description: "500 Git pushes",
           },
           {
-            description: '1000 Image compressions',
+            description: "5 Git repositories",
           },
           {
-            description: '1000 image captions',
+            description: "1500 image compressions",
           },
           {
-            description: '1000 internal link credits',
+            description: "1500 image caption generation using AI",
+          },
+          {
+            description: "10 Reusable blocks",
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Buy now',
-          href: 'https://portal.thinksolv.com/buy/6f9a346e-bcfb-4e34-a171-a11e916da9ec?media=0&enabled=354901',
+          target: "_blank",
+          text: "Buy now",
+          href: "https://portal.thinksolv.com/buy/6f9a346e-bcfb-4e34-a171-a11e916da9ec?media=0&enabled=354901",
         },
       },
     ]}
@@ -134,31 +137,32 @@ const metadata = {
     subtitle="Discover the advantages of choosing our plans"
     columns={2}
     items={[
-      
       {
-        title: 'Secure Payment Methods',
-        description: 'Secure payment gateways to protect your financial information during transactions.',
-        icon: 'tabler:shield-lock',
+        title: "Secure Payment Methods",
+        description:
+          "Secure payment gateways to protect your financial information during transactions.",
+        icon: "tabler:shield-lock",
       },
       {
-        title: 'Instant Access',
+        title: "Instant Access",
         description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
+        icon: "tabler:accessible",
       },
       {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
+        title: "Upgrade Value",
+        description:
+          "Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.",
+        icon: "tabler:chevrons-up",
       },
       {
-        title: 'Support',
-        description: 'Questions answered via email within 8 hours every calendar day.',
-        icon: 'tabler:headset',
+        title: "Support",
+        description:
+          "Questions answered via email within 8 hours every calendar day.",
+        icon: "tabler:headset",
       },
     ]}
-    classes={{ container: 'max-w-5xl' }}
+    classes={{ container: "max-w-5xl" }}
   />
-
 
   <!-- FAQs Widget ******************* -->
 
@@ -168,35 +172,32 @@ const metadata = {
     columns={1}
     items={[
       {
-        title: 'Do the plans come with customer support?',
+        title: "Do the plans come with customer support?",
         description:
-          'Absolutely, all plans include access to our dedicated email customer support to assist you with any queries or concerns.',
-      },
-     
-      {
-        title: 'Can I switch between plans?',
-        description:
-          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
-      },
-      {
-        title: 'What payment methods do you accept?',
-        description:
-          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
-      },
-      {
-        title: 'Are there any hidden fees beyond the displayed cost?',
-        description:
-          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
-      },
-      {
-        title: 'Are there any custom plans available if we have high usage requirements?',
-        description:
-          'Yes, for businesses with exceptionally high usage requirements, we offer customized Enterprise plans. Contact us today to discuss your specific needs and receive a tailored pricing quote.',
+          "Absolutely, all plans include access to our dedicated email customer support to assist you with any queries or concerns.",
       },
 
-      
-
-
+      {
+        title: "Can I switch between plans?",
+        description:
+          "Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.",
+      },
+      {
+        title: "What payment methods do you accept?",
+        description:
+          "We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.",
+      },
+      {
+        title: "Are there any hidden fees beyond the displayed cost?",
+        description:
+          "No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.",
+      },
+      {
+        title:
+          "Are there any custom plans available if we have high usage requirements?",
+        description:
+          "Yes, for businesses with exceptionally high usage requirements, we offer customized Enterprise plans. Contact us today to discuss your specific needs and receive a tailored pricing quote.",
+      },
     ]}
   />
   <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
