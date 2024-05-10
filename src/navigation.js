@@ -17,7 +17,7 @@ export const headerData = {
         
         {
           text: 'Terms',
-          href: getPermalink('/terms-of-service'),
+          href: getPermalink('/terms-of-services'),
         },
         {
           text: 'Privacy policy',
