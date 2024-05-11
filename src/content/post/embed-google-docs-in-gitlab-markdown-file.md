@@ -1,6 +1,7 @@
 ---
 title: "How to Embed Google Docs in GitLab Markdown File ?"
 date: "2024-03-01"
+excerpt: "This tutorial teaches you how to use Google Docs content as Markdown in GitLab instead of Embedding Google Docs in GitLab as iframe."
 categories: 
   - "gitlab"
   - "google-docs"

@@ -1,6 +1,7 @@
 ---
 title: "Add Image Captions to Images in Jekyll Blog Posts with Markdown - Definitive Guide"
 date: "2023-10-24"
+excerpt: "This definitive guide will show you how to add image captions to images in Jekyll Blog Posts with Markdown and provide you with some tips for creating effective image captions."
 categories: 
   - "jekyll"
 tags: 

@@ -1,5 +1,6 @@
 ---
 title: "How to Display Local Images in Markdown - Definitive Guide"
+excerpt: "This tutorials explains how to display local images in markdown and what are the best ways to organize the image file."
 date: "2024-03-26"
 categories: 
   - "markdown"
