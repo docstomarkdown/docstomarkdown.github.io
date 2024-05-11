@@ -32,7 +32,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
-        filter: (page) => !page.startsWith('https://www.docstomarkdown.pro/tag/'),
+        filter: (page) => !page.startsWith('https://www.docstomarkdown.pro/tag/') &&
+        page !== 'https://www.docstomarkdown.pro/blog/',
       }),
     mdx(),
     icon({
