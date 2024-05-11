@@ -21,23 +21,23 @@ As per GitLab [docs](https://github.github.com/gfm/#example-630:~:text=quot%3B%2
 
 _GitHub Flavoured Markdown enables the `tagfilter` extension, where the following HTML tags will be filtered when rendering HTML output:_
 
-- _<title>_
+- `<title>`
 
-- _<textarea>_
+- `<textarea>`
 
-- _<style>_
+- `<style>`
 
-- _<xmp>_
+- `<xmp>`
 
-- _<iframe>_
+- `<iframe>`
 
-- _<noembed>_
+- `<noembed>`
 
-- _<noframes>_
+- `<noframes>`
 
-- _<script>_
+- `<script>`
 
-- _<plaintext>_
+- `<plaintext>`
 
 `iframe` will be filtered by the `tagfilter` extension **due to the security concerns** such as [Content spoofing](https://owasp.org/www-community/attacks/Content_Spoofing) and [Cross site scripting](https://owasp.org/www-community/attacks/xss/).
 
