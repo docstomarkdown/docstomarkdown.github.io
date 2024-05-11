@@ -11,7 +11,7 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Convert Google Docs to Markdown
+    default: Google Docs to Markdown
     template: '%s'
   description: "Convert Google Docs to Markdown, Publish Google Docs as Markdown to GitHub or GitLab, Convert Markdown to Google Docs, Convert HTMl to Google Docs"
   robots:
@@ -62,7 +62,7 @@ apps:
       robots:
         index: false
 
-    isRelatedPostsEnabled: true
+    isRelatedPostsEnabled: false
     relatedPostsCount: 4
 
 analytics:

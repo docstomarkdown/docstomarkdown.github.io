@@ -1,9 +1,10 @@
 ---
 title: "Privacy Policy"
 layout: "~/layouts/MarkdownLayout.astro"
+excerpt: "Privacy policy of the Docs to Markdown Pro Add on"
 ---
 
-_Last updated_: January 06, 2023
+_Last updated_: January 06, 2024
 
 ## Who we are
 
