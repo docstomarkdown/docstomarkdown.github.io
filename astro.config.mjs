@@ -31,7 +31,9 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+        filter: (page) => !page.startsWith('https://www.docstomarkdown.pro/tag/'),
+      }),
     mdx(),
     icon({
       include: {
