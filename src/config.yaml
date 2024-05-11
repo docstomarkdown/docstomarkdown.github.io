@@ -68,7 +68,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: G-YTMDDGHDJJ # or "G-XXXXXXXXXX"
+      id: "G-YTMDDGHDJJ" # or "G-XXXXXXXXXX"
 
 ui:
   theme: 'light' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
