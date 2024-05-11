@@ -7,7 +7,7 @@ tags:
   - "images"
   - "markdown"
   - "syntax"
-cover: "./Jekyll-Markdown-Guide-1.jpg"
+image: "https://docstomarkdown.github.io/Jekyll-Markdown-Guide-1.jpg"
 ---
 
 Image captions are an important part of any blog post, as they can help to explain and contextualize your images, making them more informative and engaging for your readers.
