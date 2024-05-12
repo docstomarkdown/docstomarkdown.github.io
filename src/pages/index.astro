@@ -133,26 +133,24 @@ const metadata = {
                 <svg
                   class="h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
-                  height="16"
-                  width="14"
-                  viewBox="0 0 448 512"
+                  viewBox="0 0 512 512"
                   ><path
                     fill="#ffffff"
-                    d="M439.6 236.1L244 40.5a28.9 28.9 0 0 0 -40.8 0l-40.7 40.6 51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.2 199v121.9c25.3 12.5 22.3 41.9 9.1 55a34.3 34.3 0 0 1 -48.6 0c-17.6-17.6-11.1-46.9 11.3-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1a28.9 28.9 0 0 0 0 40.8l195.6 195.6a28.9 28.9 0 0 0 40.8 0l194.7-194.7a28.9 28.9 0 0 0 0-40.8z"
+                    d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z"
                   ></path></svg
                 >
               </div>
-              Git integration
+              Automatic conversion support
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-              Exports Google Docs as Markdown to GitHub or GitLab in
-              just one click, including images.<br /><br />
-
-              This streamlines your Docs-as-Code pipeline, perfect for users of
-              static site generators such as MkDocs, Hugo, or Jekyll or similar.
-              Also saves you precious time and effort.
+              If you're frequently converting Google Docs to MD format, you can enable the auto
+              conversion. The Google Docs content will be converted to Markdown
+              format upon launching the add-on, saving you a click for each
+              Markdown conversion.
             </dd>
           </div>
+
+          
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
               <div
@@ -173,8 +171,7 @@ const metadata = {
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
               Converts the Google Docs Table of Contents to HTML table of
-              contents and adds id to the headings in the output. You can
-              directly publish
+              contents and adds id to the headings in the output. When you publish the Markdown, the heading ids are used as anchor text automatically.
             </dd>
           </div>
           <div class="relative pl-16">
@@ -184,24 +181,25 @@ const metadata = {
               >
                 <svg
                   class="h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
+                  width="16"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
                   ><path
-                    fill="#ffffff"
-                    d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z"
-                  ></path></svg
+                    d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm161.5-86.1c-12.2-5.2-26.3 .4-31.5 12.6s.4 26.3 12.6 31.5l11.9 5.1c17.3 7.4 35.2 12.9 53.6 16.3v50.1c0 4.3-.7 8.6-2.1 12.6l-28.7 86.1c-4.2 12.6 2.6 26.2 15.2 30.4s26.2-2.6 30.4-15.2l24.4-73.2c1.3-3.8 4.8-6.4 8.8-6.4s7.6 2.6 8.8 6.4l24.4 73.2c4.2 12.6 17.8 19.4 30.4 15.2s19.4-17.8 15.2-30.4l-28.7-86.1c-1.4-4.1-2.1-8.3-2.1-12.6V235.5c18.4-3.5 36.3-8.9 53.6-16.3l11.9-5.1c12.2-5.2 17.8-19.3 12.6-31.5s-19.3-17.8-31.5-12.6L338.7 175c-26.1 11.2-54.2 17-82.7 17s-56.5-5.8-82.7-17l-11.9-5.1zM256 160a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                    fill="#ffffff"></path></svg
                 >
               </div>
-              Automatic conversion support
+              Accessibility checks
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-              If you're frequently converting Google Docs to MD format, you can enable the auto
-              conversion. The Google Docs content will be converted to Markdown
-              format upon launching the add-on, saving you a click for each
-              Markdown conversion.
+              Ensures accessibility from the start with automatic WCAG checks
+              for image alt text and heading levels. Your content will be
+              inclusive and will reach a wider audience.
+              <br /><br />
+              This also boosts SEO, helping more people find your content easily.
             </dd>
           </div>
-
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
               <div
@@ -244,6 +242,64 @@ const metadata = {
             <dd class="mt-2 text-base leading-7 text-gray-600">
               Helps you convert the HTML text into Google Docs for further
               editing/updates in the Google Docs editor.
+            </dd>
+          </div>
+
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="14"
+                  viewBox="0 0 448 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M439.6 236.1L244 40.5a28.9 28.9 0 0 0 -40.8 0l-40.7 40.6 51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.2 199v121.9c25.3 12.5 22.3 41.9 9.1 55a34.3 34.3 0 0 1 -48.6 0c-17.6-17.6-11.1-46.9 11.3-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1a28.9 28.9 0 0 0 0 40.8l195.6 195.6a28.9 28.9 0 0 0 40.8 0l194.7-194.7a28.9 28.9 0 0 0 0-40.8z"
+                  ></path></svg
+                >
+              </div>
+              Git integration
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Exports Google Docs as Markdown to GitHub or GitLab in
+              just one click, including images.<br /><br />
+
+              This streamlines your Docs-as-Code pipeline, perfect for users of
+              static site generators such as MkDocs, Hugo, or Jekyll or similar.
+              Also saves you precious time and effort.
+            </dd>
+          </div>
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div
+                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
+              >
+                <svg
+                  class="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="18"
+                  viewBox="0 0 576 512"
+                  ><path
+                    fill="#ffffff"
+                    d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V428.7c-2.7 1.1-5.4 2-8.2 2.7l-60.1 15c-3 .7-6 1.2-9 1.4c-.9 .1-1.8 .2-2.7 .2H240c-6.1 0-11.6-3.4-14.3-8.8l-8.8-17.7c-1.7-3.4-5.1-5.5-8.8-5.5s-7.2 2.1-8.8 5.5l-8.8 17.7c-2.9 5.9-9.2 9.4-15.7 8.8s-12.1-5.1-13.9-11.3L144 381l-9.8 32.8c-6.1 20.3-24.8 34.2-46 34.2H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h8.2c7.1 0 13.3-4.6 15.3-11.4l14.9-49.5c3.4-11.3 13.8-19.1 25.6-19.1s22.2 7.8 25.6 19.1l11.6 38.6c7.4-6.2 16.8-9.7 26.8-9.7c15.9 0 30.4 9 37.5 23.2l4.4 8.8h8.9c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7L384 203.6V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM549.8 139.7c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM311.9 321c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L512.1 262.7l-71-71L311.9 321z"
+                  ></path></svg
+                >
+              </div>
+              Automatic Front Matter generation
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">
+              Automatically generates metadata (Front Matter) for Hugo, Jekyll,
+              and other static site generators to manage content, simplify site
+              building, and boost SEO.
+              <br /><br />
+              This crucial data helps organize and automate content presentation,
+              navigation, and search engine optimization, leading to increased visibility
+              and organic traffic.
             </dd>
           </div>
 
@@ -349,61 +405,8 @@ const metadata = {
               times and delivering a smooth user experience.
             </dd>
           </div>
-          <div class="relative pl-16">
-            <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div
-                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
-              >
-                <svg
-                  class="h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="16"
-                  width="18"
-                  viewBox="0 0 576 512"
-                  ><path
-                    fill="#ffffff"
-                    d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V428.7c-2.7 1.1-5.4 2-8.2 2.7l-60.1 15c-3 .7-6 1.2-9 1.4c-.9 .1-1.8 .2-2.7 .2H240c-6.1 0-11.6-3.4-14.3-8.8l-8.8-17.7c-1.7-3.4-5.1-5.5-8.8-5.5s-7.2 2.1-8.8 5.5l-8.8 17.7c-2.9 5.9-9.2 9.4-15.7 8.8s-12.1-5.1-13.9-11.3L144 381l-9.8 32.8c-6.1 20.3-24.8 34.2-46 34.2H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h8.2c7.1 0 13.3-4.6 15.3-11.4l14.9-49.5c3.4-11.3 13.8-19.1 25.6-19.1s22.2 7.8 25.6 19.1l11.6 38.6c7.4-6.2 16.8-9.7 26.8-9.7c15.9 0 30.4 9 37.5 23.2l4.4 8.8h8.9c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7L384 203.6V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM549.8 139.7c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM311.9 321c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L512.1 262.7l-71-71L311.9 321z"
-                  ></path></svg
-                >
-              </div>
-              Automatic Front Matter generation
-            </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">
-              Automatically generates metadata (Front Matter) for Hugo, Jekyll,
-              and other static site generators to manage content, simplify site
-              building, and boost SEO.
-              <br /><br />
-              This crucial data helps organize and automate content presentation,
-              navigation, and search engine optimization, leading to increased visibility
-              and organic traffic.
-            </dd>
-          </div>
-          <div class="relative pl-16">
-            <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div
-                class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600"
-              >
-                <svg
-                  class="h-5 w-5 text-white"
-                  viewBox="0 0 512 512"
-                  width="16"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                  ><path
-                    d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm161.5-86.1c-12.2-5.2-26.3 .4-31.5 12.6s.4 26.3 12.6 31.5l11.9 5.1c17.3 7.4 35.2 12.9 53.6 16.3v50.1c0 4.3-.7 8.6-2.1 12.6l-28.7 86.1c-4.2 12.6 2.6 26.2 15.2 30.4s26.2-2.6 30.4-15.2l24.4-73.2c1.3-3.8 4.8-6.4 8.8-6.4s7.6 2.6 8.8 6.4l24.4 73.2c4.2 12.6 17.8 19.4 30.4 15.2s19.4-17.8 15.2-30.4l-28.7-86.1c-1.4-4.1-2.1-8.3-2.1-12.6V235.5c18.4-3.5 36.3-8.9 53.6-16.3l11.9-5.1c12.2-5.2 17.8-19.3 12.6-31.5s-19.3-17.8-31.5-12.6L338.7 175c-26.1 11.2-54.2 17-82.7 17s-56.5-5.8-82.7-17l-11.9-5.1zM256 160a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
-                    fill="#ffffff"></path></svg
-                >
-              </div>
-              Accessibility checks
-            </dt>
-            <dd class="mt-2 text-base leading-7 text-gray-600">
-              Ensures accessibility from the start with automatic WCAG checks
-              for image alt text and heading levels. Your content will be
-              inclusive and will reach a wider audience.
-              <br /><br />
-              This also boosts SEO, helping more people find your content easily.
-            </dd>
-          </div>
+          
+          
         </dl>
       </div>
     </div>
