@@ -11,11 +11,11 @@ tags:
 
 While Markdown doesn't offer a built-in text or image alignment features, you can center an image using raw HTML tags.
 
-**To center an image in GitHub** `readme.md` **file****, wrap the image inside the** `div` **tag and use the** `align=center` **inline style element.**
+**To center an image in GitHub `readme.md` file, wrap the image inside the `div` tag and use the `align=center` inline style element.**
 
 This tutorial explains you how to center images in your [GitHub readme.md](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) file using `<div>` tag. It also explains how to place images side-by-side and centering them horizontally.
 
-## Centering an Image Using a <div> Tag and the Align attribute (Recommended)
+## Centering an Image Using a `<div>` Tag and the Align attribute (Recommended)
 
 The [div](https://www.w3schools.com/tags/tag_div.ASP) tag defines a division or a section in an HTML page. It acts as a container for the HTML elements. Also, it can be styled/aligned using the class or id attribute. Any HTML element can be wrapped inside the `div` tag and styled using the attributes.
 
@@ -49,7 +49,7 @@ Centering an image in the readme.md file in GitHub
 
 </figure>
 
-## Centering an Image Using a <div> Tag and Specifying Size
+## Centering an Image Using a `<div>` Tag and Specifying Size
 
 To specify the size of the image while centering it,
 
