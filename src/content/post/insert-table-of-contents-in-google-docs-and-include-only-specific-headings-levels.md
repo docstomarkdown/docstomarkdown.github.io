@@ -23,9 +23,9 @@ In this tutorial, I'll show you how to insert a Table of Contents and customize 
 
 1. Place the cursor at the desired location where you want the table of contents to be inserted
 
-3. Click on the _\*Insert\*_ menu
+3. Click on the *Insert* menu
 
-5. Select _\*Table of Contents\*_ option available at the end of the Menu.
+5. Select *Table of Contents* option available at the end of the Menu.
 
 The table of contents will be inserted with all the headings available in the document.
 
@@ -35,7 +35,7 @@ The table of contents will be inserted with all the headings available in the do
 
 When you insert a new heading into your Google Docs, it **will not be added** to the TOC automatically.
 
-To add the new headings to the Table of Contents, you need to refresh it using the _**Update table of contents**_ option as shown in the following animation.
+To add the new headings to the Table of Contents, you need to refresh it using the **Update table of contents** option as shown in the following animation.
 
 ![Refreshing Table of Contents to Include new sub headings](/Refresh-Table-of-Contents.gif)
 
