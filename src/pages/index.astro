@@ -4,11 +4,13 @@ import Layout from "~/layouts/PageLayout.astro";
 import FAQs from "~/components/widgets/FAQs.astro";
 
 import DocsToMarkdownHero from "../components/landing/DocsToMarkdownHero.astro";
+import GCPPartnerSection from "~/components/common/GCPPartnerSection.astro";
 
 const metadata = {
-  title: 'Google Docs to Markdown',
+  title: "Google Docs to Markdown",
   ignoreTitleTemplate: true,
-  description: 'Convert Google Docs to Markdown, Convert Google Docs to HTML, Convert Markdown to Google Docs, Convert HTML to Google Docs',
+  description:
+    "Convert Google Docs to Markdown, Convert Google Docs to HTML, Convert Markdown to Google Docs, Convert HTML to Google Docs",
 };
 ---
 
@@ -143,14 +145,13 @@ const metadata = {
               Automatic conversion support
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-              If you're frequently converting Google Docs to MD format, you can enable the auto
-              conversion. The Google Docs content will be converted to Markdown
-              format automatically upon launching the add-on, saving you a click for each
-              Markdown conversion.
+              If you're frequently converting Google Docs to MD format, you can
+              enable the auto conversion. The Google Docs content will be
+              converted to Markdown format automatically upon launching the
+              add-on, saving you a click for each Markdown conversion.
             </dd>
           </div>
 
-          
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
               <div
@@ -171,7 +172,9 @@ const metadata = {
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
               Converts the Google Docs Table of Contents to HTML table of
-              contents and adds id to the headings in the output. When you publish the Markdown, the heading ids are used as anchor text automatically.
+              contents and adds id to the headings in the output. When you
+              publish the Markdown, the heading ids are used as anchor text
+              automatically.
             </dd>
           </div>
           <div class="relative pl-16">
@@ -193,9 +196,9 @@ const metadata = {
               Accessibility checks
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-              Ensures accessibility with automatic WCAG checks
-              for image alt text and heading levels. Your content will be
-              inclusive and will reach a wider audience.
+              Ensures accessibility with automatic WCAG checks for image alt
+              text and heading levels. Your content will be inclusive and will
+              reach a wider audience.
               <br /><br />
               This also boosts SEO, helping more people find your content easily.
             </dd>
@@ -265,8 +268,8 @@ const metadata = {
               Git integration
             </dt>
             <dd class="mt-2 text-base leading-7 text-gray-600">
-              Exports Google Docs as Markdown to GitHub or GitLab in
-              just one click, including images.<br /><br />
+              Exports Google Docs as Markdown to GitHub or GitLab in just one
+              click, including images.<br /><br />
 
               This streamlines your Docs-as-Code pipeline, perfect for users of
               static site generators such as MkDocs, Hugo, or Jekyll or similar.
@@ -405,8 +408,6 @@ const metadata = {
               times and delivering a smooth user experience.
             </dd>
           </div>
-          
-          
         </dl>
       </div>
     </div>
@@ -426,7 +427,8 @@ const metadata = {
           "Docs to Markdown Pro is a hoslistic Google Docs to Markdown Converter. It has support for Google native table of Contents, supports auto conversion to save you time when you convert multiple documents. It also allows you to download the images in the zip file, avoiding most manual work. ",
       },
       {
-        title: "Do i need to login to any other portal to use Google Doc to Markdown Converter?",
+        title:
+          "Do i need to login to any other portal to use Google Doc to Markdown Converter?",
         description:
           "No, you can convert directly from the Google Docs Editor Side bar. No need to login to a separate portal.",
       },
@@ -435,7 +437,7 @@ const metadata = {
         description:
           'Install the <a style="color:#2772ed;" href=https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?utm_source=docstomarkdown.pro&utm_medium=app_home_faq&utm_id=app_home">Docs to Markdown Pro</a> add on from the Google Workspace Marketplace, start converting. Its that easy.',
       },
-      
     ]}
   />
+  <GCPPartnerSection/>
 </Layout>
