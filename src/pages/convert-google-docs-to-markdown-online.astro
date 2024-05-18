@@ -58,8 +58,8 @@ const metadata = {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {<script>
     // Select the input and output elements
-    const inputElement = document.getElementById('input');
-    const outputElement = document.getElementById('output');
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
     
     // Function to convert HTML to Markdown
     function toMarkdown() {
@@ -112,12 +112,12 @@ const metadata = {
     }, 1500);
     }
     
-    const downloadButton = document.getElementById('download-button');
+    var downloadButton = document.getElementById('download-button');
     if (window.URL && window.File) {
     downloadButton.style.display = '';
     downloadButton.addEventListener('click', () => {
       event.preventDefault(); 
-      const file = new File([outputElement.value], 'Markdown Output.md', {
+      var file = new File([outputElement.value], 'Markdown Output.md', {
         type: 'text/markdown',
       });
     

@@ -37,21 +37,21 @@ const metadata = {
 
 {<script>
     // Select the input and output elements
-    const inputElement = document.getElementById('input');
-    const outputElement = document.getElementById('output');
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
     
     // Function to convert HTML to Markdown
     function generateTOC() {
         // Get the text content from the content-editable div
         var textContent = inputElement.value;
 
-       const tokens = marked.lexer(textContent);
+       var tokens = marked.lexer(textContent);
        let toc = "## Table of Contents\n\n";
        tokens.forEach(token => {
           if (token.type === 'heading') {
-            const level = token.depth;
-            const text = token.text;
-            const slug = text.toLowerCase().replace(/\s+/g, '-');
+            var level = token.depth;
+            var text = token.text;
+            var slug = text.toLowerCase().replace(/\s+/g, '-');
             toc += `${'  '.repeat(level - 1)}- [${text}](#${slug})\n`;
           }
         });
@@ -62,10 +62,10 @@ const metadata = {
 
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', ()=>{
-      const inputInstructions = document.getElementById('input-instructions');
-      const outputInstructions = document.getElementById('output-instructions');
+      var inputInstructions = document.getElementById('input-instructions');
+      var outputInstructions = document.getElementById('output-instructions');
 
-      const hasContent = !!inputElement.value.trim();
+      var hasContent = !!inputElement.value.trim();
       if (hasContent) {
         inputInstructions.style.display = 'none'; // Hide instructions if there's content
         outputInstructions.style.display = 'none';
@@ -78,13 +78,13 @@ const metadata = {
     });
 
     
-    const copyButton = document.getElementById('copy-button');
+    var copyButton = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
      copyButton.addEventListener('click', () => {
       event.preventDefault();
       var html = outputElement.value;
-      const blob = new Blob([html], {type: 'text/plain'});
-      const clipboardItem = new window.ClipboardItem({ 'text/plain': blob });
+      var blob = new Blob([html], {type: 'text/plain'});
+      var clipboardItem = new window.ClipboardItem({ 'text/plain': blob });
       navigator.clipboard.write([clipboardItem]);
       showCopyTooltip();
    });

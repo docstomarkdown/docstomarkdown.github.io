@@ -58,8 +58,8 @@ const metadata = {
 
 {<script>
     // Select the input and output elements
-    const inputElement = document.getElementById('input');
-    const outputElement = document.getElementById('output');
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
     // Initialize Quill
     var quill = new Quill('#output', {
         theme: 'snow',
@@ -81,9 +81,9 @@ const metadata = {
 
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', ()=>{
-      const inputInstructions = document.getElementById('input-instructions');
-      const editorPlaceholder = document.getElementById('editor-placeholder'); 
-      const hasContent = !!inputElement.value.trim();
+      var inputInstructions = document.getElementById('input-instructions');
+      var editorPlaceholder = document.getElementById('editor-placeholder'); 
+      var hasContent = !!inputElement.value.trim();
 
       if (hasContent) {
         inputInstructions.style.display = 'none'; // Hide instructions if there's content
@@ -103,8 +103,8 @@ const metadata = {
      copyButton.addEventListener('click', () => {
       event.preventDefault();
       var html = quill.root.innerHTML;
-      const blob = new Blob([html], {type: 'text/html'});
-      const clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+      var blob = new Blob([html], {type: 'text/html'});
+      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
       navigator.clipboard.write([clipboardItem]);
       showCopyTooltip();
    });

@@ -61,8 +61,8 @@ const metadata = {
 
 {<script>
     // Select the input and output elements
-    const inputElement = document.getElementById('input');
-    const outputElement = document.getElementById('output');
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
     // Initialize Quill
     var quill = new Quill('#output', {
         theme: 'snow',
@@ -102,7 +102,7 @@ const metadata = {
     });
 
     
-    const copyButton = document.getElementById('copy-button');
+    var copyButton = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
      copyButton.addEventListener('click', () => {
       event.preventDefault();
