@@ -86,10 +86,10 @@ const metadata = {
 
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', ()=>{
-      const inputInstructions = document.getElementById('input-instructions');
-      const outputInstructions = document.getElementById('output-instructions');
+      var inputInstructions = document.getElementById('input-instructions');
+      var outputInstructions = document.getElementById('output-instructions');
 
-      const hasContent = !!inputElement.value.trim();
+      var hasContent = !!inputElement.value.trim();
       if (hasContent) {
         inputInstructions.style.display = 'none'; // Hide instructions if there's content
         outputInstructions.style.display = 'none';
@@ -102,13 +102,13 @@ const metadata = {
     });
 
     
-    var copyButton = document.getElementById('copy-button');
+    var copyButtonForTextCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButton.addEventListener('click', () => {
+     copyButtonForTextCopy.addEventListener('click', () => {
       event.preventDefault();
       var html = quill.root.innerHTML;
-      const blob = new Blob([html], {type: 'text/html'});
-      const clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+      var blob = new Blob([html], {type: 'text/html'});
+      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
       navigator.clipboard.write([clipboardItem]);
       showCopyTooltip();
    });

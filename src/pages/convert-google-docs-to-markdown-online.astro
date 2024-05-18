@@ -70,10 +70,10 @@ const metadata = {
     
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input',()=>{
-      const inputInstructions = document.getElementById('input-instructions');
-      const outputInstructions = document.getElementById('output-instructions');
+      var inputInstructions = document.getElementById('input-instructions');
+      var outputInstructions = document.getElementById('output-instructions');
     
-        const hasContent = !!inputElement.innerHTML;
+        var hasContent = !!inputElement.innerHTML;
     
         if (hasContent) {
           inputInstructions.style.display = 'none'; 
@@ -86,9 +86,9 @@ const metadata = {
     toMarkdown();
     }
     );
-    const copyButton = document.getElementById('copy-button');
+    var copyButtonForMarkdownCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-    copyButton.addEventListener('click', () => {
+    copyButtonForMarkdownCopy.addEventListener('click', () => {
       event.preventDefault();
       navigator.clipboard.writeText(outputElement.value).then(() => {
         showCopyTooltip();

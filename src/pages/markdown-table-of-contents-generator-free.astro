@@ -78,9 +78,9 @@ const metadata = {
     });
 
     
-    var copyButton = document.getElementById('copy-button');
+    var copyButtonForTocCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButton.addEventListener('click', () => {
+     copyButtonForTocCopy.addEventListener('click', () => {
       event.preventDefault();
       var html = outputElement.value;
       var blob = new Blob([html], {type: 'text/plain'});

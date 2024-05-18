@@ -98,9 +98,9 @@ const metadata = {
       toHTML();
     });
 
-    const copyButton = document.getElementById('copy-button');
+    var copyButtonForDocsCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButton.addEventListener('click', () => {
+     copyButtonForDocsCopy.addEventListener('click', () => {
       event.preventDefault();
       var html = quill.root.innerHTML;
       var blob = new Blob([html], {type: 'text/html'});

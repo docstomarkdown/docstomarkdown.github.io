@@ -65,9 +65,9 @@ const metadata = {
     });
 
     
-    var copyButton = document.getElementById('copy-button');
+    var copyButtonForHTMLCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButton.addEventListener('click', () => {
+     copyButtonForHTMLCopy.addEventListener('click', () => {
       event.preventDefault();
       var html = outputElement.value;
       var blob = new Blob([html], {type: 'text/html'});
