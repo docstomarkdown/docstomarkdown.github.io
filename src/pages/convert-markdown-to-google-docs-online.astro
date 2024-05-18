@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-
 const metadata = {
   title: 'Convert Markdown to Google Docs Online(100% client site) - Free',
   description: "This tool converts Markdown text into a Google Docs format. Paste the Markdown in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste in your Google Docs."
@@ -21,9 +20,16 @@ const metadata = {
     </a>
   </div>
   <!-- Include Quill library -->
-{<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.min.js"></script>}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.snow.css" rel="stylesheet">
-{<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
+
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
+
+{<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
+
+
+{<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
@@ -60,18 +66,20 @@ const metadata = {
 
 
 {<script>
+    
+
     // Select the input and output elements
     var inputElement = document.getElementById('input');
     var outputElement = document.getElementById('output');
     // Initialize Quill
-    var quill = new Quill('#output', {
+    var quill = "";
+     quill  = new Quill('#output', {
         theme: 'snow',
         readOnly: true,
         modules: {
-            toolbar: false, // Disable the toolbar
+          toolbar: false, // Disable the toolbar
         },
-    });
-
+      });
     // Function to convert HTML to Markdown
     function toHTML() {
         
@@ -114,15 +122,7 @@ const metadata = {
    });
  }
 
-    var menuItemsToHide = ["menu-item-2062", "menu-item-1477", "menu-item-1479", "menu-item-1890"];
-
-    // Iterate over each menu item ID and hide them
-    menuItemsToHide.forEach(function (itemId) {
-        var menuItem = document.getElementById(itemId);
-        if (menuItem) {
-            menuItem.style.display = "none";
-        }
-    });
+    
 
     function showCopyTooltip() {
         var tooltip = document.createElement('div');
@@ -137,6 +137,9 @@ const metadata = {
             }, 500);
         }, 1500);
     }
+    
+
+
 
 </script>}
 </Layout>
