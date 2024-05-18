@@ -81,13 +81,13 @@ const {
                           class="my-8 md:my-10 space-y-2 text-left"
                         >
                           {items.map(
-                            ({ description, icon }) =>
+                            ({ description, icon, colour }) =>
                               description && (
                                 <li class="mb-1.5 flex items-start space-x-3 leading-7">
-                                  <div class="rounded-full bg-primary mt-1">
+                                  <div class={`rounded-full mt-1 ${colour ? colour : 'bg-primary'}`}>
                                     <Icon
                                       name={icon ? icon : "tabler:check"}
-                                      class="w-5 h-5 font-bold p-1 text-white"
+                                      class="w-5 h-5 font-bold p-1 text-white" 
                                     />
                                   </div>
                                   <span>{description}</span>
