@@ -81,7 +81,6 @@ export default defineConfig({
     astrowind({
       config: "./src/config.yaml",
     }),
-    sentry(),
   ],
   image: {
     service: squooshImageService(),
