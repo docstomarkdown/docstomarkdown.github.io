@@ -37,7 +37,7 @@ export const headerData = {
       },
    
   ],
-  actions: [{ text: 'Install free add on', href: 'https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?utm_source=docstomarkdown.pro&utm_medium=main_menu_install_free_add-on&utm_id=app_home', target: '_blank' }],
+  actions: [{ text: 'Coming soon', href: 'https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?utm_source=docstomarkdown.pro&utm_medium=main_menu_install_free_add-on&utm_id=app_home', target: '_blank' }],
 };
 
 export const footerData = {
