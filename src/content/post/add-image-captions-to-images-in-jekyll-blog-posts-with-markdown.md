@@ -92,7 +92,7 @@ The following example shows how to add a caption to an image using the Liquid Ma
 {% endfigure %}
 ```
 
-This will render the following HTML(creating <figure> tag and the <figcaption> tag):
+This will render the following HTML(creating `<figure>` tag and the `<figcaption>` tag):
 
 ```
 <figure>
