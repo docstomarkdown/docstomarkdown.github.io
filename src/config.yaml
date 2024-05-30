@@ -18,7 +18,7 @@ metadata:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Docs to Markdown Pro
     images:
       - url: '~/assets/images/default.png'
         width: 1200
