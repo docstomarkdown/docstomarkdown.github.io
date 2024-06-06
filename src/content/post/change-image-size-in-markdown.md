@@ -14,7 +14,7 @@ This tutorial teaches you how to change image size in different flavours of Mark
 
 1. Changing image size in vanilla Markdown using HTML attributes
 2. Changing image size in Pandoc Markdown using Image dimensions attribute
-3. Changing image size in Kramdown
+3. Changing image size in Kramdown Markdown Processor
 
 ## Changing Image Size Using HTML Img Tag and Attributes
 
