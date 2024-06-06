@@ -1,0 +1,181 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321/",
+  "frontMatter.content.publicFolder": {
+    "path": "src/assets",
+    "relative": true
+  },
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "post",
+      "path": "[[workspace]]/src/content/post",
+      "contentTypes": [
+        "post"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "post",
+      "previewPath": "'post'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "publishDate",
+          "type": "datetime",
+          "default": "{{now}}"
+        },
+        {
+          "name": "updateDate",
+          "type": "datetime",
+          "default": "{{now}}"
+        },
+        {
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "excerpt",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "metadata",
+          "type": "fields",
+          "fields": [
+            {
+              "name": "title",
+              "type": "string",
+              "single": true
+            },
+            {
+              "name": "ignoreTitleTemplate",
+              "type": "boolean"
+            },
+            {
+              "name": "canonical",
+              "type": "string",
+              "single": true
+            },
+            {
+              "name": "robots",
+              "type": "fields",
+              "fields": [
+                {
+                  "name": "index",
+                  "type": "boolean"
+                },
+                {
+                  "name": "follow",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "single": true
+            },
+            {
+              "name": "openGraph",
+              "type": "fields",
+              "fields": [
+                {
+                  "name": "url",
+                  "type": "string",
+                  "single": true
+                },
+                {
+                  "name": "siteName",
+                  "type": "string",
+                  "single": true
+                },
+                {
+                  "name": "images",
+                  "type": "image"
+                },
+                {
+                  "name": "locale",
+                  "type": "string",
+                  "single": true
+                },
+                {
+                  "name": "type",
+                  "type": "string",
+                  "single": true
+                }
+              ]
+            },
+            {
+              "name": "twitter",
+              "type": "fields",
+              "fields": [
+                {
+                  "name": "handle",
+                  "type": "string",
+                  "single": true
+                },
+                {
+                  "name": "site",
+                  "type": "string",
+                  "single": true
+                },
+                {
+                  "name": "cardType",
+                  "type": "string",
+                  "single": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "publishdate",
+          "name": "publishdate",
+          "type": "datetime"
+        },
+        {
+          "title": "type",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "title": "keywords",
+          "name": "keywords",
+          "type": "choice",
+          "choices": [
+            "adfs"
+          ]
+        }
+      ]
+    }
+  ],
+  "frontMatter.git.enabled": true
+}

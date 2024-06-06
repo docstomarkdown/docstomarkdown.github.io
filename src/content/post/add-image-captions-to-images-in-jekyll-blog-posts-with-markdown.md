@@ -1,7 +1,7 @@
 ---
-title: "Add Image Captions to Images in Jekyll Blog Posts with Markdown - Definitive Guide"
+title: "Add Captions to Images in Markdown - Definitive Guide"
 date: "2023-10-24"
-excerpt: "This definitive guide will show you how to add image captions to images in Jekyll Blog Posts with Markdown and provide you with some tips for creating effective image captions."
+excerpt: "This definitive guide will show you how to add captions to images in Markdown and provide you with some tips for creating effective image captions."
 categories: 
   - "jekyll"
 tags: 
@@ -12,13 +12,13 @@ tags:
 
 Image captions are an important part of any blog post, as they can help to explain and contextualize your images, making them more informative and engaging for your readers.
 
-If you're using Jekyll to build your blog, you can easily add image captions using Markdown or the _Liquid Markdown_ syntax supported by Jekyll-figure extension.
+If you're using Jekyll static site generators to build your blog, you can add image captions using Markdown syntax or the _Liquid Markdown_ syntax supported by Jekyll-figure extension.
 
-This definitive guide will show you how to add image captions to images in Jekyll Blog Posts with Markdown.
+This definitive guide will show you how to add captions to images in Markdown or using the Jekyll-figure extension.
 
 ## Adding Image Captions in the Markdown Image Syntax
 
-To add image captions to images in your Jekyll blog posts using Markdown, use the `![alt text](<image_url> “Your image caption”)` syntax.
+**To add captions to images in Markdown, use the `![alt text](<image_url> “Your image caption”)` syntax.**
 
 Where:
 
@@ -36,7 +36,7 @@ The following example shows how to add a caption to an image in Markdown:
 ![A bowl of ice cream](https://example.com/image_1.jpg "This is a delicious bowl of ice cream.")
 ```
 
-This will render the following HTML(An `[img](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)` tag with the title attribute)
+This will render the following HTML(An [img](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag with the title attribute)
 
 ```
 <img src="https://example.com/image_1.jpg" alt="A bowl of ice cream" title=" This is a delicious bowl of ice cream.">
@@ -46,7 +46,7 @@ The _alt text_ will be displayed to users who cannot see the image, and the _tit
 
 ## Using the Jekyll Figure Extension to Add Captions to Images
 
-The [Jekyll Figure](https://github.com/paulrobertlloyd/jekyll-figure) extension provides a simple way to add captions to images in Jekyll blog posts using Markdown.
+If you're building the site using the Jekyll static site generation, the [Jekyll Figure](https://github.com/paulrobertlloyd/jekyll-figure) extension provides a simple way to add captions to images in Jekyll blog posts using Markdown.
 
 **When to use this method:**  
 You need to use this method when you want to render the images and captions using the `<figure>` and `<figcaption>` html tags.
@@ -143,7 +143,7 @@ This will render the following HTML:
 
 ## Auto-Add Image Captions with Docs to Markdown Pro
 
-Streamline your content creation workflow with Docs to Markdown Pro, a Google Docs add-on that automatically generates Markdown syntax for images, including captions.
+Streamline your content creation workflow with [Docs to Markdown Pro](https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804), a Google Docs add-on that automatically generates Markdown syntax for images, including captions.
 
 Whether you're writing a blog post or creating a documentation page, Docs to Markdown Pro saves you time and effort by:
 
