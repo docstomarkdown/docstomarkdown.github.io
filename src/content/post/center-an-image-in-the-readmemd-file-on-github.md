@@ -1,6 +1,6 @@
 ---
 title: "How to Center an Image in the Readme.md file on GitHub - Definitive Guide"
-date: "2024-03-08"
+publishDate: "2024-03-08"
 excerpt: "This tutorial teaches you how to center an image in the readme.md file on GitHub using the div tag. Also it shows how to place two images side by side horizontally."
 categories: 
   - "github"

@@ -1,6 +1,6 @@
 ---
 title: "Add Captions to Images in Markdown - Definitive Guide"
-date: "2023-10-24"
+publishDate: "2023-10-24"
 excerpt: "This definitive guide will show you how to add captions to images in Markdown and provide you with some tips for creating effective image captions."
 categories: 
   - "jekyll"

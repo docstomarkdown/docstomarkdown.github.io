@@ -1,6 +1,6 @@
 ---
 title: "How to Create a Table of Contents in Markdown"
-date: "2024-03-25"
+publishDate: "2024-03-25"
 excerpt: "This tutorial teaches you how to create table of contents in a Markdown file using anchor links or online tools."
 categories: 
   - "markdown"
