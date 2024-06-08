@@ -29,7 +29,7 @@ To create a checkbox or a tick mark in the GitHub flavoured Markdown, use the fo
 
 It will create a checkbox list as below: 
 
-![Checkboxes in GitHub](/src/content/images/checkboxes-inside-issues-github.png)
+![Checkboxes in GitHub](/images/checkboxes-inside-issues-github.png)
 
 To mark a task as completed,  change `[ ]` to `[x]`. If you're working in GitHub issues, you can also check the checkboxes directly.
 
@@ -58,7 +58,7 @@ The following syntax shows how to create a nested checkboxes in the Markdown:
 
 It will create the nested checkboxes as show below. 
 
-![GitHub Markdown nested Checkboxes](/src/content/images/github-nested-checkboxes.png)
+![GitHub Markdown nested Checkboxes](/images/github-nested-checkboxes.png)
 
 ## Drawing Checkbox in GitHub Markdown Table
 
@@ -81,7 +81,7 @@ The following Markdown table code shows how to create checked and unchecked chec
 
 The above code will render a table as follows:
 
-![Checkboxes in GitHub Tables](/src/content/images/tables-checkboxes-github-a.png)
+![Checkboxes in GitHub Tables](/images/tables-checkboxes-github-a.png)
 
 ## Creating Green Checkboxes or Using Emojis in the Markdown Table
 
@@ -103,7 +103,7 @@ Here’s an example of how to use emoji checkboxes:
 
 This will create the following output: 
 
-![GitHub emoji checklists](/src/content/images/github-emoji-checklist-img.png)
+![GitHub emoji checklists](/images/github-emoji-checklist-img.png)
 
 
 Using emojis allows for a more colorful and visually appealing checklist, especially when combined with other text formatting options in Markdown.
