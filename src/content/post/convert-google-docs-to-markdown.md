@@ -12,7 +12,7 @@ Markdown is a lightweight formatting language known for its ease of use and read
 
 Google Docs is a collaborative online word processor that is part of Google Workspace. But it doesn't natively support exporting documents in Markdown format.
 
-**You can convert Google Docs to Markdown using the Docs to Markdown Pro add-on.**
+**You can convert Google Docs to Markdown using the Google Docs Editor Add-on "Docs to Markdown Pro".**
 
 In this tutorial, I'll show you how to export Google Docs to Markdown format using the Docs to Markdown Pro add-on and also what are the advanced features available in the add-on.
 
