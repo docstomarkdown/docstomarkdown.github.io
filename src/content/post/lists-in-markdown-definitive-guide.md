@@ -5,7 +5,7 @@ draft: false
 title: Lists in Markdown - A Definitive Guide
 type: post
 slug: lists-in-markdown
-excerpt: This tutorial explains lists in Markdown, how to create ordered lists, unordered lists and a Todo list.
+excerpt: This tutorial explains lists in Markdown, how to create ordered lists, unordered lists, nested lists and a Todo list.
 ---
 
 Lists allows you to group a set of related items in an ordered or unordered manner. 
