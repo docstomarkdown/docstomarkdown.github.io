@@ -27,7 +27,7 @@ The `<img>` tag offers two attributes for controlling the image dimentions - `wi
 - Resizing images with Pixels 
 - Resizing images with Percentages
 
-*GitHub uses the GitHub Flavoured Markdown. Hence, you can use any of the following methods to [resize the images in the GitHub readme.md files](/center-an-image-in-the-readmemd-file-on-github/) or the GitHub Wiki pages.* 
+*GitHub uses the GitHub Flavoured Markdown. Hence, you can use any of the following methods to resize the [images in the GitHub readme.md files](/center-an-image-in-the-readmemd-file-on-github/) or the GitHub Wiki pages.* 
 
 ### **1. Resizing image using Pixels**
 
