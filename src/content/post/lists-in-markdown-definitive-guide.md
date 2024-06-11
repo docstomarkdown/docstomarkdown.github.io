@@ -62,7 +62,7 @@ The following syntax demonstrates how to create an ordered lists in Markdown.
 
 ## Nested Lists in Markdown
 
-Nested lists, also known as sublists, are used to represent hierarchical data or data with multiple levels of organization. For example, *Organizational charts*, *Outlines with subheadings*, *Product categories and subcategories*.
+[Nested lists](https://commonmark.org/help/tutorial/10-nestedLists.html), also known as sublists, are used to represent hierarchical data or data with multiple levels of organization. For example, *Organizational charts*, *Outlines with subheadings*, *Product categories and subcategories*.
 
 Nested lists are created by indenting list items with spaces or tabs. *Both unordered and ordered lists can be nested within each other.*
 
@@ -139,4 +139,4 @@ This code would render an interactive checklist in environments like GitHub issu
 
 ## Conclusion
 
-Markdown simplifies list creation with its support for ordered lists (using numbers), unordered lists (using hyphens, asterisks, or plus signs), and nested lists (using indentation). These features make it easy to organize content clearly and effectively.
+Markdown simplifies [list creation](https://daringfireball.net/projects/markdown/syntax#list) with its support for ordered lists (using numbers), unordered lists (using hyphens, asterisks, or plus signs), and nested lists (using indentation). These features make it easy to organize content clearly and effectively.
