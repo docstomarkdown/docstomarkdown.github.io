@@ -135,7 +135,7 @@ It will create a checkbox list as below:
 
 ![Checkboxes in GitHub](./images/checkboxes-inside-issues-github.png)
 
-This code would render an interactive checklist in environments like GitHub issues, allowing you to check/uncheck tasks directly in the UI.
+This code would render an [interactive checklist in environments like GitHub issues](/draw-checkbox-in-github-markdown-table/), allowing you to check/uncheck tasks directly in the UI.
 
 ## Conclusion
 
