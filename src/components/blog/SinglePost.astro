@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
-
+import TOC from '~/components/common/TOC.astro';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
@@ -16,6 +16,17 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
+
+// Log the props for debugging
+/*console.log('Post:', post);
+console.log('URL:', url);
+
+console.log(Astro.props);
+if (!headings) {
+    console.log(url);
+    console.log(post);
+  throw new Error('Headings prop is undefined');
+}*/
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">

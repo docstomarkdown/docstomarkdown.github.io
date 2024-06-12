@@ -43,7 +43,9 @@ const generatePermalink = async ({
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, slug: rawSlug = '', data } = post;
   const { Content, remarkPluginFrontmatter } = await post.render();
-
+ // Log the data object to the server terminal
+ /*console.log('Data object:', data);
+ console.log('Post object:', post);*/
   const {
     publishDate: rawPublishDate = new Date(),
     updateDate: rawUpdateDate,
