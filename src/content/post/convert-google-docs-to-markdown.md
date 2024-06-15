@@ -44,7 +44,7 @@ Now, let's look at the advanced features of the Docs to Markdown Pro add-on that
 - **Settings** - It allows you to set the [default settings](https://docs.docstomarkdown.pro/settings) and save them. During each conversion, the same settings will be used
 - **Auto Conversion Support** - You can enable the auto conversion setting. With this, the conversion process will start automatically without you clicking the *To Markdown* option after launching the add-on and this will be helpful if you're converting multiple docs
 - **HTML Headings** - You can choose to create HTML headings instead of Markdown Headings. When you choose this, the headings available in the Document will be created as HTML headings with the ID. This will be helpful in creating jump links automatically when you publish the Markdown file
-- **Table of Contents Support** - If you're using the native Google Docs Table of Contents, the add-on will automatically convert the TOC into the Markdown format
+- **Table of Contents Support** - If you're using the native Google Docs [Table of Contents](/markdown-table-of-contents-generator-free/), the add-on will automatically convert the TOC into the Markdown format
 - **Accessibility checks** - You can also choose to enable the accessibility checks. This ensures accessibility with automatic [WCAG checks](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines) for image alt text and heading levels. Your content will be inclusive and this also boosts SEO, helping more people find your content easily.
 - **Syntax Customization** - You can customize the syntax. For example, you can choose between the emphasis character that you need to use the in the Markdown format. Either Underscore `_` or Asterik `*`
 
