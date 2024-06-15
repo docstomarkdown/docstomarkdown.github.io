@@ -47,6 +47,10 @@ Now, let's look at the advanced features of the Docs to Markdown Pro add-on that
 - **Table of Contents Support** - If you're using the native Google Docs [Table of Contents](/markdown-table-of-contents-generator-free/), the add-on will automatically convert the TOC into the Markdown format
 - **Accessibility checks** - You can also choose to enable the accessibility checks. This ensures accessibility with automatic [WCAG checks](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines) for image alt text and heading levels. Your content will be inclusive and this also boosts SEO, helping more people find your content easily.
 - **Syntax Customization** - You can customize the syntax. For example, you can choose between the emphasis character that you need to use the in the Markdown format. Either Underscore `_` or Asterik `*`
+- **Code Blocks** - The [fenced code blocks and the indented code blocks](/code-blocks-in-markdown/) are converted into Markdown code block wrapped using (````)
+- **Syntax Highlighting** - You can also specify code block languages to syntax highlight the blocks. The same will be updated in the output Markdown file
+- **Lists** - The unordered and ordered lists in the Google Docs will be converted into appropriate [lists in Markdown](/lists-in-markdown/)
+- **Images** - The images files available in the Google Docs will be exported to the output zip file, if you have selected that option and the image paths are also adapted in the output Markdown file. You can use this to local host the images when you publish the Markdown.
 
 ## Bulk Converting Google Docs to Markdown
 
@@ -88,3 +92,7 @@ If you're converting Google Docs to Markdown format to publish them in GitHub or
 Docs to Markdown Pro simplifies the process of converting your Google Docs to Markdown format. With its user-friendly interface, advanced features like bulk conversion and Git integration, this add-on streamlines your workflow and saves you valuable time. So why wait?
 
 Install [Docs to Markdown Pro](https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b) today and start converting Google Docs to Markdown seamlessly.
+
+## See Also
+
+- [Convert Markdown to Google Docs](/convert-markdown-to-google-docs/)
