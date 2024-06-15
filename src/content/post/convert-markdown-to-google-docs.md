@@ -74,3 +74,7 @@ To bulk convert Markdown into Google Docs format, follow the below steps:
 Docs to Markdown Pro simplifies the process of converting your Markdown into Google Docs format. With its user-friendly interface, advanced features like bulk conversion, this add-on streamlines your workflow and saves you valuable time. So why wait?
 
 Install [Docs to Markdown Pro](https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b) today and start exporting Markdown into Google Docs.
+
+## See Also
+
+- [Convert Google Docs to Markdown](/convert-google-docs-to-markdown/)
