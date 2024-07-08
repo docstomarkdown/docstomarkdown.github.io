@@ -1,0 +1,132 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+
+const metadata = {
+  title: 'Convert HTML to Word',
+  description: "This tool converts HTML into a Word Docx format. Paste the HTML in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste it in your Word Document."
+};
+---
+<Layout metadata={metadata}>
+    
+<div style="padding-top:10px; padding-left:50px;">
+<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert HTML to Word Document</h1>
+<p style="padding-top:10px;">You can use this tool to convert HTML to Word document online for free.  </p>
+</div>
+
+<!-- Include Quill library -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
+
+{<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
+<div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
+   <p>Copy the output and paste in your Word Document&nbsp;&nbsp;&nbsp;</p>
+   <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy Text</button>
+</div>
+<main class="twocols">
+   
+    <textarea id="input" class="input-field"  autocomplete="off" autofocus></textarea><p class="text-left-instructions" id="input-instructions">Paste your HTML here..</p>
+    <div id="editor-placeholder" class ="right-editor-placeholder">..get your rich text here</div>
+    <div id="output" class="input-field editor-container" autocomplete="off"></div>
+
+</main>
+<div id="hide-grow-widget"></div>
+<div class="mx-10 leading-10">
+
+<h2 class="font-bold">How to convert HTML to Word Document using this online tool?</h2>
+
+<ol class=" list-decimal list-inside mx-10">
+<li class="font-normal">Paste your HTML content in the input text box on the left side</li>
+<li class="font-normal">The HTML will be rendered as rich text on the output text box automatically</li>
+<li class="font-normal">Copy the output using the Copy Text button</li>
+<li class="font-normal">Paste the copied content in your Word Document. Content will be pasted and the formatting will be preserved as well. </li>
+</ol>
+
+
+</div>
+
+{<script>
+    // Select the input and output elements
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
+    // Initialize Quill
+    var quill = "";
+
+     quill  = new Quill('#output', {
+        theme: 'snow',
+        readOnly: true,
+        modules: {
+          toolbar: false, // Disable the toolbar
+        },
+      });
+   
+    
+    
+
+    // Function to convert HTML to Markdown
+    function toHTML() {
+        // Get the text content from the content-editable div
+        var textContent = inputElement.value;
+        quill.clipboard.dangerouslyPasteHTML(textContent);
+        inputElement.focus();
+    }
+
+    // Add event listener to invoke toMarkdown function on input
+    inputElement.addEventListener('input', ()=>{
+      var inputInstructions = document.getElementById('input-instructions');
+      var editorPlaceholder = document.getElementById('editor-placeholder'); 
+      var hasContent = !!inputElement.value.trim();
+
+      if (hasContent) {
+        inputInstructions.style.display = 'none'; // Hide instructions if there's content
+        editorPlaceholder.style.display = 'none';
+      } else {
+          inputInstructions.style.display = 'block';
+          editorPlaceholder.style.display = 'block';
+          inputElement.focus();
+      }
+      
+     
+      toHTML();
+    });
+
+    var copyButtonForDocsCopy = document.getElementById('copy-button');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+     copyButtonForDocsCopy.addEventListener('click', () => {
+      event.preventDefault();
+      var html = quill.root.innerHTML;
+      var blob = new Blob([html], {type: 'text/html'});
+      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+      navigator.clipboard.write([clipboardItem]);
+      showCopyTooltip();
+   });
+ }
+
+    var menuItemsToHide = ["menu-item-2062", "menu-item-1477", "menu-item-1479", "menu-item-1890"];
+
+    // Iterate over each menu item ID and hide them
+    menuItemsToHide.forEach(function (itemId) {
+        var menuItem = document.getElementById(itemId);
+        if (menuItem) {
+            menuItem.style.display = "none";
+        }
+    });
+    function showCopyTooltip() {
+        var tooltip = document.createElement('div');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = 'Text copied to clipboard';
+        document.body.appendChild(tooltip);
+
+        setTimeout(() => {
+            tooltip.style.opacity = '0';
+            setTimeout(() => {
+                document.body.removeChild(tooltip);
+            }, 500);
+        }, 1500);
+    }
+</script>}  
+
+</Layout>
