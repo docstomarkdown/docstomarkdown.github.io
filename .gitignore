@@ -23,3 +23,4 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 astrowind/
+src/content/post/Pandoc_Article.md
