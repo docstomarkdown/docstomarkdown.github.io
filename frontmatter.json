@@ -13,6 +13,10 @@
       "contentTypes": [
         "post"
       ]
+    },
+    {
+      "title": "merge-docs-post",
+      "path": "/Users/vikram/GitHub/Merge_Docs_Website_home/src/content/post"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
