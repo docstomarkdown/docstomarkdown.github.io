@@ -5,6 +5,7 @@ draft: false
 title: How to Convert Microsoft Word or Google Docs to Markdown Using Pandoc
 type: post
 slug: convert-word-or-docs-to-markdown-using-pandoc
+excerpt: THis tutorial teaches you how to convert Microsoft Word document or Google Docs into Markdown format using Pandoc.
 ---
 
  Markdown, a lightweight markup language, has become a popular choice for writing and publishing content online due to its simplicity, flexibility, and ease of use. Pandoc is a powerful, open-source tool that allows you to convert files between different formats, including [Markdown to Word](/convert-markdown-to-word/) or Google Docs or vice versa.
