@@ -22,9 +22,9 @@ In this tutorial, I'll explain how to [merge multiple Google Docs into one](http
 
 ## Prerequisite
 
-Google Docs doesn't provide a built-in merging feature. Hence, you need to use an add-on to merge multiple Google Docs. [Merge Docs Pro](https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026) <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; is a suitable add on to merge multiple Google Docs into one.
+Google Docs doesn't provide a built-in merging feature. Hence, you need to use an add-on to merge multiple Google Docs. Merge Docs Pro is a suitable add on to merge multiple Google Docs into one.
 
-Install the add-on from the Google Workspace Marketplace. Once the add-on is installed, you can follow the below steps to merge the documents. 
+[Install the Merge Docs Pro add-on ](https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026)<i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; from the Google Workspace Marketplace. Once the add-on is installed, you can follow the below steps to merge the documents. 
 
 ## Merging Google Docs into One (Step By Step)
 
@@ -35,12 +35,12 @@ Merge Docs Pro is an add-on that works with Google Sheets, allowing you to add i
 
 ![Merge Docs Pro add-on](images/image-3.png)
 
-3. **Optional: Adding Sheet Headers** - Click on the *Add Column Headers* option to add the necessary headers in the Google Sheets. This will help you add the input in the correct format for merging. If you opt to add the Google Docs directly using the *Select Docs to Merge* option, it will add the necessary headers for the first time. The sheets with headers will look like the following image: 
+3. **Adding Sheet Headers** - Click on the *Add Column Headers* option to add the necessary headers in the Google Sheets. This will help you add the input in the correct format for merging. If you opt to add the Google Docs directly using the *Select Docs to Merge* option, it will add the necessary headers for the first time. The sheets with headers will look like the following image: 
 ![Merge input sheet with headers](images/image-4.png)
 4. **Selecting Documents to Merge** - Click on the *Select Docs to Merge* button. It will display the File picker, allowing you to select desired Google Docs to merge. Select the documents and click on the *Select* button.
 ![Selecting Google Docs to merge](images/image-5.png)
 All the selected documents will be added to the input sheet and the input type will be detected automatically as Google Docs. 
-5. **Customizing the Merge Order and setting the Merge Flag** - Once the Docs are added to the sheet, you can reorder them to the desired merge oder. Additionally, you can set the Merge flag to No, if you want to ignore any document for a specific deliverable. The final input sheet for merging will look like the one below: 
+5. **Customizing the Merge Order and setting the Merge flag** - Once the Docs are added to the sheet, you can reorder them to the desired merge oder. Additionally, you can set the Merge flag to No, if you want to ignore any document for a specific deliverable. The final input sheet for merging will look like the one below: 
 ![Google Docs ready for Merging](images/image-6.png)
 6. **Merging the Docs** - When the input is ready, click on the **Merge Docs** button. The documents with the Merge Docs flag set to *Yes* will be merged together and a new Google Docs will be created. The final output Google Document will be opened automatically in the new tab for your easier access.
 
@@ -94,7 +94,7 @@ To customize the output document with a header and footer using Merge Docs Pro, 
 
 **Automating the Access Settings of the Merge Document and Output Files:**
 
-If you want to share the merged document or the output files with specific individuals by default, you can automate this process using this template document option. The access settings of the template Google Docs will be applied to the newly created merge document and also to the output files, such as ePUB and PDF files (Outfiles are explained in the next section).
+If you want to share the merged document or the output files with specific individuals by default, you can automate this process using this template document option. The access settings of the template Google Docs will be applied to the newly created merge document and also to the output files, such as ePUB and PDF files (Output files are explained in the next section).
 
 ## Exporting the Merged Document as PDF or EPUB
 
@@ -117,9 +117,9 @@ As mentioned in the previous section, the output files can be automatically shar
 
 ## Managing Large Documents
 
-The Merge Docs Pro add-on includes a Large File mode, which is useful when merging large documents containing a substantial amount of text, images, and other media. When using Large File mode, each document is given a maximum of 6 minutes to be copied to the target document, as this is the maximum time allowed for a function to run in [Google Apps Script](https://developers.google.com/apps-script).
+The Merge Docs Pro add-on includes a *Large File mode*, which is useful when merging large documents containing a substantial amount of text, images, and other media. When using Large File mode, each document is given a maximum of 6 minutes to be copied to the target document, as this is the maximum time allowed for a function to run in [Google Apps Script](https://developers.google.com/apps-script).
 
-However, there is no limit to the number of documents you can merge at once. You can choose to merge any number of documents and use Large File mode when the input documents are too large to be read and merged efficiently.
+However, there is no limit to the number of documents you can merge at once. You can choose to merge any number of documents and use *Large File mode* when the input documents are too large to be read and merged efficiently.
 
 To read more about the apps script quota, visit the [quotas page](https://developers.google.com/apps-script/guides/services/quotas).
 
@@ -129,8 +129,6 @@ To read more about the apps script quota, visit the [quotas page](https://develo
 
 The Merge Docs Pro add-on allows you to configure default settings to streamline the document merging process. By setting these defaults, you can ensure that each time the add-on is launched, it applies your preferred settings automatically, minimizing the need for manual adjustments.
 
-
-
 To configure defaults, click on the Settings link at the top of the sidebar as show below.
 
 ![Launching settings window](images/image-12.png)
@@ -139,7 +137,7 @@ The settings dialog will be displayed as below:
 
 ![Configuring defaults in the Settings window](images/image-13.png)
 
-In the settings window, you can specify default options such as the merge destination, large file mode, page break inclusion, and export format (PDF or EPUB). 
+In the Settings window, you can specify default options such as the *Merge Destination*, *Large file mode*, *Page break inclusion*, and export formats (PDF or EPUB). 
 
 Configuring these settings in advance ensures consistency and efficiency, allowing you to focus on the content rather than repeatedly setting preferences.
 
@@ -157,11 +155,11 @@ If you face any error while launching the add-on, try signing out of all account
 
 ## Conclusion
 
-Merge Docs Pro is an add-on that simplifies the process of merging multiple Google Docs, as well as various document formats, into a single Google Doc. With its user-friendly interface and advanced features, you can efficiently manage and organize your documents, making them ready for delivery or sharing.
+Merge Docs Pro is an add-on that simplifies the process of merging multiple Google Docs, as well as various document formats, into a single Google Doc. With its user-friendly interface and advanced features, you can efficiently manage and organize your documents, making them ready for delivery or sharing. You can also use the same add on to merge multiple Word documents into one or other file formats.
 
 For more detailed information and troubleshooting, please refer to the [Merge Docs Pro documentation](https://docs.mergedocs.pro/). The documentation provides comprehensive guidance on using the add-on, as well as answers to frequently asked questions.
 
-By following the steps outlined in this tutorial and utilizing the Merge Docs Pro add-on, you can save time and streamline your document management process, ensuring that your deliverables are well-organized and professional.
+By following the steps outlined in this tutorial and utilizing the Merge Docs Pro add-on, you can save time and streamline your document management process, ensuring that your deliverables are well-organized and professional. 
 
 <div align="center">
 <a href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace">
