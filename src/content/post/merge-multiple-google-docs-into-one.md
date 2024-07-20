@@ -44,6 +44,8 @@ All the selected documents will be added to the input sheet and the input type w
 ![Google Docs ready for Merging](images/image-6.png)
 6. **Merging the Docs** - When the input is ready, click on the **Merge Docs** button. The documents with the Merge Docs flag set to *Yes* will be merged together and a new Google Docs will be created. The final output Google Document will be opened automatically in the new tab for your easier access.
 
+**Note:** When you merge the Google Docs using this add-on, the original files are unchanged and kept intact. Only the contents are read and merged into the destination document.
+
 ## Merging Various Document Formats with Google Docs
 
 The Merge Docs Pro add-on offers even more flexibility, enabling you to merge not only multiple Google Docs into one, but also combine various document formats, such as Word, Markdown, and HTML, into a single Google Doc. *This feature is particularly useful when you need to consolidate output from different tools in your workflow into a single output document.*
