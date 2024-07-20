@@ -96,3 +96,4 @@ Install [Docs to Markdown Pro](https://workspace.google.com/marketplace/app/docs
 ## See Also
 
 - [Convert Markdown to Google Docs](/convert-markdown-to-google-docs/)
+- [Merge Multiple Google Docs into one](/merge-multiple-google-docs-into-one-and-export/)
