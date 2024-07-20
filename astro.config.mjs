@@ -3,6 +3,8 @@ import { fileURLToPath } from "url";
 import { defineConfig, squooshImageService } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import customToc from "astro-custom-toc";
+
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
@@ -13,6 +15,10 @@ import {
   lazyImagesRehypePlugin,
 } from "./src/utils/frontmatter.mjs";
 import sentry from "@sentry/astro";
+
+import { customTemplate } from './src/utils/customTocTemplate.ts'; // Import your custom template function
+
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hasExternalScripts = false;
 const whenExternalScripts = (items = []) =>
@@ -40,6 +46,11 @@ export default defineConfig({
       filter: (page) =>
         !page.startsWith("https://www.docstomarkdown.pro/tag/") &&
         !page.startsWith("https://www.docstomarkdown.pro/blog/"),
+    }),
+    customToc({
+        template: customTemplate,  // Use your custom template function here
+        maxDepth: 3,               // Optional: Set maximum depth of the TOC
+        ordered: false             // Optional: Set whether the TOC should be ordered
     }),
     mdx(),
     icon({
