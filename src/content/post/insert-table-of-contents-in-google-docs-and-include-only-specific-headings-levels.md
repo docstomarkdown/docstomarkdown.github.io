@@ -15,7 +15,8 @@ Google Docs offers a built-in option to insert Table of Contents (TOC) that incl
 
 In this tutorial, I'll show you how to insert a Table of Contents and customize it to include only specific heading levels.
 
-## **Inserting the Table of Contents in Google Docs**
+
+## Inserting the Table of Contents in Google Docs
 
 **To insert the Table of Contents(TOC) in Google Docs, Select the Insert Menu and click the Table of Contents option.**
 
