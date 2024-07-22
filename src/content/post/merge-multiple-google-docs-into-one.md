@@ -2,7 +2,7 @@
 publishDate: 2024-07-20T05:45:35.865Z
 updateDate: 2024-07-20T05:45:35.865Z
 draft: false
-title: How to Merge Multiple Google Docs into One Docs
+title: How to Merge Multiple Google Docs into One And Export as PDF or EPUB
 slug: merge-multiple-google-docs-into-one-and-export
 type: post
 image: https://www.docstomarkdown.pro/merge-google-docs-into-one-open-graph.jpg
