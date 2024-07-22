@@ -5,6 +5,7 @@ draft: false
 title: How to Merge Multiple Google Docs into One Docs
 slug: merge-multiple-google-docs-into-one-and-export
 type: post
+image: https://www.docstomarkdown.pro/merge-google-docs-into-one-open-graph.jpg
 excerpt: This tutorial explains how to merge multiple Google Docs into one and export it to PDF or EPUB and also explains how to use templates for adding headers, footers and access settings.
 showToc: true
 ---
