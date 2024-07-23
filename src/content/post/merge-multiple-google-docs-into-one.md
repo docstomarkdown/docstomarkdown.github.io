@@ -47,7 +47,7 @@ All the selected documents will be added to the input sheet and the input type w
 ![Google Docs ready for Merging](images/image-6.png)
 6. **Merging the Docs** - When the input is ready, click on the **Merge Docs** button. The documents with the Merge Docs flag set to *Yes* will be merged together and a new Google Docs will be created. The final output Google Document will be opened automatically in the new tab for your easier access.
 
-**Note:** When you merge the Google Docs using this add-on, the original files are unchanged and kept intact. Only the contents are read and merged into the destination document.
+**Note:** When you combine multiple Google Docs into one using this add-on, the original files are unchanged and kept intact. Only the contents are read and merged into the destination document.
 
 ## Merging Various Document Formats with Google Docs
 
@@ -61,7 +61,7 @@ The input sheet for merging various format will look like the one below:
 
 ## Adding Page Break Before Each Merge
 
-When merging multiple Google Docs or other formats into one, adding page breaks between each document is essential for clarity and organization. This feature helps to:
+When combining multiple Google Docs or other formats into one, adding page breaks between each document is essential for clarity and organization. This feature helps to:
 
 - Improve readability by visually distinguishing between different documents
 - Enhance navigation by separating each document with a page break
