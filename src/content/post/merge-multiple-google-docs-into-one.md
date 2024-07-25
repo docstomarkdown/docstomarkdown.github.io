@@ -164,7 +164,7 @@ Merge Docs Pro is an add-on that simplifies the process of merging multiple Goog
 
 For more detailed information and troubleshooting, please refer to the [Merge Docs Pro documentation](https://docs.mergedocs.pro/). The documentation provides comprehensive guidance on using the add-on, as well as answers to frequently asked questions.
 
-By following the steps outlined in this tutorial and utilizing the Merge Docs Pro add-on, you can save time and streamline your document management process, ensuring that your deliverables are well-organized and professional. 
+By following the steps outlined in this tutorial and utilizing the Merge Docs Pro add-on, you can combine different google docs into one, save time and streamline your document management process, ensuring that your deliverables are well-organized and professional. 
 
 <div align="center">
 <a href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace">
