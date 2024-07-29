@@ -8,7 +8,7 @@
   },
   "frontMatter.content.pageFolders": [
     {
-      "title": "post",
+      "title": "docs-to-markdown-pro-post",
       "path": "[[workspace]]/src/content/post",
       "contentTypes": [
         "post"
@@ -16,13 +16,18 @@
     },
     {
       "title": "merge-docs-post",
-      "path": "/Users/vikram/GitHub/Merge_Docs_Website_home/src/content/post"
+      "path": "/Users/vikram/GitHub/Merge_Docs_Website_home/src/content/post",
+      "contentTypes": [
+        "post"
+      ]
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "post",
       "previewPath": "'post'",
+      "defaultFileName": "{{title}}",
+      "filePrefix":null,
       "pageBundle": false,
       "clearEmpty": true,
       "fields": [
@@ -38,8 +43,15 @@
         },
         {
           "name": "draft",
-          "type": "draft"
+          "type": "draft",
+          "default": false
         },
+        
+        {
+            "name": "showToc",
+            "type": "string",
+            "default": true
+          },
         {
           "name": "title",
           "type": "string",
@@ -47,9 +59,17 @@
           "required": true
         },
         {
+            "title": "Slug",
+            "name": "slug",
+            "type": "slug",
+            "editable": true,
+            "default": "{{slug}}"
+          },
+        {
           "name": "excerpt",
           "type": "string",
-          "single": true
+          "single": true,
+          "default": "-"
         },
         {
           "name": "image",

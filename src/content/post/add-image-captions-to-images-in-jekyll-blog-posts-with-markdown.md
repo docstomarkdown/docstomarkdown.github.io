@@ -113,7 +113,7 @@ There are a few benefits to using the `figure` and `figcaption` tags to add capt
 
 ## Adding Image caption using the figure and figcaption HTML Tag Directly in the Markdown
 
-Another way to add captions to images in Markdown is to use the figure and figcaption HTML tags _**directly**_ in the Markdown text.
+Another way to [add captions to images](/add-caption-to-images-google-docs/) in Markdown is to use the figure and figcaption HTML tags _**directly**_ in the Markdown text.
 
 To add a caption to an image using the `figure` and `figcaption` tags,
 
