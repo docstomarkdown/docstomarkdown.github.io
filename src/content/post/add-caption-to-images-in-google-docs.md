@@ -5,6 +5,7 @@ draft: false
 showToc: true
 title: How to Add Caption to Images in Google Docs
 slug: add-caption-to-images-google-docs
+image: https://www.docstomarkdown.pro/open-graph-add-caption-to-images-google-docs.png
 excerpt: "Learn about image alt text, image captions, how to add captions to images in Google Docs, and how to export Google Docs as Markdown with images and captions."
 type: post
 ---
@@ -38,6 +39,10 @@ An image title or [image caption](https://www.w3schools.com/tags/tag_figcaption.
 Image titles and captions can be used interchangeably, but some platforms may differentiate between them. For example, a title might be a short descriptive phrase, while a caption could be a more detailed explanation.
 
 ## How to Add Image Captions in Google Docs
+
+**To add caption to images in Google Docs, right click the image and select the *Alt text* option.**
+
+Detailed steps: 
 
 1. **Insert your image** - Click on *Insert* -> *Image* and choose your image file.
 2. **Add the caption** - To add caption to an image, right click on the image and click on the *Alt text* option as shown in the below image. 
