@@ -38,7 +38,7 @@ An image title or [image caption](https://www.w3schools.com/tags/tag_figcaption.
 
 Image titles and captions can be used interchangeably, but some platforms may differentiate between them. For example, a title might be a short descriptive phrase, while a caption could be a more detailed explanation.
 
-## How to Add Image Captions in Google Docs
+## How to Add Image Caption in Google Docs
 
 **To add caption to images in Google Docs, right click the image and select the *Alt text* option.**
 
@@ -55,7 +55,7 @@ The image options sidebar will be opened. Enter the *Alt text* and the image cap
 
 The image caption and the alt text will be saved automatically.
 
-## Preserving Image Captions in Markdown and HTML output while Publishing Google Docs
+## Preserving Image Captions While Exporting Google Docs as Markdown or HTML
 
 When publishing your content, you'll need to [convert Google Docs to Markdown or HTML](/convert-google-docs-to-markdown/). However, the native Google Docs export options have some limitations.
 
