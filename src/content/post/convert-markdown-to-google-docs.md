@@ -6,7 +6,6 @@ title: Convert Markdown to Google Docs
 type: post
 excerpt: This tutorial teaches you how to convert Markdown to Google Docs and also demonstrates how to do single conversion or bulk conversion.
 slug: convert-markdown-to-google-docs
-image: https://www.docstomarkdown.pro/open-graph-convert-markdown-to-google-docs.png
 ---
 
 Markdown is a lightweight formatting language known for its ease of use and readability. The LLM tools such as ChatGPT and Gemini provide Markdown as the output. When you want to make it a document for further collaborative editing, you need to convert it to Google Docs.

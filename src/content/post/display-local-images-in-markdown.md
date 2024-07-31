@@ -7,7 +7,7 @@ categories:
 tags: 
   - "images"
   - "local"
-image: https://www.docstomarkdown.pro/open-graph-display-local-images-in-markdown.png
+coverImage: "p7l-display-local-images-markdown.jpeg"
 ---
 
 Markdown supports adding images from a URL or a local directory.
