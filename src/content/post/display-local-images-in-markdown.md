@@ -8,6 +8,7 @@ tags:
   - "images"
   - "local"
 image: https://www.docstomarkdown.pro/open-graph-display-local-images-in-markdown.png
+showToc: true
 ---
 
 Markdown supports adding images from a URL or a local directory.
@@ -15,6 +16,8 @@ Markdown supports adding images from a URL or a local directory.
 **To display local images in Markdown, place the image in the local directory and specify the relative image path using the Markdown image syntax as _!\[alt text\](/path/image.jpg)_.**
 
 In this tutorial, I’ll demonstrate how to display local images in Markdown and what are the best practices to consider. 
+
+<!--toc-->
 
 ## Preparing the Local Image file
 

@@ -7,6 +7,7 @@ type: post
 slug: convert-google-docs-to-markdown
 excerpt: This tutorial teaches you how to convert Google Docs to Markdown format using the Docs to Markdown Pro add-on and also explains its advanced features.
 image: https://www.docstomarkdown.pro/open-graph-google-docs-to-markdown.png
+showToc: true
 ---
 
 Markdown is a lightweight formatting language known for its ease of use and readability. 
@@ -16,6 +17,8 @@ Google Docs is a collaborative online word processor that is part of Google Work
 **You can convert Google Docs to Markdown using the Google Docs Editor Add-on "Docs to Markdown Pro".**
 
 In this tutorial, I'll show you how to export Google Docs to Markdown format using the Docs to Markdown Pro add-on and also what are the advanced features available in the add-on.
+
+<!-- toc -->
 
 ## Getting Started
 

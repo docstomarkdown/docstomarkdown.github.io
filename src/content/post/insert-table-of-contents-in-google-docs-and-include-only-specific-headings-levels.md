@@ -8,6 +8,7 @@ categories:
 tags: 
   - "table-of-contents"
   - "toc"
+showToc: true
 ---
 
 A well-organized Table of Contents (TOC) is essential for navigating lengthy or complex documents. It provides a quick overview and allows readers to jump to specific sections.
@@ -16,6 +17,7 @@ Google Docs offers a built-in option to insert Table of Contents (TOC) that incl
 
 In this tutorial, I'll show you how to insert a Table of Contents and customize it to include only specific heading levels.
 
+<!--toc -->
 
 ## Inserting the Table of Contents in Google Docs
 

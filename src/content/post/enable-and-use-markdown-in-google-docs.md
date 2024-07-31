@@ -1,7 +1,7 @@
 ---
 title: "How to Enable and Use Markdown in Google Docs"
 publishDate: 2024-03-21
-enable: "This tutorial explains how to enable and use Markdown in Google Docs and also shows how to paste Markdown into Google Docs as a rich text."
+excerpt: "This tutorial explains how to enable and use Markdown in Google Docs and also shows how to paste Markdown into Google Docs as a rich text."
 categories: 
   - "google-docs"
 tags: 

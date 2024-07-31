@@ -8,11 +8,14 @@ tags:
   - "images"
   - "markdown"
   - "syntax"
+showToc: true
 ---
 
 Image captions are an important part of any blog post, as they can help to explain and contextualize your images, making them more informative and engaging for your readers.
 
 This definitive guide will show you how to add captions to images in Markdown or using the Jekyll-figure extension if you're using Jekyll to build your site.
+
+<!-- toc -->
 
 ## Adding Image Captions in the Markdown Image Syntax
 

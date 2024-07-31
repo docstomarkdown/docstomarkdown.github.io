@@ -7,6 +7,7 @@ type: post
 slug: lists-in-markdown
 image: https://www.docstomarkdown.pro/open-graph-lists-in-markdown.png
 excerpt: This tutorial explains lists in Markdown, how to create ordered lists, unordered lists, nested lists and a Todo list.
+showToc: true
 ---
 
 Lists allows you to group a set of related items in an ordered or unordered manner. 
@@ -14,6 +15,8 @@ Lists allows you to group a set of related items in an ordered or unordered mann
 **You can create unordered lists in Markdown by prefixing a hyphen `-` to each item and ordered list by starting each item with a number followed by a period (.)**
 
 In this tutorial, I'll demonstrate how to create unordered lists, ordered lists, nested lists and a todo lists in Markdown. 
+
+<!-- toc -->
 
 ## Unordered Lists in Markdown
 

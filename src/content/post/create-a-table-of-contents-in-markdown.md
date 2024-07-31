@@ -8,6 +8,7 @@ tags:
   - "table-of-contents"
   - "toc"
 coverImage: "uXs-create-table-contents-markdown.jpeg"
+showToc: true
 ---
 
 The table of contents is useful for readers to navigate through the documents. 
@@ -15,6 +16,8 @@ The table of contents is useful for readers to navigate through the documents. 
 Markdown is a lightweight Markup language and allows users to write in plain text without text editors or HTML tags but there is no way to add Table of Contents automatically in the Markdown. 
 
 In this tutorial, I’ll show how to add a Table of Contents to the Markdown documents in different ways.
+
+<!-- toc -->
 
 ## Creating a TOC Manually Using Anchor Links
 

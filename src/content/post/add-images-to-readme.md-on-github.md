@@ -7,6 +7,7 @@ type: post
 slug: add-images-to-readme-md-file-github
 excerpt: This tutorial teaches you how to add images to GitHub readme md file using the Markdown syntax or the HTML img tag.
 image: https://www.docstomarkdown.pro/open-graph-add-images-to-github-readme.png
+showToc: true
 ---
 
 A README file on GitHub is a brief, informative introduction to your project, typically including a description, installation instructions, and contribution guidelines, all formatted in Markdown for readability.
@@ -15,6 +16,7 @@ A README file on GitHub is a brief, informative introduction to your project, ty
 
 This tutorial teaches you in detail on how to upload the image files to your GitHub repository and add that image to the readme.md file on GitHub. 
 
+<!-- toc -->
 ## Uploading Images to GitHub with Drag & Drop
 
 To upload the images to your GitHub repository,

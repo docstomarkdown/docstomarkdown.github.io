@@ -7,6 +7,7 @@ title: Code Blocks in Markdown - Definitive Guide
 type: post
 excerpt: This tutorial explains the code blocks in Markdown including, fenced code blocks, indented code blocks, inline codes and syntax highlighting in code blocks.
 image: https://www.docstomarkdown.pro/open-graph-code-blocks-in-markdown.png
+showToc: true
 ---
 
 Markdown allows you to include formatted code blocks in your documents. These can be useful for displaying code snippets, configuration files, or other preformatted text.

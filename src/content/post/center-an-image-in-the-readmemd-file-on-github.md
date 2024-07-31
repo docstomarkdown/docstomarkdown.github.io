@@ -7,6 +7,7 @@ categories:
 tags: 
   - "images"
   - "readme"
+showToc: true
 ---
 
 While Markdown doesn't offer a built-in text or image alignment features, you can center an image using raw HTML tags.
@@ -14,6 +15,8 @@ While Markdown doesn't offer a built-in text or image alignment features, you ca
 **To center an image in GitHub `readme.md` file, wrap the image inside the `div` tag and use the `align=center` inline style element.**
 
 This tutorial explains you how to center images in your [GitHub readme.md](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) file using `<div>` tag. It also explains how to place images side-by-side and centering them horizontally.
+
+<!-- toc -->
 
 ## Centering an Image Using a `<div>` Tag and the Align attribute (Recommended)
 
