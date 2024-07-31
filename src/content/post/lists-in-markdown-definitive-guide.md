@@ -5,6 +5,7 @@ draft: false
 title: Lists in Markdown - A Definitive Guide
 type: post
 slug: lists-in-markdown
+image: https://www.docstomarkdown.pro/open-graph-lists-in-markdown.png
 excerpt: This tutorial explains lists in Markdown, how to create ordered lists, unordered lists, nested lists and a Todo list.
 ---
 
