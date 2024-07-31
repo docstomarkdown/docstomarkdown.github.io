@@ -7,6 +7,7 @@ categories:
 tags: 
   - "markdown"
 coverImage: "DmY-using-markdown-google-docs.jpeg"
+showToc: true
 ---
 
 Markdown is a simple yet powerful Markup language for creating formatted text using plain text editors.
@@ -14,6 +15,8 @@ Markdown is a simple yet powerful Markup language for creating formatted text us
 Google Docs is a powerful online word processor offered as part of the free Google Workspace. It allows you to write and format the text to rich text format using the Toolbars, Menus and keyboard shortcuts. Now, [Google Docs also supports Markdown](https://workspaceupdates.googleblog.com/2022/03/compose-with-markdown-in-google-docs-on.html) to format the text.
 
 In this tutorial, I'll show you how to enable and [use Markdown in Google Docs](https://support.google.com/docs/answer/12014036?hl=en) and format the text using the Markdown syntax without using the Toolbar buttons or the keyboard shortcuts.
+
+<!-- toc -->
 
 ## Enabling and Using Markdown in Google Docs
 
