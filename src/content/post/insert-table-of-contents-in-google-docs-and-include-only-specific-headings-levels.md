@@ -2,7 +2,6 @@
 title: "How to Insert Table of Contents in Google Docs and include only specific heading levels"
 publishDate: 2024-05-06
 excerpt: "This tutorial will guide you through inserting a Table of Contents and customizing it to include only specific heading levels."
-image: https://www.docstomarkdown.pro/open-graph-insert-toc-in-google-docs.png
 categories: 
   - "google-docs"
 tags: 
