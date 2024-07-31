@@ -5,6 +5,7 @@ draft: false
 title: Draw Checkbox in GitHub Markdown - Lists and Table
 type: post
 slug: draw-checkbox-in-github-markdown-table
+image: https://www.docstomarkdown.pro/open-graph-draw-checkbox-in-github-markdown.png
 excerpt: This tutorial teaches how to create checkboxes in the GitHub Markdown including checkboxes as lists and checkboxes inside lists.
 ---
 
