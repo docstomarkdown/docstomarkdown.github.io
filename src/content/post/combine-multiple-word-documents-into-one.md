@@ -56,7 +56,7 @@ If you're working with Microsoft Word and need to merge several documents, you c
 - **Export Limitations** - It is not possible to automatically export the merged document as a PDF or EPUB and download them automatically. Manual export and download are required.
 
 
-## Merging Word Documents with a Third-Party Add-On
+## Merging Word Documents with Merge Docs Pro Add-On
 
 Another option for merging multiple Word documents into one is to use the Merge Docs Pro Google Workspace add-on. This add-on offers several advantages over the native insert option:
 
