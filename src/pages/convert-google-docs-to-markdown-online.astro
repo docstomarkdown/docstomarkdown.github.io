@@ -11,7 +11,7 @@ const metadata = {
 
 <div style="padding-top:10px; padding-left:50px;">
 <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Google Docs to Markdown Online - Free</h1>
-<p style="padding-top:10px;">You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> Add-on to convert the Google Docs to Markdown within the Google Docs window.</p>
+<p style="padding-top:10px;">You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> &nbsp; <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to Markdown within the Google Docs window. <b> It helps generate publish-ready Markdown by downloading images and the Markdown file as a ZIP archive.</b></p>
 </div>
 <div style="text-align: center;">
     <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
@@ -64,10 +64,27 @@ const metadata = {
     // Function to convert HTML to Markdown
     function toMarkdown() {
       var turndownService = new TurndownService({ headingStyle: 'atx' , emDelimiter :'*', bulletListMarker:'-', codeBlockStyle: 'fenced', preformattedCode: "true" })
-      var markdown = turndownService.turndown(inputElement.innerHTML);
+      var originalHTML = inputElement.innerHTML;
+      var cleanHTML = removeInstructionElements(originalHTML, 'input-instructions');
+      var markdown = turndownService.turndown(cleanHTML);
       outputElement.value = markdown;
     }
-    
+
+    function removeInstructionElements(htmlContent, elementIdToRemove) {
+        // Create a temporary DOM element to hold the HTML content
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+
+        // Find the element with the specified ID
+        var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+
+        // Return the modified HTML content
+        return tempDiv.innerHTML;
+    }
+
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input',()=>{
       var inputInstructions = document.getElementById('input-instructions');

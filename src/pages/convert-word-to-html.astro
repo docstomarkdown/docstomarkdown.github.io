@@ -9,10 +9,17 @@ const metadata = {
 ---
 <Layout metadata={metadata}>
 
-<div style="padding-top:10px; padding-left:50px;">
-<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Word to HTML Online - Free</h1>
-<p style="padding-top:10px;">You can use this tool to convert Word to Clean HTML online for free.</p>
-</div>
+    <div style="padding-top:10px; padding-left:50px;">
+        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Word to HTML Online - Free</h1>
+        <p style="padding-top:10px;">You can use this tool to convert Word to HTML online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Word Documents to HTML format. <b> It helps generate publish-ready HTML by downloading images and the HTML file as a ZIP archive.</b> </p>
+        </div>
+        <div style="text-align: center;">
+            <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+              <div style="display: inline-block;">
+                <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+              </div>
+            </a>
+          </div>
 
   
 
@@ -51,12 +58,27 @@ const metadata = {
     // Function to convert HTML to Markdown
     function toMarkdown() {
       var turndownService = new TurndownService({ headingStyle: 'atx' , emDelimiter :'*', bulletListMarker:'-', codeBlockStyle: 'fenced', preformattedCode: "true" })
-      var markdown = turndownService.turndown(inputElement.innerHTML);
+      var originalHTML = inputElement.innerHTML;
+      var cleanHTML = removeInstructionElements(originalHTML, 'input-instructions');
+      var markdown = turndownService.turndown(cleanHTML);
       var converter = new showdown.Converter();
       var html = converter.makeHtml(markdown);
       outputElement.value = html;
     }
-    
+    function removeInstructionElements(htmlContent, elementIdToRemove) {
+        // Create a temporary DOM element to hold the HTML content
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+
+        // Find the element with the specified ID
+        var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+
+        // Return the modified HTML content
+        return tempDiv.innerHTML;
+    }
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input',()=>{
       var inputInstructions = document.getElementById('input-instructions');
