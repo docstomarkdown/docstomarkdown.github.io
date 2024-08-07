@@ -5,7 +5,7 @@ draft: false
 showToc: true
 title: How to Combine Multiple Word Documents into One
 slug: combine-multiple-word-documents-into-one
-excerpt: "Learn how to combine multiple Word Documents into one and export as PDF"
+excerpt: "Learn how to combine multiple Word Documents into one, keep formatting and export as PDF"
 type: post
 image: https://www.docstomarkdown.pro/open-graph-combine-multiple-word-docs-into-one.png
 ---
@@ -15,7 +15,7 @@ Combining multiple Word documents into a single cohesive file can significantly 
 In this article, I'll explain two primary approaches for merging Word documents:
 
 - Utilizing Microsoft Word's built-in insert feature 
-- Using the third party add-on: Merge Docs Pro. 
+- Using the third party add-on: Merge Docs Pro 
 
 Each method offers distinct advantages and potential drawbacks, catering to different needs and preferences. By understanding the strengths and limitations of these approaches, you can make an informed decision on the best tool to simplify your document management tasks.
 
@@ -58,7 +58,7 @@ If you're working with Microsoft Word and need to merge several documents, you c
 
 ## Merging Word Documents with Merge Docs Pro Add-On
 
-Another option for merging multiple Word documents into one is to use the Merge Docs Pro Google Workspace add-on. This add-on offers several advantages over the native insert option:
+Another option for merging multiple Word documents into one and keep the formatting intact is to use the Merge Docs Pro Google Workspace add-on. This add-on offers several advantages over the native insert option:
 
 - **Control Over Merge Order** - You can easily reorder documents in the Google Sheet where they are listed, providing better control over the final merge order.
 - **Format Consistency** - The formatting of documents remains consistent after merging and doesn't require any additional adjustments.
