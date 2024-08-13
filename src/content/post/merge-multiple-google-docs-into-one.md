@@ -36,12 +36,12 @@ Merge Docs Pro is an add-on that works with Google Sheets, allowing you to add i
 1. To begin the merging process, [Open a new Google Sheets](https://sheets.new) <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp;.
 2. Launch the Merge Docs Pro add-on from the menu *Extensions* -> *Merge Docs Pro* -> *Merge Multiple Docs* option. This will display the add-on sidebar as shown below:
 
-![Merge Docs Pro add-on](images/image-3.png)
+![Merge Docs Pro add-on](images/image-19.png)
 
-3. **Adding Sheet Headers** - Click on the *Add Column Headers* option to add the necessary headers in the Google Sheets. This will help you add the input in the correct format for merging. If you opt to add the Google Docs directly using the *Select Docs to Merge* option, it will add the necessary headers for the first time. The sheets with headers will look like the following image: 
+3. **Adding Sheet Headers** - Click on the *Add Column Headers to Get Started* option to add the necessary headers in the Google Sheets. This will help you add the input in the correct format for merging. If you opt to add the Google Docs directly using the *Select Docs to Merge* option, it will add the necessary headers for the first time. The sheets with headers will look like the following image: 
 ![Merge input sheet with headers](images/image-4.png)
-4. **Selecting Documents to Merge** - Click on the *Select Docs to Merge* button. It will display the File picker, allowing you to select desired Google Docs to merge. Select the documents and click on the *Select* button.
-![Selecting Google Docs to merge](images/image-5.png)
+4. **Selecting Documents to Merge** - Click on the *Select Google Docs or Drive File to Merge* button. It will display the File picker, allowing you to select desired Google Docs to merge. Select the documents and click on the *Select* button.
+![Selecting Google Docs to merge](images/image-24.png)
 All the selected documents will be added to the input sheet and the input type will be detected automatically as Google Docs. 
 5. **Customizing the Merge Order and setting the Merge flag** - Once the Docs are added to the sheet, you can reorder them to the desired merge oder. Additionally, you can set the Merge flag to No, if you want to ignore any document for a specific deliverable. The final input sheet for merging will look like the one below: 
 ![Google Docs ready for Merging](images/image-6.png)
@@ -101,7 +101,7 @@ To customize the output document with a header and footer using Merge Docs Pro, 
 
 If you want to share the merged document or the output files with specific individuals by default, you can automate this process using this template document option. The access settings of the template Google Docs will be applied to the newly created merge document and also to the output files, such as ePUB and PDF files (Output files are explained in the next section).
 
-## Exporting the Merged Document as PDF or EPUB
+## Exporting the Merged Document as PDF or EPUB or Word
 
 Exporting your merged document as a [PDF](https://www.adobe.com/acrobat/about-adobe-pdf.html) or [EPUB](https://en.wikipedia.org/wiki/EPUB) file offers significant advantages, making it easier to distribute and present your content effectively.
 
@@ -111,12 +111,13 @@ Exporting your merged document as a [PDF](https://www.adobe.com/acrobat/about-ad
 
 Overall, exporting the merged documents to PDF or EPUB ensures it is accessible, professional, and well-suited for its intended audience.
 
-To export the merged document as a PDF or EPUB automatically, follow the steps below:
+To export the merged document as a PDF, EPUB or Word automatically, follow the steps below:
 
 - Enable the *Save merged Docs as PDF* option if you wish to export as a PDF.
 - Enable the *Save merged Docs as ePUB* option if you wish to export as an ePUB.
+- Enable the *Save merged Docs as Word* option if you wish to export as a Word File.
 
-![Exporting Merged Document as PDF or EPUB](images/image-11.png)
+![Exporting Merged Document as PDF or EPUB](images/image-21.png)
 
 As mentioned in the previous section, the output files can be automatically shared with others if you choose to merge based on the template. The access settings of the template Google Docs will be applied to the the output files.
 
