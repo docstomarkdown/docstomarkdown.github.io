@@ -10,11 +10,6 @@ excerpt: This tutorial explains how to merge multiple Google Docs into one PDF a
 showToc: true
 ---
 
-<div align="center">
-<a href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace">
-  <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px">
-</a></div>
-
 In collaborative environments, users often write in separate Google Docs to focus on specific sections of a project, streamline revisions, and manage components efficiently. However, combining these documents into a single cohesive file is often necessary for creating deliverables.
 
 In this tutorial, I'll explain how to [merge multiple Google Docs into one](https://www.mergedocs.pro), add page breaks for clarity, and customize the document with headers and footers. I'll also show you how to merge various formats like Word, Markdown, and HTML with Google Docs and export the merged documents as PDF or EPUB files, making them ready for delivery or sharing.
@@ -28,6 +23,18 @@ In this tutorial, I'll explain how to [merge multiple Google Docs into one](http
 Google Docs doesn't provide a built-in merging feature. Hence, you need to use an add-on to merge multiple Google Docs. Merge Docs Pro is a suitable add on to merge multiple Google Docs into one.
 
 [Install the Merge Docs Pro add-on ](https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026)<i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; from the Google Workspace Marketplace. Once the add-on is installed, you can follow the below steps to merge the documents. 
+
+## Watch the Demo Video
+
+If you'd prefer to watch a video on How to Merge multiple Google Docs into one instead of reading the article, check out the following video:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/YgfLw0mKmfg"
+  frameborder="0"
+  allowfullscreen
+></iframe>
 
 ## Merging Google Docs into One (Step By Step)
 
@@ -166,11 +173,6 @@ Merge Docs Pro is an add-on that simplifies the process of merging multiple Goog
 For more detailed information and troubleshooting, please refer to the [Merge Docs Pro documentation](https://docs.mergedocs.pro/). The documentation provides comprehensive guidance on using the add-on, as well as answers to frequently asked questions.
 
 By following the steps outlined in this tutorial and utilizing the Merge Docs Pro add-on, you can combine different google docs into one, save time and streamline your document management process, ensuring that your deliverables are well-organized and professional. 
-
-<div align="center">
-<a href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace">
-  <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px">
-</a></div>
 
 ## You May Also Like
 

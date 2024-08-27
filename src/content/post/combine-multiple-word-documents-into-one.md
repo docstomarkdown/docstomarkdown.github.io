@@ -21,6 +21,19 @@ Each method offers distinct advantages and potential drawbacks, catering to diff
 
 <!-- toc -->
 
+## Watch the Demo Video
+
+If you'd prefer to watch a video on How to Merge multiple Word Documents into one instead of reading the article, check out the following video:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/YgfLw0mKmfg"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+
 ## Combining Multiple Word Documents into One Using the Insert Option
 
 If you're working with Microsoft Word and need to merge several documents, you can use the built-in Insert feature. Follow these steps to combine your files:
