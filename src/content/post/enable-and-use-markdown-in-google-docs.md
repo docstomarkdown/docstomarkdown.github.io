@@ -6,7 +6,7 @@ categories:
   - "google-docs"
 tags: 
   - "markdown"
-coverImage: "DmY-using-markdown-google-docs.jpeg"
+image: https://www.docstomarkdown.pro/open-graph-enable-and-use-markdown-in-google-docs.png
 showToc: true
 ---
 

@@ -8,7 +8,7 @@ categories:
 tags: 
   - "iframe"
   - "markdown"
-coverImage: "Embed-google-docs-to-Gita.jpeg"
+image: https://www.docstomarkdown.pro/open-graph-embed-google-docs-in-gitlab-markdown.png
 ---
 
 GitLab Community editions and GitLab Enterprise editions use GitHub-flavoured markdown in the text areas.

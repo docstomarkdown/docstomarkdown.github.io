@@ -7,7 +7,7 @@ categories:
 tags: 
   - "table-of-contents"
   - "toc"
-coverImage: "uXs-create-table-contents-markdown.jpeg"
+image: https://www.docstomarkdown.pro/open-graph-create-toc-in-markdown.png
 showToc: true
 ---
 

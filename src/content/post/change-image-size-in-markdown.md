@@ -3,6 +3,7 @@ publishDate: 2024-06-06T06:18:58.162Z
 updateDate: 2024-06-06T06:18:58.162Z
 draft: false
 title: How to Change Image Size in Markdown
+image: https://www.docstomarkdown.pro/open-graph-change-image-size-in-markdown.png
 type: post
 slug: change-image-size-in-markdown
 excerpt: This tutorial teaches you how to change the image size in native Markdown, Pandoc Markdown and in the Kramdown Markdown processor.

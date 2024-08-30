@@ -9,6 +9,7 @@ tags:
   - "markdown"
   - "syntax"
 showToc: true
+image: https://www.docstomarkdown.pro/open-graph-add-caption-to-images-in-markdown.png
 ---
 
 Image captions are an important part of any blog post, as they can help to explain and contextualize your images, making them more informative and engaging for your readers.

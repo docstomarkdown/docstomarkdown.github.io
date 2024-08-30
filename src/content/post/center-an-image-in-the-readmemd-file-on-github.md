@@ -8,6 +8,7 @@ tags:
   - "images"
   - "readme"
 showToc: true
+image: https://www.docstomarkdown.pro/open-graph-center-an-image-in-github-readme.png
 ---
 
 While Markdown doesn't offer a built-in text or image alignment features, you can center an image using raw HTML tags.
