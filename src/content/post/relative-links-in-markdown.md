@@ -6,7 +6,6 @@ showToc: true
 title: Relative Links in Markdown
 slug: relative-links-markdown
 excerpt: "-"
-image: https://www.docstomarkdown.pro/
 type: post
 ---
 
@@ -74,9 +73,9 @@ In this example, the `../` notation indicates that the link should go up one dir
 
 ## Relative Links in GitHub Markdown
 
-[GitHub supports](https://github.blog/news-insights/product-news/relative-links-in-markup-files/) Markdown rendering in various areas, such as README files, wikis, and issues. 
+GitHub supports Markdown rendering in various areas, such as README files, wikis, and issues. You can also use the [inline links in the GitHub Flavoured Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links).
 
-Using relative links in these contexts allows you to create cohesive and navigable documentation within your GitHub repositories.
+Using [relative links](https://github.blog/news-insights/product-news/relative-links-in-markup-files/) in these contexts allows you to create cohesive and navigable documentation within your GitHub repositories.
 
 **Key Points for Using Relative Links in GitHub:**
 
