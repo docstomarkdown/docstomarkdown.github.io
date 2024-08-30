@@ -2,7 +2,7 @@
 publishDate: 2024-06-10T11:43:41.572Z
 updateDate: 2024-06-10T11:43:41.573Z
 draft: false
-title: Lists in Markdown - A Definitive Guide
+title: Lists in Markdown
 type: post
 slug: lists-in-markdown
 image: https://www.docstomarkdown.pro/open-graph-lists-in-markdown.png

@@ -531,6 +531,56 @@ body .home-icons-grid {
   
 /*END CSS for online converter tools*/
 
+var {
+    background-color: rgba(242, 201, 76, .35);
+
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+
+    padding: 20px;
+    font-size: 18px !important;
+}
+
+td,
+th {
+    /* Adjust the padding value as needed */
+    border: 1px solid;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+p code::before,
+p code::after,
+h2 code::before,
+h2 code::after,
+li code::before,
+li code::after {
+    content: none !important;
+    display: none !important;
+}
+
+p code, h2 code,
+li code {
+    background-color: #f5f5f5 !important;
+    /* Light gray background */
+    /*color: #d14 !important;
+    /* Slightly dark red color for text */
+    font-family: 'Courier New', Courier, monospace !important;
+    /* Monospace font */
+    padding: 2px 4px !important;
+    /* Small padding around the code */
+    border-radius: 4px !important;
+    /* Rounded corners */
+    /*font-size: 0.95em !important;
+    /* Slightly smaller font size */
+    border: 1px solid #e1e1e1 !important;
+    /* Light gray border */
+}
 
 
 /* To deprecated */

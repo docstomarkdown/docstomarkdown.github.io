@@ -3,7 +3,7 @@ publishDate: 2024-06-11T06:17:47.059Z
 updateDate: 2024-06-11T06:17:47.059Z
 draft: false
 slug: code-blocks-in-markdown
-title: Code Blocks in Markdown - Definitive Guide
+title: Code Blocks in Markdown
 type: post
 excerpt: This tutorial explains the code blocks in Markdown including, fenced code blocks, indented code blocks, inline codes and syntax highlighting in code blocks.
 image: https://www.docstomarkdown.pro/open-graph-code-blocks-in-markdown.png
