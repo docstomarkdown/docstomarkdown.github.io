@@ -74,6 +74,7 @@
         {
           "name": "image",
           "type": "image",
+          "default" :"https://www.mergedocs.pro/",
           "isPreviewImage": true
         },
         {
