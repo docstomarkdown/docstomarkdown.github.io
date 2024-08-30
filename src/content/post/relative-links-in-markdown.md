@@ -120,12 +120,6 @@ Like GitHub, [GitLab also supports Markdown](https://docs.gitlab.com/ee/user/mar
 
 Relative links in GitLab behave similarly to those in GitHub, making them ideal for maintaining consistent, navigable documentation.
 
-**Key Points for Using Relative Links in GitLab:**
-
-- **Consistent navigation** - Relative links in GitLab ensure that users can navigate to related documentation, images, or files without leaving the GitLab environment. This is particularly useful for creating self-contained project documentation.
-
-- **Supports links to other Markdown files** - Similar to GitHub, GitLab will render relative links to other Markdown files, providing a seamless user experience.
-
 **Example in GitLab README:**
 
 ```
