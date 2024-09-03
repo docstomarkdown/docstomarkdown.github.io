@@ -29,6 +29,9 @@
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "mammoth": "^1.8.0",
+    "marked": "^14.1.0",
+    "quill": "^2.0.2",
     "remark-toc": "^9.0.0",
     "unpic": "^3.18.0"
   },
