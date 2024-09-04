@@ -18,6 +18,8 @@ In this article, I'll explain different ways to add comments in Markdown, includ
 
 ## Using HTML Comments in Markdown
 
+<div class="mv-ad-box" data-slotid="content_1_btf" style="height: 464px; width: 100%; overflow: visible !important;"></div>
+
 The most common and versatile way to add comments in Markdown is by using [HTML-style comments](https://www.w3schools.com/html/html_comments.asp). Since Markdown supports HTML, you can use the standard HTML comment syntax to insert comments. These comments will not be displayed when the Markdown file is rendered.
 
 **HTML Comment Syntax:**
