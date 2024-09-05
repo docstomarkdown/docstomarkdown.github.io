@@ -582,7 +582,10 @@ li code {
     /* Light gray border */
 }
 
-
+.sticky-sidebar {
+    position: sticky!important;
+  }
+  
 /* To deprecated */
 
 .dd *:first-child {
