@@ -582,10 +582,13 @@ li code {
     /* Light gray border */
 }
 
-.sticky-sidebar {
+
+  .sticky-sidebar {
     position: sticky!important;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
   }
-  
 /* To deprecated */
 
 .dd *:first-child {
