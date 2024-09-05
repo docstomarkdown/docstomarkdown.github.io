@@ -18,7 +18,8 @@ const { metadata } = Astro.props;
 <Layout metadata={metadata}>
   
   <slot name="header">
-    <Header {...headerData} isSticky   />
+ <!--  <Header {...headerData} isSticky   />--> 
+ <Header {...headerData}   /> 
   </slot>
   <main>
     <slot />
