@@ -2,7 +2,7 @@
 publishDate: 2024-07-18T04:50:20.486Z
 updateDate: 2024-07-18T04:50:20.487Z
 draft: false
-title: How to Convert Microsoft Word or Google Docs to Markdown Using Pandoc
+title: How to Convert Microsoft Word to Markdown Using Pandoc
 type: post
 slug: convert-word-or-docs-to-markdown-using-pandoc
 excerpt: This tutorial teaches you how to convert Microsoft Word document or Google Docs into Markdown format using Pandoc.
