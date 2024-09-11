@@ -1,0 +1,193 @@
+
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  h5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  h6 {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .iconButton.copy {
+    background-color: #2772ed; /* Keeping the existing color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 13px; /* Adjust font size */
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 100px; /* Add margin between buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+  
+  .iconButton.copy:hover {
+    background-color: #1a5bb8; /* Slightly darker shade for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .iconButton.copy:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
+  }
+  
+  .iconButton.download {
+    background-color: #2772ed; /* Keeping the existing color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 13px; /* Adjust font size */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+  
+  .iconButton.download:hover {
+    background-color: #1a5bb8; /* Slightly darker shade for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .iconButton.download:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
+  }
+  
+
+  /* ul {
+    list-style: disc;
+    margin-bottom: 30px;
+  }
+  
+    ol {
+        list-style: decimal;
+        margin-bottom: 30px;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+   */
+  
+  /* a {
+    text-decoration: none;
+    color: #2772ed;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  } */
+  
+  /* Responsive styles */
+  
+  /* Desktop and laptop screens */
+  /*@media (min-width: 1200px) {
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    .Sidebar {
+      width: 25%;
+      height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+  }
+  
+  /* Tablet screens */
+  /*@media (min-width: 768px) and (max-width: 1199px) {
+    main {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .Sidebar {
+      width: 30%;
+      height: 80vh;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 15px;
+    }
+  }
+  
+  /* Mobile screens */
+  /*@media (max-width: 767px) {
+    main {
+      max-width: 90%;
+      margin: 10px auto;
+    }
+    .Sidebar {
+      width: 100%;
+      height: 50vh;
+    }
+    .container {
+      max-width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+    }
+  }
+  
+  /* Additional styles */
+  
+  /* .font-medium {
+    font-weight: 500;
+  }
+  
+  .text-blue-600 {
+    color: #2772ed;
+  }
+  
+  .dark\:text-blue-500 {
+    color: #2772ed;
+  }
+  
+  .hover\:underline {
+    text-decoration: underline;
+  }
+  
+  .fa-external-link {
+    color: blue;
+  } */
