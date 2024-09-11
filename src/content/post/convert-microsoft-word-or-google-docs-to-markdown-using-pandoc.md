@@ -5,16 +5,16 @@ draft: false
 title: How to Convert Microsoft Word to Markdown Using Pandoc
 type: post
 slug: convert-word-or-docs-to-markdown-using-pandoc
-excerpt: This tutorial teaches you how to convert Microsoft Word document or Google Docs into Markdown format using Pandoc.
+excerpt: This tutorial teaches you how to convert Microsoft Word document into Markdown format using Pandoc.
 image: https://www.docstomarkdown.pro/open-graph-convert-word-or-g-docs-to-md-pandoc.png
 showToc: true
 ---
 
- Markdown, a lightweight markup language, has become a popular choice for writing and publishing content online due to its simplicity, flexibility, and ease of use. Pandoc is a powerful, open-source tool that allows you to convert files between different formats, including [Markdown to Word](/convert-markdown-to-word/) or Google Docs or vice versa.
+ Markdown, a lightweight markup language, has become a popular choice for writing and publishing content online due to its simplicity, flexibility, and ease of use. Pandoc is a powerful, open-source tool that allows you to convert files between different formats, including [Markdown to Word](/convert-markdown-to-word/) or vice versa.
 
-Many writers use Word or Google Docs for their initial drafting because of the robust editing features and ease of use. However, for publishing content to platforms like WordPress or any other [Static site generators](https://www.cloudflare.com/en-gb/learning/performance/static-site-generator/) such as Jekyll or Hugo, converting these documents to Markdown is essential.
+Many writers use Word  for their initial drafting because of the robust editing features and ease of use. However, for publishing content to platforms like WordPress or any other [Static site generators](https://www.cloudflare.com/en-gb/learning/performance/static-site-generator/) such as Jekyll or Hugo, converting these documents to Markdown is essential.
 
-By converting Docx to Markdown, you ensure your content is cleanly formatted and simplify the transition from Word or [Google Docs to WordPress](https://workspace.google.com/marketplace/app/docs_to_wordpress_pro/346830534164) or any other CMS. In this tutorial, you'll learn how to convert your Word or Google Docs to Markdown, enabling a smoother and more efficient publishing workflow.
+By converting Docx to Markdown, you ensure your content is cleanly formatted and simplify the transition from Word or [Google Docs to WordPress](https://workspace.google.com/marketplace/app/docs_to_wordpress_pro/346830534164) or any other CMS. In this tutorial, you'll learn how to convert your Word to Markdown, enabling a smoother and more efficient publishing workflow.
 
 <!-- toc -->
 
