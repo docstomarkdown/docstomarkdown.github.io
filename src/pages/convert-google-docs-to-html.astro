@@ -195,8 +195,8 @@ const metadata = {
       downloadButton.style.display = '';
       downloadButton.addEventListener('click', (event) => {
         event.preventDefault();
-        var file = new File([outputElement.value], 'Markdown Output.md', {
-          type: 'text/markdown',
+        var file = new File([outputElement.value], 'HTML Output.html', {
+          type: 'text/html',
         });
 
         let url, link;
