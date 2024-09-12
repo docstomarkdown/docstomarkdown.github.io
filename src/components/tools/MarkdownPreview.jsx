@@ -7,72 +7,61 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBold, faItalic, faUnderline, faListOl, faListUl, faQuoteRight,
   faCode, faImage, faLink, faHighlighter, faHeading, faTable, faEraser, faUndo,
-  faCopy, faDownload
+  faRedo, faCopy, faDownload
 } from '@fortawesome/free-solid-svg-icons';
-import 'highlight.js/styles/github.css';
-import './MarkdownPreview.css' // Optional: Use a highlight.js theme
-
-const defaultMarkdown = `
-# Markdown syntax guide
-
-## Headers
-
-# This is a Heading h1
-## This is a Heading h2
-###### This is a Heading h6
-
-## Emphasis
-
-*This text will be italic*  
-_This will also be italic_
-
-**This text will be bold**  
-__This will also be bold__
-
-_You **can** combine them_
-
-## Lists
-
-## Images
-
-![This is an alt text.]( "This is a sample image.")
-
-## Links
-
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
-
-## Blockquotes
-
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
-
-## Tables
-
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
-
-## Code Block
-
-\\\javascript
-function greet() {
-  console.log("Hello, World!");
-}
-greet();
-\\\
-`;
+import ReactDOMServer from 'react-dom/server';
+import './MarkdownPreview.css'; // Optional: Use a highlight.js theme
 
 const MarkdownEditor = () => {
-  const [markdown, setMarkdown] = useState(defaultMarkdown); // Initial state with default example
+  const [markdown, setMarkdown] = useState(''); // Initial state with empty string
+  const [history, setHistory] = useState([{ content: '' }]);
+  const [historyIndex, setHistoryIndex] = useState(0);
   const inputRef = useRef(null);
+
+  // Update editor content and history
+  const updateContent = (newContent) => {
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push({ content: newContent });
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+    setMarkdown(newContent);
+  };
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    updateContent(e.target.value);
+  };
+
+  // Undo action
+  const handleUndo = () => {
+    if (historyIndex > 0) {
+      setHistoryIndex(historyIndex - 1);
+      setMarkdown(history[historyIndex - 1].content);
+    }
+  };
+
+  // Redo action
+  const handleRedo = () => {
+    if (historyIndex < history.length - 1) {
+      setHistoryIndex(historyIndex + 1);
+      setMarkdown(history[historyIndex + 1].content);
+    }
+  };
 
   // Copy markdown content to clipboard
   const handleCopy = () => {
-    navigator.clipboard.writeText(markdown).then(() => {
-      alert("Markdown copied to clipboard!");
+    // Convert markdown to HTML
+    const htmlContent = ReactDOMServer.renderToStaticMarkup(
+      <ReactMarkdown
+        children={markdown}
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeSanitize, rehypeHighlight]}
+      />
+    );
+    
+    // Copy HTML content to clipboard
+    navigator.clipboard.writeText(htmlContent).then(() => {
+      alert("Rich text copied to clipboard!");
     }).catch(err => {
       console.error("Failed to copy text: ", err);
     });
@@ -80,87 +69,80 @@ const MarkdownEditor = () => {
 
   // Download markdown as a file
   const handleDownload = () => {
-    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const blob = new Blob([markdown], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'markdown-content.md';
+    a.download = 'markdown-content.docx'; // Change file extension to .docx
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  // Save and restore cursor position
-  const saveCursorPosition = () => {
-    const sel = window.getSelection();
-    if (sel.rangeCount > 0) {
-      const range = sel.getRangeAt(0);
-      return { start: range.startOffset, end: range.endOffset, node: range.startContainer };
-    }
-    return null;
-  };
-
-  const restoreCursorPosition = (cursorPosition) => {
-    if (cursorPosition && cursorPosition.node) {
-      const range = document.createRange();
-      const sel = window.getSelection();
-      range.setStart(cursorPosition.node, cursorPosition.start);
-      range.setEnd(cursorPosition.node, cursorPosition.end);
-      sel.removeAllRanges();
-      sel.addRange(range);
-    }
-  };
-
+  // Wrap selected text with prefix and suffix
   const wrapSelectedText = (prefix, suffix = '') => {
-    const sel = window.getSelection();
-    if (sel.rangeCount > 0) {
-      const range = sel.getRangeAt(0);
-      const selectedText = range.toString();
+    const textarea = inputRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = textarea.value.substring(start, end);
       
-      // Replace the selected text with the formatted version
-      const formattedText = `${prefix}${selectedText}${suffix || prefix}`;
-      range.deleteContents();
-      range.insertNode(document.createTextNode(formattedText));
-      handleInputChange(); // Update state with the new content
+      // Apply formatting
+      const newText = `${prefix}${selectedText}${suffix || prefix}`;
+      const newContent = textarea.value.substring(0, start) + newText + textarea.value.substring(end);
+      updateContent(newContent);
+      
+      // Set cursor position after the formatted text
+      textarea.setSelectionRange(start + newText.length, start + newText.length);
+      textarea.focus();
     }
   };
-
-  // Event handler for input changes
-  const handleInputChange = () => {
-    const cursorPosition = saveCursorPosition(); // Save cursor before state update
-    if (inputRef.current) {
-      setMarkdown(inputRef.current.innerText); // Get the innerText of the contenteditable div
+  
+  // Specific handler for image button
+  const handleImage = () => {
+    const imageSyntax = '![Alt text](image-url)';
+    const textarea = inputRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const currentContent = textarea.value;
+  
+      // Check if the selected text is empty and replace it with image syntax
+      let newContent;
+      if (currentContent.substring(start, end).trim() === '') {
+        newContent = currentContent.substring(0, start) + imageSyntax + currentContent.substring(end);
+      } else {
+        newContent = currentContent.substring(0, start) + imageSyntax + currentContent.substring(end);
+      }
+  
+      updateContent(newContent);
+      
+      // Set cursor position after the inserted image syntax
+      textarea.setSelectionRange(start + imageSyntax.length, start + imageSyntax.length);
+      textarea.focus();
     }
-    setTimeout(() => restoreCursorPosition(cursorPosition), 0); // Restore cursor after state update
   };
 
   // Clear the editor content
   const handleClear = () => {
-    setMarkdown(''); // Clear the editor
+    updateContent(''); // Clear the editor
   };
 
-  // Reset the editor content to the default example
-  const handleReset = () => {
-    setMarkdown(defaultMarkdown); // Reset to the default example
-  };
-
-
-const handleBold = () => wrapSelectedText('**'); // Wraps the selected text in '**' for bold
-const handleItalic = () => wrapSelectedText('_'); // Wraps the selected text in '_' for italic
-const handleUnderline = () => wrapSelectedText('__'); // Wraps the selected text in '__' for underline
-const handleHeader1 = () => wrapSelectedText('# ');
-const handleHeader2 = () => wrapSelectedText('## ');
-const handleHeader3 = () => wrapSelectedText('### ');
-const handleOrderedList = () => wrapSelectedText('1. ');
-const handleUnorderedList = () => wrapSelectedText('* ');
-const handleQuote = () => wrapSelectedText('> ');
-const handleTable = () => insertTextAtCursor('| Header 1 | Header 2 |\n| --- | --- |\n| Row 1 Col 1 | Row 1 Col 2 |\n| Row 2 Col 1 | Row 2 Col 2 |');
-const handleCode = () => wrapSelectedText('```javascript\n', '\n```');
-const handleImage = () => insertTextAtCursor('![Alt text](image-url)');
-const handleLink = () => wrapSelectedText('[', '](https://example.com)');
-const handleHighlight = () => wrapSelectedText('==', '==');
-
+  // Button handlers
+  const handleBold = () => wrapSelectedText('**');
+  const handleItalic = () => wrapSelectedText('_');
+  const handleUnderline = () => wrapSelectedText('__');
+  const handleHeader1 = () => wrapSelectedText('# ');
+  const handleHeader2 = () => wrapSelectedText('## ');
+  const handleHeader3 = () => wrapSelectedText('### ');
+  const handleOrderedList = () => wrapSelectedText('1. ');
+  const handleUnorderedList = () => wrapSelectedText('* ');
+  const handleQuote = () => wrapSelectedText('> ');
+  const handleTable = () => wrapSelectedText('| Header 1 | Header 2 |\n| --- | --- |\n| Row 1 Col 1 | Row 1 Col 2 |\n| Row 2 Col 1 | Row 2 Col 2 |');
+  const handleCode = () => wrapSelectedText('```javascript\n', '\n```');
+  const handleLink = () => wrapSelectedText('[', '](https://example.com)');
+  const handleHighlight = () => wrapSelectedText('==', '==');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -181,23 +163,24 @@ const handleHighlight = () => wrapSelectedText('==', '==');
         <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
         <button onClick={handleHighlight} style={styles.iconButton}><FontAwesomeIcon icon={faHighlighter} /></button>
         <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /> </button>
-        <button onClick={handleReset} style={styles.iconButton}><FontAwesomeIcon icon={faUndo} /> </button>
-        <button onClick={handleCopy} className="iconButton copy"><FontAwesomeIcon icon={faCopy} /> Copy Output</button>
-        <button onClick={handleDownload} className="iconButton download"><FontAwesomeIcon icon={faDownload} /> Download</button>
+        <button onClick={handleUndo} style={styles.iconButton}><FontAwesomeIcon icon={faUndo} /> </button>
+        <button onClick={handleRedo} style={styles.iconButton}><FontAwesomeIcon icon={faRedo} /> </button>
+        <div style={{ float: 'right', justifyContent: 'space-between' }}>
+          <button onClick={handleCopy} className="iconButton" style={{ marginRight: 10 }}><FontAwesomeIcon icon={faCopy} />  Copy</button>
+          <button onClick={handleDownload} className="iconButton"><FontAwesomeIcon icon={faDownload} /> Download</button>
+        </div>
       </div>
 
       {/* Markdown Editor & Preview */}
       <div style={{ display: 'flex', flexGrow: 1 }}>
-        {/* Editable Div Input */}
-        <div
+        {/* Editable Textarea Input */}
+        <textarea
           ref={inputRef}
-          contentEditable
-          onInput={handleInputChange}
+          value={markdown}
+          onChange={handleInputChange}
           style={styles.editor}
-          placeholder="Type Markdown here..."
-        >
-          {markdown}
-        </div>
+          placeholder="Type your Markdown here..."
+        />
 
         {/* Preview Area */}
         <div style={styles.preview}>

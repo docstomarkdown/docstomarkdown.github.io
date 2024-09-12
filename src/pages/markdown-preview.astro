@@ -11,32 +11,23 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Total Page Container -->
-  <div style="display: flex; flex-direction: column; padding-left: 20px; padding-right: 20px;">
-
+  <div style="display: flex; ">
     <!-- Content and Sidebar Container -->
-    <div style="display: flex; flex-direction: row; width: 100%;">
-
       <!-- Main Content Section (80%) -->
       <div style="width: 80%; padding-right: 20px;">
         <!-- Title and Introduction inside Main Content -->
         <div>
-          <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; ">
+          <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; padding-left: 25px; ">
             Markdown Live Preview
-          </h1>
-          
+          </h1>    
         </div>
-
         <!-- Markdown Editor -->
         <main style="padding-left: 20px; padding-right: 20px">
           <MarkdownEditor client:load />
         </main>
       </div>
-
       <!-- Sidebar Section (20%) -->
-      <div style="width: 20%;">
-        <Sidebar height="5%" />
-      </div>
-
-    </div>
+      <Sidebar height="5%" />
+   
   </div>
 </Layout>
