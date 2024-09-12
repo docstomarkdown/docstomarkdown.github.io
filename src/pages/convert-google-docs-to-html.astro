@@ -122,33 +122,11 @@ const metadata = {
         elementToRemove.remove();
       }
       return tempDiv.innerHTML;
-      var tempDiv = document.createElement('div');
-      tempDiv.innerHTML = htmlContent;
-      var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
-      if (elementToRemove) {
-        elementToRemove.remove();
-      }
-      return tempDiv.innerHTML;
     }
 
     inputElement.addEventListener('input', () => {
-    inputElement.addEventListener('input', () => {
       var inputInstructions = document.getElementById('input-instructions');
       var outputInstructions = document.getElementById('output-instructions');
-      var hasContent = !!inputElement.innerHTML;
-
-      if (hasContent) {
-        inputInstructions.style.display = 'none';
-        outputInstructions.style.display = 'none';
-      } else {
-        inputInstructions.style.display = 'block';
-        outputInstructions.style.display = 'block';
-        inputElement.focus();
-      }
-      toMarkdown();
-    });
-
-    // Copy Markdown to clipboard
       var hasContent = !!inputElement.innerHTML;
 
       if (hasContent) {
