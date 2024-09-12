@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Sidebar from '~/components/widgets/Sidebar.astro';
+import Sidebar from '~/components/widgets/Sidebar.astro';
 
 const metadata = {
   title: 'Convert Google Docs to HTML Online - Free',
@@ -8,33 +9,10 @@ const metadata = {
 };
 ---
 
+
 <Layout metadata={metadata}>
   <style>
-    .tool-styled-button {
-      background-color: #2772ed; /* Keeping the existing color */
-      color: white; /* Text color */
-      border: none;
-      padding: 10px 20px; /* Adjust padding for better spacing */
-      border-radius: 5px; /* Rounded corners */
-      font-size: 16px; /* Adjust font size */
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-      transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
-    }
-
-    .tool-styled-button:hover {
-      background-color: #1a5bb8; /* Slightly darker shade for hover effect */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
-    }
-
-    .tool-styled-button:focus {
-      outline: none; /* Remove default outline */
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
-    }
-
-    .tool-styled-button i {
-      margin-right: 8px; /* Space between icon and text */
-    }
+    
 
     
   </style>
@@ -42,7 +20,7 @@ const metadata = {
   <div style="display: flex; padding-top: 10px; padding-left: 50px;">
 
     <!-- Main Content - 75% width -->
-    <div style="width: 80%; padding-right: 20px;">
+    <div style="width: 75%; padding-right: 20px;">
       <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; padding-top: 10px;">Convert Google Docs to HTML Online - Free</h1>
       <p style="padding-top: 10px;">
         You can use this tool to convert Google Docs to HTML online for free. Alternatively, you can use the 
@@ -62,11 +40,11 @@ const metadata = {
       </div>
 
       <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin: 0;">
-        <button id="download-button" class="tool-styled-button">
-          <i class="fas fa-download"></i> Download Markdown
+        <button id="download-button" class="tool-styled-button-new">
+          <i class="fas fa-download"></i> Download
         </button>
-        <button id="copy-button" class="tool-styled-button">
-          <i class="far fa-copy"></i> Copy Markdown
+        <button id="copy-button" class="tool-styled-button-new">
+          <i class="far fa-copy"></i> Copy
         </button>
       </div>
 
@@ -101,12 +79,34 @@ const metadata = {
 
     <!-- Sidebar with a custom height -->
     <Sidebar height="10%" />
+        <h2 class="font-bold">How to Convert Google Docs to Clean HTML directly from the Google Docs window using the Docs to Markdown Pro extension?</h2>
+        <ol class="mx-10 list-decimal list-inside">
+          <li>Install the Docs to Markdown Pro extension from the Google Docs Workspace Marketplace.</li>
+          <li>From the Google Docs Extensions menu, select Docs to Markdown Pro > Convert to Markdown.</li>
+          <li>Click the To Clean HTML button.</li>
+          <li>The Google Docs content will be converted to the Clean HTML format and output will be copied to clipboard automatically.</li>
+          <li>You can also use the add-on to directly publish the content as Markdown to GitHub or GitLab for your Docs as Code workflow.</li>
+        </ol>
+      </div>
+      <div id="hide-grow-widget"></div>
+    </div>
 
+    <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" />
+
+    <!-- Clear floats -->
+    <div style="clear: both;"></div>
     <!-- Clear floats -->
     <div style="clear: both;"></div>
 
   </div>
+  </div>
 
+  <script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>
+  <script is:inline src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <script>
   <script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>
   <script is:inline src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -116,8 +116,16 @@ const metadata = {
     var inputElement = document.getElementById('input');
     var outputElement = document.getElementById('output');
 
+
     // Function to convert HTML to Markdown
     function toMarkdown() {
+      var turndownService = new TurndownService({
+        headingStyle: 'atx',
+        emDelimiter: '*',
+        bulletListMarker: '-',
+        codeBlockStyle: 'fenced',
+        preformattedCode: "true"
+      });
       var turndownService = new TurndownService({
         headingStyle: 'atx',
         emDelimiter: '*',
@@ -141,12 +149,34 @@ const metadata = {
         elementToRemove.remove();
       }
       return tempDiv.innerHTML;
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = htmlContent;
+      var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
+      if (elementToRemove) {
+        elementToRemove.remove();
+      }
+      return tempDiv.innerHTML;
     }
 
     // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', () => {
+    inputElement.addEventListener('input', () => {
       var inputInstructions = document.getElementById('input-instructions');
       var outputInstructions = document.getElementById('output-instructions');
+      var hasContent = !!inputElement.innerHTML;
+
+      if (hasContent) {
+        inputInstructions.style.display = 'none';
+        outputInstructions.style.display = 'none';
+      } else {
+        inputInstructions.style.display = 'block';
+        outputInstructions.style.display = 'block';
+        inputElement.focus();
+      }
+      toMarkdown();
+    });
+
+    // Copy Markdown to clipboard
       var hasContent = !!inputElement.innerHTML;
 
       if (hasContent) {
@@ -171,7 +201,16 @@ const metadata = {
           alert(`Unable to copy markdown to clipboard: ${error}`);
         });
       });
+      copyButtonForMarkdownCopy.addEventListener('click', (event) => {
+        event.preventDefault();
+        navigator.clipboard.writeText(outputElement.value).then(() => {
+          showCopyTooltip();
+        }).catch((error) => {
+          alert(`Unable to copy markdown to clipboard: ${error}`);
+        });
+      });
     }
+
 
     function showCopyTooltip() {
       var tooltip = document.createElement('div');
@@ -185,7 +224,20 @@ const metadata = {
           document.body.removeChild(tooltip);
         }, 500);
       }, 1500);
+      var tooltip = document.createElement('div');
+      tooltip.className = 'copy-tooltip';
+      tooltip.textContent = 'Text copied to clipboard';
+      document.body.appendChild(tooltip);
+
+      setTimeout(() => {
+        tooltip.style.opacity = '0';
+        setTimeout(() => {
+          document.body.removeChild(tooltip);
+        }, 500);
+      }, 1500);
     }
+
+    // Download Markdown file
 
     // Download Markdown file
     var downloadButton = document.getElementById('download-button');
@@ -210,6 +262,28 @@ const metadata = {
           URL.revokeObjectURL(url);
         }
       });
+      downloadButton.style.display = '';
+      downloadButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        var file = new File([outputElement.value], 'Markdown Output.md', {
+          type: 'text/markdown',
+        });
+
+        let url, link;
+        try {
+          url = URL.createObjectURL(file);
+          link = document.createElement('a');
+          link.href = url;
+          link.download = file.name;
+          document.body.appendChild(link);
+          link.click();
+        } finally {
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      });
     }
   </script>
+  </script>
 </Layout>
+

@@ -360,7 +360,7 @@ body .home-icons-grid {
       padding: 0 1em;
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 35%;
       transform: translate(50%, -50%);
       padding: 10px;
       pointer-events: none;
@@ -594,3 +594,32 @@ li code {
 .dd *:first-child {
     margin-top: 0;
 }
+
+.tool-styled-button-new {
+  background-color: #2772ed; /* Keeping the existing color */
+  color: white; /* Text color */
+  border: none;
+  padding: 10px 20px; /* Adjust padding for better spacing */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.tool-styled-button-new:hover {
+  background-color: #1a5bb8; /* Slightly darker shade for hover effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+.tool-styled-button-new:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
+}
+
+.tool-styled-button-new i {
+  margin-right: 8px; /* Space between icon and text */
+}
+

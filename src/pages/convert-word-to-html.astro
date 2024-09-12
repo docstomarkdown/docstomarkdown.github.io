@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Sidebar from '~/components/widgets/Sidebar.astro';
 
 
 const metadata = {
@@ -9,41 +10,48 @@ const metadata = {
 ---
 <Layout metadata={metadata}>
 
+<div style="display: flex; padding-top: 10px; padding-left: 50px;">
+  <div style="width: 75%; padding-right: 20px;">
     <div style="padding-top:10px; padding-left:50px;">
-        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Word to HTML Online - Free</h1>
-        <p style="padding-top:10px;">You can use this tool to convert Word to HTML online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Word Documents to HTML format. <b> It helps generate publish-ready HTML by downloading images and the HTML file as a ZIP archive.</b> </p>
+      <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Word to HTML Online - Free</h1>
+      <p style="padding-top:10px;">You can use this tool to convert Word to HTML online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Word Documents to HTML format. <b> It helps generate publish-ready HTML by downloading images and the HTML file as a ZIP archive.</b> </p>
+    </div>
+    <div style="text-align: center;">
+      <a href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+        <div style="display: inline-block;">
+          <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
         </div>
-        <div style="text-align: center;">
-            <a href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-              <div style="display: inline-block;">
-                <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
-              </div>
-            </a>
-          </div>
-
+      </a>
+    </div>
+    <div id="button-container" class = "tool-button-container" style="display: flex; justify-content: flex-end;">
+      <button id="download-button" class="tool-styled-button-new"><i class="fas fa-download"></i> Download</button>
+      <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
+    </div>
+    <main class="twocols" id="maincontainer">
+      <div id="input" class="input-field" contenteditable="true" autocomplete="off"><p class="div-instructions" id="input-instructions" >Paste your Word text here..</p></div>
+      <textarea id="output" class="input-field with-right-margin" autocomplete="off" readonly></textarea><p class="text-instructions" id="output-instructions">..get your Markdown here</p></div>
+    </main>
+     <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" class=".sticky-sidebar" />
   
+    <!-- Clear floats -->
+    <div style="clear: both;"></div>
+    
+    <div id="hide-grow-widget"></div>
+  </div>
+  
+ 
 
-<div id="button-container" class = "tool-button-container" style="display: flex; justify-content: flex-end;">
-    <button id="download-button" class="tool-styled-button"><i class="fas fa-download"></i> Download Markdown</button>
-    <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy Markdown</button>
+  <div class="mx-10 leading-10">
+    <h2 class="font-bold">How to convert Microsoft word document to Clean HTML using this online tool?</h2>
+    <ol class="mx-10 list-decimal list-inside">
+      <li class="font-normal">Copy the Word content</li>
+      <li class="font-normal">Paste the content in the Input text box of the tool</li>
+      <li class="font-normal">The content of the Word will be converted to the Clean HTML format automatically.</li>
+      <li class="font-normal">Download or Copy the output</li>
+    </ol>
+  </div>
 </div>
-<main class="twocols" id="maincontainer">
-
-  <div id="input" class="input-field" contenteditable="true" autocomplete="off"><p class="div-instructions" id="input-instructions" >Paste your Word text here..</p></div>
-  <textarea id="output" class="input-field with-right-margin" autocomplete="off" readonly></textarea><p class="text-instructions" id="output-instructions">..get your Markdown here</p></div>
-</main>
-<div class="mx-10 leading-10">
-
-<h2 class="font-bold">How to convert Microsoft word document to Clean HTML using this online tool?</h2>
-<ol class="mx-10 list-decimal list-inside">
-<li class="font-normal">Copy the Word content</li>
-<li class="font-normal">Paste the content in the Input text box of the tool</li>
-<li class="font-normal">The content of the Word will be converted to the Clean HTML format automatically.</li>
-<li class="font-normal">Download or Copy the output</li>
-</ol>
-
-</div>
-<div id="hide-grow-widget"></div>
 
 
 
