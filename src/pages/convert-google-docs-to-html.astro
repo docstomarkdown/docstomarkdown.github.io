@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Sidebar from '~/components/widgets/Sidebar.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
 
 const metadata = {
   title: 'Convert Google Docs to HTML Online - Free',
@@ -76,48 +75,22 @@ const metadata = {
       </div>
       <div id="hide-grow-widget"></div>
     </div>
-
     <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" />
-        <h2 class="font-bold">How to Convert Google Docs to Clean HTML directly from the Google Docs window using the Docs to Markdown Pro extension?</h2>
-        <ol class="mx-10 list-decimal list-inside">
-          <li>Install the Docs to Markdown Pro extension from the Google Docs Workspace Marketplace.</li>
-          <li>From the Google Docs Extensions menu, select Docs to Markdown Pro > Convert to Markdown.</li>
-          <li>Click the To Clean HTML button.</li>
-          <li>The Google Docs content will be converted to the Clean HTML format and output will be copied to clipboard automatically.</li>
-          <li>You can also use the add-on to directly publish the content as Markdown to GitHub or GitLab for your Docs as Code workflow.</li>
-        </ol>
-      </div>
-      <div id="hide-grow-widget"></div>
-    </div>
-
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" />
-
+    <Sidebar height="10%" class=".sticky-sidebar" />
     <!-- Clear floats -->
     <div style="clear: both;"></div>
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
-
-  </div>
   </div>
 
   <script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>
   <script is:inline src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <script>
   <script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>
   <script is:inline src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
   <script>
-    // Select the input and output elements
     var inputElement = document.getElementById('input');
     var outputElement = document.getElementById('output');
-
-
-    // Function to convert HTML to Markdown
     function toMarkdown() {
       var turndownService = new TurndownService({
         headingStyle: 'atx',
@@ -158,7 +131,6 @@ const metadata = {
       return tempDiv.innerHTML;
     }
 
-    // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', () => {
     inputElement.addEventListener('input', () => {
       var inputInstructions = document.getElementById('input-instructions');

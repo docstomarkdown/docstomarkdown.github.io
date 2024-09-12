@@ -10,6 +10,7 @@ import {
   faRedo, faCopy, faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import ReactDOMServer from 'react-dom/server';
+import 'highlight.js/styles/github.css';
 import './MarkdownPreview.css'; // Optional: Use a highlight.js theme
 
 const MarkdownEditor = () => {
@@ -179,7 +180,7 @@ const MarkdownEditor = () => {
           value={markdown}
           onChange={handleInputChange}
           style={styles.editor}
-          placeholder="Type your Markdown here..."
+          placeholder="Type or paste your Markdown here..."
         />
 
         {/* Preview Area */}
@@ -219,6 +220,7 @@ const styles = {
     outline: 'none',
     whiteSpace: 'pre-wrap',
     boxSizing: 'border-box',
+    marginRight: '5px' 
   },
   preview: {
     width: '50%',
