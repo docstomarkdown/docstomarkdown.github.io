@@ -12,6 +12,8 @@ showToc: true
 
 In collaborative environments, users often write in separate Google Docs to focus on specific sections of a project, streamline revisions, and manage components efficiently. However, combining these documents into a single cohesive file is often necessary for creating deliverables.
 
+**You can merge multiple Google Docs into one using the Merge Docs Pro add-on.** 
+
 In this tutorial, I'll explain how to [merge multiple Google Docs into one](https://www.mergedocs.pro), add page breaks for clarity, and customize the document with headers and footers. I'll also show you how to merge various formats like Word, Markdown, and HTML with Google Docs and export the merged documents as PDF or EPUB files, making them ready for delivery or sharing.
 
 
