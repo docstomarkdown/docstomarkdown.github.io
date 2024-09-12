@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Sidebar from '~/components/widgets/Sidebar.astro';
 
 
 const metadata = {
@@ -9,31 +10,36 @@ const metadata = {
 ---
 <Layout metadata={metadata}>
 
-<div style="padding-top:10px; padding-left:50px;">
-<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Markdown Table of Contents Generator - Free</h1>
-<p style="padding-top:10px;">You can use this tool to Generate Table of Contents for Markdown for free.</p>
-</div>
-<div style="text-align: center;">
-    <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-      <div style="display: inline-block;">
-        <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
-      </div>
-    </a>
+  <div style="display: flex; padding-left: 50px;">
+    <div style="width: 75%; padding-right: 20px;">
+      <div style="padding-top:10px; padding-left:50px;">
+        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Markdown Table of Contents Generator - Free</h1>
+        <p style="padding-top:10px;">You can use this tool to Generate Table of Contents for Markdown for free.</p>
+        </div>
+        <div style="text-align: center;">
+          <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+            <div style="display: inline-block;">
+              <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+            </div>
+          </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin-right: 20px;">
+          <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
+        </div>
+        <main class="twocols" >
+          <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your Markdown here..</p>
+          <textarea id="output" class="input-field"  autocomplete="off"></textarea><p class="text-right-instructions" id="output-instructions">..Get your table of contents here</p>
+        </main>
+        <div id="hide-grow-widget"></div>
+    </div>
+    <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" class=".sticky-sidebar"/>
+    <!-- Clear floats -->
+    <div style="clear: both;"></div>
   </div>
-  
 
 {<script  is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-<div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-   <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy TOC</button>
-</div>
-<main class="twocols">
-    <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your Markdown here..</p>
-    <textarea id="output" class="input-field"  autocomplete="off"></textarea><p class="text-right-instructions" id="output-instructions">..Get your table of contents here</p>
-</main>
-<div id="hide-grow-widget"></div>
-
 
 {<script>
     // Select the input and output elements
