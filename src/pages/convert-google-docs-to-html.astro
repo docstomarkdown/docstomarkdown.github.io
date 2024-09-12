@@ -52,7 +52,7 @@ const metadata = {
           <p class="div-instructions" id="input-instructions">Paste your Google Docs text here..</p>
         </div>
         <textarea id="output" class="input-field with-right-margin" autocomplete="off" readonly style="margin: 0; "></textarea>
-        <p class="text-instructions" id="output-instructions">..get your Markdown here</p>
+        <p class="text-instructions" id="output-instructions">..get your HTML here</p>
       </main>
 
       <div class="mx-10 leading-10">
@@ -197,26 +197,6 @@ const metadata = {
         event.preventDefault();
         var file = new File([outputElement.value], 'HTML Output.html', {
           type: 'text/html',
-        });
-
-        let url, link;
-        try {
-          url = URL.createObjectURL(file);
-          link = document.createElement('a');
-          link.href = url;
-          link.download = file.name;
-          document.body.appendChild(link);
-          link.click();
-        } finally {
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
-        }
-      });
-      downloadButton.style.display = '';
-      downloadButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        var file = new File([outputElement.value], 'Markdown Output.md', {
-          type: 'text/markdown',
         });
 
         let url, link;
