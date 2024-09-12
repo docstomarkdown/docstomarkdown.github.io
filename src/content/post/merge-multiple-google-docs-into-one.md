@@ -22,9 +22,9 @@ In this tutorial, I'll explain how to [merge multiple Google Docs into one](http
 
 ## Prerequisite
 
-Google Docs doesn't provide a built-in merging feature. Hence, you need to use an add-on to merge multiple Google Docs. Merge Docs Pro is a suitable add on to merge multiple Google Docs into one.
+Google Docs doesn't provide a built-in merging feature. Hence, you need to use an add-on to merge multiple Google Docs. Merge Docs Pro is a suitable add on to merge Google Docs into one.
 
-[Install the Merge Docs Pro add-on ](https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026)<i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; from the Google Workspace Marketplace. Once the add-on is installed, you can follow the below steps to merge the documents. 
+[Install the Merge Docs Pro add-on ](https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026)<i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; from the Google Workspace Marketplace. Once the add-on is installed, you can follow the below steps to combine google docs. 
 
 ## Watch the Demo Video
 
@@ -118,7 +118,7 @@ Exporting your merged document as a [PDF](https://www.adobe.com/acrobat/about-ad
 
 - EPUB files are particularly useful for creating e-books and digital publications. The EPUB format supports reflowable text, which adapts to different screen sizes and enhances readability on various devices like e-readers, tablets, and smartphones. This makes it an excellent choice for authors, publishers, or anyone looking to distribute content in a digital book format. EPUB files can also include interactive features such as hyperlinks and multimedia, adding dynamic elements to educational materials, guides, or interactive reports. 
 
-Overall, exporting the merged documents to PDF or EPUB ensures it is accessible, professional, and well-suited for its intended audience.
+Overall,  exporting the merged documents to PDF or EPUB ensures it is accessible, professional, and well-suited for its intended audience.
 
 To export the merged document as a PDF, EPUB or Word automatically, follow the steps below:
 
