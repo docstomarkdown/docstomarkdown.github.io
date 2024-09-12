@@ -10,31 +10,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <style>
-    .tool-styled-button {
-      background-color: #2772ed; /* Keeping the existing color */
-      color: white; /* Text color */
-      border: none;
-      padding: 10px 20px; /* Adjust padding for better spacing */
-      border-radius: 5px; /* Rounded corners */
-      font-size: 16px; /* Adjust font size */
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-      transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
-    }
-
-    .tool-styled-button:hover {
-      background-color: #1a5bb8; /* Slightly darker shade for hover effect */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
-    }
-
-    .tool-styled-button:focus {
-      outline: none; /* Remove default outline */
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
-    }
-
-    .tool-styled-button i {
-      margin-right: 8px; /* Space between icon and text */
-    }
+    
 
     
   </style>
@@ -42,7 +18,7 @@ const metadata = {
   <div style="display: flex; padding-top: 10px; padding-left: 50px;">
 
     <!-- Main Content - 75% width -->
-    <div style="width: 80%; padding-right: 20px;">
+    <div style="width: 75%; padding-right: 20px;">
       <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; padding-top: 10px;">Convert Google Docs to HTML Online - Free</h1>
       <p style="padding-top: 10px;">
         You can use this tool to convert Google Docs to HTML online for free. Alternatively, you can use the 
@@ -62,11 +38,11 @@ const metadata = {
       </div>
 
       <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin: 0;">
-        <button id="download-button" class="tool-styled-button">
-          <i class="fas fa-download"></i> Download Markdown
+        <button id="download-button" class="tool-styled-button-new">
+          <i class="fas fa-download"></i> Download
         </button>
-        <button id="copy-button" class="tool-styled-button">
-          <i class="far fa-copy"></i> Copy Markdown
+        <button id="copy-button" class="tool-styled-button-new">
+          <i class="far fa-copy"></i> Copy
         </button>
       </div>
 

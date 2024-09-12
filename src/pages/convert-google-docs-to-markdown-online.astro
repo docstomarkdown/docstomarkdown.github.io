@@ -1,69 +1,98 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
+import Sidebar from '~/components/widgets/Sidebar.astro';
 
 const metadata = {
   title: 'Convert Google Docs to Markdown Online - Free',
   description: "This tool converts Google Docs to Markdown online for free. Paste the Google Docs content into the input text box and get the output in the output text box."
 };
+
 ---
 <Layout metadata={metadata}>
 
-<div style="padding-top:10px; padding-left:50px;">
-<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Google Docs to Markdown Online - Free</h1>
-<p style="padding-top:10px;">You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> &nbsp; <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to Markdown within the Google Docs window. <b> It helps generate publish-ready Markdown by downloading images and the Markdown file as a ZIP archive.</b></p>
-</div>
-<div style="text-align: center;">
-    <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-      <div style="display: inline-block;">
-        <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
+
+    <!-- Main Content - 75% width -->
+    <div style="width: 75%; padding-right: 20px;">
+      <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; padding-top: 10px;">Convert Google Docs to Markdown Online - Free</h1>
+      <p style="padding-top: 10px;">
+        You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the 
+        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">
+          Docs to Markdown Pro
+        </a>&nbsp; 
+        <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to Markdown within the Google Docs window. 
+        <b>It helps generate publish-ready Markdown by downloading images and the Markdown file as a ZIP archive.</b>
+      </p>
+
+      <div style="text-align: center;">
+        <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+          <div style="display: inline-block;">
+            <img alt="Google Workspace Marketplace badge" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+          </div>
+        </a>
       </div>
-    </a>
+
+      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin: 0;">
+        <button id="download-button" class="tool-styled-button-new">
+          <i class="fas fa-download"></i> Download
+        </button>
+        <button id="copy-button" class="tool-styled-button-new">
+          <i class="far fa-copy"></i> Copy
+        </button>
+      </div>
+
+      <main class="twocols" id="maincontainer">
+        <div id="input" class="input-field" contenteditable="true" autocomplete="off">
+          <p class="div-instructions" id="input-instructions">Paste your Google Docs text here..</p>
+        </div>
+        <textarea id="output" class="input-field with-right-margin" autocomplete="off" readonly style="margin: 0;"></textarea>
+        <p class="text-instructions" id="output-instructions">..get your Markdown here</p>
+      </main>
+
+      <div class="mx-10 leading-10">
+        <h2 class="font-bold">How to convert Google Docs to Markdown using this online tool?</h2>
+        <ol class="mx-10 list-decimal list-inside">
+          <li class="font-normal">Copy the Google Docs content</li>
+          <li class="font-normal">Paste the content in the Input text box of the tool</li>
+          <li class="font-normal">The content of the Google Docs will be converted to the Markdown format automatically.</li>
+          <li class="font-normal">Download or Copy the output</li>
+        </ol>
+
+        <h2 class="font-bold">How to Convert Google Docs to Markdown directly from the Google Docs window using the Docs to Markdown Pro extension?</h2>
+        <ol class="mx-10 list-decimal list-inside">
+          <li>Install the Docs to Markdown Pro extension from the Google Docs Workspace Marketplace.</li>
+          <li>From the Google Docs Extensions menu, select Docs to Markdown Pro > Convert to Markdown.</li>
+          <li>Click the To Markdown button.</li>
+          <li>The Google Docs content will be converted to the Markdown format and output will be copied to clipboard automatically.</li>
+          <li>You can also use the add-on to directly publish the content as Markdown to GitHub or GitLab for your Docs as Code workflow.</li>
+        </ol>
+      </div>
+      <div id="hide-grow-widget"></div>
+    </div>
+    <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" class=".sticky-sidebar" />
+    <!-- Clear floats -->
+    <div style="clear: both;"></div>
   </div>
-  
 
-<div id="button-container" class = "tool-button-container" style="display: flex; justify-content: flex-end;">
-    <button id="download-button" class="tool-styled-button"><i class="fas fa-download"></i> Download Markdown</button>
-    <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy Markdown</button>
-</div>
-<main class="twocols" id="maincontainer">
+  <script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>
+  <script is:inline src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <div id="input" class="input-field" contenteditable="true" autocomplete="off"><p class="div-instructions" id="input-instructions" >Paste your Google Docs text here..</p></div>
-  <textarea id="output" class="input-field with-right-margin" autocomplete="off" readonly></textarea><p class="text-instructions" id="output-instructions">..get your Markdown here</p></div>
-</main>
-<div class="mx-10 leading-10">
-
-<h2 class="font-bold">How to convert Google Docs to Markdown using this online tool?</h2>
-<ol class="mx-10 list-decimal list-inside">
-<li class="font-normal">Copy the Google Docs content</li>
-<li class="font-normal">Paste the content in the Input text box of the tool</li>
-<li class="font-normal">The content of the Google Docs will be converted to the Markdown format automatically.</li>
-<li class="font-normal">Download or Copy the output</li>
-</ol>
-
-<h2 class="font-bold">How to Convert Google Docs to Markdown directly from the Google Docs window using the Docs to Markdown Pro extension?</h2>
-<ol class="mx-10 list-decimal list-inside">
-    <li>Install the Docs to Markdown Pro extension from the Google Docs Workspace Marketplace.</li>
-    <li>From the Google Docs Extensions menu, select Docs to Markdown Pro > Convert to Markdown.</li>
-    <li>Click the To Markdown button.</li>
-    <li>The Google Docs content will be converted to the Markdown format and output will be copied to clipboard automatically.</li>
-    <li>You can also use the add-on to directly publish the content as Markdown to GitHub or GitLab for your Docs as Code workflow.</li>
-  </ol>
-</div>
-<div id="hide-grow-widget"></div>
-
-
-
-{<script is:inline src="https://unpkg.com/turndown/dist/turndown.js"></script>}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-{<script>
+  <script>
     // Select the input and output elements
     var inputElement = document.getElementById('input');
     var outputElement = document.getElementById('output');
-    
+
     // Function to convert HTML to Markdown
     function toMarkdown() {
-      var turndownService = new TurndownService({ headingStyle: 'atx' , emDelimiter :'*', bulletListMarker:'-', codeBlockStyle: 'fenced', preformattedCode: "true" })
+      var turndownService = new TurndownService({
+        headingStyle: 'atx',
+        emDelimiter: '*',
+        bulletListMarker: '-',
+        codeBlockStyle: 'fenced',
+        preformattedCode: "true"
+      });
       var originalHTML = inputElement.innerHTML;
       var cleanHTML = removeInstructionElements(originalHTML, 'input-instructions');
       var markdown = turndownService.turndown(cleanHTML);
@@ -71,87 +100,82 @@ const metadata = {
     }
 
     function removeInstructionElements(htmlContent, elementIdToRemove) {
-        // Create a temporary DOM element to hold the HTML content
-        var tempDiv = document.createElement('div');
-        tempDiv.innerHTML = htmlContent;
-
-        // Find the element with the specified ID
-        var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
-        if (elementToRemove) {
-            elementToRemove.remove();
-        }
-
-        // Return the modified HTML content
-        return tempDiv.innerHTML;
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = htmlContent;
+      var elementToRemove = tempDiv.querySelector(`#${elementIdToRemove}`);
+      if (elementToRemove) {
+        elementToRemove.remove();
+      }
+      return tempDiv.innerHTML;
     }
 
     // Add event listener to invoke toMarkdown function on input
-    inputElement.addEventListener('input',()=>{
+    inputElement.addEventListener('input', () => {
       var inputInstructions = document.getElementById('input-instructions');
       var outputInstructions = document.getElementById('output-instructions');
-    
-        var hasContent = !!inputElement.innerHTML;
-    
-        if (hasContent) {
-          inputInstructions.style.display = 'none'; 
-          outputInstructions.style.display = 'none';
-        } else {
-            inputInstructions.style.display = 'block';
-            outputInstructions.style.display = 'block';
-            inputElement.focus();
-        }
-    toMarkdown();
-    }
-    );
+      var hasContent = !!inputElement.innerHTML;
+
+      if (hasContent) {
+        inputInstructions.style.display = 'none';
+        outputInstructions.style.display = 'none';
+      } else {
+        inputInstructions.style.display = 'block';
+        outputInstructions.style.display = 'block';
+        inputElement.focus();
+      }
+      toMarkdown();
+    });
+
+    // Copy Markdown to clipboard
     var copyButtonForMarkdownCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-    copyButtonForMarkdownCopy.addEventListener('click', () => {
-      event.preventDefault();
-      navigator.clipboard.writeText(outputElement.value).then(() => {
-        showCopyTooltip();
-      }).catch((error) => {
-        alert(`Unable to copy markdown to clipboard: ${error}`);
+      copyButtonForMarkdownCopy.addEventListener('click', (event) => {
+        event.preventDefault();
+        navigator.clipboard.writeText(outputElement.value).then(() => {
+          showCopyTooltip();
+        }).catch((error) => {
+          alert(`Unable to copy markdown to clipboard: ${error}`);
+        });
       });
-    });
     }
-    
+
     function showCopyTooltip() {
-    var tooltip = document.createElement('div');
-    tooltip.className = 'copy-tooltip';
-    tooltip.textContent = 'Text copied to clipboard';
-    document.body.appendChild(tooltip);
-    
-    setTimeout(() => {
-      tooltip.style.opacity = '0';
+      var tooltip = document.createElement('div');
+      tooltip.className = 'copy-tooltip';
+      tooltip.textContent = 'Text copied to clipboard';
+      document.body.appendChild(tooltip);
+
       setTimeout(() => {
-        document.body.removeChild(tooltip);
-      }, 500);
-    }, 1500);
+        tooltip.style.opacity = '0';
+        setTimeout(() => {
+          document.body.removeChild(tooltip);
+        }, 500);
+      }, 1500);
     }
-    
+
+    // Download Markdown file
     var downloadButton = document.getElementById('download-button');
     if (window.URL && window.File) {
-    downloadButton.style.display = '';
-    downloadButton.addEventListener('click', () => {
-      event.preventDefault(); 
-      var file = new File([outputElement.value], 'Markdown Output.md', {
-        type: 'text/markdown',
-      });
-    
-      let url, link;
-      try {
-        url = URL.createObjectURL(file);
-        link = document.createElement('a');
-        link.href = url;
-        link.download = file.name;
-        document.body.appendChild(link);
-        link.click();
-      } finally {
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }
-    });
-    }
-    </script>}
+      downloadButton.style.display = '';
+      downloadButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        var file = new File([outputElement.value], 'Markdown Output.md', {
+          type: 'text/markdown',
+        });
 
+        let url, link;
+        try {
+          url = URL.createObjectURL(file);
+          link = document.createElement('a');
+          link.href = url;
+          link.download = file.name;
+          document.body.appendChild(link);
+          link.click();
+        } finally {
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      });
+    }
+  </script>
 </Layout>
