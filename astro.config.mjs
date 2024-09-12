@@ -5,6 +5,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import customToc from "astro-custom-toc";
 
+import react from '@astrojs/react';
+
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
@@ -42,6 +44,7 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    react(),
     sitemap({
       filter: (page) =>
         !page.startsWith("https://www.docstomarkdown.pro/tag/") &&
