@@ -24,7 +24,8 @@ const metadata = {
     </div>
     <div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
     <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-      <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
+        <button id="download-button" class="tool-styled-button-new"><i class="fas fa-download"></i> Download as Word File</button>
+        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy as Rich Text</button>
     </div>
       <main class="twocols">
           <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your Markdown here..</p>
@@ -61,7 +62,7 @@ const metadata = {
 
 {<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
 
-
+{<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>}
 {<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -109,6 +110,29 @@ const metadata = {
       toHTML();
     });
 
+    var downloadButton = document.getElementById('download-button');
+    if (window.URL && window.File) {
+    downloadButton.style.display = '';
+    downloadButton.addEventListener('click', () => {
+      event.preventDefault(); 
+      var htmlContent = quill.root.innerHTML;
+      var converted = htmlDocx.asBlob(htmlContent, {orientation: 'landscape', margins: {top: 720}});
+
+    
+      let url, link;
+      try {
+        url = URL.createObjectURL(converted);
+        link = document.createElement('a');
+        link.href = url;
+        link.download = 'Converted.docx';
+        document.body.appendChild(link);
+        link.click();
+      } finally {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+    });
+    }    
     
     var copyButtonForTextCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
