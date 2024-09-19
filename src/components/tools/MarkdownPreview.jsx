@@ -180,7 +180,7 @@ const MarkdownEditor = () => {
           value={markdown}
           onChange={handleInputChange}
           style={styles.editor}
-          placeholder="Type or paste your Markdown here..."
+          placeholder="Type your Markdown here..."
         />
 
         {/* Preview Area */}
@@ -220,7 +220,6 @@ const styles = {
     outline: 'none',
     whiteSpace: 'pre-wrap',
     boxSizing: 'border-box',
-    marginRight: '5px' 
   },
   preview: {
     width: '50%',

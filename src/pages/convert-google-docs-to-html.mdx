@@ -1,0 +1,63 @@
+---
+title: 'Convert Google Docs to HTML Online - Free'
+description: "This tool converts Google Docs to HTML online for free. Paste the Google Docs content into the input text box and get the output in the output text box."
+---
+
+import Layout from '~/layouts/PageLayout.astro';
+import WordToHtmlConverter from '../components/tools/google-docs-to-html';
+import Sidebar from '../components/widgets/Sidebar.astro';
+
+<Layout metadata={{ title: 'Convert Google Docs to HTML Online - Free', description: "This tool converts Google Docs to HTML online for free. Paste the Google Docs content into the input text box and get the Clean HTML in the output text box." }}>
+  
+  {/* Total Page Container */}
+  <div style="display: flex;">
+    
+    {/* Content and Sidebar Container */}
+    {/* Main Content Section (80%) */}
+    <div style="width: 80%; padding-right: 20px;">
+      {/* Title and Introduction inside Main Content */}
+      <div>
+        <div style="padding-left:30px;">
+          <h1 style="color: #2772ed; font-size:32px; font-weight: bold;">Convert Google Docs to HTML Online - Free</h1>
+          <p>You can use this tool to convert Google Docs to HTML online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to HTML within the Google Docs window. <b> It helps generate publish-ready HTML by downloading images and the HTML file as a ZIP archive.</b></p>
+        </div>
+        <div style="text-align: center;">
+          <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+            <div style="display: inline-block;">
+              <img alt="Google Workspace Marketplace badge" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 65px; padding-top: 10px" />
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Google Docs to HTML Converter Component */}
+      <main style="padding-left: 20px; padding-right: 20px">
+        <WordToHtmlConverter client:load />
+      </main>
+
+      {/* Instructions Section */}
+      <div class="mx-10 leading-10">
+
+        <h2 class="font-bold">How to convert Google Docs to Clean HTML using this online tool?</h2>
+        <ol class="mx-10 list-decimal list-inside">
+        <li class="font-normal">Copy the Google Docs content</li>
+        <li class="font-normal">Paste the content in the Input text box of the tool</li>
+        <li class="font-normal">The content of the Google Docs will be converted to the Clean HTML format automatically.</li>
+        <li class="font-normal">Download or Copy the output</li>
+        </ol>
+
+        <h2 class="font-bold">How to Convert Google Docs to Clean HTML directly from the Google Docs window using the Docs to HTML Pro extension?</h2>
+        <ol class="mx-10 list-decimal list-inside">
+            <li>Install the Docs to Markdown Pro extension from the Google Workspace Marketplace.</li>
+            <li>From the Google Docs Extensions menu, select Docs to HTML Pro > Convert to HTML.</li>
+            <li>Click the To Clean HTML button.</li>
+            <li>The Google Docs content will be converted to the Clean HTML format and output will be copied to clipboard automatically.</li>
+            <li>You can also use the add-on to directly publish the content as HTML to GitHub or GitLab for your Docs as Code workflow.</li>
+        </ol>
+      </div>
+    </div>
+    
+    {/* Sidebar Section (20%) */}
+    <Sidebar height="5%" />
+  </div>
+</Layout>

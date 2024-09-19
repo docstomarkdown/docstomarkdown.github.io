@@ -1,6 +1,6 @@
   import React, { useState, useRef } from 'react';
   import * as mammoth from 'mammoth'; // npm install mammoth
-  import TextFileToTextFile from '../converters/TextFiletoTextFile'; // Import the new component
+  import TextFileToTextFile from '../tools/TextFiletoTextFile'; // Import the new component
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import { faUpload, faCopy, faDownload, faExclamationCircle, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
   import jsBeautify from 'js-beautify'; // Import js-beautify
