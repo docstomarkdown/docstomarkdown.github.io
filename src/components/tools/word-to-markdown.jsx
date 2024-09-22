@@ -196,7 +196,7 @@ const WordToMarkdownConverter = () => {
         contentEditable={true}
         style={styles.contentEditableDiv}
         onPaste={handlePaste}
-        onInput={() => setShowPlaceholder(false)}
+        //onInput={() => setShowPlaceholder(false)}
       >
         {showPlaceholder && (
           <span style={{ color: '#7a7676' }}>// Paste your word content here...</span>
