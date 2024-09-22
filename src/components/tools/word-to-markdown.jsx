@@ -18,6 +18,7 @@ const WordToMarkdownConverter = () => {
   const fileInputRef = useRef(null);
   const [history, setHistory] = useState([{ content: '' }]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   const turndownService = new TurndownService({
     headingStyle: 'atx',
@@ -71,6 +72,16 @@ const WordToMarkdownConverter = () => {
     }
   };
 
+  const handlePaste = (event) => {
+    setShowPlaceholder(false);
+  };
+
+  const handleTextareaChange = (event) => {
+    if (event.target.value !== '') {
+      setShowPlaceholder(false);
+    }
+  };
+
   const handleBold = () => wrapSelectedText('<b>', '</b>');
   const handleItalic = () => wrapSelectedText('<i>', '</i>');
   const handleUnderline = () => wrapSelectedText('<u>', '</u>');
@@ -83,25 +94,6 @@ const WordToMarkdownConverter = () => {
     document.execCommand('insertHTML', false, tableHtml);
   };
 
-  const handleUndo = () => {
-    if (historyIndex > 0) {
-      setHistoryIndex(historyIndex - 1);
-      const previousContent = history[historyIndex - 1].content;
-      setMarkdownContent(previousContent);
-      outputTextareaRef.current.value = previousContent;
-      editableContentRef.current.innerHTML = turndownService.turndown(previousContent);
-    }
-  };
-
-  const handleRedo = () => {
-    if (historyIndex < history.length - 1) {
-      setHistoryIndex(historyIndex + 1);
-      const nextContent = history[historyIndex + 1].content;
-      setMarkdownContent(nextContent);
-      outputTextareaRef.current.value = nextContent;
-      editableContentRef.current.innerHTML = turndownService.turndown(nextContent);
-    }
-  };
 
   const handleClear = () => {
     setHtmlContent('');
@@ -203,16 +195,21 @@ const WordToMarkdownConverter = () => {
         ref={editableContentRef}
         contentEditable={true}
         style={styles.contentEditableDiv}
-        >
-        <span style={{ color: '#7a7676' }}>// Paste your word content here...</span>
-        </div>
-        <textarea
-          ref={outputTextareaRef}
-          value={markdownContent}
-          readOnly
-          style={styles.textarea}
-        />
+        onPaste={handlePaste}
+      >
+        {showPlaceholder && (
+          <span style={{ color: '#7a7676' }}>// Paste your word content here...</span>
+        )}
       </div>
+      <textarea
+        ref={outputTextareaRef}
+        value={markdownContent}
+        readOnly
+        style={styles.textarea}
+        onChange={handleTextareaChange}
+      />
+    </div>
+
 
       {popupMessage && (
         <div style={popupStyles.container}>

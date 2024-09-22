@@ -17,6 +17,7 @@ const WordToMarkdownConverter = () => {
   const fileInputRef = useRef(null);
   const [history, setHistory] = useState([{ content: '' }]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   const turndownService = new TurndownService({
     headingStyle: 'atx',
@@ -67,6 +68,16 @@ const WordToMarkdownConverter = () => {
 
     if (selectedText) {
       document.execCommand('insertHTML', false, `${before}${selectedText}${after}`);
+    }
+  };
+
+  const handlePaste = (event) => {
+    setShowPlaceholder(false);
+  };
+
+  const handleTextareaChange = (event) => {
+    if (event.target.value !== '') {
+      setShowPlaceholder(false);
     }
   };
 
@@ -202,16 +213,20 @@ const WordToMarkdownConverter = () => {
         ref={editableContentRef}
         contentEditable={true}
         style={styles.contentEditableDiv}
-        >
-        <span style={{ color: '#7a7676' }}>// Paste your google docs content here...</span>
-        </div>
-        <textarea
-          ref={outputTextareaRef}
-          value={markdownContent}
-          readOnly
-          style={styles.textarea}
-        />
+        onPaste={handlePaste}
+      >
+        {showPlaceholder && (
+          <span style={{ color: '#7a7676' }}>// Paste your google docs content here...</span>
+        )}
       </div>
+      <textarea
+        ref={outputTextareaRef}
+        value={markdownContent}
+        readOnly
+        style={styles.textarea}
+        onChange={handleTextareaChange}
+      />
+    </div>
 
       {popupMessage && (
         <div style={popupStyles.container}>
