@@ -1,0 +1,62 @@
+---
+title: 'HTML to Markdown Converter'
+description: 'Convert HTML content to Markdown and preview it interactively.'
+---
+
+import Layout from '~/layouts/PageLayout.astro';
+import HtmlToMarkdownConverter from '../components/tools/html-to-markdown'; 
+import Sidebar from '../components/widgets/Sidebar.astro';
+
+<Layout metadata={{ title: 'HTML to Markdown Converter', description: 'Convert HTML content to Markdown and preview it interactively.' }}>
+  
+  {/* Total Page Container */}
+  <div style="display: flex;">
+    {/* Content and Sidebar Container */}
+    {/* Main Content Section (80%) */}
+    <div style="width: 80%; padding-right: 20px;">
+      {/* Title and Introduction inside Main Content */}
+      <div>
+        <div style="padding-left:30px;">
+          <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold;">Convert HTML to Markdown Online - Free</h1>
+          <p>You can use this tool to convert HTML to Markdown online for free. This is a simple and easy-to-use converter to get well-formatted Markdown from HTML documents.<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:#2772ed"></i>&nbsp; Add-on to convert the Word Documents to HTML format. <b> It helps generate publish-ready HTML by downloading images and the HTML file as a ZIP archive.</b></p>
+        </div>
+        <div style="text-align: center;">
+            <a href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+              <div style="display: inline-block;">
+                <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 65px; padding-top: 10px"/>
+              </div>
+            </a>
+          </div>
+      </div>
+      {/* HTML to Markdown Converter Component */}
+      <main style="padding-left: 20px; padding-right: 20px">
+        <HtmlToMarkdownConverter client:load /> 
+      </main>
+
+      {/* Instructions Section */}
+      <section style="padding-left: 30px; padding-top: 30px;">
+        <h2 style="color: black; font-size: 18px; font-weight: bold;">How to convert HTML to Google Docs using this online tool ?</h2>
+        <ol style="line-height: 1.8; font-size: 17px; padding: 0px 15px;">
+          <li>1. Paste your HTML content in the input text box on the left side.</li>
+          <li>2. The HTML will be automatically converted to Markdown in the output text box.</li>
+          <li>3. Use the <strong>Copy Markdown</strong> button to copy the Markdown content.</li>
+          <li>4. Use the <strong>Download Markdown</strong> button to download the Markdown content.</li>
+          <li>5. Open Google Docs and paste the copied content. The formatting will be preserved as well.</li>
+        </ol>
+      </section>
+
+      <section style="padding-left: 30px; padding-top: 30px;">
+        <h2 style="color: black; font-size: 18px; font-weight: bold;">How to Convert Bulk Html files to Markdown using our extension Bulk Converter Pro ?</h2>
+        <ol style="line-height: 1.8; font-size: 17px; padding: 0px 15px;">
+          <li>1. Install the <a class="font-bold text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:#2772ed"></i>&nbsp; extension from the Google Workspace Marketplace.</li>
+          <li>2. From the Google Sheets Extensions Menu, Launch Bulk Converter Pro > Select Html Documents > Select Markdown > Click Convert.</li>
+          <li>3. All the Html Files will be Converted to Markdown.</li>
+          <li>4. The Converted Markdown Files will displayed as url</li>
+        </ol>
+      </section>
+    </div>
+    {/* Sidebar Section (20%) */}
+    <Sidebar height="5%" />
+  </div>
+</Layout>
+../../../docstomarkdown.github.io/src/components/tools/html-to-markdown

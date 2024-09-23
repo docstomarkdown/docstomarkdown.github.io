@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
 
 
 const metadata = {
@@ -10,53 +9,19 @@ const metadata = {
 ---
 <Layout metadata={metadata}>
     
-<div style="display: flex; padding-top: 10px; padding-left:50px; ">
-  <div style="padding-top:10px;  width: 75%;">
-    <div style="padding-left:50px;">
-      <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px; ">Convert HTML to Word Document</h1>
-      
-      <p style="padding-top:10px;">You can use this tool to convert HTML to Word document online for free.   Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to bulk convert the HTML to Word documents. </p>
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><div id="button-container" class="tool-button-container" style=" flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
-    </div>
-
-    
-    <div style="text-align: center;">
-      <a href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-        <br/>
-        <div style="display: inline-block;">
-          <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
-        </div>
-      </a>
-    </div>
-    <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-      <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
-    </div>
-    <main class="twocols">
-        <textarea id="input" class="input-field"  autocomplete="off" autofocus></textarea><p class="text-left-instructions" id="input-instructions">Paste your HTML here..</p>
-        <div id="editor-placeholder" style="left: 50%" class ="right-editor-placeholder">..get your rich text here</div>
-        <div id="output" class="input-field editor-container" autocomplete="off"></div>
-    </main>
-    <div id="hide-grow-widget"></div>
-    <div class="mx-10 leading-10">
-      <h2 class="font-bold">How to convert HTML to Word Document using this online tool?</h2>
-      <ol class=" list-decimal list-inside mx-10">
-        <li class="font-normal">Paste your HTML content in the input text box on the left side</li>
-        <li class="font-normal">The HTML will be rendered as rich text on the output text box automatically</li>
-        <li class="font-normal">Copy the output using the Copy Text button</li>
-        <li class="font-normal">Paste the copied content in your Word Document. Content will be pasted and the formatting will be preserved as well. </li>
-      </ol>
-      <p>This tool converts HTML to Word. It also converts Tables into the Word document seamlessly.</p>
-      <p>You can use the Bulk Converter Pro if you want to convert multiple HTML files into a Word Document.</p>
-    </div>
-    <div id="hide-grow-widget"></div>
-  </div>
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" class=".sticky-sidebar" />
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
+<div style="padding-top:10px; padding-left:50px;">
+<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert HTML to Word Document</h1>
+<p style="padding-top:10px;">You can use this tool to convert HTML to Word document online for free.   Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402">Bulk Converter Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to bulk convert the HTML to Word documents. </p>
 </div>
-
+<div style="text-align: center;">
+    <a href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+      <div style="display: inline-block;">
+        <img alt="Google Workspace Marketplace badge" alt-text="Get it from the Google Workspace Marketplace" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+      </div>
+    </a>
+  </div>
+  
+</div>
 
 <!-- Include Quill library -->
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
@@ -65,7 +30,33 @@ const metadata = {
 
 {<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
+<div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
+   <p>Copy the output and paste in your Word Document&nbsp;&nbsp;&nbsp;</p>
+   <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy Text</button>
+</div>
+<main class="twocols">
+   
+    <textarea id="input" class="input-field"  autocomplete="off" autofocus></textarea><p class="text-left-instructions" id="input-instructions">Paste your HTML here..</p>
+    <div id="editor-placeholder" class ="right-editor-placeholder">..get your rich text here</div>
+    <div id="output" class="input-field editor-container" autocomplete="off"></div>
 
+</main>
+<div id="hide-grow-widget"></div>
+<div class="mx-10 leading-10">
+
+<h2 class="font-bold">How to convert HTML to Word Document using this online tool?</h2>
+
+<ol class=" list-decimal list-inside mx-10">
+<li class="font-normal">Paste your HTML content in the input text box on the left side</li>
+<li class="font-normal">The HTML will be rendered as rich text on the output text box automatically</li>
+<li class="font-normal">Copy the output using the Copy Text button</li>
+<li class="font-normal">Paste the copied content in your Word Document. Content will be pasted and the formatting will be preserved as well. </li>
+</ol>
+
+<p>This tool converts HTML to Word. It also converts Tables into the Word document seamlessly.</p>
+<p>You can use the Bulk Converter Pro if you want to convert multiple HTML files into a Word Document.</p>
+</div>
 
 {<script>
     // Select the input and output elements
@@ -82,6 +73,9 @@ const metadata = {
         },
       });
    
+    
+    
+
     // Function to convert HTML to Markdown
     function toHTML() {
         // Get the text content from the content-editable div

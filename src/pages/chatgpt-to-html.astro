@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
 
 
 const metadata = {
@@ -9,39 +8,33 @@ const metadata = {
 };
 ---
 <Layout metadata={metadata}>
-    <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-        <div style="width: 75%; padding-right: 20px;">
-            <div style="padding-top:10px; padding-left:50px;">
-                <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to HTML Online - Free</h1>
-                <p style="padding-top:10px;">You can use this tool to convert ChatGPT to HTML online for free. </p>
-            </div>
-        
-            <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        
-            <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin-right: 20px;">
-                <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
-            </div>
-            <main class="twocols">
-                <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your ChatGPT text here..</p>
-                <textarea id="output" class="input-field"  autocomplete="off"></textarea><p class="text-instructions" id="output-instructions">..get your HTML here</p>
-            </main>
-            <div class="mx-10 leading-10">
-                <h2 class="font-bold">How to convert ChatGPT to HTML using this online tool?</h2>
-                <ol class=" list-decimal list-inside mx-10">
-                    <li class="font-normal">Paste your ChatGPT content in the input text box on the left side.</li>
-                    <li class="font-normal">The ChatGPT will be rendered as HTML on the output text box automatically</li>
-                    <li class="font-normal">Copy the output using the Copy button</li>    
-                </ol>
-            </div>
-            <div id="hide-grow-widget"></div>
-        </div>
-        <!-- Sidebar with a custom height -->
-        <Sidebar height="10%" class=".sticky-sidebar" />
+    
+<div style="padding-top:10px; padding-left:50px;">
+<h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to HTML Online - Free</h1>
+<p style="padding-top:10px;">You can use this tool to convert ChatGPT to HTML online for free. </p>
+</div>
 
-        <!-- Clear floats -->
-        <div style="clear: both;"></div>
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
+   <button id="copy-button" class="tool-styled-button"><i class="far fa-copy"></i> Copy Output</button>
+</div>
+<main class="twocols">
+    <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your ChatGPT text here..</p>
+    <textarea id="output" class="input-field"  autocomplete="off"></textarea><p class="text-instructions" id="output-instructions">..get your HTML here</p>
+</main>
+<div class="mx-10 leading-10">
+
+    <h2 class="font-bold">How to convert ChatGPT to HTML using this online tool?</h2>
+    <ol class=" list-decimal list-inside mx-10">
+    <li class="font-normal">Paste your ChatGPT content in the input text box on the left side.</li>
+    <li class="font-normal">The ChatGPT will be rendered as HTML on the output text box automatically</li>
+    <li class="font-normal">Copy the output using the Copy button</li>    
+    </ol>
+    
     </div>
+<div id="hide-grow-widget"></div>
 
 
 
