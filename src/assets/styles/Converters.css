@@ -22,4 +22,9 @@
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
   }
 
+  .markdown-textarea::placeholder {
+    font-size: 24px; /* increase font size */
+    color: #aaa; /* change text color */
+  }
+
   /* Styles for the popup container */
