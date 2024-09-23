@@ -5,7 +5,6 @@ import {
   faLink, faTable, faEraser, faUpload, faRedo, faCopy, faDownload, faExclamationCircle, faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import TurndownService from 'turndown';
-import { marked } from 'marked';
 import mammoth from 'mammoth';
 import '../../assets/styles/Converters.css';
 
@@ -16,12 +15,20 @@ const WordToMarkdownConverter = () => {
   const editableContentRef = useRef(null); // Ref for the content-editable div
   const outputTextareaRef = useRef(null); // Ref for Markdown textarea
   const fileInputRef = useRef(null);
-  const [history, setHistory] = useState([{ content: '' }]);
-  const [historyIndex, setHistoryIndex] = useState(0);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   const turndownService = new TurndownService({
     headingStyle: 'atx',
+  });
+
+  turndownService.addRule('stripBoldInHeadings', {
+    filter: (node) => {
+      return (
+        (node.nodeName === 'B' || node.nodeName === 'STRONG') &&
+        (node.parentNode.nodeName.startsWith('H')) // Only applies to bold inside headings
+      );
+    },
+    replacement: (content) => content, // Just return the content, stripping the bold tags
   });
 
   useEffect(() => {
@@ -31,18 +38,15 @@ const WordToMarkdownConverter = () => {
         const newHtmlContent = editableDiv.innerHTML;
         setHtmlContent(newHtmlContent);
 
-        // Clean up the content by removing Word-specific and unnecessary tags
+        // Hide placeholder only if there is content
+        setShowPlaceholder(newHtmlContent === '' || newHtmlContent === '<br>');
+
+        // Clean up Word-specific and unnecessary tags
         const cleanedHtmlContent = cleanUpWordContent(newHtmlContent);
-        setHtmlContent(cleanedHtmlContent);
 
         // Convert to Markdown
         const markdown = turndownService.turndown(cleanedHtmlContent);
         setMarkdownContent(markdown);
-
-        // Update history
-        const updatedHistory = history.slice(0, historyIndex + 1);
-        setHistory([...updatedHistory, { content: markdown }]);
-        setHistoryIndex(updatedHistory.length);
       }
     };
 
@@ -52,7 +56,7 @@ const WordToMarkdownConverter = () => {
         editableContentRef.current.removeEventListener('input', handleContentChange);
       };
     }
-  }, [history, historyIndex]);
+  }, []);
 
   // Function to clean up unnecessary Word HTML elements
   const cleanUpWordContent = (html) => {
@@ -69,16 +73,6 @@ const WordToMarkdownConverter = () => {
 
     if (selectedText) {
       document.execCommand('insertHTML', false, `${before}${selectedText}${after}`);
-    }
-  };
-
-  const handlePaste = (event) => {
-    setShowPlaceholder(false);
-  };
-
-  const handleTextareaChange = (event) => {
-    if (event.target.value !== '') {
-      setShowPlaceholder(false);
     }
   };
 
@@ -129,12 +123,19 @@ const WordToMarkdownConverter = () => {
         let html = result.value;
         html = cleanUpWordContent(html);
         const markdown = turndownService.turndown(html);
+        
+        // Set content and Markdown
         setHtmlContent(html);
         setMarkdownContent(markdown);
+        
+        // Update the contentEditable div and textarea
         if (editableContentRef.current && outputTextareaRef.current) {
-          editableContentRef.current.innerHTML = html; // Update the div with the uploaded file content
+          editableContentRef.current.innerHTML = html;
           outputTextareaRef.current.value = markdown;
         }
+  
+        // Update the placeholder visibility
+        setShowPlaceholder(html === '' || html === '<br>');  // This will hide the placeholder if content is not empty
       } catch (error) {
         console.error('Error converting file:', error);
       }
@@ -142,13 +143,14 @@ const WordToMarkdownConverter = () => {
       alert('Please upload a valid Word document (.docx).');
     }
   };
+  
 
   const handleDownload = () => {
     const blob = new Blob([markdownContent], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'content.md';
+    a.download = 'MarkdownFile.md';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -177,8 +179,6 @@ const WordToMarkdownConverter = () => {
           </button>
         </div>
       </div>
-
-      <div style={{ padding: '10px', borderBottom: '1px solid #ddd' }}>
         <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
         <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
         <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
@@ -188,28 +188,28 @@ const WordToMarkdownConverter = () => {
         <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
         <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
         <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /></button>
-      </div>
 
-      <div style={{ display: 'flex', flexGrow: 1 }}>
-      <div
-        ref={editableContentRef}
-        contentEditable={true}
-        style={styles.contentEditableDiv}
-        onPaste={handlePaste}
-        //onInput={() => setShowPlaceholder(false)}
-      >
+      <div style={{ display: 'flex', flexGrow: 1, position: 'relative' }}>
         {showPlaceholder && (
-          <span style={{ color: '#7a7676' }}>// Paste your word content here...</span>
+          <span style={styles.placeholder}>
+            Paste your Word content content here ...
+          </span>
         )}
+        <div
+          ref={editableContentRef}
+          contentEditable
+          style={styles.contentEditableDiv}
+        />
+        
+        <textarea
+          ref={outputTextareaRef}
+          value={markdownContent}
+          readOnly
+          className="markdown-textarea"
+          style={styles.textarea}
+          placeholder={htmlContent === '' ? '... and get your Markdown here' : ''}
+        />
       </div>
-      <textarea
-        ref={outputTextareaRef}
-        value={markdownContent}
-        readOnly
-        style={styles.textarea}
-        onChange={handleTextareaChange}
-      />
-    </div>
 
 
       {popupMessage && (
@@ -240,22 +240,7 @@ const styles = {
     width: '50%',
     padding: '10px',
     fontSize: '16px',
-    border: '1px solid #ddd',
-    height: 'calc(100vh - 160px)',
-    overflowY: 'auto',
-    boxSizing: 'border-box',
-     marginRight: '5px',
-    fontFamily: 'auto',
-    backgroundColor: '#f9f9f9',
-    whiteSpace: 'pre-wrap',
-    '::placeholder': {
-       color: '#aaa',
-    },   
-  },
-  textarea: {
-    width: '50%',
-    padding: '10px',
-    fontSize: '16px',
+    marginTop: '10px',
     border: '1px solid #ddd',
     height: 'calc(100vh - 160px)',
     overflowY: 'auto',
@@ -263,15 +248,35 @@ const styles = {
     marginRight: '5px',
     fontFamily: 'auto',
     backgroundColor: '#f9f9f9',
+    whiteSpace: 'pre-wrap',
+  },
+  textarea: {
+    width: '50%',
+    padding: '10px',
+    fontSize: '16px',
+    marginTop: '10px',
+    border: '1px solid #ddd',
+    height: 'calc(100vh - 160px)',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    fontFamily: 'auto',
+    backgroundColor: '#f9f9f9',
+  },
+  placeholder: {
+    color: '#aaa',
+    fontSize: '24px',
+    position: 'absolute',
+    marginTop: '10px',
+    pointerEvents: 'none',
+    fontFamily: 'auto',
+    top: '10px',
+    left: '10px',
   },
   iconButton: {
-    backgroundColor: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
+    marginRight: '5px',
+    padding: '5px 10px',
     fontSize: '14px',
-    margin: '0 5px',
-    padding: '5px',
-    color: '#333',
+    cursor: 'pointer',
   },
 };
 
