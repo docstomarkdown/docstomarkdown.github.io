@@ -5,7 +5,8 @@ import {
   faTable, faEraser, faCopy, faDownload, faExclamationCircle, faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import TurndownService from 'turndown';
-import '../../assets/styles/Converters.css'
+import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
+import '../../assets/styles/Converters.css';
 
 const WordToMarkdownConverter = () => {
   const [htmlContent, setHtmlContent] = useState(''); // Stores raw content
@@ -17,6 +18,22 @@ const WordToMarkdownConverter = () => {
 
   const turndownService = new TurndownService({
     headingStyle: 'atx',
+  });
+
+  turndownService.use(gfm); // Enable GFM (GitHub-Flavored Markdown) support including tables
+
+  // Custom rule to handle table conversion
+  turndownService.addRule('table', {
+    filter: 'table',
+    replacement: function (content, node) {
+      const rows = Array.from(node.querySelectorAll('tr')).map((row) => {
+        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => cell.textContent.trim());
+        return `| ${cells.join(' | ')} |`;
+      });
+
+      const headerDivider = rows.length > 1 ? `|${' --- |'.repeat(rows[0].split('|').length - 2)}` : '';
+      return `${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}`;
+    },
   });
 
   useEffect(() => {
@@ -69,8 +86,19 @@ const WordToMarkdownConverter = () => {
   const handleUnderline = () => wrapSelectedText('<u>', '</u>');
   const handleQuote = () => wrapSelectedText('<blockquote>', '</blockquote>');
   const handleLink = () => wrapSelectedText('<a href="https://example.com">', '</a>');
+
+  // Insert table in HTML format and let turndown convert it
   const handleTable = () => {
-    const tableHtml = '<table><tr><th>Header 1</th><th>Header 2</th></tr><tr><td>Row 1 Col 1</td><td>Row 1 Col 2</td></tr></table>';
+    const tableHtml = `
+      <table>
+        <thead>
+          <tr><th>Header 1</th><th>Header 2</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Row 1 Col 1</td><td>Row 1 Col 2</td></tr>
+          <tr><td>Row 2 Col 1</td><td>Row 2 Col 2</td></tr>
+        </tbody>
+      </table>`;
     document.execCommand('insertHTML', false, tableHtml);
   };
 
@@ -161,84 +189,85 @@ const WordToMarkdownConverter = () => {
             style={{
               ...popupStyles.popup,
               color: popupMessage.includes('No Markdown') ? 'red' : 'white',
-              backgroundColor: popupMessage.includes('No Markdown') ? 'white' : 'black',
-            }}
-          >
-            <p>
-              <FontAwesomeIcon
-                icon={popupMessage.includes('No Markdown') ? faExclamationCircle : faCheckCircle}
-                style={{ marginRight: '10px' }}
-              />
-              {popupMessage}
-            </p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+              backgroundColor: popupMessage.includes('No Markdown') ? 'white' : 'black', }} > 
+                <p> <FontAwesomeIcon icon={popupMessage.includes('No Markdown') ? faExclamationCircle : faCheckCircle} 
+                  style={{ marginRight: '10px' }} /> {popupMessage} 
+                </p> 
+              </div> 
+            </div> 
+          )} 
+        </div> 
+      ); 
+    };
+
+const styles = { 
+  contentEditableDiv: 
+  { 
+    width: '50%', 
+    padding: '10px', 
+    fontSize: '16px', 
+    marginTop: '10px', 
+    border: '1px solid #ddd', 
+    height: 'calc(100vh - 160px)', 
+    overflowY: 'auto', 
+    boxSizing: 'border-box', 
+    marginRight: '5px', 
+    fontFamily: 'auto', 
+    backgroundColor: '#f9f9f9', 
+    whiteSpace: 'pre-wrap', 
+  }, 
+  textarea: 
+  { 
+    width: '50%', 
+    padding: '10px', 
+    fontSize: '16px', 
+    marginTop: '10px', 
+    border: '1px solid #ddd', 
+    height: 'calc(100vh - 160px)', 
+    overflowY: 'auto', 
+    boxSizing: 'border-box', 
+    backgroundColor: '#f9f9f9', 
+  }, 
+  placeholder: 
+  { 
+    color: '#aaa', 
+    fontSize: '24px', 
+    position: 'absolute', 
+    marginTop: '10px', 
+    pointerEvents: 'none', 
+    top: '10px', 
+    left: '10px', 
+  }, 
+  iconButton: 
+  { 
+    marginRight: '5px', 
+    padding: '5px 10px', 
+    fontSize: '14px', 
+    cursor: 'pointer', 
+  }, 
 };
 
-const styles = {
-  contentEditableDiv: {
-    width: '50%',
-    padding: '10px',
-    fontSize: '16px',
-    marginTop: '10px',
-    border: '1px solid #ddd',
-    height: 'calc(100vh - 160px)',
-    overflowY: 'auto',
-    boxSizing: 'border-box',
-    marginRight: '5px',
-    fontFamily: 'auto',
-    backgroundColor: '#f9f9f9',
-    whiteSpace: 'pre-wrap',
-  },
-  textarea: {
-    width: '50%',
-    padding: '10px',
-    fontSize: '16px',
-    marginTop: '10px',
-    border: '1px solid #ddd',
-    height: 'calc(100vh - 160px)',
-    overflowY: 'auto',
-    boxSizing: 'border-box',
-    fontFamily: 'auto',
-    backgroundColor: '#f9f9f9',
-  },
-  placeholder: {
-    color: '#aaa',
-    fontSize: '24px',
-    position: 'absolute',
-    marginTop: '10px',
-    pointerEvents: 'none',
-    fontFamily: 'auto',
-    top: '10px',
-    left: '10px',
-  },
-  iconButton: {
-    marginRight: '5px',
-    padding: '5px 10px',
-    fontSize: '14px',
-    cursor: 'pointer',
-  },
-};
-
-const popupStyles = {
-  container: {
-    position: 'fixed',
-    bottom: '10px',
-    right: '10px',
-    zIndex: '1000',
-  },
-  popup: {
-    padding: '10px 20px',
-    backgroundColor: 'green',
-    borderRadius: '5px',
-    color: 'white',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    display: 'flex',
-    alignItems: 'center',
-  },
+const popupStyles = { 
+  container: 
+  { 
+    position: 'fixed', 
+    top: 0, left: 0, 
+    width: '100%', 
+    height: '100%', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    zIndex: 1000, 
+  }, 
+  popup: 
+  { 
+    backgroundColor: 'black', // Default background color 
+    color: '#fff', 
+    padding: '20px', 
+    borderRadius: '8px', 
+    textAlign: 'center', 
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', 
+  }, 
 };
 
 export default WordToMarkdownConverter;

@@ -5,6 +5,7 @@ import {
   faLink, faTable, faEraser, faUpload, faRedo, faCopy, faDownload, faExclamationCircle, faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
 import mammoth from 'mammoth';
 import '../../assets/styles/Converters.css';
 
@@ -17,8 +18,37 @@ const WordToMarkdownConverter = () => {
   const fileInputRef = useRef(null);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
+  // Initialize TurndownService with GFM plugin
   const turndownService = new TurndownService({
     headingStyle: 'atx',
+  });
+  turndownService.use(gfm); // Use the GFM plugin for better table conversion
+
+  // Custom rule for converting tables to Markdown
+  turndownService.addRule('table', {
+    filter: (node) => {
+      return node.nodeName === 'TABLE';
+    },
+    replacement: (content, node) => {
+      let markdownTable = '';
+
+      const rows = Array.from(node.querySelectorAll('tr'));
+      rows.forEach((row, rowIndex) => {
+        const cells = Array.from(row.querySelectorAll('td, th'));
+
+        // Convert row cells to pipe-separated values
+        const rowContent = cells.map(cell => cell.textContent.trim()).join(' | ');
+        markdownTable += `| ${rowContent} |\n`;
+
+        // Add the alignment row after the header row
+        if (rowIndex === 0) {
+          const headerSeparator = cells.map(() => '---').join(' | ');
+          markdownTable += `| ${headerSeparator} |\n`;
+        }
+      });
+
+      return markdownTable;
+    }
   });
 
   turndownService.addRule('stripBoldInHeadings', {
@@ -88,12 +118,9 @@ const WordToMarkdownConverter = () => {
     document.execCommand('insertHTML', false, tableHtml);
   };
 
-
   const handleClear = () => {
     setHtmlContent('');
     setMarkdownContent('');
-    setHistory([{ content: '' }]);
-    setHistoryIndex(0);
     if (editableContentRef.current && outputTextareaRef.current) {
       editableContentRef.current.innerHTML = '';
       outputTextareaRef.current.value = '';
@@ -133,9 +160,8 @@ const WordToMarkdownConverter = () => {
           editableContentRef.current.innerHTML = html;
           outputTextareaRef.current.value = markdown;
         }
-  
-        // Update the placeholder visibility
-        setShowPlaceholder(html === '' || html === '<br>');  // This will hide the placeholder if content is not empty
+
+        setShowPlaceholder(html === '' || html === '<br>');
       } catch (error) {
         console.error('Error converting file:', error);
       }
@@ -143,7 +169,6 @@ const WordToMarkdownConverter = () => {
       alert('Please upload a valid Word document (.docx).');
     }
   };
-  
 
   const handleDownload = () => {
     const blob = new Blob([markdownContent], { type: 'text/markdown' });
@@ -179,15 +204,15 @@ const WordToMarkdownConverter = () => {
           </button>
         </div>
       </div>
-        <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
-        <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
-        <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
-        <button onClick={handleOrderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListOl} /></button>
-        <button onClick={handleUnorderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListUl} /></button>
-        <button onClick={handleQuote} style={styles.iconButton}><FontAwesomeIcon icon={faQuoteRight} /></button>
-        <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
-        <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
-        <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /></button>
+      <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
+      <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
+      <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
+      <button onClick={handleOrderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListOl} /></button>
+      <button onClick={handleUnorderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListUl} /></button>
+      <button onClick={handleQuote} style={styles.iconButton}><FontAwesomeIcon icon={faQuoteRight} /></button>
+      <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
+      <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
+      <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /></button>
 
       <div style={{ display: 'flex', flexGrow: 1, position: 'relative' }}>
         {showPlaceholder && (
@@ -210,7 +235,6 @@ const WordToMarkdownConverter = () => {
           placeholder={htmlContent === '' ? '... and get your Markdown here' : ''}
         />
       </div>
-
 
       {popupMessage && (
         <div style={popupStyles.container}>
@@ -259,7 +283,6 @@ const styles = {
     height: 'calc(100vh - 160px)',
     overflowY: 'auto',
     boxSizing: 'border-box',
-    fontFamily: 'auto',
     backgroundColor: '#f9f9f9',
   },
   placeholder: {
@@ -268,7 +291,6 @@ const styles = {
     position: 'absolute',
     marginTop: '10px',
     pointerEvents: 'none',
-    fontFamily: 'auto',
     top: '10px',
     left: '10px',
   },
