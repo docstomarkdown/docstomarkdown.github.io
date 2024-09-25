@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBold, faItalic, faUnderline, faQuoteRight, faLink,
+  faBold, faItalic, faUnderline, faListOl, faListUl,
   faTable, faEraser, faCopy, faDownload, faExclamationCircle, faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
 import '../../assets/styles/Converters.css';
 
-const WordToMarkdownConverter = () => {
+const GoogleDocsToMarkdownConverter = () => {
   const [htmlContent, setHtmlContent] = useState(''); // Stores raw content
   const [markdownContent, setMarkdownContent] = useState(''); // Stores the Markdown content
   const [popupMessage, setPopupMessage] = useState(''); // Stores popup message
@@ -22,19 +22,49 @@ const WordToMarkdownConverter = () => {
 
   turndownService.use(gfm); // Enable GFM (GitHub-Flavored Markdown) support including tables
 
+  // Custom rule to handle bold and italic conversion
+  turndownService.addRule('bold', {
+    filter: (node) => node.style.fontWeight === '700',
+    replacement: (content) => `**${content}**`,
+  });
+  
+  turndownService.addRule('italic', {
+    filter: (node) => node.nodeName === 'I' || node.nodeName === 'EM' || node.style.fontStyle === 'italic',
+    replacement: (content, node) => {
+      return `_${content}_`;
+    }
+  });;
+
+  // Custom rule to handle line breaks and preserve blank lines
+
+  // Custom rule to handle Word-specific figure captions
+  // turndownService.addRule('wordFields', {
+  //   filter: (node) => node.innerHTML.includes('SEQ Figure'),
+  //   replacement: (content, node) => {
+  //     const figureNumber = node.textContent.match(/\d+/) ? node.textContent.match(/\d+/)[0] : '';
+  //     const caption = node.textContent.replace(/SEQ Figure \* ARABIC \d+/g, '').trim();
+  //     return `Figure <!-- SEQ Figure \* ARABIC ${figureNumber} --> ${caption}\n\n`;
+  //   }
+  // });
+
   // Custom rule to handle table conversion
   turndownService.addRule('table', {
     filter: 'table',
     replacement: function (content, node) {
+      // Extract rows and cells
       const rows = Array.from(node.querySelectorAll('tr')).map((row) => {
-        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => cell.textContent.trim());
+        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => `**${cell.textContent.trim()}**`);
         return `| ${cells.join(' | ')} |`;
       });
-
-      const headerDivider = rows.length > 1 ? `|${' --- |'.repeat(rows[0].split('|').length - 2)}` : '';
-      return `${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}`;
+  
+      // Generate header divider based on column count
+      const headerDivider = `${rows[0].split('|').map(cell => '-'.repeat(cell.trim().length)).join(' | ')}`;
+  
+      return `\n\n${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}\n\n`;
     },
   });
+  
+  
 
   useEffect(() => {
     const handleContentChange = () => {
@@ -42,19 +72,15 @@ const WordToMarkdownConverter = () => {
       if (editableDiv) {
         const newHtmlContent = editableDiv.innerHTML;
         setHtmlContent(newHtmlContent);
-
-        // Hide placeholder only if there is content
+  
         setShowPlaceholder(newHtmlContent === '' || newHtmlContent === '<br>');
-
-        // Clean up Word-specific and unnecessary tags
-        const cleanedHtmlContent = cleanUpWordContent(newHtmlContent);
-
-        // Convert to Markdown
+  
+        const cleanedHtmlContent = cleanUpGoogleDocsContent(newHtmlContent);
         const markdown = turndownService.turndown(cleanedHtmlContent);
         setMarkdownContent(markdown);
       }
     };
-
+  
     if (editableContentRef.current) {
       editableContentRef.current.addEventListener('input', handleContentChange);
       return () => {
@@ -62,14 +88,28 @@ const WordToMarkdownConverter = () => {
       };
     }
   }, []);
+  
 
   // Clean up unnecessary Word HTML elements
-  const cleanUpWordContent = (html) => {
-    let cleanedHtml = html.replace(/<o:p>.*?<\/o:p>/gi, ''); // Remove Word <o:p> tags
-    cleanedHtml = cleanedHtml.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ''); // Remove <style> tags
-    cleanedHtml = cleanedHtml.replace(/style\s*=\s*(['"]).*?\1/gi, ''); // Remove inline styles
+  const cleanUpGoogleDocsContent = (html) => {
+    let cleanedHtml = html
+      .replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>') // Replace <b> with <strong>
+      .replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>') // Replace <i> with <em>
+      .replace(/<u>(.*?)<\/u>/gi, '<u>$1</u>') // Replace <u> with <u>
+      .replace(/<div>/gi, '<p>') // Replace divs with paragraphs
+      .replace(/<\/div>/gi, '</p>') // Close divs as paragraphs
+      .replace(/<br\s*\/?>/gi, '\n') // Replace <br> with newlines
+      .replace(/<\/?o:p>/gi, '') // Remove any <o:p> tags
+      .replace(/\n\s*\n/g, '\n') // Collapse multiple newlines into one
+      .replace(/^\s+|\s+$/g, '') // Trim leading/trailing spaces
+      .replace(/<h(\d)>(.*?)<\/h\d>/gi, (match, level, content) => { // Handle headings
+        const headingLevel = '#'.repeat(level); // Create Markdown heading
+        return `${headingLevel} ${content.trim()}\n\n`;
+      });
+      
     return cleanedHtml;
   };
+  
 
   // Wrap selected text in custom HTML tags
   const wrapSelectedText = (before, after) => {
@@ -84,8 +124,8 @@ const WordToMarkdownConverter = () => {
   const handleBold = () => wrapSelectedText('<b>', '</b>');
   const handleItalic = () => wrapSelectedText('<i>', '</i>');
   const handleUnderline = () => wrapSelectedText('<u>', '</u>');
-  const handleQuote = () => wrapSelectedText('<blockquote>', '</blockquote>');
-  const handleLink = () => wrapSelectedText('<a href="https://example.com">', '</a>');
+  const handleOrderedList = () => document.execCommand('insertOrderedList');
+  const handleUnorderedList = () => document.execCommand('insertUnorderedList');
 
   // Insert table in HTML format and let turndown convert it
   const handleTable = () => {
@@ -147,8 +187,9 @@ const WordToMarkdownConverter = () => {
         <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
         <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
         <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
-        <button onClick={handleQuote} style={styles.iconButton}><FontAwesomeIcon icon={faQuoteRight} /></button>
-        <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
+        {/* <button onClick={handleBoldItalic} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /> + <FontAwesomeIcon icon={faItalic} /></button> */}
+        <button onClick={handleOrderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListOl} /></button>
+        <button onClick={handleUnorderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListUl} /></button>
         <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
         <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /></button>
         <div style={{ float: 'right' }}>
@@ -212,7 +253,6 @@ const styles = {
     overflowY: 'auto', 
     boxSizing: 'border-box', 
     marginRight: '5px', 
-    fontFamily: 'auto', 
     backgroundColor: '#f9f9f9', 
     whiteSpace: 'pre-wrap', 
   }, 
@@ -270,4 +310,4 @@ const popupStyles = {
   }, 
 };
 
-export default WordToMarkdownConverter;
+export default GoogleDocsToMarkdownConverter;
