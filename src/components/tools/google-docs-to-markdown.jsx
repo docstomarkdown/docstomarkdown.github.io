@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBold, faItalic, faUnderline, faListOl, faListUl,
-  faTable, faEraser, faCopy, faDownload, faExclamationCircle, faCheckCircle
-} from '@fortawesome/free-solid-svg-icons';
 import TurndownService from 'turndown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy, faDownload, faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
 import '../../assets/styles/Converters.css';
 
@@ -19,68 +16,60 @@ const GoogleDocsToMarkdownConverter = () => {
   const turndownService = new TurndownService({
     headingStyle: 'atx',
   });
-
+  
   turndownService.use(gfm); // Enable GFM (GitHub-Flavored Markdown) support including tables
 
-  // Custom rule to handle bold and italic conversion
+  // Custom rule to handle bold conversion
   turndownService.addRule('bold', {
-    filter: (node) => node.style.fontWeight === '700',
+    filter: (node) => node.style.fontWeight === '700' || node.tagName === 'STRONG',
     replacement: (content) => `**${content}**`,
   });
   
+  // Custom rule to handle italic conversion
   turndownService.addRule('italic', {
     filter: (node) => node.nodeName === 'I' || node.nodeName === 'EM' || node.style.fontStyle === 'italic',
     replacement: (content, node) => {
-      return `_${content}_`;
+      return `*${content}*`;
     }
-  });;
-
-  // Custom rule to handle line breaks and preserve blank lines
-
-  // Custom rule to handle Word-specific figure captions
-  // turndownService.addRule('wordFields', {
-  //   filter: (node) => node.innerHTML.includes('SEQ Figure'),
-  //   replacement: (content, node) => {
-  //     const figureNumber = node.textContent.match(/\d+/) ? node.textContent.match(/\d+/)[0] : '';
-  //     const caption = node.textContent.replace(/SEQ Figure \* ARABIC \d+/g, '').trim();
-  //     return `Figure <!-- SEQ Figure \* ARABIC ${figureNumber} --> ${caption}\n\n`;
-  //   }
-  // });
+  });
 
   // Custom rule to handle table conversion
   turndownService.addRule('table', {
     filter: 'table',
     replacement: function (content, node) {
-      // Extract rows and cells
       const rows = Array.from(node.querySelectorAll('tr')).map((row) => {
-        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => `**${cell.textContent.trim()}**`);
+        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => {
+          const cellText = cell.textContent.trim();
+          return cellText ? `**${cellText}**` : ''; // Prevent undefined
+        });
         return `| ${cells.join(' | ')} |`;
       });
-  
-      // Generate header divider based on column count
-      const headerDivider = `${rows[0].split('|').map(cell => '-'.repeat(cell.trim().length)).join(' | ')}`;
-  
-      return `\n\n${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}\n\n`;
+
+      if (rows.length > 0) {
+        const headerDivider = `${rows[0].split('|').map(cell => '-'.repeat(cell.trim().length)).join(' | ')}`;
+        return `\n\n${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}\n\n`;
+      }
+      return ''; // Return empty string if no rows
     },
   });
-  
-  
 
   useEffect(() => {
     const handleContentChange = () => {
       const editableDiv = editableContentRef.current;
       if (editableDiv) {
-        const newHtmlContent = editableDiv.innerHTML;
+        const newHtmlContent = editableDiv.innerHTML || '';
         setHtmlContent(newHtmlContent);
-  
-        setShowPlaceholder(newHtmlContent === '' || newHtmlContent === '<br>');
-  
+
+        // Check if the text content is empty
+        const isEmpty = editableDiv.textContent.trim() === '';
+        setShowPlaceholder(isEmpty);
+
         const cleanedHtmlContent = cleanUpGoogleDocsContent(newHtmlContent);
-        const markdown = turndownService.turndown(cleanedHtmlContent);
-        setMarkdownContent(markdown);
+        const markdown = turndownService.turndown(cleanedHtmlContent || '');
+        setMarkdownContent(markdown || '');
       }
     };
-  
+
     if (editableContentRef.current) {
       editableContentRef.current.addEventListener('input', handleContentChange);
       return () => {
@@ -88,11 +77,10 @@ const GoogleDocsToMarkdownConverter = () => {
       };
     }
   }, []);
-  
 
-  // Clean up unnecessary Word HTML elements
+  // Clean up unnecessary Google Docs HTML elements
   const cleanUpGoogleDocsContent = (html) => {
-    let cleanedHtml = html
+    let cleanedHtml = (html || '')
       .replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>') // Replace <b> with <strong>
       .replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>') // Replace <i> with <em>
       .replace(/<u>(.*?)<\/u>/gi, '<u>$1</u>') // Replace <u> with <u>
@@ -104,53 +92,10 @@ const GoogleDocsToMarkdownConverter = () => {
       .replace(/^\s+|\s+$/g, '') // Trim leading/trailing spaces
       .replace(/<h(\d)>(.*?)<\/h\d>/gi, (match, level, content) => { // Handle headings
         const headingLevel = '#'.repeat(level); // Create Markdown heading
-        return `${headingLevel} ${content.trim()}\n\n`;
+        return `${headingLevel} ${content.trim()}`;
       });
       
-    return cleanedHtml;
-  };
-  
-
-  // Wrap selected text in custom HTML tags
-  const wrapSelectedText = (before, after) => {
-    const selection = window.getSelection();
-    const selectedText = selection.toString();
-    if (selectedText) {
-      document.execCommand('insertHTML', false, `${before}${selectedText}${after}`);
-    }
-  };
-
-  // Handle bold, italic, etc.
-  const handleBold = () => wrapSelectedText('<b>', '</b>');
-  const handleItalic = () => wrapSelectedText('<i>', '</i>');
-  const handleUnderline = () => wrapSelectedText('<u>', '</u>');
-  const handleOrderedList = () => document.execCommand('insertOrderedList');
-  const handleUnorderedList = () => document.execCommand('insertUnorderedList');
-
-  // Insert table in HTML format and let turndown convert it
-  const handleTable = () => {
-    const tableHtml = `
-      <table>
-        <thead>
-          <tr><th>Header 1</th><th>Header 2</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Row 1 Col 1</td><td>Row 1 Col 2</td></tr>
-          <tr><td>Row 2 Col 1</td><td>Row 2 Col 2</td></tr>
-        </tbody>
-      </table>`;
-    document.execCommand('insertHTML', false, tableHtml);
-  };
-
-  // Handle clearing the input and output
-  const handleClear = () => {
-    setHtmlContent('');
-    setMarkdownContent('');
-    setShowPlaceholder(true);
-    if (editableContentRef.current && outputTextareaRef.current) {
-      editableContentRef.current.innerHTML = '';
-      outputTextareaRef.current.value = '';
-    }
+    return cleanedHtml || ''; // Return empty string if content is null/undefined
   };
 
   // Handle copying Markdown content
@@ -170,6 +115,12 @@ const GoogleDocsToMarkdownConverter = () => {
 
   // Handle Markdown file download
   const handleDownload = () => {
+    if (!markdownContent) {
+      setPopupMessage('No Markdown content to download.');
+      setTimeout(() => setPopupMessage(''), 3000);
+      return;
+    }
+
     const blob = new Blob([markdownContent], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -183,131 +134,127 @@ const GoogleDocsToMarkdownConverter = () => {
 
   return (
     <div>
-      <div style={{ padding: '10px' }}>
-        <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
-        <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
-        <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
-        {/* <button onClick={handleBoldItalic} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /> + <FontAwesomeIcon icon={faItalic} /></button> */}
-        <button onClick={handleOrderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListOl} /></button>
-        <button onClick={handleUnorderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListUl} /></button>
-        <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
-        <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /></button>
-        <div style={{ float: 'right' }}>
-          <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
-            <FontAwesomeIcon icon={faCopy} /> Copy Markdown
-          </button>
-          <button className='iconButton' onClick={handleDownload}>
-            <FontAwesomeIcon icon={faDownload} /> Download Markdown
-          </button>
-        </div>
+      {/* Action Buttons */}
+      <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+        <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
+          <FontAwesomeIcon icon={faCopy} />  Copy Markdown
+        </button>
+        <button className='iconButton' onClick={handleDownload}>
+          <FontAwesomeIcon icon={faDownload} />  Download Markdown
+        </button>
       </div>
 
-      <div style={{ display: 'flex', flexGrow: 1, position: 'relative' }}>
-        {showPlaceholder && (
-          <span style={styles.placeholder}>
-            Paste your Google Docs content here ...
-          </span>
-        )}
-        <div
-          ref={editableContentRef}
-          contentEditable
-          style={styles.contentEditableDiv}
-        />
+      {/* Input and Output Sections */}
+      <div style={{ display: 'flex', flexGrow: 1, marginTop: '10px' }}>
+        {/* Input Section with Placeholder */}
+        <div style={{ position: 'relative', width: '50%', marginRight: '5px' }}>
+          {showPlaceholder && (
+            <span style={styles.placeholder}>
+              Paste your Google Docs here ...
+            </span>
+          )}
+          <div
+            ref={editableContentRef}
+            contentEditable
+            style={styles.contentEditableDiv}
+          />
+        </div>
         
+        {/* Output Section */}
         <textarea
           ref={outputTextareaRef}
           value={markdownContent}
           readOnly
-          className="markdown-textarea"
+          className="textareaplaceholder"
           style={styles.textarea}
-          placeholder={htmlContent === '' ? '... and get your Markdown here' : ''}
+          placeholder={htmlContent === '' ? '... Get your Markdown here' : ''}
         />
       </div>
 
+      {/* Popup Message */}
       {popupMessage && (
         <div style={popupStyles.container}>
           <div
             style={{
               ...popupStyles.popup,
               color: popupMessage.includes('No Markdown') ? 'red' : 'white',
-              backgroundColor: popupMessage.includes('No Markdown') ? 'white' : 'black', }} > 
-                <p> <FontAwesomeIcon icon={popupMessage.includes('No Markdown') ? faExclamationCircle : faCheckCircle} 
-                  style={{ marginRight: '10px' }} /> {popupMessage} 
-                </p> 
-              </div> 
+              backgroundColor: popupMessage.includes('No Markdown') ? 'white' : 'black',
+            }} > 
+              <p>
+                <FontAwesomeIcon
+                  icon={popupMessage.includes('No Markdown') ? faExclamationCircle : faCheckCircle}
+                  style={{ marginRight: '10px' }}
+                />
+                {popupMessage}
+              </p>
             </div> 
-          )} 
-        </div> 
-      ); 
-    };
+          </div> 
+        )
+      } 
+    </div> 
+  ); 
+};
 
 const styles = { 
-  contentEditableDiv: 
-  { 
-    width: '50%', 
+  contentEditableDiv: { 
+    width: '100%', 
     padding: '10px', 
-    fontSize: '16px', 
-    marginTop: '10px', 
+    fontSize: '14px', 
     border: '1px solid #ddd', 
     height: 'calc(100vh - 160px)', 
     overflowY: 'auto', 
     boxSizing: 'border-box', 
-    marginRight: '5px', 
     backgroundColor: '#f9f9f9', 
     whiteSpace: 'pre-wrap', 
+    position: 'relative',
   }, 
-  textarea: 
-  { 
+  textarea: { 
     width: '50%', 
     padding: '10px', 
     fontSize: '16px', 
-    marginTop: '10px', 
     border: '1px solid #ddd', 
     height: 'calc(100vh - 160px)', 
     overflowY: 'auto', 
     boxSizing: 'border-box', 
     backgroundColor: '#f9f9f9', 
   }, 
-  placeholder: 
-  { 
+  placeholder: { 
     color: '#aaa', 
     fontSize: '24px', 
     position: 'absolute', 
-    marginTop: '10px', 
-    pointerEvents: 'none', 
-    top: '10px', 
-    left: '10px', 
-  }, 
-  iconButton: 
-  { 
-    marginRight: '5px', 
-    padding: '5px 10px', 
-    fontSize: '14px', 
-    cursor: 'pointer', 
+    fontWeight: 'bold',
+    top: '45%', 
+    left: '50%', 
+    transform: 'translate(-50%, -50%)',
+    pointerEvents: 'none',
+    zIndex: 1, // Ensure placeholder is above the contentEditable div
+    textAlign: 'center',
+    width: '100%',
+    padding: '0 10px', // Optional: Add some padding for better readability
   }, 
 };
 
-const popupStyles = { 
-  container: 
-  { 
-    position: 'fixed', 
-    top: 0, left: 0, 
-    width: '100%', 
-    height: '100%', 
-    display: 'flex', 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    zIndex: 1000, 
-  }, 
-  popup: 
-  { 
-    backgroundColor: 'black', // Default background color 
-    color: '#fff', 
-    padding: '20px', 
-    borderRadius: '8px', 
-    textAlign: 'center', 
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', 
-  }, 
+
+const popupStyles = {
+  container: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+  },
+  popup: {
+    backgroundColor: 'black',  // Default background color
+    color: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    textAlign: 'center',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+  },
 };
 
 export default GoogleDocsToMarkdownConverter;
