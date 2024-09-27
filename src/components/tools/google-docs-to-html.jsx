@@ -1,58 +1,99 @@
-import React, { useState, useRef } from 'react';
-import * as mammoth from 'mammoth'; // npm install mammoth
-import TextFileToTextFile from './TextFiletoTextFile'; // Import the new component
+import React, { useState, useRef, useEffect } from 'react';
+import DOMPurify from 'dompurify'; // Import DOMPurify for sanitizing HTML
+import beautify from 'js-beautify'; // Default import for js-beautify
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faCopy, faDownload, faExclamationCircle, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-import jsBeautify from 'js-beautify'; // Import js-beautify
-import '../../assets/styles/Converters.css' // Optional: Use a highlight.js theme
+import { faCopy, faDownload, faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import '../../assets/styles/Converters.css';
 
-const { html: beautifyHtml } = jsBeautify; // Extract the html beautifier from the default export
+const GoogleDocsToHtmlConverter = () => {
+  const [rawHtmlContent, setRawHtmlContent] = useState(''); // Stores raw HTML content
+  const [cleanedHtmlContent, setCleanedHtmlContent] = useState(''); // Stores cleaned/sanitized HTML content
+  const [popupMessage, setPopupMessage] = useState(''); // Stores popup messages
+  const editableContentRef = useRef(null); // Ref for the content-editable div
+  const outputTextareaRef = useRef(null); // Ref for the HTML textarea
+  const [showPlaceholder, setShowPlaceholder] = useState(true); // Controls the visibility of the placeholder
 
-const WordToHtmlConverter = () => {
-  const [htmlContent, setHtmlContent] = useState(''); // Stores the HTML content
-  const [popupMessage, setPopupMessage] = useState(''); // Stores the popup message
-  const fileInputRef = useRef(null);
+  // Destructure the 'html' function from js-beautify
+  const beautifyHtml = beautify.html;
 
-  // Convert Word document to HTML and beautify it
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (file && file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.convertToHtml({ arrayBuffer });
-        let html = result.value;
-        html = beautifyHtml(html, { indent_size: 2 }); // Beautify HTML
-        setHtmlContent(html); // Insert the converted HTML into the editor
-      } catch (error) {
-        console.error('Error converting file:', error);
+  useEffect(() => {
+    const handleContentChange = () => {
+      const editableDiv = editableContentRef.current;
+      if (editableDiv) {
+        const newHtmlContent = editableDiv.innerHTML || '';
+        setRawHtmlContent(newHtmlContent);
+
+        // Determine if the input is empty to toggle placeholder
+        const isEmpty = editableDiv.textContent.trim() === '';
+        setShowPlaceholder(isEmpty);
+
+        // Clean, sanitize, and beautify the HTML content
+        const cleaned = cleanUpGoogleDocsContent(newHtmlContent);
+        setCleanedHtmlContent(cleaned || '');
       }
+    };
+
+    if (editableContentRef.current) {
+      editableContentRef.current.addEventListener('input', handleContentChange);
+      return () => {
+        editableContentRef.current.removeEventListener('input', handleContentChange);
+      };
+    }
+  }, []);
+
+  // Function to clean, sanitize, and beautify Google Docs HTML content
+
+  const cleanUpGoogleDocsContent = (html) => {
+    let cleanedHtml = (html || '')
+    .replace(/<span[^>]*>(.*?)<\/span>/gi, '$1') // Remove <span> tags but keep inner content
+    .replace(/style="[^"]*"/gi, ''); // Trim leading and trailing whitespace
+
+    // Use DOMPurify to sanitize the HTML
+    cleanedHtml = DOMPurify.sanitize(cleanedHtml, { USE_PROFILES: { html: true } });
+
+    // Use js-beautify to format the HTML
+    const beautifyOptions = {
+        indent_size: 2,
+        space_in_empty_paren: true,
+        wrap_line_length: 80,
+        end_with_newline: true,
+    };
+    cleanedHtml = beautify.html(cleanedHtml, beautifyOptions);
+
+    return cleanedHtml || ''; // Return empty string if content is null or undefined
+};
+
+  
+  // Function to handle copying HTML content to clipboard
+  const handleCopy = () => {
+    if (cleanedHtmlContent) {
+      navigator.clipboard.writeText(cleanedHtmlContent).then(() => {
+        setPopupMessage('HTML copied to clipboard.');
+        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        setPopupMessage('Failed to copy HTML.');
+        setTimeout(() => setPopupMessage(''), 3000);
+      });
     } else {
-      alert('Please upload a valid Word document (.docx).');
+      setPopupMessage('No HTML content to copy.');
+      setTimeout(() => setPopupMessage(''), 3000);
     }
   };
 
-  // Handle content copy to clipboard
-  const handleCopy = () => {
-    if (htmlContent) { 
-    navigator.clipboard.writeText(htmlContent).then(() => {
-      setPopupMessage('Html copied to clipboard.');
-      setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
-  } else {
-    setPopupMessage('No Html content to copy.');
-    setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
-  } 
-  };
-
-  // Download content as a text file
+  // Function to handle downloading HTML content as a file
   const handleDownload = () => {
-    const blob = new Blob([htmlContent], { type: 'text/html' });
+    if (!cleanedHtmlContent) {
+      setPopupMessage('No HTML content to download.');
+      setTimeout(() => setPopupMessage(''), 3000);
+      return;
+    }
+
+    const blob = new Blob([cleanedHtmlContent], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'content.html';
+    a.download = 'GoogleDocsContent.html';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -61,56 +102,112 @@ const WordToHtmlConverter = () => {
 
   return (
     <div>
-      {/* Toolbar for uploading Word document */}
-      <div style={{ padding: '10px', borderBottom: '1px solid #ddd' }}>
-        <input
-          type="file"
-          accept=".docx"
-          ref={fileInputRef}
-          onChange={handleFileUpload}
-          style={{ display: 'none' }}
-        />
-        <button className='iconButton' onClick={() => fileInputRef.current.click()}>
-          <FontAwesomeIcon icon={faUpload} /> Upload Google Docs
-        </button>
-        <div style={{ float: 'right'}}>
-          <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
-            <FontAwesomeIcon icon={faCopy} /> Copy Html
-          </button>
-          <button className='iconButton' onClick={handleDownload}>
-            <FontAwesomeIcon icon={faDownload} /> Download Html
-          </button>
+        {/* Action Buttons */}
+        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+            <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
+                <FontAwesomeIcon icon={faCopy} />  Copy HTML
+            </button>
+            <button className='iconButton' onClick={handleDownload}>
+                <FontAwesomeIcon icon={faDownload} />  Download HTML
+            </button>
         </div>
-      </div>
 
-      {/* Reuse TextFileToTextFile Component */}
-      <TextFileToTextFile content={htmlContent} setContent={setHtmlContent} />
+        {/* Input and Output Sections */}
+        <div style={{ display: 'flex', flexGrow: 1, marginTop: '10px', height: 'calc(100vh - 160px)' }}>
+            {/* Input Section with Placeholder */}
+            <div style={{ position: 'relative', width: '50%', marginRight: '5px' }}>
+                {showPlaceholder && (
+                    <span style={styles.placeholder}>
+                        Paste your Google Docs here ...
+                    </span>
+                )}
+                <div
+                    ref={editableContentRef}
+                    contentEditable
+                    style={styles.contentEditableDiv}
+                    suppressContentEditableWarning={true} // Suppress React warnings for contentEditable
+                />
+            </div>
 
-      {/* Simple Popup */}
-      {popupMessage && (
-   <div style={popupStyles.container}>
-  <div
-    style={{
-      ...popupStyles.popup,
-      color: popupMessage.includes('No Html') ? 'red' : 'white',
-      backgroundColor: popupMessage.includes('No Html') ? 'white' : 'black', // Conditionally apply red or black
-    }}
-  >
-    <p>
-      <FontAwesomeIcon
-        icon={popupMessage.includes('No Html') ? faExclamationCircle : faCheckCircle}
-        style={{ marginRight: '10px' }}
-      />
-      {popupMessage}
-    </p>
-  </div>
-</div>
-)}
+            {/* Output Section as a Textarea */}
+            <textarea
+                value={cleanedHtmlContent} // Directly use cleanedHtmlContent here
+                readOnly
+                className="textareaplaceholder"
+                style={styles.textarea}
+                placeholder={cleanedHtmlContent === '' ? '... Get your HTML here' : ''}
+            />
+        </div>
+
+        {/* Popup Message */}
+        {popupMessage && (
+            <div style={popupStyles.container}>
+                <div
+                    style={{
+                        ...popupStyles.popup,
+                        color: popupMessage.includes('Failed') || popupMessage.includes('No HTML') ? 'red' : 'white',
+                        backgroundColor: popupMessage.includes('Failed') || popupMessage.includes('No HTML') ? 'white' : 'black',
+                    }}
+                >
+                    <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <FontAwesomeIcon
+                            icon={popupMessage.includes('Failed') || popupMessage.includes('No HTML') ? faExclamationCircle : faCheckCircle}
+                            style={{ marginRight: '10px' }}
+                        />
+                        {popupMessage}
+                    </p>
+                </div>
+            </div>
+        )}
     </div>
-  );
+);
+   
 };
 
-// Inline styles for popup
+const styles = {
+  contentEditableDiv: {
+    width: '100%',
+    padding: '10px',
+    fontSize: '14px',
+    border: '1px solid #ddd',
+    height: '100%',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    backgroundColor: '#f9f9f9',
+    whiteSpace: 'pre-wrap',
+    position: 'relative',
+    borderRadius: '4px',
+    minHeight: '300px', // Ensure a minimum height for better UX
+  },
+  textarea: {
+    width: '50%', 
+    padding: '10px',
+    fontSize: '14px',
+    border: '1px solid #ddd',
+    height: '100%',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '4px',
+    resize: 'none', // Use monospace font for code-like display
+  },
+  placeholder: {
+    color: '#aaa',
+    fontSize: '24px',
+    position: 'absolute',
+    fontWeight: 'bold',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    pointerEvents: 'none',
+    zIndex: 1, // Ensure placeholder is above the contentEditable div
+    textAlign: 'center',
+    width: '100%',
+    padding: '0 10px', // Add padding for better readability
+  },
+};
+
+
 const popupStyles = {
   container: {
     position: 'fixed',
@@ -122,15 +219,19 @@ const popupStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
+    pointerEvents: 'none', // Allow clicks to pass through
   },
   popup: {
-    backgroundColor: 'black',  // Default background color
+    backgroundColor: '#4BB543',  // Green background for success
     color: '#fff',
-    padding: '20px',
+    padding: '20px 30px',
     borderRadius: '8px',
     textAlign: 'center',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+    pointerEvents: 'all', // Enable interaction with the popup
+    display: 'flex',
+    alignItems: 'center',
   },
 };
 
-export default WordToHtmlConverter;
+export default GoogleDocsToHtmlConverter;
