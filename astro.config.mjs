@@ -6,7 +6,6 @@ import tailwind from "@astrojs/tailwind";
 import customToc from "astro-custom-toc";
 
 import react from '@astrojs/react';
-
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
@@ -109,6 +108,13 @@ export default defineConfig({
       alias: {
         "~": path.resolve(__dirname, "./src"),
       },
+    },
+    ssr: {
+      noExternal: ['@fontsource-variable/inter'],
+    },
+    optimizeDeps: {
+      exclude: ['unist-util-visit'],
+      include: [],
     },
   },
 });

@@ -1,0 +1,38 @@
+.iconButton {
+    background-color: #2772ed; /* Keeping the existing color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 13px; /* Adjust font size */
+    cursor: pointer;
+    justify-content: space-between;
+ /* Add margin between buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+  
+  .iconButton:hover {
+    background-color: #1a5bb8; /* Slightly darker shade for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .iconButton:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
+  }
+
+  .textareaplaceholder::placeholder {
+    font-size: 24px; /* increase font size */
+    color: #aaa; /* change text color */
+    font-weight: bold;
+    text-align: center;
+    padding-top: 60%;
+  }
+
+  /* .textareaplaceholder::-webkit-input-placeholder {
+    transform: translate(0, 790%); /* center vertically for webkit browsers }*/
+
+
+
+  /* Styles for the popup container */

@@ -1,0 +1,53 @@
+---
+title: 'Markdown to Word Converter'
+description: 'Convert Markdown content to Microsoft Word format and download it easily.'
+---
+
+import Layout from '~/layouts/PageLayout.astro';
+import MarkdownToWordConverter from '../components/tools/markdown-to-word'; 
+import Sidebar from '../components/widgets/Sidebar.astro';
+
+<Layout metadata={{ title: 'Markdown to Word Converter', description: 'Convert Markdown content to Microsoft Word format and download it easily.' }}>
+  
+  {/* Total Page Container */}
+  <div style="display: flex;">
+    {/* Content and Sidebar Container */}
+    {/* Main Content Section (80%) */}
+    <div style="width: 80%; padding-right: 20px;">
+      {/* Title and Introduction inside Main Content */}
+      <div>
+        <div style="padding-left:30px;">
+          <h1 style="color: #2772ed; font-size:32px; font-weight: bold;">Convert Markdown to Word Online - Free</h1>
+          <p>Use this tool to convert Markdown content into Microsoft Word documents online for free. Easily generate clean Word documents from Markdown text.<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b">Docs to Markdown Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:#2772ed"></i>&nbsp; Add-on to convert Markdown documents directly to Word.</p>
+        </div>
+        <div style="text-align: center;">
+          <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
+            <div style="display: inline-block;">
+              <img alt="Google Workspace Marketplace badge" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 65px; padding-top: 10px" />
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Markdown to Word Converter Component */}
+      <main style="padding-left: 20px; padding-right: 20px">
+        <MarkdownToWordConverter client:load />
+      </main>
+
+      {/* Instructions Section */}
+      <section style="padding-left: 30px; padding-top: 30px;">
+        <h2 style="color: black; font-size: 18px; font-weight: bold;">How to convert Markdown to Word documents using this online tool?</h2>
+        <ol style="line-height: 1.8; font-size: 17px; padding: 0px 15px;">
+          <li>1. Paste your Markdown content into the input text box on the left side.</li>
+          <li>2. The content will automatically be converted to Word format in the output area.</li>
+          <li>3. Use the <strong>Copy HTML</strong> button to copy the generated HTML content.</li>
+          <li>4. Use the <strong>Download HTML</strong> button to download the Word document.</li>
+          <li>5. Open your desired Word processor and paste the copied content or open the downloaded file.</li>
+        </ol>
+      </section>
+    </div>
+    
+    {/* Sidebar Section (20%) */}
+    <Sidebar height="5%" />
+  </div>
+</Layout>

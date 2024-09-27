@@ -6,8 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBold, faItalic, faUnderline, faListOl, faListUl, faQuoteRight,
-  faCode, faImage, faLink, faHighlighter, faHeading, faTable, faEraser, faUndo,
-  faRedo, faCopy, faDownload
+  faLink, faTable, faEraser, faUndo, faRedo, faCopy, faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import ReactDOMServer from 'react-dom/server';
 import 'highlight.js/styles/github.css';
@@ -100,31 +99,6 @@ const MarkdownEditor = () => {
     }
   };
   
-  // Specific handler for image button
-  const handleImage = () => {
-    const imageSyntax = '![Alt text](image-url)';
-    const textarea = inputRef.current;
-    if (textarea) {
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const currentContent = textarea.value;
-  
-      // Check if the selected text is empty and replace it with image syntax
-      let newContent;
-      if (currentContent.substring(start, end).trim() === '') {
-        newContent = currentContent.substring(0, start) + imageSyntax + currentContent.substring(end);
-      } else {
-        newContent = currentContent.substring(0, start) + imageSyntax + currentContent.substring(end);
-      }
-  
-      updateContent(newContent);
-      
-      // Set cursor position after the inserted image syntax
-      textarea.setSelectionRange(start + imageSyntax.length, start + imageSyntax.length);
-      textarea.focus();
-    }
-  };
-
   // Clear the editor content
   const handleClear = () => {
     updateContent(''); // Clear the editor
@@ -134,16 +108,11 @@ const MarkdownEditor = () => {
   const handleBold = () => wrapSelectedText('**');
   const handleItalic = () => wrapSelectedText('_');
   const handleUnderline = () => wrapSelectedText('__');
-  const handleHeader1 = () => wrapSelectedText('# ');
-  const handleHeader2 = () => wrapSelectedText('## ');
-  const handleHeader3 = () => wrapSelectedText('### ');
   const handleOrderedList = () => wrapSelectedText('1. ');
   const handleUnorderedList = () => wrapSelectedText('* ');
   const handleQuote = () => wrapSelectedText('> ');
   const handleTable = () => wrapSelectedText('| Header 1 | Header 2 |\n| --- | --- |\n| Row 1 Col 1 | Row 1 Col 2 |\n| Row 2 Col 1 | Row 2 Col 2 |');
-  const handleCode = () => wrapSelectedText('```javascript\n', '\n```');
   const handleLink = () => wrapSelectedText('[', '](https://example.com)');
-  const handleHighlight = () => wrapSelectedText('==', '==');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -152,17 +121,11 @@ const MarkdownEditor = () => {
         <button onClick={handleBold} style={styles.iconButton}><FontAwesomeIcon icon={faBold} /></button>
         <button onClick={handleItalic} style={styles.iconButton}><FontAwesomeIcon icon={faItalic} /></button>
         <button onClick={handleUnderline} style={styles.iconButton}><FontAwesomeIcon icon={faUnderline} /></button>
-        <button onClick={handleHeader1} style={styles.iconButton}><FontAwesomeIcon icon={faHeading} />1</button>
-        <button onClick={handleHeader2} style={styles.iconButton}><FontAwesomeIcon icon={faHeading} />2</button>
-        <button onClick={handleHeader3} style={styles.iconButton}><FontAwesomeIcon icon={faHeading} />3</button>
         <button onClick={handleOrderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListOl} /></button>
         <button onClick={handleUnorderedList} style={styles.iconButton}><FontAwesomeIcon icon={faListUl} /></button>
         <button onClick={handleQuote} style={styles.iconButton}><FontAwesomeIcon icon={faQuoteRight} /></button>
         <button onClick={handleTable} style={styles.iconButton}><FontAwesomeIcon icon={faTable} /></button>
-        <button onClick={handleCode} style={styles.iconButton}><FontAwesomeIcon icon={faCode} /></button>
-        <button onClick={handleImage} style={styles.iconButton}><FontAwesomeIcon icon={faImage} /></button>
         <button onClick={handleLink} style={styles.iconButton}><FontAwesomeIcon icon={faLink} /></button>
-        <button onClick={handleHighlight} style={styles.iconButton}><FontAwesomeIcon icon={faHighlighter} /></button>
         <button onClick={handleClear} style={styles.iconButton}><FontAwesomeIcon icon={faEraser} /> </button>
         <button onClick={handleUndo} style={styles.iconButton}><FontAwesomeIcon icon={faUndo} /> </button>
         <button onClick={handleRedo} style={styles.iconButton}><FontAwesomeIcon icon={faRedo} /> </button>

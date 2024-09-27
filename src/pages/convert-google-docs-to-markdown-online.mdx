@@ -4,7 +4,7 @@ description: "This tool converts Google Docs to Markdown online for free. Paste 
 ---
 
 import Layout from '~/layouts/PageLayout.astro';
-import WordToMarkdownConverter from '../components/tools/google-docs-to-markdown'; 
+import GoogleDocsToMarkdownConverter from '../components/tools/google-docs-to-markdown'; 
 import Sidebar from '../components/widgets/Sidebar.astro';
 
 
@@ -19,7 +19,7 @@ import Sidebar from '../components/widgets/Sidebar.astro';
       <div>
         <div style="padding-left:30px;">
           <h1 style="color: #2772ed; font-size:32px; font-weight: bold;">Convert Google Docs to Markdown Online - Free</h1>
-          <p>You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a> &nbsp; <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to Markdown within the Google Docs window. <b> It helps generate publish-ready Markdown by downloading images and the Markdown file as a ZIP archive.</b></p>
+          <p>You can use this tool to convert Google Docs to Markdown online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804">Docs to Markdown Pro</a>  <i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Add-on to convert the Google Docs to Markdown within the Google Docs window. <b> It helps generate publish-ready Markdown by downloading images and the Markdown file as a ZIP archive.</b></p>
         </div>
         <div style="text-align: center;">
           <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
@@ -32,7 +32,7 @@ import Sidebar from '../components/widgets/Sidebar.astro';
 
       {/* Word to Markdown Converter Component */}
       <main style="padding-left: 20px; padding-right: 20px">
-        <WordToMarkdownConverter client:load />
+        <GoogleDocsToMarkdownConverter   client:load />
       </main>
 
       {/* Instructions Section */}

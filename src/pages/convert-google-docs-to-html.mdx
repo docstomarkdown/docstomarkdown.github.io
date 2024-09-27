@@ -4,7 +4,7 @@ description: "This tool converts Google Docs to HTML online for free. Paste the 
 ---
 
 import Layout from '~/layouts/PageLayout.astro';
-import WordToHtmlConverter from '../components/tools/google-docs-to-html';
+import GoogleDocsToHtmlConverter from '../components/tools/google-docs-to-html';
 import Sidebar from '../components/widgets/Sidebar.astro';
 
 <Layout metadata={{ title: 'Convert Google Docs to HTML Online - Free', description: "This tool converts Google Docs to HTML online for free. Paste the Google Docs content into the input text box and get the Clean HTML in the output text box." }}>
@@ -32,7 +32,7 @@ import Sidebar from '../components/widgets/Sidebar.astro';
 
       {/* Google Docs to HTML Converter Component */}
       <main style="padding-left: 20px; padding-right: 20px">
-        <WordToHtmlConverter client:load />
+        <GoogleDocsToHtmlConverter client:load />
       </main>
 
       {/* Instructions Section */}
