@@ -67,14 +67,19 @@ const GoogleDocsToHtmlConverter = () => {
   // Function to handle copying HTML content to clipboard
   const handleCopy = () => {
     if (cleanedHtmlContent) {
-      navigator.clipboard.writeText(cleanedHtmlContent).then(() => {
-        setPopupMessage('HTML copied to clipboard.');
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-        setPopupMessage('Failed to copy HTML.');
-        setTimeout(() => setPopupMessage(''), 3000);
-      });
+      const blob = new Blob([cleanedHtmlContent], { type: 'text/html' });
+      const clipboardItem = new ClipboardItem({ 'text/html': blob });
+  
+      navigator.clipboard.write([clipboardItem])
+        .then(() => {
+          setPopupMessage('Copied as rich text to clipboard.');
+          setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        })
+        .catch((err) => {
+          console.error('Failed to copy rich text: ', err);
+          setPopupMessage('Failed to copy HTML as rich text.');
+          setTimeout(() => setPopupMessage(''), 3000);
+        });
     } else {
       setPopupMessage('No HTML content to copy.');
       setTimeout(() => setPopupMessage(''), 3000);
