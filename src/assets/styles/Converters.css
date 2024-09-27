@@ -22,9 +22,17 @@
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Focus ring */
   }
 
-  .markdown-textarea::placeholder {
+  .textareaplaceholder::placeholder {
     font-size: 24px; /* increase font size */
     color: #aaa; /* change text color */
+    font-weight: bold;
+    text-align: center;
+    padding-top: 250px;
   }
+
+  /* .textareaplaceholder::-webkit-input-placeholder {
+    transform: translate(0, 790%); /* center vertically for webkit browsers }*/
+
+
 
   /* Styles for the popup container */
