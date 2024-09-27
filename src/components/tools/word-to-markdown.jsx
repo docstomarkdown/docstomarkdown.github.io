@@ -15,6 +15,7 @@ const WordToMarkdownConverter = () => {
   const fileInputRef = useRef(null); // Ref for file input
   const [showPlaceholder, setShowPlaceholder] = useState(true); // Show placeholder for input
 
+  // Initialize TurndownService with GFM plugin
   const turndownService = new TurndownService({
     headingStyle: 'atx',
   });
@@ -63,6 +64,7 @@ const WordToMarkdownConverter = () => {
         editableContentRef.current.removeEventListener('input', handleContentChange);
       };
     }
+  }, []);
   }, []);
 
   // Function to clean up unnecessary Word HTML elements

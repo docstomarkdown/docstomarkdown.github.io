@@ -1,20 +1,64 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TurndownService from 'turndown';
+import TurndownService from 'turndown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy, faDownload, faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
 import { faCopy, faDownload, faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { gfm } from 'turndown-plugin-gfm'; // Import the GFM plugin
 import '../../assets/styles/Converters.css';
 
 const GoogleDocsToMarkdownConverter = () => {
   const [htmlContent, setHtmlContent] = useState(''); // Stores raw content
+const GoogleDocsToMarkdownConverter = () => {
+  const [htmlContent, setHtmlContent] = useState(''); // Stores raw content
   const [markdownContent, setMarkdownContent] = useState(''); // Stores the Markdown content
+  const [popupMessage, setPopupMessage] = useState(''); // Stores popup message
+  const editableContentRef = useRef(null); // Ref for content-editable div
   const [popupMessage, setPopupMessage] = useState(''); // Stores popup message
   const editableContentRef = useRef(null); // Ref for content-editable div
   const outputTextareaRef = useRef(null); // Ref for Markdown textarea
   const [showPlaceholder, setShowPlaceholder] = useState(true); // Show placeholder for input
+  const [showPlaceholder, setShowPlaceholder] = useState(true); // Show placeholder for input
 
   const turndownService = new TurndownService({
     headingStyle: 'atx',
+  });
+  
+  turndownService.use(gfm); // Enable GFM (GitHub-Flavored Markdown) support including tables
+
+  // Custom rule to handle bold conversion
+  turndownService.addRule('bold', {
+    filter: (node) => node.style.fontWeight === '700' || node.tagName === 'STRONG',
+    replacement: (content) => `**${content}**`,
+  });
+  
+  // Custom rule to handle italic conversion
+  turndownService.addRule('italic', {
+    filter: (node) => node.nodeName === 'I' || node.nodeName === 'EM' || node.style.fontStyle === 'italic',
+    replacement: (content, node) => {
+      return `*${content}*`;
+    }
+  });
+
+  // Custom rule to handle table conversion
+  turndownService.addRule('table', {
+    filter: 'table',
+    replacement: function (content, node) {
+      const rows = Array.from(node.querySelectorAll('tr')).map((row) => {
+        const cells = Array.from(row.querySelectorAll('th, td')).map((cell) => {
+          const cellText = cell.textContent.trim();
+          return cellText ? `**${cellText}**` : ''; // Prevent undefined
+        });
+        return `| ${cells.join(' | ')} |`;
+      });
+
+      if (rows.length > 0) {
+        const headerDivider = `${rows[0].split('|').map(cell => '-'.repeat(cell.trim().length)).join(' | ')}`;
+        return `\n\n${rows[0]}\n${headerDivider}\n${rows.slice(1).join('\n')}\n\n`;
+      }
+      return ''; // Return empty string if no rows
+    },
   });
   
   turndownService.use(gfm); // Enable GFM (GitHub-Flavored Markdown) support including tables
@@ -58,8 +102,16 @@ const GoogleDocsToMarkdownConverter = () => {
       const editableDiv = editableContentRef.current;
       if (editableDiv) {
         const newHtmlContent = editableDiv.innerHTML || '';
+        const newHtmlContent = editableDiv.innerHTML || '';
         setHtmlContent(newHtmlContent);
 
+        // Check if the text content is empty
+        const isEmpty = editableDiv.textContent.trim() === '';
+        setShowPlaceholder(isEmpty);
+
+        const cleanedHtmlContent = cleanUpGoogleDocsContent(newHtmlContent);
+        const markdown = turndownService.turndown(cleanedHtmlContent || '');
+        setMarkdownContent(markdown || '');
         // Check if the text content is empty
         const isEmpty = editableDiv.textContent.trim() === '';
         setShowPlaceholder(isEmpty);
@@ -77,7 +129,29 @@ const GoogleDocsToMarkdownConverter = () => {
       };
     }
   }, []);
+  }, []);
 
+  // Clean up unnecessary Google Docs HTML elements
+  const cleanUpGoogleDocsContent = (html) => {
+    let cleanedHtml = (html || '')
+      .replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>') // Replace <b> with <strong>
+      .replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>') // Replace <i> with <em>
+      .replace(/<u>(.*?)<\/u>/gi, '<u>$1</u>') // Replace <u> with <u>
+      .replace(/<div>/gi, '<p>') // Replace divs with paragraphs
+      .replace(/<\/div>/gi, '</p>') // Close divs as paragraphs
+      .replace(/<br\s*\/?>/gi, '\n') // Replace <br> with newlines
+      .replace(/<\/?o:p>/gi, '') // Remove any <o:p> tags
+      .replace(/\n\s*\n/g, '\n') // Collapse multiple newlines into one
+      .replace(/^\s+|\s+$/g, '') // Trim leading/trailing spaces
+      .replace(/<h(\d)>(.*?)<\/h\d>/gi, (match, level, content) => { // Handle headings
+        const headingLevel = '#'.repeat(level); // Create Markdown heading
+        return `${headingLevel} ${content.trim()}`;
+      });
+      
+    return cleanedHtml || ''; // Return empty string if content is null/undefined
+  };
+
+  // Handle copying Markdown content
   // Clean up unnecessary Google Docs HTML elements
   const cleanUpGoogleDocsContent = (html) => {
     let cleanedHtml = (html || '')
@@ -114,7 +188,14 @@ const GoogleDocsToMarkdownConverter = () => {
   };
 
   // Handle Markdown file download
+  // Handle Markdown file download
   const handleDownload = () => {
+    if (!markdownContent) {
+      setPopupMessage('No Markdown content to download.');
+      setTimeout(() => setPopupMessage(''), 3000);
+      return;
+    }
+
     if (!markdownContent) {
       setPopupMessage('No Markdown content to download.');
       setTimeout(() => setPopupMessage(''), 3000);
@@ -126,6 +207,7 @@ const GoogleDocsToMarkdownConverter = () => {
     const a = document.createElement('a');
     a.href = url;
     a.download = 'MarkdownFile.md';
+    a.download = 'MarkdownFile.md';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -134,6 +216,14 @@ const GoogleDocsToMarkdownConverter = () => {
 
   return (
     <div>
+      {/* Action Buttons */}
+      <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+        <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
+          <FontAwesomeIcon icon={faCopy} />  Copy Markdown
+        </button>
+        <button className='iconButton' onClick={handleDownload}>
+          <FontAwesomeIcon icon={faDownload} />  Download Markdown
+        </button>
       {/* Action Buttons */}
       <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
         <button className='iconButton' style={{ marginRight: 10 }} onClick={handleCopy}>
@@ -158,7 +248,23 @@ const GoogleDocsToMarkdownConverter = () => {
             contentEditable
             style={styles.contentEditableDiv}
           />
+      {/* Input and Output Sections */}
+      <div style={{ display: 'flex', flexGrow: 1, marginTop: '10px' }}>
+        {/* Input Section with Placeholder */}
+        <div style={{ position: 'relative', width: '50%', marginRight: '5px' }}>
+          {showPlaceholder && (
+            <span style={styles.placeholder}>
+              Paste your Google Docs here ...
+            </span>
+          )}
+          <div
+            ref={editableContentRef}
+            contentEditable
+            style={styles.contentEditableDiv}
+          />
         </div>
+        
+        {/* Output Section */}
         
         {/* Output Section */}
         <textarea
@@ -166,11 +272,14 @@ const GoogleDocsToMarkdownConverter = () => {
           value={markdownContent}
           readOnly
           className="textareaplaceholder"
+          className="textareaplaceholder"
           style={styles.textarea}
+          placeholder={htmlContent === '' ? '... Get your Markdown here' : ''}
           placeholder={htmlContent === '' ? '... Get your Markdown here' : ''}
         />
       </div>
 
+      {/* Popup Message */}
       {/* Popup Message */}
       {popupMessage && (
         <div style={popupStyles.container}>
@@ -179,6 +288,20 @@ const GoogleDocsToMarkdownConverter = () => {
               ...popupStyles.popup,
               color: popupMessage.includes('No Markdown') ? 'red' : 'white',
               backgroundColor: popupMessage.includes('No Markdown') ? 'white' : 'black',
+            }} > 
+              <p>
+                <FontAwesomeIcon
+                  icon={popupMessage.includes('No Markdown') ? faExclamationCircle : faCheckCircle}
+                  style={{ marginRight: '10px' }}
+                />
+                {popupMessage}
+              </p>
+            </div> 
+          </div> 
+        )
+      } 
+    </div> 
+  ); 
             }} > 
               <p>
                 <FontAwesomeIcon
@@ -239,6 +362,7 @@ const styles = {
 };
 
 
+
 const popupStyles = {
   container: {
     position: 'fixed',
@@ -261,4 +385,5 @@ const popupStyles = {
   },
 };
 
+export default GoogleDocsToMarkdownConverter;
 export default GoogleDocsToMarkdownConverter;
