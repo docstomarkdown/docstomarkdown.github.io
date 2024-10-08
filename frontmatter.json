@@ -27,8 +27,9 @@
       "name": "post",
       "previewPath": "'post'",
       "defaultFileName": "{{title}}",
-      "filePrefix":null,
+      "filePrefix": null,
       "pageBundle": false,
+      "template": "[[workspace]]/.frontmatter/templates/template.md",
       "clearEmpty": true,
       "fields": [
         {
@@ -46,12 +47,11 @@
           "type": "draft",
           "default": false
         },
-        
         {
-            "name": "showToc",
-            "type": "string",
-            "default": true
-          },
+          "name": "showToc",
+          "type": "string",
+          "default": true
+        },
         {
           "name": "title",
           "type": "string",
@@ -59,12 +59,12 @@
           "required": true
         },
         {
-            "title": "Slug",
-            "name": "slug",
-            "type": "slug",
-            "editable": true,
-            "default": "{{slug}}"
-          },
+          "title": "Slug",
+          "name": "slug",
+          "type": "slug",
+          "editable": true,
+          "default": "{{slug}}"
+        },
         {
           "name": "excerpt",
           "type": "string",
@@ -74,7 +74,7 @@
         {
           "name": "image",
           "type": "image",
-          "default" :"https://www.mergedocs.pro/",
+          "default": "https://www.mergedocs.pro/",
           "isPreviewImage": true
         },
         {
@@ -202,5 +202,6 @@
       ]
     }
   ],
-  "frontMatter.git.enabled": true
+  "frontMatter.git.enabled": true,
+  "frontMatter.content.snippets": {}
 }
