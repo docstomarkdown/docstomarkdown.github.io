@@ -5,6 +5,7 @@ draft: false
 title: How to Change Image Size in Markdown
 image: https://www.docstomarkdown.pro/open-graph-change-image-size-in-markdown.png
 type: post
+showToc: true
 slug: change-image-size-in-markdown
 excerpt: This tutorial teaches you how to change the image size in native Markdown, Pandoc Markdown and in the Kramdown Markdown processor.
 ---
@@ -13,9 +14,7 @@ Markdown is a widely used text formatting language for creating online content. 
 
 This tutorial teaches you how to change image size in different flavours of Markdown: 
 
-1. Changing image size in vanilla Markdown using HTML attributes
-2. Changing image size in Pandoc Markdown using Image dimensions attribute
-3. Changing image size in Kramdown Markdown Processor
+<!-- toc -->
 
 ## Changing Image Size Using HTML Img Tag and Attributes
 
