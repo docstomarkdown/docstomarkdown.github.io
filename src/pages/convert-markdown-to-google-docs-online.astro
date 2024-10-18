@@ -24,7 +24,8 @@ const metadata = {
       </a>
     </div>
     <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-   
+      <button id="download-button" class="tool-styled-button-new"> Create new blank Google Docs</button>
+
       <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
     </div>
     <main class="twocols">
@@ -115,6 +116,13 @@ const metadata = {
       toHTML();
     });
 
+    var downloadButton = document.getElementById('download-button');
+        if (window.URL && window.File) {
+        downloadButton.style.display = '';
+        downloadButton.addEventListener('click', () => {
+            window.open('https://docs.new', '_blank');
+        });
+    }
     
     var copyButtonForTextCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
