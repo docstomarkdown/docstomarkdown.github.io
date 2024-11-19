@@ -21,6 +21,9 @@ import sentry from "@sentry/astro";
 import { customTemplate } from './src/utils/customTocTemplate.ts'; // Import your custom template function
 
 
+import expressiveCode from "astro-expressive-code";
+
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hasExternalScripts = false;
 const whenExternalScripts = (items = []) =>
@@ -33,74 +36,70 @@ const whenExternalScripts = (items = []) =>
 // https://astro.build/config
 export default defineConfig({
   output: "static",
-  integrations: [
-    sentry({
-      dsn: "https://3502dc747e79fa21814b87fdbc9bad28@o4507275942952960.ingest.us.sentry.io/4507275945443328",
-      sourceMapsUploadOptions: {
-        project: "docs-to-markdown-pro",
-        authToken: "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",
-      },
-    }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    react(),
-    sitemap({
-      filter: (page) =>
-        !page.startsWith("https://www.docstomarkdown.pro/tag/") &&
-        !page.startsWith("https://www.docstomarkdown.pro/blog/"),
-    }),
-    customToc({
-        template: customTemplate,  // Use your custom template function here
-        maxDepth: 3,               // Optional: Set maximum depth of the TOC
-        ordered: false             // Optional: Set whether the TOC should be ordered
-    }),
-    mdx(),
-    icon({
-      include: {
-        tabler: ["*"],
-        "flat-color-icons": [
-          "template",
-          "gallery",
-          "approval",
-          "document",
-          "advertising",
-          "currency-exchange",
-          "voice-presentation",
-          "business-contact",
-          "database",
-        ],
-      },
-    }),
-    ...whenExternalScripts(() =>
-      partytown({
-        config: {
-          forward: ["dataLayer.push"],
-        },
-      })
-    ),
-    /*compress({
-    CSS: true,
-    HTML: {
-      'html-minifier-terser': {
-        removeAttributeQuotes: false,
-      },
+  integrations: [sentry({
+    dsn: "https://3502dc747e79fa21814b87fdbc9bad28@o4507275942952960.ingest.us.sentry.io/4507275945443328",
+    sourceMapsUploadOptions: {
+      project: "docs-to-markdown-pro",
+      authToken: "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",
     },
-    Image: false,
-    JavaScript: true,
-    SVG: false,
-    Logger: 1,
-  }),*/
+  }), tailwind({
+    applyBaseStyles: false,
+  }), react(), sitemap({
+    filter: (page) =>
+      !page.startsWith("https://www.docstomarkdown.pro/tag/") &&
+      !page.startsWith("https://www.docstomarkdown.pro/blog/"),
+  }), customToc({
+      template: customTemplate,  // Use your custom template function here
+      maxDepth: 3,               // Optional: Set maximum depth of the TOC
+      ordered: false             // Optional: Set whether the TOC should be ordered
+  }), expressiveCode(), mdx(), icon({
+    include: {
+      tabler: ["*"],
+      "flat-color-icons": [
+        "template",
+        "gallery",
+        "approval",
+        "document",
+        "advertising",
+        "currency-exchange",
+        "voice-presentation",
+        "business-contact",
+        "database",
+      ],
+    },
+  }), ...whenExternalScripts(() =>
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    })
+  ), /*compress({
+  CSS: true,
+  HTML: {
+    'html-minifier-terser': {
+      removeAttributeQuotes: false,
+    },
+  },
+  Image: false,
+  JavaScript: true,
+  SVG: false,
+  Logger: 1,
+}),*/
 
-    astrowind({
-      config: "./src/config.yaml",
-    }),
-  ],
+  astrowind({
+    config: "./src/config.yaml",
+  }), expressiveCode()],
   image: {
     service: squooshImageService(),
     domains: ["cdn.pixabay.com"],
   },
   markdown: {
+    shikiConfig: {
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark',
+        },
+      },
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
