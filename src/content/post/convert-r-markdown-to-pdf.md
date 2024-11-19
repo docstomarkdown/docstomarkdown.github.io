@@ -252,3 +252,4 @@ With the added flexibility of LaTeX, you can further customize your PDF output t
 ## See Also
 
 - [Convert Markdown to Google Docs](/convert-markdown-to-google-docs/)
+- [Convert Markdown to PDF using Pandoc](/convert-markdown-to-pdf-using-pandoc/)
