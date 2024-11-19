@@ -7,7 +7,7 @@ title: Convert Markdown to PDF using Pandoc
 slug: convert-markdown-to-pdf-using-pandoc
 excerpt: "This tutorial offers a comprehensive guide on converting Markdown to PDF using Pandoc. It includes essential installation instructions, prerequisites, fundamental commands, and advanced customization techniques to produce high-quality, professional documents efficiently."
 type: post
-image: https://www.dcostomarkdown.pro/open-graph-markdown-to-pdf-pandoc.png
+image: https://www.docstomarkdown.pro/open-graph-markdown-to-pdf-pandoc.png
 ---
 
 Pandoc, a powerful command-line tool, simplifies the process of converting Markdown files to PDF, enabling users to create professional-quality documents with ease.
