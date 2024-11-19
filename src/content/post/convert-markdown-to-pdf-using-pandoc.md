@@ -36,6 +36,7 @@ Install a distribution suitable for your platform and verify it with:
 ```  
 pdflatex --version  
 ```  
+
 This ensures Pandoc can generate PDFs without issues.
 
 ## Converting Markdown to PDF using Pandoc  
@@ -81,10 +82,6 @@ Templates control the structure and styling of the output. For example, when con
 ```  
 pandoc input.md -o output.pdf --template=custom_template.tex  
 ```  
-For Word documents, Pandoc can use a `.docx` template to preserve specific styles:  
-```  
-pandoc input.md -o output.docx --reference-doc=template.docx  
-```  
 
 **Specifying Metadata**  
 
@@ -93,7 +90,9 @@ Metadata allows you to add details like the document’s title, author, and date
 ```  
 pandoc input.md -o output.pdf --metadata title="My Document" --metadata author="John Doe" --metadata date="2024-11-19"  
 ```  
+
 Alternatively, you can define metadata in the Markdown file itself using a YAML block:  
+
 ```  
 ---  
 title: My Document  
@@ -101,15 +100,19 @@ author: John Doe
 date: 2024-11-19  
 ---  
 ```  
-This metadata will be reflected in the final output format, such as the title page in a PDF or the header in a Word file.  
+
+This metadata will be reflected in the final output format, such as the title page in a PDF.  
 
 **Adjusting Styles with CSS or YAML**  
 
 For HTML output, you can include custom CSS to define styles:  
+
 ```  
 pandoc input.md -o output.html --css=styles.css  
 ```  
+
 In Markdown, you can also define additional styles and settings using YAML metadata, such as custom fonts or colors:  
+
 ```  
 ---  
 css: "styles.css"  
@@ -123,7 +126,7 @@ This flexibility ensures your documents meet specific design requirements across
 
 Pandoc provides robust support for embedding and customizing images in documents during conversion.  
 
-**Embedding Images in Markdown**  
+**Embedding Images in Markdown:**  
 
 Images in Markdown are added using the following syntax:  
 
@@ -141,7 +144,7 @@ For example:
 ![A scenic view](images/scenic.jpg "Mountain Landscape")  
 ```  
 
-**Adjusting Image Size and Alignment**  
+**Adjusting Image Size and Alignment:**  
 
 Pandoc allows size and alignment customization using Markdown or HTML-like syntax:  
 
@@ -243,9 +246,10 @@ This creates a basic table with headers and rows. For more complex tables, Pando
   
   Use the `--table-width` option for complex tables that require column adjustments.  
 
-**Handling Large or Complex Tables**  
+**Handling Large or Complex Tables:**  
 
 For tables with many rows or columns, Markdown’s grid table syntax can become unwieldy. In such cases:  
+
 - Use CSV files as input and convert them to tables during conversion. Pandoc can process CSV with table filters or pre-process it into Markdown tables.  
 - Break large tables into sections to maintain readability, especially in PDF or Word outputs.  
 - Add captions and labels for better context and indexing:  
@@ -259,9 +263,9 @@ By leveraging Markdown’s flexibility and Pandoc’s support for table formatti
 
 Pandoc's advanced capabilities enable users to customize transformations, automate workflows, and combine multiple documents into cohesive outputs.  
 
-**Using Filters for Custom Transformations**  
+**Using Filters for Custom Transformations:**  
 
-Filters allow custom processing of documents during conversion. These scripts modify the intermediate representation (AST) Pandoc uses, enabling highly specific changes.  
+[Filters](https://pandoc.org/filters.html) allow custom processing of documents during conversion. These scripts modify the intermediate representation (AST) Pandoc uses, enabling highly specific changes.  
 
 - Filters can be written in languages like Python or Lua. For example, to capitalize all headers in a Markdown file, you can use a Lua filter:  
   
@@ -304,11 +308,14 @@ For more complex workflows, tools like Makefiles or CI/CD pipelines can orchestr
   pandoc input.md -o output.pdf --resource-path=./images  
   ```  
 
-**Debugging with Verbose Mode**  
+**Debugging with Verbose Mode:** 
+
 The `--verbose` flag provides detailed output during conversion, helping identify issues:  
+
 ```  
 pandoc --verbose input.md -o output.pdf  
 ```  
+
 Use this to spot errors in file paths, metadata, or dependencies.  
 
 ## Conclusion  

@@ -7,6 +7,7 @@ title: Apply Colour on Text In Markdown
 slug: apply-colour-text-markdown
 excerpt: "-"
 type: post
+image: https://www.docstomarkdown.pro/open-graph-apply-colour-on-text-in-markdown.png
 ---
 
 ## Outline: How to Apply Colour to Text in Markdown  
