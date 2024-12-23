@@ -65,16 +65,23 @@ const {
                       )}
                       <div class="my-8">
                         {price && (
-                          <div class="flex items-center justify-center text-center mb-1">
-                            <span class="text-4xl">$</span>
-                            <span class="text-4xl ">{price}</span>
+                           
+                          <div class="flex items-center justify-center text-center text-neutral-700  mb-1">
+                            <span class="text-3xl ">$</span>
+                            <span class="text-3xl ">{price}</span> &nbsp;{period}
                           </div>
-                          <span class="text-base leading-6 lowercase text-gray-500 dark:text-slate-400">
-                          {period}
+                          <span class="text-base leading-6 lowercase  dark:text-slate-400">
+                          
                         </span>
                         )}
-                        
+                        {/* New Div for Monthly Cost */}
+                        {price && (
+                        <div class=" text-sm leading-6 lowercase text-green-700 dark:text-green-400 mt-4">
+                            <b>${((price / 12).toFixed(2))} per month</b>, billed Yearly
+                        </div>
+                        )}
                       </div>
+
                       {price && items && (
                         <ul
                           role="list"
