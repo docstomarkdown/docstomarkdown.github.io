@@ -1,11 +1,11 @@
 ---
-title: 'Word to Markdown Converter'
-description: 'Convert content from Microsoft Word to Markdown and preview it interactively.'
+title: "Word to Markdown Converter"
+description: "Convert content from Microsoft Word to Markdown and preview it interactively."
 ---
 
-import Layout from '~/layouts/PageLayout.astro';
-import WordToMarkdownConverter from '../components/tools/word-to-markdown'; 
-import Sidebar from '../components/widgets/Sidebar.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import WordToMarkdownConverter from "../components/tools/word-to-markdown";
+import Sidebar from "../components/widgets/Sidebar.astro";
 
 <Layout metadata={{ title: 'Word to Markdown Converter', description: 'Convert content from Microsoft Word to Markdown and preview it interactively.' }}>
   
@@ -18,15 +18,17 @@ import Sidebar from '../components/widgets/Sidebar.astro';
       <div>
         <div style="padding-left:30px;">
           <h1 style="color: #2772ed; font-size:32px; font-weight: bold;">Convert Word to Markdown Online - Free</h1>
-          <p>Use this tool to convert content from Microsoft Word documents to Markdown online for free. Easily generate clean Markdown from text pasted from Word documents.<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b">Docs to Markdown Pro</a> <i class="fa fa-external-link" aria-hidden="true" style="color:#2772ed"></i>&nbsp; Add-on to convert Word Documents directly to Markdown.</p>
+          <p>Use this tool to convert content from Microsoft Word documents to Markdown online for free.
+           <br/> Are you using ChatGPT to create content? If so, try the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop">ChatGPT to Word</a>&nbsp;<i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp;or PDF extension.</p>
+       
         </div>
         <div style="text-align: center;">
-          <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-            <div style="display: inline-block;">
-              <img alt="Google Workspace Marketplace badge" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 65px; padding-top: 10px" />
-            </div>
-          </a>
-        </div>
+        <a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener">
+          <div style="display: inline-block;">
+            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;"/>
+          </div>
+        </a>
+      </div>
       </div>
 
       {/* Word to Markdown Converter Component */}
@@ -46,8 +48,9 @@ import Sidebar from '../components/widgets/Sidebar.astro';
         </ol>
       </section>
     </div>
-    
+
     {/* Sidebar Section (20%) */}
     <Sidebar height="5%" />
+
   </div>
 </Layout>
