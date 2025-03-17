@@ -1,16 +1,14 @@
 ---
 publishDate: 2025-03-17T05:51:02.271Z
 updateDate: 2025-03-17T05:51:02.271Z
-draft: true
+draft: false
 showToc: true
 title: ChatGPT Equation Renderer - A Definitive Guide
 slug: chatgpt-equation-renderer
 excerpt: "ChatGPT now renders equations using KaTeX, enhancing readability. This article explores tools like ChatGPT to Word, ChatGPT Equation Renderer, and LaTeX Equation Converter, which help users seamlessly transfer, view, and digitize mathematical equations in Word, Google Docs, and other platforms."
-image: https://www.docstomarkdown.pro/open-graph-add-caption-to-images-in-markdown.png
+image: https://www.docstomarkdown.pro/open-graph-chatgpt-equation-renderer.png
 type: post
 ---
-
-
 
 Mathematical and scientific discussions often rely on equations, but presenting them correctly in digital formats can be challenging. Initially, ChatGPT only provided raw LaTeX code, requiring users to manually copy and render it elsewhere. Now, with the integration of [KaTeX](https://katex.org/), ChatGPT can display equations directly, enhancing readability and usability.
 
@@ -37,6 +35,18 @@ This section discusses the **ChatGPT to Word or PDF** Chrome extension, which al
 - Preserves formatting, including fonts, tables, code blocks, spacing, and inline equations, ensuring professional-quality documents.
 - Allows users to edit equations easily in Word using the built-in equation editor.
 - Supports both **inline and block equations**, ensuring compatibility with academic and professional formatting standards.
+
+![ChatGPT to Word or PDF with Equations Support](images/image-29.png)
+
+When you convert the conversation into a Word File, the output word file with equations would look like the following: 
+
+![ChatGPT to Word with Equations](images/image-33.png)
+
+<a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener nofollow">
+          <div style="display: inline-block;">
+            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;">
+          </div>
+        </a>
 
 **When to Use It**
 
@@ -67,6 +77,8 @@ This section discusses the **ChatGPT Equation Renderer** Chrome extension, which
 
 > This extension allows users to copy equations one by one only. This may take more time when dealing with a large number of equations.
 
+![ChatGPT Equation Renderer](images/image-30.png)
+
 **When to Use It**
 
 Choose this extension if you:
@@ -88,6 +100,8 @@ This section discusses the **LaTeX | Equation Converter** Custom GPT, which conv
 - Uses OCR (Optical Character Recognition) to detect and extract mathematical symbols accurately.
 - Supports batch conversion, allowing users to process multiple equations at once for efficiency.
 - Provides an **editable LaTeX output**, allowing users to refine and customize equations before using them in documents.
+
+![ChatGPT Equation Converter](images/image-31.png)
 
 **When to Use It**
 
