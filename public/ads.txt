@@ -1,4 +1,4 @@
-# Ads.txt v20250407
+# Ads.txt v20250425
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=thinksolv.com
@@ -111,7 +111,6 @@ minutemedia.com,01gya4708ddm,RESELLER
 vidazoo.com,6538cece8ffdc67b51188b9b,RESELLER,b6ada874b4d7d0b2
 imds.tv,AM1601,RESELLER,ae6c32151e71f19d
 start.io,123111883,RESELLER
-supply.colossusssp.com, 710, DIRECT, 6c5b49d96ec1b458
 appnexus.com, 10490, RESELLER, f5ab79cb980f11d1
 yieldmo.com, 3078438591206989879, RESELLER
 aniview.com, 66ba73a97566d9303e011704, RESELLER, 78b21b97965ec3f8
