@@ -1,148 +1,449 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
-
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
 
 const metadata = {
-  title: 'ChatGPT to Google Docs',
-  description: "This tool converts ChatGPT text into a Google Docs format. Paste the content from ChatGPT in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste in your Google Docs."
+  title: "ChatGPT to Google Docs",
+  description:
+    "This detailed guide explains how to convert ChatGPT into Google Docs without loosing formatting. This includes copying Math equations from ChatGPT into Google Docs and also copying Tables from ChatGPT into Google Docs.",
 };
 ---
+
 <Layout metadata={metadata}>
+  <div
+    class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg text-base leading-loose"
+  >
+    <h1 class="text-3xl text-blue-700 mb-4">
+      How to Convert ChatGPT to Google Docs (Without Losing Formatting)
+    </h1>
+    <p class="mb-4">
+      Copy-pasting ChatGPT responses into Google Docs often breaks formatting,
+      tables get misaligned, code blocks, and math equations don’t render
+      correctly.
+    </p>
+    <p class="mb-4">
+      This guide shows you how to convert ChatGPT conversations to Google Docs
+      without losing formatting, including support for tables, math, code, and
+      entire conversation export.
+    </p>
+    <p class="mb-6">
+      <strong
+        >To export ChatGPT responses to Google Docs without losing formatting,
+        use the ChatGPT to Google Docs or PDF Chrome Extension. It preserves tables,
+        code blocks, lists, and math equations.</strong> No manual cleanup required.
+    </p>
+    <a
+      href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
+      target="_blank"
+      class="inline-block mb-4"
+    >
+      <img
+        src="/chrome-badge.png"
+        alt="Available in Chrome Web Store"
+        class="w-48 hover:opacity-90 transition-opacity"
+      />
+    </a>
+    <p class="mt-4">This extension enables you to:</p>
+    <ul class="list-disc list-inside mb-6">
+      <li>Export individual ChatGPT responses directly into Google Docs</li>
+      <li>
+        Export entire conversations with headings, lists, code blocks preserved
+      </li>
+      <li>
+       Export ChatGPT Canvas content
+      </li>
+      <li>Automatically render LaTeX equations and tables in Google Docs</li>
+    </ul>
+    <h2 class="text-2xl text-blue-700 mb-4">
+      Installing ChatGPT to Google Docs or PDF Chrome Extension
+    </h2>
+    <p class="mb-4">
+      To transfer content from <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
+        >ChatGPT to Google Docs</a
+      > with with formatting intact, install the ChatGPT to Google Docs Chrome Extension.
+    </p>
+
+    <h3 class="text-2xl mb-4">Installing on Google Chrome</h3>
+
+    <a
+      href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
+      target="_blank"
+      class="inline-block mb-4"
+    >
+      <img
+        src="/chrome-badge.png"
+        alt="Available in Chrome Web Store"
+        class="w-48 hover:opacity-90 transition-opacity"
+      />
+    </a>
+
+    <ol class="list-decimal pl-6 space-y-2">
+      <li>
+        Open the
+        <a
+          href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
+          class="text-blue-600 underline hover:text-blue-800"
+          target="_blank"
+        >
+          Chrome Web Store listing
+        </a>.
+      </li>
+      <li>Click the <strong>Add to Chrome</strong> button.</li>
+      <li>
+        Confirm the installation by clicking <strong>Add extension</strong> in
+        the popup.
+      </li>
+      <li>You should now see the extension icon in your browser toolbar.</li>
+    </ol>
+
+    <h2 class="text-2xl mt-8 mb-4">Installing on Microsoft Edge</h2>
+
+    <p class="mb-4">
+      Even though this is a Chrome extension, Microsoft Edge supports installing
+      extensions directly from the Chrome Web Store.
+    </p>
+
+    <ol class="list-decimal pl-6 space-y-2">
+      <li>
+        Open the
+        <a
+          href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
+          class="text-blue-600 underline hover:text-blue-800"
+          target="_blank">Chrome Web Store listing</a
+        > in Microsoft Edge.
+      </li>
+      <li>
+        If prompted, click <strong>Allow</strong> to enable installation of extensions
+        from other stores.
+      </li>
+      <li>
+        Then click <strong>Add to Chrome</strong> and confirm the installation.
+      </li>
+    </ol>
+
+    <p class="mt-4">
+      Once installed, the extension works the same way in both browsers.
+    </p>
+
+    <p class="mt-4">
+      After installation, <b>refresh your ChatGPT window</b> to see the new export
+      buttons appear in the interface.
+    </p>
+   
+
+    <h2 class="text-2xl text-blue-700 mb-4 mt-8">
+      Features of the ChatGPT to Google Docs Extension
+    </h2>
+    <h3 class="text-xl font-medium mb-2">Auto-formatting</h3>
+    <p class="mb-4">
+      Headings, bullet points, numbered lists, code blocks, and tables are
+      automatically formatted when exporting a response.
+    </p>
+    <p class="mb-4">
+      If you're looking for <strong
+        >how to copy-paste from ChatGPT to Google Docs without background</strong
+      >, the recommended approach is to use the <strong
+        >ChatGPT to Google Docs or PDF Chrome Extension</strong
+      >. It removes unwanted background styling and ensures clean formatting.
+    </p>
+    <p class="mb-4">
+      Headings are styled using Google Docs’ native heading formats, lists are
+      properly indented, and code blocks are preserved with consistent monospace
+      fonts—without extra background colors or mismatched fonts. The exported
+      output closely matches the original structure in ChatGPT.
+    </p>
+
+    <h3 class="text-xl font-medium mb-2">Math Formatting</h3>
+    <p class="mb-4">
+      When you copy <a class="text-blue-600 underline hover:text-blue-800" href="https://en.wikipedia.org/wiki/Equation" >equations</a> directly from ChatGPT, they appear in raw <a class="text-blue-600 underline hover:text-blue-800" href="https://www.latex-project.org/">LaTeX</a>
+      format when pasted into Google Docs. These equations aren’t rendered and
+      require manual formatting using the equation editor.
+    </p>
+    <p class="mb-4">
+      You can <b
+        >copy math equations from ChatGPT into Google Docs without losing
+        formatting using the ChatGPT to Google Docs or PDF Chrome Extension</b
+      >. LaTeX equations are automatically converted into properly rendered math
+      blocks. No extra steps required.
+    </p>
+
+    <h3 class="text-xl font-medium mb-2">Table Formatting</h3>
+    <p class="mb-4">
+      When you copy tables directly from ChatGPT into Google Docs, the layout
+      breaks. Cell borders disappear, alignment is lost, and spacing becomes
+      inconsistent. This makes the tables hard to read and time-consuming to fix
+      manually.
+    </p>
+    <p class="mb-4">
+      You can copy tables from ChatGPT into Google Docs without losing
+      formatting using the ChatGPT to Google Docs or PDF Chrome Extension.
+      Tables are preserved exactly as shown in ChatGPT, with proper structure,
+      alignment, and styling maintained automatically.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Cloud Integration</h3>
+    <p class="mb-4">
+      When exporting to Google Docs, the extension <a class="text-blue-600 underline hover:text-blue-800" href="https://workspace.google.com/marketplace/app/drive_explorer_pro/1074215048146">saves the new Google  directly to
+      your Google Drive</a>. Once authorized, no repeated sign-ins are needed. The
+      document opens immediately in Google Docs, ready for editing or sharing.
+    </p>
+
+    <h2 class="text-2xl text-blue-700 mb-4">
+      Export a Single ChatGPT Response into Google Docs
+    </h2>
+    <p class="mb-4">
+      The ChatGPT to Google Docs or PDF extension lets you export any individual
+      ChatGPT response as a clean Google Docs, Word, or PDF document. Whether
+      you're saving notes, drafting blog posts, or archiving research, this
+      feature helps streamline your workflow.
+    </p>
+    <ol class="list-decimal list-inside mb-6">
+      <li>Open <a
+        href="https://chagpt.com"
+        class="text-blue-500 underline">chatgpt.com</a
+      ></li>
+      <li>
+        Start a new conversation or open an existing one that contains the
+        response you want to export.
+      </li>
+      <li>
+        Locate the Export Buttons at the bottom right corner of each response.
+        These include:
+        <ul class="list-disc list-inside ml-6">
+          <li>Google Docs button</li>
+          <li>Word (.docx) button</li>
+          <li>PDF (.pdf) button</li>
+        </ul> as shown in the following image:
+      </li>
+      <img
+        src="/chatgpt-single-response-export.png"
+        alt="ChatGPT single response export"
+        class="my-4 rounded shadow-md"
+      />
+      <li>Click the Google Docs button</li>
+      <li>
+        Now the extension will automatically generate a clean, readable version
+        of the response in Google Docs format, and open the docs in a new tab,
+        which is ready for download, editing, or sharing—without unnecessary
+        formatting or clutter.
+      </li>
+    </ol>
+
+    <h2 class="text-2xl text-blue-700 mb-4">
+      Exporting an Entire ChatGPT Conversation to Google Docs
+    </h2>
+    <p class="mb-4">
+      The ChatGPT to Google Docs or PDF extension allows you to <i>export an entire
+      ChatGPT conversation into a Google Docs without losing formatting</i>, in one
+      click. This is useful when you want to save or share a full exchange,
+      whether for documentation, reference, or publishing purposes.
+    </p>
+    <p class="mb-4">
+      In some cases, you may want to <b>exclude your prompts and export only the
+      ChatGPT responses as a Google Docs</b>. For example, if you're generating blog
+      content, documentation, emails, or summaries using AI, including your
+      instructions or prompt details may not be necessary or appropriate for the
+      final output.
+    </p>
+    <p class="mb-4">
+      To support this, the extension also gives you an option to remove user prompts and export only
+      the ChatGPT responses.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">
+      How to Export the Entire Conversation (with Prompts and Responses)
+    </h3>
+    <ol class="list-decimal list-inside mb-6">
+      <li>
+        Open any conversation on <a
+          href="https://chatgpt.com"
+          class="text-blue-500 underline">chatgpt.com</a
+        >
+      </li>
+      <li>
+        In the top-right corner of the conversation window, locate the export
+        buttons <strong>Google Docs</strong>, <strong>Word</strong>, and <strong
+          >PDF</strong
+        >
+      </li>
+      <img src="/chatgpt-entire-conversation-export.png" alt="ChatGPT single response export" class="my-4 rounded shadow-md">
+
+      <li>
+        Click the Google Docs button to export the entire conversation as a
+        Google Docs
+      </li>
+      <li>
+        The resulting Google Docs will include both your prompts and ChatGPT's
+        responses, formatted clearly in order
+      </li>
+    </ol>
+
+    <h3 class="text-xl font-semibold mb-2">
+      How to Export Only ChatGPT Responses from the Entire Conversation
+    </h3>
+    <ol class="list-decimal list-inside mb-6">
+      <li>
+        On the ChatGPT conversation page, click the <strong>Settings</strong> gear
+        icon in the top-right corner
+      </li>
+      <li>
+        In the popup, scroll down to the <strong>Conversion Settings</strong> section
+      </li>
+      <li>
+        Enable the checkbox labelled <strong
+          >Export only ChatGPT responses</strong
+        >
+      </li>
+      <img src="/chatgpt-only-chatgpt-responses.png" alt="ChatGPT single response export" class="my-4 rounded shadow-md">
+
+      <li>
+        Now click the Google Docs button to export the entire conversation as a
+        Google Docs
+      </li>
+      <li>
+        The resulting Google Docs will include <strong>only</strong> ChatGPT's responses,
+        formatted clearly in order
+      </li>
+    </ol>
+    <p class="mb-4">
+      This setting is saved and will apply to all future exports automatically.
+      To include your user prompts again in exports, you must return to this
+      settings menu and disable (uncheck) this option.
+    </p>
+
+    <p class="mb-4">
+      <strong>Example use case:</strong> If you’re preparing a final document—such
+      as an article, report, or summary—and only want to share the AI-generated content
+      without showing your prompts or instructions, enabling this setting makes the
+      export cleaner and more professional.
+    </p>
+
+    <h2 class="text-2xl text-blue-700 mb-4">
+      Exporting ChatGPT Canvas Content to Google Docs or PDF
+    </h2>
+    <p class="mb-4">
+      The ChatGPT to Google Docs or PDF extension supports exporting content
+      directly from ChatGPT <strong>Canvas</strong>, available in GPT-4 and Team
+      accounts. <a class="text-blue-600 underline hover:text-blue-800" href="https://openai.com/index/introducing-canvas/">Canvas</a> lets you collaborate with ChatGPT in a structured, visual
+      workspace—ideal for creating customized outputs like documents, guides, or
+      content outlines.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">How to Export Canvas Content</h3>
+    <ol class="list-decimal list-inside mb-6">
+      <li>Open the canvas you want to export in ChatGPT</li>
+      <li>Maximize the canvas so it is fully visible on screen. (Export works only when the canvas is in full view)</li>
+     
+      <li>
+        In the top-right corner of the canvas, click the <strong
+          >Google Docs</strong
+        > button
+      </li>
+      <img src="/chatgpt-canvas-export.png" alt="ChatGPT single response export" class="my-4 rounded shadow-md">
+
+      <li>
+        The canvas content will be exported to a Google Doc and opened in a new
+        tab
+      </li>
+    </ol>
+
+    <p class="mb-4">
+      The export behavior depends on the current state of the canvas:
+    </p>
+    <ul class="list-disc list-inside mb-6">
+        <li>
+          When the canvas is <strong>open</strong>, the export will include <strong>only the canvas content</strong>.
+        </li>
+        <li>
+          When the canvas is <strong>closed</strong>, the export will include <strong>the entire conversation</strong>.
+        </li>
+      </ul>
       
-  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-    <div style="width: 75%; padding-right: 20px;"> 
-      <div style="padding-top:10px; padding-left:50px;">
-        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to Google Docs Online</h1>
-        <p style="padding-top:10px;">You can use this tool to convert ChatGPT into to Google Docs format online for free. It supports copy pasting equations from ChatGPT into Google Docs. Alternatively, you can use the Chrome extension to create Google Docs directly from the ChatGPT screen in a button click. It supports Math equations and every other formattings.</p>
-     </div>
-     <div style="text-align: center;">
-        <a href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener">
-          <div style="display: inline-block;">
-            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;">
-          </div>
-        </a>
-      </div>
-      <!-- Include Quill library -->
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
-      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-        <button id="download-button" class="tool-styled-button-new"> Create new blank Google Docs</button>
-        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy </button>
-      </div>
-      <main class="twocols">
-        <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your ChatGPT Markdown here..</p>
-        <div id="output-instructions" class ="right-editor-placeholder">..get your Google Docs content here</div>
-        <div id="output" class="input-field editor-container" autocomplete="off"></div>
-      </main>
-      <div class="mx-10 leading-10">
-        <h2 class="font-bold">How to convert ChatGPT to Google Docs using this online tool?</h2>
-        <ol class=" list-decimal list-inside mx-10">
-          <li class="font-normal">Paste your ChatGPT content in the input text box on the left side.</li>
-          <li class="font-normal">The ChatGPT markdown content will be rendered as rich text on the output text box automatically</li>
-          <li class="font-normal">Create a new Google Docs using the "Create new blank Google Docs" button. A new Google Docs will be created and opened in a new tab.</li>
-          <li class="font-normal">Copy the output using the Copy button</li>
-          <li class="font-normal">Paste the copied content in your Google Docs. Content will be pasted and the formatting will be preserved as well. </li>
-          <li class="font-normal">Using this online tool you can copy and paste from ChatGPT to Google Docs without losing formatting.</li>
-          <li class="font-normal">You can also copy equations from ChatGPT to Google Docs.</li>
-        </ol>
-      </div>
-      <div id="hide-grow-widget"></div>
-    </div>
 
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" class=".sticky-sidebar" />
+    <p class="mb-4">
+      <strong>Example use case:</strong> Canvas is useful for co-creating structured
+      content with ChatGPT—such as reports, knowledge base articles, technical guides,
+      or lesson plans. Once the layout and content are finalized in the canvas, you
+      can export it as a polished, shareable document.
+    </p>
 
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
+    <h2 class="text-2xl text-blue-700 mb-4">
+      Exporting DeepResearch or Web Search ChatGPT Responses to Google Docs
+    </h2>
+    <p class="mb-4">
+      When using advanced ChatGPT features like <a class="text-blue-600 underline hover:text-blue-800"  href="https://openai.com/index/introducing-deep-research/">DeepResearch</a> or <a class="text-blue-600 underline hover:text-blue-800" href="https://openai.com/index/introducing-chatgpt-search/">Web Search</a>,
+      you receive enriched, structured responses that often include citations,
+      links, and detailed data. You can also export these responses using the extension.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">How to Export Responses</h3>
+    <ul class="list-disc list-inside mb-6">
+      <li>
+        After your session, locate the <strong>Google Docs</strong>, <strong
+          >Word</strong
+        >, or <strong>PDF</strong> export buttons at the bottom right of the deep
+        research or Web Search output.
+      </li>
+      <li>
+        Click the <strong>Google Docs</strong> button to export the selected DeepResearch
+        or Web Search response directly as a formatted Google Doc.
+      </li>
+    </ul>
+    <p class="mb-4">
+      This export preserves the original structure, including citations, links,
+      and formatting, ensuring your research notes and findings remain clear and
+      easy to reference.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">
+      Handling Math Equations When Copying Manually from ChatGPT to Google Docs
+    </h3>
+    <p class="mb-4">
+      When you manually copy and paste content from ChatGPT into Google Docs,
+      any math equations written in LaTeX format will appear as plain text.
+      Google Docs does not automatically render these LaTeX expressions into
+      formatted equations.
+    </p>
+    <p class="mb-4">
+      To properly display math equations in Google Docs, you need to convert the
+      LaTeX code into Google Docs’ equation format manually.
+    </p>
+    <p class="mb-6 mt-6">
+      If you’re not familiar with adding math equations in Google Docs or want
+      to improve your skills, check out this helpful tutorial:
+    </p>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/Y_2q45Qscp0?si=HuTr4xmIf7zSavmy"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+    <p class="mb-4 mt-4">
+      Using the ChatGPT to Google Docs extension removes this extra step by
+      exporting equations as rendered math, saving you time and ensuring clean,
+      professional documents.
+    </p>
+    <h2 class="text-2xl text-blue-700 mb-4">Conclusion</h2>
+    <p class="mb-4">
+      The ChatGPT to Google Docs or PDF extension streamlines exporting your
+      AI-generated content by preserving formatting, math equations, tables, and
+      more—eliminating the need for manual adjustments. Whether exporting single
+      responses, entire conversations, or Canvas content, this tool saves time
+      and ensures professional-quality documents every time.
+    </p>
+    <p class="mb-4">
+      For content with complex math, using the extension avoids the common issue
+      of LaTeX code appearing as plain text, making your workflow smoother and
+      more efficient.
+    </p>
+    <p class="mb-4">
+      Start using the extension today to enhance your productivity and get
+      polished outputs directly from ChatGPT with just a few clicks.
+    </p>
   </div>
-
-
-{<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
-{<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
-{<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>}
-{<script>
-    
-    var inputElement = document.getElementById('input');
-    var outputElement = document.getElementById('output');
-    // Initialize Quill
-    var quill = "";
-     quill  = new Quill('#output', {
-        theme: 'snow',
-        readOnly: true,
-        modules: {
-          toolbar: false, // Disable the toolbar
-        },
-      });
-    // Function to convert HTML to Markdown
-    function toHTML() {
-        
-
-        // Get the text content from the content-editable div
-        var textContent = inputElement.value;
-
-        var outputHTML = marked.parse(textContent);
-        quill.clipboard.dangerouslyPasteHTML(outputHTML);
-
-    }
-
-    // Add event listener to invoke toMarkdown function on input
-    inputElement.addEventListener('input', ()=>{
-      var inputInstructions = document.getElementById('input-instructions');
-      var outputInstructions = document.getElementById('output-instructions');
-
-      var hasContent = !!inputElement.value.trim();
-      if (hasContent) {
-        inputInstructions.style.display = 'none'; // Hide instructions if there's content
-        outputInstructions.style.display = 'none';
-      } else {
-          inputInstructions.style.display = 'block';
-          outputInstructions.style.display = 'block';
-          inputElement.focus();
-      }
-      toHTML();
-    });
-    
-    var downloadButton = document.getElementById('download-button');
-    if (window.URL && window.File) {
-    downloadButton.style.display = '';
-    downloadButton.addEventListener('click', () => {
-        window.open('https://docs.new', '_blank');
-    });
-    }
-    
-    var copyButtonForTextCopy = document.getElementById('copy-button');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButtonForTextCopy.addEventListener('click', () => {
-      event.preventDefault();
-      var html = quill.root.innerHTML;
-      var blob = new Blob([html], {type: 'text/html'});
-      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
-      navigator.clipboard.write([clipboardItem]);
-      showCopyTooltip();
-   });
- }
-
-    
-
-    function showCopyTooltip() {
-        var tooltip = document.createElement('div');
-        tooltip.className = 'copy-tooltip';
-        tooltip.textContent = 'Text copied to clipboard';
-        document.body.appendChild(tooltip);
-
-        setTimeout(() => {
-            tooltip.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(tooltip);
-            }, 500);
-        }, 1500);
-    }
-    
-
-
-
-</script>}
 </Layout>
