@@ -9,6 +9,23 @@ const metadata = {
 };
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Hide all elements with class btn-secondary
+    const btnSecondaryElements = document.querySelectorAll(".btn-secondary");
+    btnSecondaryElements.forEach((el) => {
+      el.style.display = "none";
+    });
+
+    // Hide all <a> links with text exactly "Pricing"
+    const links = document.querySelectorAll("a");
+    links.forEach((link) => {
+      if (link.textContent.trim() === "Pricing") {
+        link.style.display = "none";
+      }
+    });
+  });
+</script>
 <Layout metadata={metadata}>
   <div
     class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg text-base leading-loose"
@@ -29,8 +46,9 @@ const metadata = {
     <p class="mb-6">
       <strong
         >To export ChatGPT responses to Google Docs without losing formatting,
-        use the ChatGPT to Google Docs or PDF Chrome Extension. It preserves tables,
-        code blocks, lists, and math equations.</strong> No manual cleanup required.
+        use the ChatGPT to Google Docs or PDF Chrome Extension. It preserves
+        tables, code blocks, lists, and math equations.</strong
+      > No manual cleanup required.
     </p>
     <a
       href="https://chromewebstore.google.com/detail/chatgpt-to-google-docs-or/oibghjgooccojibfacdonaoipegckdeg"
@@ -49,9 +67,7 @@ const metadata = {
       <li>
         Export entire conversations with headings, lists, code blocks preserved
       </li>
-      <li>
-       Export ChatGPT Canvas content
-      </li>
+      <li>Export ChatGPT Canvas content</li>
       <li>Automatically render LaTeX equations and tables in Google Docs</li>
     </ul>
     <h2 class="text-2xl text-blue-700 mb-4">
@@ -92,8 +108,8 @@ const metadata = {
       </li>
       <li>Click the <strong>Add to Chrome</strong> button.</li>
       <li>
-        Confirm the installation by clicking <strong>Add extension</strong> in
-        the popup.
+        Confirm the installation by clicking <strong>Add extension</strong> in the
+        popup.
       </li>
       <li>You should now see the extension icon in your browser toolbar.</li>
     </ol>
@@ -131,7 +147,6 @@ const metadata = {
       After installation, <b>refresh your ChatGPT window</b> to see the new export
       buttons appear in the interface.
     </p>
-   
 
     <h2 class="text-2xl text-blue-700 mb-4 mt-8">
       Features of the ChatGPT to Google Docs Extension
@@ -157,9 +172,15 @@ const metadata = {
 
     <h3 class="text-xl font-medium mb-2">Math Formatting</h3>
     <p class="mb-4">
-      When you copy <a class="text-blue-600 underline hover:text-blue-800" href="https://en.wikipedia.org/wiki/Equation" >equations</a> directly from ChatGPT, they appear in raw <a class="text-blue-600 underline hover:text-blue-800" href="https://www.latex-project.org/">LaTeX</a>
-      format when pasted into Google Docs. These equations aren’t rendered and
-      require manual formatting using the equation editor.
+      When you copy <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://en.wikipedia.org/wiki/Equation">equations</a
+      > directly from ChatGPT, they appear in raw <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://www.latex-project.org/">LaTeX</a
+      >
+      format when pasted into Google Docs. These equations aren’t rendered and require
+      manual formatting using the equation editor.
     </p>
     <p class="mb-4">
       You can <b
@@ -185,9 +206,12 @@ const metadata = {
 
     <h3 class="text-xl font-semibold mb-2">Cloud Integration</h3>
     <p class="mb-4">
-      When exporting to Google Docs, the extension <a class="text-blue-600 underline hover:text-blue-800" href="https://workspace.google.com/marketplace/app/drive_explorer_pro/1074215048146">saves the new Google  directly to
-      your Google Drive</a>. Once authorized, no repeated sign-ins are needed. The
-      document opens immediately in Google Docs, ready for editing or sharing.
+      When exporting to Google Docs, the extension <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://workspace.google.com/marketplace/app/drive_explorer_pro/1074215048146"
+        >saves the new Google directly to your Google Drive</a
+      >. Once authorized, no repeated sign-ins are needed. The document opens
+      immediately in Google Docs, ready for editing or sharing.
     </p>
 
     <h2 class="text-2xl text-blue-700 mb-4">
@@ -200,10 +224,10 @@ const metadata = {
       feature helps streamline your workflow.
     </p>
     <ol class="list-decimal list-inside mb-6">
-      <li>Open <a
-        href="https://chagpt.com"
-        class="text-blue-500 underline">chatgpt.com</a
-      ></li>
+      <li>
+        Open <a href="https://chagpt.com" class="text-blue-500 underline"
+          >chatgpt.com</a>
+      </li>
       <li>
         Start a new conversation or open an existing one that contains the
         response you want to export.
@@ -235,21 +259,23 @@ const metadata = {
       Exporting an Entire ChatGPT Conversation to Google Docs
     </h2>
     <p class="mb-4">
-      The ChatGPT to Google Docs or PDF extension allows you to <i>export an entire
-      ChatGPT conversation into a Google Docs without losing formatting</i>, in one
-      click. This is useful when you want to save or share a full exchange,
-      whether for documentation, reference, or publishing purposes.
+      The ChatGPT to Google Docs or PDF extension allows you to <i
+        >export an entire ChatGPT conversation into a Google Docs without losing
+        formatting</i
+      >, in one click. This is useful when you want to save or share a full
+      exchange, whether for documentation, reference, or publishing purposes.
     </p>
     <p class="mb-4">
-      In some cases, you may want to <b>exclude your prompts and export only the
-      ChatGPT responses as a Google Docs</b>. For example, if you're generating blog
-      content, documentation, emails, or summaries using AI, including your
-      instructions or prompt details may not be necessary or appropriate for the
-      final output.
+      In some cases, you may want to <b
+        >exclude your prompts and export only the ChatGPT responses as a Google
+        Docs</b
+      >. For example, if you're generating blog content, documentation, emails,
+      or summaries using AI, including your instructions or prompt details may
+      not be necessary or appropriate for the final output.
     </p>
     <p class="mb-4">
-      To support this, the extension also gives you an option to remove user prompts and export only
-      the ChatGPT responses.
+      To support this, the extension also gives you an option to remove user
+      prompts and export only the ChatGPT responses.
     </p>
 
     <h3 class="text-xl font-semibold mb-2">
@@ -268,7 +294,11 @@ const metadata = {
           >PDF</strong
         >
       </li>
-      <img src="/chatgpt-entire-conversation-export.png" alt="Exporting Entire ChatGPT converstation into Google Docs" class="my-4 rounded shadow-md">
+      <img
+        src="/chatgpt-entire-conversation-export.png"
+        alt="Exporting Entire ChatGPT converstation into Google Docs"
+        class="my-4 rounded shadow-md"
+      />
 
       <li>
         Click the Google Docs button to export the entire conversation as a
@@ -296,7 +326,11 @@ const metadata = {
           >Export only ChatGPT responses</strong
         >
       </li>
-      <img src="/chatgpt-only-chatgpt-responses.png" alt="Exporting Entire ChatGPT conversation into Google Docs excluding Prompts" class="my-4 rounded shadow-md">
+      <img
+        src="/chatgpt-only-chatgpt-responses.png"
+        alt="Exporting Entire ChatGPT conversation into Google Docs excluding Prompts"
+        class="my-4 rounded shadow-md"
+      />
 
       <li>
         Now click the Google Docs button to export the entire conversation as a
@@ -326,22 +360,31 @@ const metadata = {
     <p class="mb-4">
       The ChatGPT to Google Docs or PDF extension supports exporting content
       directly from ChatGPT <strong>Canvas</strong>, available in GPT-4 and Team
-      accounts. <a class="text-blue-600 underline hover:text-blue-800" href="https://openai.com/index/introducing-canvas/">Canvas</a> lets you collaborate with ChatGPT in a structured, visual
-      workspace—ideal for creating customized outputs like documents, guides, or
-      content outlines.
+      accounts. <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://openai.com/index/introducing-canvas/">Canvas</a
+      > lets you collaborate with ChatGPT in a structured, visual workspace—ideal
+      for creating customized outputs like documents, guides, or content outlines.
     </p>
 
     <h3 class="text-xl font-semibold mb-2">How to Export Canvas Content</h3>
     <ol class="list-decimal list-inside mb-6">
       <li>Open the canvas you want to export in ChatGPT</li>
-      <li>Maximize the canvas so it is fully visible on screen. (Export works only when the canvas is in full view)</li>
-     
+      <li>
+        Maximize the canvas so it is fully visible on screen. (Export works only
+        when the canvas is in full view)
+      </li>
+
       <li>
         In the top-right corner of the canvas, click the <strong
           >Google Docs</strong
         > button
       </li>
-      <img src="/chatgpt-canvas-export.png" alt="Exporting ChatGPT canvas into Google Docs" class="my-4 rounded shadow-md">
+      <img
+        src="/chatgpt-canvas-export.png"
+        alt="Exporting ChatGPT canvas into Google Docs"
+        class="my-4 rounded shadow-md"
+      />
 
       <li>
         The canvas content will be exported to a Google Doc and opened in a new
@@ -353,14 +396,17 @@ const metadata = {
       The export behavior depends on the current state of the canvas:
     </p>
     <ul class="list-disc list-inside mb-6">
-        <li>
-          When the canvas is <strong>open</strong>, the export will include <strong>only the canvas content</strong>.
-        </li>
-        <li>
-          When the canvas is <strong>closed</strong>, the export will include <strong>the entire conversation</strong>.
-        </li>
-      </ul>
-      
+      <li>
+        When the canvas is <strong>open</strong>, the export will include <strong
+          >only the canvas content</strong
+        >.
+      </li>
+      <li>
+        When the canvas is <strong>closed</strong>, the export will include <strong
+          >the entire conversation</strong
+        >.
+      </li>
+    </ul>
 
     <p class="mb-4">
       <strong>Example use case:</strong> Canvas is useful for co-creating structured
@@ -373,9 +419,17 @@ const metadata = {
       Exporting DeepResearch or Web Search ChatGPT Responses to Google Docs
     </h2>
     <p class="mb-4">
-      When using advanced ChatGPT features like <a class="text-blue-600 underline hover:text-blue-800"  href="https://openai.com/index/introducing-deep-research/">DeepResearch</a> or <a class="text-blue-600 underline hover:text-blue-800" href="https://openai.com/index/introducing-chatgpt-search/">Web Search</a>,
-      you receive enriched, structured responses that often include citations,
-      links, and detailed data. You can also export these responses using the extension.
+      When using advanced ChatGPT features like <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://openai.com/index/introducing-deep-research/"
+        >DeepResearch</a
+      > or <a
+        class="text-blue-600 underline hover:text-blue-800"
+        href="https://openai.com/index/introducing-chatgpt-search/"
+        >Web Search</a
+      >, you receive enriched, structured responses that often include
+      citations, links, and detailed data. You can also export these responses
+      using the extension.
     </p>
 
     <h3 class="text-xl font-semibold mb-2">How to Export Responses</h3>
@@ -432,9 +486,9 @@ const metadata = {
     <p class="mb-4">
       The ChatGPT to Google Docs or PDF extension streamlines exporting your
       AI-generated content by preserving formatting, math equations, tables, and
-      more, eliminating the need for manual adjustments. Whether exporting single
-      responses, entire conversations, or Canvas content, this tool saves time
-      and ensures professional-quality documents every time.
+      more, eliminating the need for manual adjustments. Whether exporting
+      single responses, entire conversations, or Canvas content, this tool saves
+      time and ensures professional-quality documents every time.
     </p>
     <p class="mb-4">
       For content with complex math, using the extension avoids the common issue
