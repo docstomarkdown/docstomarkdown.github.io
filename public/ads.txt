@@ -1,4 +1,4 @@
-# Ads.txt v20250425
+# Ads.txt v20250609
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=thinksolv.com
@@ -132,6 +132,7 @@ emxdgt.com, 1403, DIRECT, 1e1d41537f7cad7f
 conversantmedia.com, 100316, RESELLER, 03113cd04947736d
 video.unrulymedia.com, 232050197, DIRECT
 trustx.org, 5606, DIRECT, 1d2c8a747a749d25
+smilewanted.com, 5675, DIRECT
 
 
 
