@@ -1,0 +1,165 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Sidebar from '~/components/widgets/Sidebar.astro';
+
+
+const metadata = {
+  title: 'Gemini to Word',
+  description: "This tool converts Gemini text into a Microsoft Word format. Paste the content from Gemini in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste in your Word, or click download option to download as Word File."
+};
+---
+<Layout metadata={metadata}>
+      
+  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
+    <div style="width: 75%; padding-right: 20px;"> 
+      <div style="padding-top:10px; padding-left:50px;">
+        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert Gemini to Word Online</h1>
+        <p style="padding-top:10px;">You can use this tool to convert Gemini to Word online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf">Gemini to Word or PDF </a><i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Chrome extension to download the response as Word or PDF file in a single click. It supports Copy and pasting Math equations from Gemini into Word documents without loosing formatting.</p>
+      </div>
+      <div style="text-align: center;">
+        <a href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener">
+          <div style="display: inline-block;">
+            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;">
+          </div>
+        </a>
+      </div>
+      <!-- Include Quill library -->
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
+      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
+        <button id="download-button" class="tool-styled-button-new"><i class="fas fa-download"></i> Download as Word File</button>
+        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
+      </div>
+      <main class="twocols">
+        <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your Gemini Markdown here..</p>
+        <div id="output-instructions" class ="right-editor-placeholder">..get your Microsoft word content here</div>
+        <div id="output" class="input-field editor-container" autocomplete="off"></div>
+      </main>
+      <div class="mx-10 leading-10">
+        <h2 class="font-bold">How to convert Gemini to Word using this online tool?</h2>
+        <ol class=" list-decimal list-inside mx-10">
+          <li class="font-normal">Paste your Gemini content in the input text box on the left side.</li>
+          <li class="font-normal">The Gemini will be rendered as rich text on the output text box automatically</li>
+          <li class="font-normal">Copy the output using the Copy button</li>
+          <li class="font-normal">Paste the copied content in your Word. Content will be pasted and the formatting will be preserved as well. </li>
+          <li class="font-normal">Alternatively you can download the content as word file using the Download button. </li>
+          <li class="font-normal">Using this online tool you can copy and paste from Gemini to Word without losing formatting.</li>
+          <li class="font-normal">You can also copy equations from Gemini to Word.</li>
+
+        </ol>
+      </div>
+      <div id="hide-grow-widget"></div>
+    </div>
+
+    <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" class=".sticky-sidebar" />
+
+    <!-- Clear floats -->
+    <div style="clear: both;"></div>
+  </div>
+
+
+{<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
+{<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
+{<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>}
+{<script>
+    
+    var inputElement = document.getElementById('input');
+    var outputElement = document.getElementById('output');
+    // Initialize Quill
+    var quill = "";
+     quill  = new Quill('#output', {
+        theme: 'snow',
+        readOnly: true,
+        modules: {
+          toolbar: false, // Disable the toolbar
+        },
+      });
+    // Function to convert HTML to Markdown
+    function toHTML() {
+        
+
+        // Get the text content from the content-editable div
+        var textContent = inputElement.value;
+
+        var outputHTML = marked.parse(textContent);
+        quill.clipboard.dangerouslyPasteHTML(outputHTML);
+
+    }
+
+    // Add event listener to invoke toMarkdown function on input
+    inputElement.addEventListener('input', ()=>{
+      var inputInstructions = document.getElementById('input-instructions');
+      var outputInstructions = document.getElementById('output-instructions');
+
+      var hasContent = !!inputElement.value.trim();
+      if (hasContent) {
+        inputInstructions.style.display = 'none'; // Hide instructions if there's content
+        outputInstructions.style.display = 'none';
+      } else {
+          inputInstructions.style.display = 'block';
+          outputInstructions.style.display = 'block';
+          inputElement.focus();
+      }
+      toHTML();
+    });
+    
+    var downloadButton = document.getElementById('download-button');
+    if (window.URL && window.File) {
+    downloadButton.style.display = '';
+    downloadButton.addEventListener('click', () => {
+      event.preventDefault(); 
+      var htmlContent = quill.root.innerHTML;
+      var converted = htmlDocx.asBlob(htmlContent, {orientation: 'landscape', margins: {top: 720}});
+
+    
+      let url, link;
+      try {
+        url = URL.createObjectURL(converted);
+        link = document.createElement('a');
+        link.href = url;
+        link.download = 'Converted.docx';
+        document.body.appendChild(link);
+        link.click();
+      } finally {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+    });
+    }
+    
+    var copyButtonForTextCopy = document.getElementById('copy-button');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+     copyButtonForTextCopy.addEventListener('click', () => {
+      event.preventDefault();
+      var html = quill.root.innerHTML;
+      var blob = new Blob([html], {type: 'text/html'});
+      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+      navigator.clipboard.write([clipboardItem]);
+      showCopyTooltip();
+   });
+ }
+
+    
+
+    function showCopyTooltip() {
+        var tooltip = document.createElement('div');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = 'Text copied to clipboard';
+        document.body.appendChild(tooltip);
+
+        setTimeout(() => {
+            tooltip.style.opacity = '0';
+            setTimeout(() => {
+                document.body.removeChild(tooltip);
+            }, 500);
+        }, 1500);
+    }
+    
+
+
+
+</script>}
+</Layout>
