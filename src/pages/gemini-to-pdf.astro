@@ -1,0 +1,305 @@
+---  
+import Layout from '~/layouts/PageLayout.astro';  
+import Sidebar from '~/components/widgets/Sidebar.astro';
+
+const metadata = {
+  title: 'Gemini to PDF',
+  description: "This tool converts Gemini text into a PDF format. Paste the content from Gemini in the Input Box and it will be rendered as a rich text in the output text. Click the Download/Print button to save it as a PDF."
+};
+---
+
+<Layout metadata={metadata}>
+    <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Main content area first -->
+      <div class="flex-1">
+    <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-5xl mx-auto mt-4 mb-4 shadow-sm">
+        <div class="flex items-center justify-center mb-3">
+          <a href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="hover:opacity-90 transition-opacity duration-200">
+            <img src="/chrome-badge.png" alt="Get it from the Chrome Webstore" class="h-14 sm:h-16" />
+          </a>
+        </div>
+        <div class="text-sm p-2 text-gray-800 leading-relaxed">
+          <p>
+            Use the 
+            <a href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="text-blue-600 font-semibold hover:underline">
+              Gemini to Word or PDF Chrome extension
+            </a> 
+            for a seamless experience. It lets you export single Gemini response or entire conversations with one click. No copy-pasting, no formatting loss. Supports copy pasting math equations from Gemini to PDF. You can also <b>Convert Gemini Deep Research Reports to Word or PDF Docs.</b></p>
+        </div>
+      </div>
+    
+        <!-- Wrapper with fixed height to maintain consistent layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" style="min-height: 650px; max-height: 650px;">
+          <!-- Left column: Input textarea with fixed dimensions -->
+          <div class="flex flex-col" style="height: 650px;">
+            <div class="mb-2 flex justify-between items-center">
+              <div class="flex items-center">
+                <h2 class="text-xl font-bold">Gemini Markdown Input</h2>
+                <div class="relative ml-2 group">
+                  <span class="cursor-help text-gray-400 hover:text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <div class="absolute left-0 top-full mt-2 w-64 p-2 bg-white shadow-lg rounded-md text-sm text-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10">
+                    Paste your Gemini Markdown here.
+                  </div>
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button 
+                  id="paste-btn"
+                  class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md flex items-center text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                  Paste
+                </button>
+                <button 
+                  id="clear-btn"
+                  class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md flex items-center text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="relative flex-grow" style="height: 600px;">
+              <textarea 
+                id="markdown-input" 
+                class="absolute top-0 left-0 w-full h-full p-4 border border-gray-300 rounded-md font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent overflow-auto"
+                placeholder="Paste your Gemini markdown here..."
+                style="box-sizing: border-box; min-height: 600px; max-height: 600px;"
+              ></textarea>
+            </div>
+          </div>
+          
+          <!-- Right column: Preview box with fixed dimensions -->
+          <div class="flex flex-col" style="height: 650px;">
+            <div class="mb-2 flex justify-between items-center">
+              <h2 class="text-xl font-bold">Preview</h2>
+              <button 
+                id="print-btn"
+                class=" bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md flex items-center text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                Download/Print
+              </button>
+            </div>
+            <div 
+              id="preview-container"
+              class="relative flex-grow border border-gray-300 rounded-md bg-white"
+              style="height: 600px; min-height: 600px; max-height: 600px;"
+            >
+              <div id="markdown-preview" class="absolute top-0 left-0 w-full h-full p-6 overflow-auto prose max-w-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+
+     
+       <!-- Sidebar with a custom height -->
+    <Sidebar height="10%" class=".sticky-sidebar" />
+     
+    </div>
+  </div>
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+  <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-3xl mx-auto mt-4 shadow-sm">
+    <h2 class="text-lg font-semibold text-gray-800 mb-2 text-center">
+      How to Convert Gemini to PDF using this online free tool
+    </h2>
+    <ol class="list-decimal text-sm text-gray-800 space-y-2 pl-5 leading-relaxed">
+      <li>Copy the content from your Gemini conversation.</li>
+      <li>Paste it into the Gemini Markdown input box provided on this page.</li>
+      <li>A live preview will appear on the right side — formatted and ready.</li>
+      <li>Click the <strong>Download/Print</strong> button at the top right.</li>
+      <li>In the print dialog, choose <strong>Save as PDF</strong> as the destination.</li>
+      <li>The PDF will be generated — cleanly formatted with no loss of structure or styling.</li>
+      <li>This tool supports <strong>Gemini download as PDF</strong> without losing formatting, including <strong>math equations</strong>, lists, code blocks, and rich formatting.</li>
+      <li>You can also use it to <strong>convert Gemini deep research reports to Word or PDF documents</strong> easily for sharing or archiving.</li>
+    </ol>
+  </div>
+  <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-3xl mx-auto mt-4 shadow-sm">
+    <h2 class="text-lg font-semibold text-gray-800 mb-2 text-center">
+      Why Use the Gemini to Word or PDF Chrome Extension
+    </h2>
+    <div class="flex justify-center mt-4">
+      <a href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf" target="_blank" rel="noopener" aria-label="Get it from the Google Chrome Webstore">
+        <img src="/chrome-badge.png" alt="Get it from the Google Chrome Webstore" class="h-14">
+      </a>
+    </div>
+    <ol class="list-decimal text-sm text-gray-800 space-y-2 pl-5 leading-relaxed">
+      <li>Export Gemini conversations to Word or PDF format in one click.</li>
+      <li>Supports exporting a single Gemini response as a Word or PDF</li>
+      <li>Supports saving your entire Gemini conversation as PDF</li>
+      <li>No copy-pasting required — preserves original formatting automatically.</li>
+      <li>Perfect for saving long research chats, coding help, summaries, or essays.</li>
+      <li>Handles math equations, code blocks, tables, and rich formatting without issues.</li>
+      <li>Great for creating professional documents from Gemini outputs quickly.</li>
+      <li>Clean output ready to share, print, or archive.</li>
+      <li>This extension also works in the Edge browser.</li>
+    </ol>
+    
+  </div>
+  </div></div>
+</Layout>
+
+<!-- Add specific CSS to ensure fixed sizes -->
+<style>
+  textarea#markdown-input {
+    resize: none !important;
+    overflow: auto !important;
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
+  }
+  
+  #preview-container {
+    overflow: hidden !important;
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
+  }
+  
+  #markdown-preview {
+    overflow: auto !important;
+    height: 100% !important;
+  }
+</style>
+
+<script>
+  // Import marked.js for markdown rendering
+  import { marked } from 'marked';
+
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('markdown-input');
+    const preview = document.getElementById('markdown-preview');
+    const printBtn = document.getElementById('print-btn');
+    const pasteBtn = document.getElementById('paste-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    
+    // Enforce fixed height on textarea
+    if (input) {
+      Object.assign(input.style, {
+        resize: 'none',
+        height: '600px',
+        minHeight: '600px',
+        maxHeight: '600px',
+        boxSizing: 'border-box',
+        overflow: 'auto'
+      });
+    }
+    
+    // Function to update the preview
+    function updatePreview() {
+      if (preview && input) {
+        // Convert markdown to HTML
+        preview.innerHTML = marked.parse(input.value);
+      }
+    }
+    
+    // Initial render
+    updatePreview();
+    
+    // Listen for input changes
+    if (input) {
+      input.addEventListener('input', updatePreview);
+      
+      // Handle paste event
+      input.addEventListener('paste', (e) => {
+        // Small delay to ensure content is pasted before processing
+        setTimeout(() => {
+          updatePreview();
+          // Force the textarea to maintain its size
+          input.style.height = '600px';
+        }, 10);
+      });
+    }
+    
+    // Handle print functionality
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        const previewContent = document.getElementById('markdown-preview');
+        if (previewContent) {
+          const printWindow = window.open('', '_blank');
+          printWindow.document.write(`
+            <html>
+              <head>
+                <title>Print</title>
+                <style>
+                  body { font-family: system-ui, sans-serif; line-height: 1.5; max-width: 800px; margin: 0 auto; padding: 2rem; }
+                  h1 { font-size: 2rem; margin-bottom: 1rem; }
+                  h2 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+                  p { margin-bottom: 1rem; }
+                  pre { background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto; }
+                  code { font-family: monospace; }
+                  blockquote { border-left: 4px solid #e2e8f0; padding-left: 1rem; margin-left: 0; color: #4a5568; }
+                  ul, ol { padding-left: 2rem; margin-bottom: 1rem; }
+                  @media print {
+                    @page { margin: 1cm; }
+                  }
+                </style>
+              </head>
+              <body>
+                ${previewContent.innerHTML}
+                <script>
+                  window.onload = function() { window.print(); window.close(); }
+                <\/script>
+              </body>
+            </html>
+          `);
+          printWindow.document.close();
+        }
+      });
+    }
+    
+    // Handle paste from clipboard functionality
+    if (pasteBtn) {
+      pasteBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (input) {
+            input.value = text;
+            updatePreview();
+          }
+        } catch (err) {
+          console.error('Failed to read clipboard contents: ', err);
+          alert('Unable to access clipboard. Please paste manually or check browser permissions.');
+        }
+      });
+    }
+    
+    // Handle clear input functionality
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (input) {
+          input.value = '';
+          updatePreview();
+        }
+      });
+    }
+    
+    // Additional resize prevention
+    window.addEventListener('resize', () => {
+      if (input) {
+        input.style.height = '600px';
+      }
+    });
+  });
+</script>
