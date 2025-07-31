@@ -1,4 +1,4 @@
-# Ads.txt v20250609
+# Ads.txt v20250728
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=thinksolv.com
@@ -39,6 +39,7 @@ pubmatic.com, 164271, DIRECT, 5d62403b186f2ace
 appnexus.com, 15770, DIRECT, f5ab79cb980f11d1
 openx.com, 560606532, DIRECT, 6a698e2ec38604c6
 triplelift.com, 14132, DIRECT, 6c33edb13117fd86
+themediagrid.com, GODNC4, RESELLER, 35d5010d7789b49d
 minutemedia.com, 01hkmpfn2nne, DIRECT
 minutemedia.com, 01hkmpfn2nne, RESELLER
 pubmatic.com, 161683, RESELLER, 5d62403b186f2ace
