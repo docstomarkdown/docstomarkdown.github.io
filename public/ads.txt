@@ -1,4 +1,4 @@
-# Ads.txt v20250728
+# Ads.txt v20250819
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=thinksolv.com
@@ -134,6 +134,20 @@ conversantmedia.com, 100316, RESELLER, 03113cd04947736d
 video.unrulymedia.com, 232050197, DIRECT
 trustx.org, 5606, DIRECT, 1d2c8a747a749d25
 smilewanted.com, 5675, DIRECT
+e-planning.net, 6aa967d41dd8d254, RESELLER, c1ba615865ed87b2
+pubmatic.com, 156631, RESELLER, 5d62403b186f2ace
+sharethrough.com, 23830661, DIRECT, d53b998a7bd4ecd2
+onetag.com, 5927d926323dc2c, DIRECT
+nextmillennium.io, 16425, DIRECT, 65bd090fa4a1e3d6
+amxrtb.com, 105199731, DIRECT
+appnexus.com, 12290, RESELLER
+lijit.com, 260380, RESELLER
+pubmatic.com, 161527, RESELLER
+rubiconproject.com, 23844, RESELLER
+adform.com, 2865, RESELLER
+smartadserver.com, 3056, RESELLER
+openx.com, 559680764, RESELLER
+sharethrough.com, a6a34444, RESELLER
 
 
 
