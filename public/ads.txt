@@ -1,4 +1,4 @@
-# Ads.txt v20250911
+# Ads.txt v20250917
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=thinksolv.com
@@ -65,7 +65,7 @@ admanmedia.com, 953, RESELLER
 betweendigital.com, 44808, RESELLER
 freewheel.tv,1577878,RESELLER
 freewheel.tv,1577888,RESELLER
-adyoulike.com, 53264963677efeda057eef7db2cb305f, RESELLER, 4ad745ead2958bf7
+adyoulike.com,d759914f8b58659527a9a57b5a036424,RESELLER
 risecodes.com, 65a3efa13a58f100018b923c, DIRECT
 pubmatic.com, 160295, RESELLER, 5d62403b186f2ace
 xandr.com, 14082, RESELLER
@@ -131,6 +131,7 @@ criteo.com, B-058807, DIRECT, 9fac4a4a87c2a44f
 themediagrid.com, 72YI3C, DIRECT, 35d5010d7789b49d
 emxdgt.com, 1403, DIRECT, 1e1d41537f7cad7f
 conversantmedia.com, 100316, RESELLER, 03113cd04947736d
+ssp.cadent.com, 1403, DIRECT, 1e1d41537f7cad7f
 video.unrulymedia.com, 232050197, DIRECT
 trustx.org, 5606, DIRECT, 1d2c8a747a749d25
 smilewanted.com, 5675, DIRECT
