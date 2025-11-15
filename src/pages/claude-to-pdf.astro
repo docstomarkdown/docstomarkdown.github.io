@@ -3,8 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Sidebar from '~/components/widgets/Sidebar.astro';
 
 const metadata = {
-  title: 'ChatGPT to PDF',
-  description: "This tool converts ChatGPT text into a PDF format. Paste the content from ChatGPT in the Input Box and it will be rendered as a rich text in the output text. Click the Download/Print button to save it as a PDF."
+  title: 'Claude to PDF',
+  description: "This tool converts Calude text into a PDF format. Paste the content from Claude in the Input Box and it will be rendered as a rich text in the output text. Click the Download/Print button to save it as a PDF."
 };
 ---
 
@@ -13,7 +13,7 @@ const metadata = {
     <div class="flex flex-col lg:flex-row gap-6">
       <!-- Main content area first -->
       <div class="flex-1">
-    <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-5xl mx-auto mt-4 mb-4 shadow-sm">
+    <!-- <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-5xl mx-auto mt-4 mb-4 shadow-sm">
         <div class="flex items-center justify-center mb-3">
           <a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" 
              target="_blank" 
@@ -33,7 +33,7 @@ const metadata = {
             </a> 
             for a seamless experience. It lets you export single ChatGPT response or entire conversations with one click. No copy-pasting, no formatting loss. You can also <b>Convert ChatGPT Deep Research Reports to Word or PDF Docs.</b></p>
         </div>
-      </div>
+      </div>-->
     
         <!-- Wrapper with fixed height to maintain consistent layout -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" style="min-height: 650px; max-height: 650px;">
@@ -41,7 +41,7 @@ const metadata = {
           <div class="flex flex-col" style="height: 650px;">
             <div class="mb-2 flex justify-between items-center">
               <div class="flex items-center">
-                <h2 class="text-xl font-bold">ChatGPT Markdown Input</h2>
+                <h2 class="text-xl font-bold">Calude Markdown Input</h2>
                 <div class="relative ml-2 group">
                   <span class="cursor-help text-gray-400 hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -49,7 +49,7 @@ const metadata = {
                     </svg>
                   </span>
                   <div class="absolute left-0 top-full mt-2 w-64 p-2 bg-white shadow-lg rounded-md text-sm text-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10">
-                    Paste your ChatGPT Markdown here.
+                    Paste your Calude Markdown here.
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const metadata = {
               <textarea 
                 id="markdown-input" 
                 class="absolute top-0 left-0 w-full h-full p-4 border border-gray-300 rounded-md font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent overflow-auto"
-                placeholder="Paste your ChatGPT markdown here..."
+                placeholder="Paste your Claude markdown here..."
                 style="box-sizing: border-box; min-height: 600px; max-height: 600px;"
               ></textarea>
             </div>
@@ -121,22 +121,22 @@ const metadata = {
     <div class="flex flex-col lg:flex-row gap-6">
   <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-3xl mx-auto mt-4 shadow-sm">
     <h2 class="text-lg font-semibold text-gray-800 mb-2 text-center">
-      How to Convert ChatGPT to PDF using this online free tool
+      How to Convert Claude to PDF using this online free tool
     </h2>
     <ol class="list-decimal text-sm text-gray-800 space-y-2 pl-5 leading-relaxed">
-      <li>Copy the content from your ChatGPT conversation.</li>
-      <li>Paste it into the ChatGPT Markdown input box provided on this page.</li>
+      <li>Copy the content from your Claude conversation.</li>
+      <li>Paste it into the Claude Markdown input box provided on this page.</li>
       <li>A live preview will appear on the right side — formatted and ready.</li>
       <li>Click the <strong>Download/Print</strong> button at the top right.</li>
       <li>In the print dialog, choose <strong>Save as PDF</strong> as the destination.</li>
       <li>The PDF will be generated — cleanly formatted with no loss of structure or styling.</li>
-      <li>This tool supports <strong>ChatGPT download as PDF</strong> without losing formatting, including <strong>math equations</strong>, lists, code blocks, and rich formatting.</li>
-      <li>You can also use it to <strong>convert ChatGPT deep research reports to Word or PDF documents</strong> easily for sharing or archiving.</li>
+      <li>This tool supports <strong>Claude download as PDF</strong> without losing formatting, including <strong>math equations</strong>, lists, code blocks, and rich formatting.</li>
+      <li>You can also use it to <strong>convert Claude deep research reports to Word or PDF documents</strong> easily for sharing or archiving.</li>
     </ol>
   </div>
   <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-3xl mx-auto mt-4 shadow-sm">
     <h2 class="text-lg font-semibold text-gray-800 mb-2 text-center">
-      Why Use the ChatGPT to Word or PDF Chrome Extension
+      Why Use the Claude to Word or PDF Chrome Extension
     </h2>
     <div class="flex justify-center mt-4">
       <a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" target="_blank" rel="noopener" aria-label="Get it from the Google Chrome Webstore">
@@ -144,13 +144,13 @@ const metadata = {
       </a>
     </div>
     <ol class="list-decimal text-sm text-gray-800 space-y-2 pl-5 leading-relaxed">
-      <li>Export ChatGPT conversations to Word or PDF format in one click.</li>
-      <li>Supports exporting a single ChatGPT response as a Word or PDF</li>
-      <li>Supports saving your entire ChatGPT conversation as PDF</li>
+      <li>Export Claude conversations to Word or PDF format in one click.</li>
+      <li>Supports exporting a single Claude response as a Word or PDF</li>
+      <li>Supports saving your entire Claude conversation as PDF</li>
       <li>No copy-pasting required — preserves original formatting automatically.</li>
       <li>Perfect for saving long research chats, coding help, summaries, or essays.</li>
       <li>Handles math equations, code blocks, tables, and rich formatting without issues.</li>
-      <li>Great for creating professional documents from ChatGPT outputs quickly.</li>
+      <li>Great for creating professional documents from Claude outputs quickly.</li>
       <li>Clean output ready to share, print, or archive.</li>
       <li>This extension also works in the Edge browser.</li>
     </ol>
