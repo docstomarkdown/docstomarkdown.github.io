@@ -1,33 +1,60 @@
 ---
-import Headline from '~/components/ui/Headline.astro';
-import ItemGrid from '~/components/ui/ItemGrid.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import type { Faqs as Props } from '~/types';
+import Headline from "~/components/ui/Headline.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import { Icon } from "astro-icon/components";
+import type { Faqs as Props } from "~/types";
 
 const {
-  title = '',
-  subtitle = '',
-  tagline = '',
+  title = "",
+  subtitle = "",
+  tagline = "",
   items = [],
   columns = 2,
 
   id,
   isDark = false,
   classes = {},
-  bg = await Astro.slots.render('bg'),
+  bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-7xl mx-auto ${classes?.container ?? ""}`}
+  bg={bg}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <ItemGrid
-    items={items}
-    columns={columns}
-    defaultIcon="tabler:chevron-right"
-    classes={{
-      container: `${columns === 1 ? 'max-w-4xl' : ''} gap-y-8 md:gap-y-12`,
-      panel: 'max-w-none',
-      icon: 'flex-shrink-0 mt-1 w-6 h-6 text-primary',
-    }}
-  />
+
+  <div
+    class={`grid gap-3 ${columns === 1 ? "max-w-4xl mx-auto" : "grid-cols-1 lg:grid-cols-2 lg:gap-4"}`}
+  >
+    {
+      items.map((item) => (
+        <div class="h-full flex flex-col group select-none bg-white dark:bg-slate-800 rounded-md border border-gray-200 dark:border-slate-700 shadow-sm">
+          <div class="flex items-center justify-between w-full p-3 font-medium">
+            <div class="flex items-center gap-2.5">
+              <div class="flex-shrink-0 bg-primary/10 dark:bg-primary/20 text-primary rounded-full p-1">
+                <Icon name="tabler:help" class="w-4 h-4" />
+              </div>
+              <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                {item.title}
+              </h3>
+            </div>
+            <span class="text-gray-400 rotate-180 text-primary">
+              <Icon name="tabler:chevron-down" class="w-5 h-5" />
+            </span>
+          </div>
+
+          <div class="px-3 pb-3 pt-0 flex-grow">
+            <div class="h-px w-full bg-gray-100 dark:bg-slate-700 mb-2" />
+            <div
+              class="prose dark:prose-invert max-w-none text-sm text-gray-700 dark:text-gray-300 [&_b]:font-normal [&_strong]:font-normal"
+              set:html={item.description}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </WidgetWrapper>
