@@ -309,12 +309,15 @@ body .home-icons-grid {
   align-items: center;
   justify-content: center;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: rgb(240 253 244);
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #a7f3d0 100%);
+  border: 2px solid #86efac;
+  border-radius: 0.75rem;
   padding: 10px;
   margin: 5px;
   width: 350px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+  font-weight: 500;
+  color: #166534;
 }
 
 .my-svg-icon-bottom {
@@ -350,6 +353,176 @@ body .home-icons-grid {
 
 /*end Comparison Before and After docs to Md ends*/
 
+/* Animation Keyframes for Before/After Section */
+@keyframes compareSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes compareSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes compareFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arrowBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes arrowBounceDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes compareScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation trigger classes - applied when in view */
+.compare-animate .section-container:first-child {
+  animation: compareSlideInLeft 0.7s ease-out forwards;
+}
+
+.compare-animate .section-container:last-child {
+  animation: compareSlideInRight 0.7s ease-out 0.15s forwards;
+}
+
+.compare-animate .custom-list-item {
+  opacity: 0;
+  animation: compareFadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggered animation delays for list items */
+.compare-animate .section-container:first-child .custom-list-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(6) {
+  animation-delay: 0.7s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(7) {
+  animation-delay: 0.8s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(8) {
+  animation-delay: 0.9s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(9) {
+  animation-delay: 1.0s;
+}
+
+.compare-animate .section-container:first-child .custom-list-item:nth-child(10) {
+  animation-delay: 1.1s;
+}
+
+.compare-animate .section-container:last-child .custom-list-item:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.compare-animate .section-container:last-child .custom-list-item:nth-child(2) {
+  animation-delay: 0.55s;
+}
+
+.compare-animate .expand-item {
+  opacity: 0;
+  animation: compareScaleIn 0.6s ease-out 0.7s forwards;
+}
+
+/* Arrow animations - always active */
+.compare-animate .my-svg-icon-bottom {
+  animation: arrowBounce 1.8s ease-in-out infinite;
+}
+
+.compare-animate .my-svg-icon-top {
+  animation: arrowBounceDown 1.8s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+/* Hover enhancements for list items */
+.custom-list-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.custom-list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.expand-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expand-item:hover {
+  transform: scale(1.015);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.12);
+}
 
 /*end css for home page before and after gdocs to md */
 

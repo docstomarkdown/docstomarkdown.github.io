@@ -1,165 +1,527 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
-
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
 
 const metadata = {
-  title: 'ChatGPT to Word',
-  description: "This tool converts ChatGPT text into a Microsoft Word format. Paste the content from ChatGPT in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste in your Word, or click download option to download as Word File."
+  title: "ChatGPT to Word",
+  description:
+    "Convert ChatGPT conversations to Microsoft Word documents. Preserves formatting, math equations, and tables.",
 };
 ---
+
 <Layout metadata={metadata}>
-      
-  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-    <div style="width: 75%; padding-right: 20px;"> 
-      <div style="padding-top:10px; padding-left:50px;">
-        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to Word Online</h1>
-        <p style="padding-top:10px;">You can use this tool to convert ChatGPT to Word online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop">ChatGPT to Word or PDF</a><i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Chrome extension to download the response as Word or PDF file in a single click.</p>
-      </div>
-      <div style="text-align: center;">
-        <a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener">
-          <div style="display: inline-block;">
-            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;">
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Main content area -->
+      <div class="flex-1">
+        <!-- Header Section -->
+        <div class="text-center mb-6">
+          <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-3">
+            Convert ChatGPT to Word Online - Free
+          </h1>
+          <p class="text-gray-600 text-lg">
+            Transform your ChatGPT conversations into editable Microsoft Word
+            documents
+          </p>
+        </div>
+
+        <!-- Chrome Extension Promo -->
+        <div
+          class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
+        >
+          <div class="flex-shrink-0">
+            <a
+              href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-90 transition-opacity duration-200 block"
+            >
+              <img
+                src="/chrome-badge.png"
+                alt="Get it from the Chrome Webstore"
+                class="h-12"
+              />
+            </a>
           </div>
-        </a>
-      </div>
-      <!-- Include Quill library -->
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div>
-      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-        <button id="download-button" class="tool-styled-button-new"><i class="fas fa-download"></i> Download as Word File</button>
-        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
-      </div>
-      <main class="twocols">
-        <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your ChatGPT Markdown here..</p>
-        <div id="output-instructions" class ="right-editor-placeholder">..get your Microsoft word content here</div>
-        <div id="output" class="input-field editor-container" autocomplete="off"></div>
-      </main>
-      <div class="mx-10 leading-10">
-        <h2 class="font-bold">How to convert ChatGPT to Word using this online tool?</h2>
-        <ol class=" list-decimal list-inside mx-10">
-          <li class="font-normal">Paste your ChatGPT content in the input text box on the left side.</li>
-          <li class="font-normal">The ChatGPT will be rendered as rich text on the output text box automatically</li>
-          <li class="font-normal">Copy the output using the Copy button</li>
-          <li class="font-normal">Paste the copied content in your Word. Content will be pasted and the formatting will be preserved as well. </li>
-          <li class="font-normal">Alternatively you can download the content as word file using the Download button. </li>
-          <li class="font-normal">Using this online tool you can copy and paste from ChatGPT to Word without losing formatting.</li>
-          <li class="font-normal">You can also copy equations from ChatGPT to Word.</li>
+          <div class="text-sm text-gray-700 leading-relaxed">
+            <ul class="list-disc pl-4 space-y-1">
+              <li>
+                <strong>Pro Tip:</strong> Use the
+                <a
+                  href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 font-semibold hover:underline"
+                >
+                  ChatGPT to Word or PDF Chrome extension
+                </a>
+                to export directly from the ChatGPT interface.
+              </li>
+              <li>
+                Preserves all formatting, math equations, and code blocks
+                perfectly.
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        </ol>
+        <!-- Converter Tool Card -->
+        <div
+          class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
+        >
+          <!-- Tool Header -->
+          <div class="flex items-center gap-2 mb-4">
+            <div
+              class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 text-blue-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <span class="font-medium text-gray-600 text-sm"
+              >ChatGPT to Word Converter</span
+            >
+          </div>
+
+          <!-- Two Column Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Input Section -->
+            <div class="flex flex-col h-[650px]">
+              <div class="flex justify-between items-center mb-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  <span class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      ></path>
+                    </svg>
+                    ChatGPT Markdown Input
+                  </span>
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    id="paste-btn"
+                    class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      ></path>
+                    </svg>
+                    Paste
+                  </button>
+                  <button
+                    id="clear-btn"
+                    class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              <div class="relative flex-grow h-full">
+                <textarea
+                  id="markdown-input"
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                  placeholder="Paste your ChatGPT markdown here..."></textarea>
+              </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="flex flex-col h-[650px]">
+              <div class="flex justify-between items-center mb-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  <span class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 text-green-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      ></path>
+                    </svg>
+                    Word Preview
+                  </span>
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    id="copy-btn"
+                    class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
+                      ></path>
+                    </svg>
+                    Copy
+                  </button>
+                  <button
+                    id="download-btn"
+                    class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      ></path>
+                    </svg>
+                    Download .docx
+                  </button>
+                </div>
+              </div>
+              <div
+                class="relative flex-grow border border-gray-300 rounded-xl bg-white overflow-hidden"
+              >
+                <div
+                  id="markdown-preview"
+                  class="absolute top-0 left-0 w-full h-full p-6 overflow-auto prose max-w-none"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- How to Use / Video Section -->
+        <div
+          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <!-- Left: Steps -->
+            <div>
+              <h2
+                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-blue-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                How to Convert ChatGPT to Word
+              </h2>
+              <ol class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >1</span
+                  >
+                  <span class="text-gray-600"
+                    >Paste your ChatGPT content in the input box on the left.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >2</span
+                  >
+                  <span class="text-gray-600"
+                    >The text will be formatted automatically in the preview
+                    box.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >3</span
+                  >
+                  <span class="text-gray-600"
+                    >Click "Download .docx" to save as a Microsoft Word file.</span
+                  >
+                </li>
+              </ol>
+            </div>
+
+            <!-- Right: Video -->
+            <div>
+              <h3
+                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-red-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Video Tutorial
+              </h3>
+              <div class="relative w-full" style="padding-bottom: 56.25%;">
+                <iframe
+                  class="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-200"
+                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                  title="How to Convert ChatGPT to Word - Video Tutorial"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="hide-grow-widget"></div>
+
+      <!-- Sidebar -->
+      <Sidebar height="10%" />
     </div>
-
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" class=".sticky-sidebar" />
-
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
   </div>
-
-
-{<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
-{<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
-{<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>}
-{<script>
-    
-    var inputElement = document.getElementById('input');
-    var outputElement = document.getElementById('output');
-    // Initialize Quill
-    var quill = "";
-     quill  = new Quill('#output', {
-        theme: 'snow',
-        readOnly: true,
-        modules: {
-          toolbar: false, // Disable the toolbar
-        },
-      });
-    // Function to convert HTML to Markdown
-    function toHTML() {
-        
-
-        // Get the text content from the content-editable div
-        var textContent = inputElement.value;
-
-        var outputHTML = marked.parse(textContent);
-        quill.clipboard.dangerouslyPasteHTML(outputHTML);
-
-    }
-
-    // Add event listener to invoke toMarkdown function on input
-    inputElement.addEventListener('input', ()=>{
-      var inputInstructions = document.getElementById('input-instructions');
-      var outputInstructions = document.getElementById('output-instructions');
-
-      var hasContent = !!inputElement.value.trim();
-      if (hasContent) {
-        inputInstructions.style.display = 'none'; // Hide instructions if there's content
-        outputInstructions.style.display = 'none';
-      } else {
-          inputInstructions.style.display = 'block';
-          outputInstructions.style.display = 'block';
-          inputElement.focus();
-      }
-      toHTML();
-    });
-    
-    var downloadButton = document.getElementById('download-button');
-    if (window.URL && window.File) {
-    downloadButton.style.display = '';
-    downloadButton.addEventListener('click', () => {
-      event.preventDefault(); 
-      var htmlContent = quill.root.innerHTML;
-      var converted = htmlDocx.asBlob(htmlContent, {orientation: 'landscape', margins: {top: 720}});
-
-    
-      let url, link;
-      try {
-        url = URL.createObjectURL(converted);
-        link = document.createElement('a');
-        link.href = url;
-        link.download = 'Converted.docx';
-        document.body.appendChild(link);
-        link.click();
-      } finally {
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }
-    });
-    }
-    
-    var copyButtonForTextCopy = document.getElementById('copy-button');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButtonForTextCopy.addEventListener('click', () => {
-      event.preventDefault();
-      var html = quill.root.innerHTML;
-      var blob = new Blob([html], {type: 'text/html'});
-      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
-      navigator.clipboard.write([clipboardItem]);
-      showCopyTooltip();
-   });
- }
-
-    
-
-    function showCopyTooltip() {
-        var tooltip = document.createElement('div');
-        tooltip.className = 'copy-tooltip';
-        tooltip.textContent = 'Text copied to clipboard';
-        document.body.appendChild(tooltip);
-
-        setTimeout(() => {
-            tooltip.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(tooltip);
-            }, 500);
-        }, 1500);
-    }
-    
-
-
-
-</script>}
 </Layout>
+
+<style>
+  #markdown-input,
+  #preview-container {
+    height: 100%;
+  }
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
+
+<!-- KaTeX for Math Equations -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+<!-- html-docx-js for Word Download -->
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"
+></script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("markdown-input");
+    const preview = document.getElementById("markdown-preview");
+    const downloadBtn = document.getElementById("download-btn");
+    const copyBtn = document.getElementById("copy-btn");
+    const pasteBtn = document.getElementById("paste-btn");
+    const clearBtn = document.getElementById("clear-btn");
+
+    function renderMath(text) {
+      if (!text) return "";
+      // Process block math ($$...$$)
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
+        try {
+          return katex.renderToString(math.trim(), {
+            displayMode: true,
+            throwOnError: false,
+          });
+        } catch (e) {
+          return match;
+        }
+      });
+      // Process inline math ($...$)
+      text = text.replace(
+        /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
+        function (match, math) {
+          try {
+            return katex.renderToString(math.trim(), {
+              displayMode: false,
+              throwOnError: false,
+            });
+          } catch (e) {
+            return match;
+          }
+        },
+      );
+      return text;
+    }
+
+    function updatePreview() {
+      if (preview && input) {
+        const textWithMath = renderMath(input.value);
+        preview.innerHTML = marked.parse(textWithMath);
+      }
+    }
+
+    updatePreview();
+
+    if (input) {
+      input.addEventListener("input", updatePreview);
+    }
+
+    if (pasteBtn) {
+      pasteBtn.addEventListener("click", function () {
+        navigator.clipboard
+          .readText()
+          .then((text) => {
+            if (input) {
+              input.value = text;
+              updatePreview();
+            }
+          })
+          .catch((err) => {
+            console.error("Failed to read clipboard:", err);
+            alert("Unable to access clipboard.");
+          });
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        if (input) {
+          input.value = "";
+          updatePreview();
+        }
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!preview) return;
+
+        // Copy inner HTML/Text mechanism
+        // For Word, copying rich HTML is best
+        const blob = new Blob([preview.innerHTML], { type: "text/html" });
+        const item = new ClipboardItem({ "text/html": blob });
+
+        navigator.clipboard
+          .write([item])
+          .then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Copied!
+            `;
+            setTimeout(() => {
+              copyBtn.innerHTML = originalText;
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Copy failed", err);
+            alert("Failed to copy content.");
+          });
+      });
+    }
+
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", function () {
+        if (!preview) return;
+
+        // Generate Word doc from the preview HTML
+        // html-docx-js expects full page HTML structure usually for best results
+        const content = `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="UTF-8">
+              <style>
+                body { font-family: Calibri, sans-serif; font-size: 11pt; }
+              </style>
+            </head>
+            <body>
+              ${preview.innerHTML}
+            </body>
+          </html>
+        `;
+
+        if (typeof htmlDocx !== "undefined") {
+          const converted = htmlDocx.asBlob(content, {
+            orientation: "portrait",
+          });
+          const url = URL.createObjectURL(converted);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "chatgpt-conversation.docx";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        } else {
+          console.error("html-docx library not loaded");
+          alert("Converter library not loaded. Please refresh.");
+        }
+      });
+    }
+  });
+</script>

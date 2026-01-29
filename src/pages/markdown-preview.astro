@@ -1,31 +1,615 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import MarkdownEditor from '../components/tools/MarkdownPreview';
-import Sidebar from '../components/widgets/Sidebar.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
+
 const metadata = {
-  title: 'Markdown Preview',
-  description: 'An interactive markdown editor and previewer.'
+  title: "Markdown Editor & Live Preview - Free Online Tool",
+  description:
+    "Write and preview Markdown in real-time. Includes a toolbar for formatting, syntax highlighting, and export options.",
 };
 ---
+
 <Layout metadata={metadata}>
-  <!-- Total Page Container -->
-  <div style="display: flex; ">
-    <!-- Content and Sidebar Container -->
-      <!-- Main Content Section (80%) -->
-      <div style="width: 80%; padding-right: 20px;">
-        <!-- Title and Introduction inside Main Content -->
-        <div>
-          <h1 style="color: #2772ed; font-size: 32px; font-weight: bold; padding-left: 25px;">
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Main content area -->
+      <div class="flex-1">
+        <!-- Header Section -->
+        <div class="text-center mb-6">
+          <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-3">
             Markdown Live Preview
-          </h1>    
+          </h1>
+          <p class="text-gray-600 text-lg">
+            Real-time Markdown editor with instant preview and export options
+          </p>
         </div>
-        <!-- Markdown Editor -->
-        <main style="padding-left: 20px; padding-right: 20px">
-          <MarkdownEditor client:load />
-        </main>
+
+        <!-- Google Workspace Promo -->
+        <div
+          class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
+        >
+          <div class="flex-shrink-0">
+            <a
+              href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-90 transition-opacity duration-200 block"
+            >
+              <img
+                src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                alt="Get it from the Google Workspace Marketplace"
+                class="h-12"
+              />
+            </a>
+          </div>
+          <div class="text-sm text-gray-700 leading-relaxed">
+            <ul class="list-disc pl-4 space-y-1">
+              <li>
+                <strong>Pro Tip:</strong> Install the
+                <a
+                  href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 font-semibold hover:underline"
+                >
+                  Docs to Markdown Pro Add-on
+                </a>
+                to convert Google Docs to Markdown/HTML.
+              </li>
+              <li>
+                Includes a powerful sidebar for converting Docs to Markdown,
+                HTML, and more.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Editor Toolbar -->
+        <div
+          class="bg-white border border-gray-200 rounded-t-2xl border-b-0 p-3 flex flex-wrap gap-2 items-center justify-between shadow-sm relative z-10"
+        >
+          <div class="flex flex-wrap gap-1">
+            <!-- Formatting Buttons -->
+            <button
+              class="toolbar-btn"
+              data-format="bold"
+              title="Bold (Ctrl+B)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 12h8a4 4 0 100-8H6v8zm0 0h10a4 4 0 110 8H6v-8z"
+                ></path></svg
+              >
+            </button>
+            <button
+              class="toolbar-btn"
+              data-format="italic"
+              title="Italic (Ctrl+I)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
+              >
+            </button>
+            <div class="w-px h-6 bg-gray-300 mx-1"></div>
+            <button
+              class="toolbar-btn font-serif font-bold text-sm"
+              data-format="h1"
+              title="Heading 1">H1</button
+            >
+            <button
+              class="toolbar-btn font-serif font-bold text-sm"
+              data-format="h2"
+              title="Heading 2">H2</button
+            >
+            <button
+              class="toolbar-btn font-serif font-bold text-sm"
+              data-format="h3"
+              title="Heading 3">H3</button
+            >
+            <div class="w-px h-6 bg-gray-300 mx-1"></div>
+            <button class="toolbar-btn" data-format="ul" title="Unordered List">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"></path></svg
+              >
+            </button>
+            <button class="toolbar-btn" data-format="ol" title="Ordered List">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg
+              >
+            </button>
+            <div class="w-px h-6 bg-gray-300 mx-1"></div>
+            <button class="toolbar-btn" data-format="link" title="Link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                ></path></svg
+              >
+            </button>
+            <button class="toolbar-btn" data-format="image" title="Image">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path></svg
+              >
+            </button>
+            <button class="toolbar-btn" data-format="table" title="Table">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 10h18M3 14h18m-9-4v8m-7-4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v5a2 2 0 002 2z"
+                ></path></svg
+              >
+            </button>
+            <button class="toolbar-btn" data-format="code" title="Code Block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
+              >
+            </button>
+            <div class="w-px h-6 bg-gray-300 mx-1"></div>
+            <button
+              class="toolbar-btn text-red-500 hover:text-red-700 hover:bg-red-50"
+              data-format="clear"
+              title="Clear All"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                ></path></svg
+              >
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-2">
+            <button
+              id="download-md-btn"
+              class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3.5 w-3.5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              .md
+            </button>
+            <button
+              id="copy-preview-btn"
+              class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3.5 w-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
+                ></path>
+              </svg>
+              Copy HTML
+            </button>
+          </div>
+        </div>
+
+        <!-- Converter Tool Editors -->
+        <div
+          class="bg-white border border-gray-200 rounded-b-2xl shadow-lg mb-6 overflow-hidden"
+        >
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 h-[700px] divide-y lg:divide-y-0 lg:divide-x divide-gray-200"
+          >
+            <!-- Input Section -->
+            <div class="flex flex-col h-full bg-gray-50">
+              <textarea
+                id="markdown-input"
+                class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-transparent"
+                placeholder="Type your Markdown here..."></textarea>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="flex flex-col h-full bg-white relative">
+              <div
+                id="preview-container"
+                class="w-full h-full p-8 overflow-auto prose max-w-none prose-blue"
+              >
+              </div>
+              <!-- Placeholder when empty -->
+              <div
+                id="preview-placeholder"
+                class="absolute inset-0 flex items-center justify-center pointer-events-none text-gray-400"
+              >
+                <span class="text-sm">Preview will appear here</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Sidebar Section (20%) -->
-      <Sidebar height="5%" />
-   
+
+      <!-- Sidebar -->
+      <Sidebar height="10%" />
+    </div>
   </div>
 </Layout>
+
+<style>
+  .toolbar-btn {
+    @apply p-2 rounded hover:bg-gray-100 text-gray-600 transition-colors duration-150 flex items-center justify-center min-w-[32px] min-h-[32px];
+  }
+</style>
+
+<!-- Marked for Markdown processing -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
+<!-- Highlight.js for Syntax Highlighting -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+></script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("markdown-input");
+    const preview = document.getElementById("preview-container");
+    const placeholder = document.getElementById("preview-placeholder");
+    const downloadMdBtn = document.getElementById("download-md-btn");
+    const copyBtn = document.getElementById("copy-preview-btn");
+
+    // Formatting Buttons logic
+    const buttons = document.querySelectorAll(".toolbar-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const format = btn.dataset.format;
+        if (format) handleFormat(format);
+        e.preventDefault(); // Prevent focus loss quirk
+      });
+    });
+
+    // Configure marked with highlight.js
+    if (typeof marked !== "undefined") {
+      marked.setOptions({
+        highlight: function (code, lang) {
+          const language = hljs.getLanguage(lang) ? lang : "plaintext";
+          return hljs.highlight(code, { language }).value;
+        },
+        langPrefix: "hljs language-",
+        breaks: true, // Enable line breaks
+        gfm: true, // Enable GitHub Flavored Markdown
+      });
+    }
+
+    function updatePreview() {
+      if (preview && input && typeof marked !== "undefined") {
+        const text = input.value;
+        if (!text.trim()) {
+          preview.innerHTML = "";
+          placeholder.style.display = "flex";
+        } else {
+          placeholder.style.display = "none";
+          preview.innerHTML = marked.parse(text);
+        }
+      }
+    }
+
+    // Helper: Get start/end of lines touched by selection
+    function getLineRange(input) {
+      const value = input.value;
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+
+      // Find start of first line
+      let lineStart = value.lastIndexOf("\n", start - 1) + 1;
+      if (lineStart < 0) lineStart = 0;
+
+      // Find end of last line
+      let lineEnd = value.indexOf("\n", end);
+      if (lineEnd === -1) lineEnd = value.length;
+
+      return { lineStart, lineEnd };
+    }
+
+    function handleFormat(type) {
+      if (!input) return;
+      input.focus();
+
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      const value = input.value;
+      const selectedText = value.substring(start, end);
+
+      let newValue = value;
+      let newSelectionStart = start;
+      let newSelectionEnd = end;
+
+      switch (type) {
+        case "bold":
+          if (selectedText) {
+            newValue =
+              value.substring(0, start) +
+              `**${selectedText}**` +
+              value.substring(end);
+            newSelectionStart = start + 2;
+            newSelectionEnd = end + 2;
+          } else {
+            newValue =
+              value.substring(0, start) +
+              `**Bold Text**` +
+              value.substring(end);
+            newSelectionStart = start + 2;
+            newSelectionEnd = start + 11;
+          }
+          break;
+
+        case "italic":
+          if (selectedText) {
+            newValue =
+              value.substring(0, start) +
+              `_${selectedText}_` +
+              value.substring(end);
+            newSelectionStart = start + 1;
+            newSelectionEnd = end + 1;
+          } else {
+            newValue =
+              value.substring(0, start) +
+              `_Italic Text_` +
+              value.substring(end);
+            newSelectionStart = start + 1;
+            newSelectionEnd = start + 12;
+          }
+          break;
+
+        // Block formats: Apply to the entire line(s)
+        case "h1":
+        case "h2":
+        case "h3":
+        case "ul":
+        case "ol":
+          const { lineStart, lineEnd } = getLineRange(input);
+          const lineContent = value.substring(lineStart, lineEnd);
+          let prefix = "";
+
+          if (type === "h1") prefix = "# ";
+          if (type === "h2") prefix = "## ";
+          if (type === "h3") prefix = "### ";
+          if (type === "ul") prefix = "- ";
+          if (type === "ol") prefix = "1. ";
+
+          // Logic to replace existing block format or add new
+          // We'll strip existing format prefix if present, then add new one
+          // Simple regex for common prefixes
+          const cleanLine = lineContent.replace(
+            /^((#+)|(\d+\.)|(-)|(\*))\s+/,
+            "",
+          );
+
+          // If it was already this type, maybe toggle off?
+          // For now, let's just enforce the requested type.
+
+          const newLine = prefix + cleanLine;
+          newValue =
+            value.substring(0, lineStart) + newLine + value.substring(lineEnd);
+
+          // Adjust cursor to end of the line
+          newSelectionStart = lineStart + newLine.length;
+          newSelectionEnd = lineStart + newLine.length;
+          break;
+
+        case "link":
+          if (selectedText) {
+            newValue =
+              value.substring(0, start) +
+              `[${selectedText}](url)` +
+              value.substring(end);
+            newSelectionStart = end + 3; // select 'url' part ideally, but let's just place cursor
+            newSelectionEnd = end + 6;
+          } else {
+            newValue =
+              value.substring(0, start) +
+              `[Link Text](url)` +
+              value.substring(end);
+            newSelectionStart = start + 12;
+            newSelectionEnd = start + 15;
+          }
+          break;
+
+        case "image":
+          newValue =
+            value.substring(0, start) +
+            `![Alt Text](https://via.placeholder.com/150)` +
+            value.substring(end);
+          newSelectionStart = start + 2;
+          newSelectionEnd = start + 10;
+          break;
+
+        case "table":
+          const tableTemplate = `\n| Header 1 | Header 2 |\n| --- | --- |\n| Cell 1 | Cell 2 |\n`;
+          newValue =
+            value.substring(0, start) + tableTemplate + value.substring(end);
+          newSelectionStart = start + tableTemplate.length;
+          newSelectionEnd = start + tableTemplate.length;
+          break;
+
+        case "code":
+          if (selectedText.includes("\n")) {
+            // Block code
+            newValue =
+              value.substring(0, start) +
+              `\n\`\`\`\n${selectedText}\n\`\`\`\n` +
+              value.substring(end);
+            newSelectionStart = start + 4; // cursor ?
+            newSelectionEnd = end + 4;
+          } else {
+            // Inline code
+            if (selectedText) {
+              newValue =
+                value.substring(0, start) +
+                `\`${selectedText}\`` +
+                value.substring(end);
+              newSelectionStart = start + 1;
+              newSelectionEnd = end + 1;
+            } else {
+              newValue =
+                value.substring(0, start) + `\`code\`` + value.substring(end);
+              newSelectionStart = start + 1;
+              newSelectionEnd = start + 5;
+            }
+          }
+          break;
+
+        case "clear":
+          newValue = "";
+          newSelectionStart = 0;
+          newSelectionEnd = 0;
+          break;
+      }
+
+      // Apply changes
+      input.value = newValue;
+      updatePreview();
+
+      // Restore focus and selection
+      input.setSelectionRange(newSelectionStart, newSelectionEnd);
+      input.focus();
+    }
+
+    if (input) {
+      input.addEventListener("input", updatePreview);
+      // Initialize with sample text if empty or load existing
+      if (!input.value) {
+        input.value =
+          "# Welcome to Markdown Preview\n\nStart typing to see the **live preview** on the right.\n\n- [x] Supports GitHub Flavored Markdown\n- [x] Syntax Highlighting\n- [x] Instant Rendering\n\nFor example:\n\n```python\nprint('Hello World')\n```";
+        updatePreview();
+      }
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!preview) return;
+
+        // Copy Rich HTML
+        const blob = new Blob([preview.innerHTML], { type: "text/html" });
+        const item = new ClipboardItem({
+          "text/html": blob,
+          "text/plain": new Blob([preview.innerText], { type: "text/plain" }),
+        });
+
+        navigator.clipboard
+          .write([item])
+          .then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `Copied!`;
+            setTimeout(() => {
+              copyBtn.innerHTML = originalText;
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Copy failed", err);
+            alert("Failed to copy content.");
+          });
+      });
+    }
+
+    if (downloadMdBtn) {
+      downloadMdBtn.addEventListener("click", function () {
+        if (!input) return;
+        const blob = new Blob([input.value], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "document.md";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+  });
+</script>

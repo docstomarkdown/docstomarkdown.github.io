@@ -7,11 +7,10 @@
         <div class="sm:flex sm:justify-center"></div>
         <p
           class="text-6xl tracking-tight text-black md:text-5xl font-display hero-heading"
-          style="color: #fdfdfd;    font-weight: 550;line-height: 1.2em; font-size:50px"
+          style="color: #ffffff; font-weight: 600; line-height: 1.2em; font-size:50px; text-shadow: 0 2px 10px rgba(0,0,0,0.2);"
         >
-          Convert <span style="color:#ACEC59">Word</span> or <span
-            style="color:#ACEC59">Google Docs</span
-          > to Markdown like a <span style="color:#ACEC59">Pro</span>
+          Convert <span style="color:#ACEC59">Google Docs</span> to Markdown like
+          a <span style="color:#ACEC59">Pro</span>
         </p>
 
         <p
@@ -146,7 +145,11 @@
   </div>
 </section>
 <section>
-  <div class="compare-container" style="display: flex;margin-top:20px;">
+  <div
+    id="compare-section"
+    class="compare-container"
+    style="display: flex;margin-top:20px;"
+  >
     <!-- Left Section -->
     <div
       class="section-container"
@@ -185,33 +188,6 @@
           </li>
 
           <li class="expand-item">
-            <svg
-              version="1.1"
-              height="120px"
-              class="my-svg-icon-bottom"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px"
-              y="0px"
-              viewBox="0 0 512 512"
-              style="enable-background:new 0 0 512 512;"
-              xml:space="preserve"
-            >
-              <g id="XMLID_1_">
-                <path
-                  id="XMLID_14_"
-                  d="M264.4,29.8V14h-15.8v15.8H264.4z M264.4,78.2V45.6h-15.8v32.6H264.4z M264.4,126.6V94h-15.8v32.6H264.4z
-           M264.4,174.1v-32.6h-15.8v32.6H264.4z M264.4,222.5v-31.7h-15.8v32.6h15.8V222.5z M264.4,270.9v-32.6h-15.8v32.6H264.4z
-           M264.4,319.3v-32.6h-15.8v32.6H264.4z M264.4,367.7v-32.6h-15.8v32.6H264.4z M264.4,415.2v-32.6h-15.8v32.6H264.4z M264.4,463.6
-          V431h-15.8v32.6H264.4z M264.4,512v-32.6h-15.8V512H264.4z"
-                ></path>
-                <polygon
-                  id="XMLID_15_"
-                  points="334.2,72.6 261.6,0 250.4,0 177.8,72.6 189,83.8 256,16.8 323,83.8 	"
-                ></polygon>
-              </g>
-            </svg>
             <!-- Text -->
             More time for writing
             <svg
@@ -248,3 +224,30 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Scroll-triggered animation for Before/After section
+  document.addEventListener("DOMContentLoaded", () => {
+    const compareSection = document.getElementById("compare-section");
+
+    if (compareSection) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              compareSection.classList.add("compare-animate");
+              // Once animated, no need to observe anymore
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15, // Trigger when 15% of section is visible
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+
+      observer.observe(compareSection);
+    }
+  });
+</script>

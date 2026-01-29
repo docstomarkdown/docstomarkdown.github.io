@@ -1,122 +1,454 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
-
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
 
 const metadata = {
-  title: 'Convert ChatGPT to HTML free online',
-  description: "This tool converts ChatGPT text into a html format. Paste the ChatGPT text in the Input Box and it will be rendered as a rich text in the output text. Copy the output and you'll have a HTML output."
+    title: "Convert ChatGPT to HTML free online",
+    description:
+        "This tool converts ChatGPT text into a html format. Paste the ChatGPT text in the Input Box and it will be rendered as a rich text in the output text. Copy the output and you'll have a HTML output.",
 };
 ---
+
 <Layout metadata={metadata}>
-    <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-        <div style="width: 75%; padding-right: 20px;">
-            <div style="padding-top:10px; padding-left:50px;">
-                <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to HTML Online - Free</h1>
-                <p style="padding-top:10px;">You can use this tool to convert ChatGPT to HTML online for free. </p>
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Main content area -->
+            <div class="flex-1">
+                <!-- Header Section -->
+                <div class="text-center mb-6">
+                    <h1
+                        class="text-3xl md:text-4xl font-bold text-blue-600 mb-3"
+                    >
+                        Convert ChatGPT to HTML Online - Free
+                    </h1>
+                    <p class="text-gray-600 text-lg">
+                        Transform your ChatGPT conversations into clean HTML
+                        code instantly
+                    </p>
+                </div>
+
+                <!-- Converter Tool Card -->
+                <div
+                    class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
+                >
+                    <!-- Tool Header -->
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                ></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium text-gray-600 text-sm"
+                            >ChatGPT to HTML Converter</span
+                        >
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <!-- Input Section -->
+                        <div class="relative">
+                            <div class="flex justify-between items-center mb-2">
+                                <label
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-blue-500"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                            ></path>
+                                        </svg>
+                                        ChatGPT Markdown Input
+                                    </span>
+                                </label>
+                                <div class="flex gap-2">
+                                    <button
+                                        id="paste-btn"
+                                        class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                                            ></path>
+                                        </svg>
+                                        Paste
+                                    </button>
+                                    <button
+                                        id="clear-btn"
+                                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                            ></path>
+                                        </svg>
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <textarea
+                                    id="input"
+                                    class="w-full h-80 p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                                    placeholder="Paste your ChatGPT markdown here..."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Output Section -->
+                        <div class="relative">
+                            <div class="flex justify-between items-center mb-2">
+                                <label
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-green-500"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                            ></path>
+                                        </svg>
+                                        HTML Output
+                                    </span>
+                                </label>
+                                <button
+                                    id="copy-button"
+                                    class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3.5 w-3.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                                        ></path>
+                                    </svg>
+                                    Copy HTML
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <textarea
+                                    id="output"
+                                    class="w-full h-80 p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-green-50"
+                                    placeholder="You will see your HTML here..."
+                                    readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use Section -->
+                <div
+                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                >
+                    <!-- Two Column Grid: Steps + Video -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+                    >
+                        <!-- Left: Steps -->
+                        <div>
+                            <h2
+                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-blue-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                </svg>
+                                How to Convert ChatGPT to HTML
+                            </h2>
+                            <ol class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >1</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Paste your ChatGPT content in the input
+                                        text box on the left side.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >2</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >The ChatGPT text will be automatically
+                                        converted to HTML in the output box.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >3</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Click the "Copy HTML" button to copy
+                                        the output to your clipboard.</span
+                                    >
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Right: Video -->
+                        <div>
+                            <h3
+                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-red-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                                    ></path>
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                </svg>
+                                Video Tutorial
+                            </h3>
+                            <div
+                                class="relative w-full"
+                                style="padding-bottom: 56.25%;"
+                            >
+                                <!-- Replace VIDEO_ID with your actual YouTube video ID -->
+                                <iframe
+                                    class="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-200"
+                                    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                                    title="How to Convert ChatGPT to HTML - Video Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hide-grow-widget"></div>
             </div>
-        
-            <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        
-            <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin-right: 20px;">
-                <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
-            </div>
-            <main class="twocols">
-                <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your ChatGPT text here..</p>
-                <textarea id="output" class="input-field"  autocomplete="off"></textarea><p class="text-instructions" id="output-instructions">..get your HTML here</p>
-            </main>
-            <div class="mx-10 leading-10">
-                <h2 class="font-bold">How to convert ChatGPT to HTML using this online tool?</h2>
-                <ol class=" list-decimal list-inside mx-10">
-                    <li class="font-normal">Paste your ChatGPT content in the input text box on the left side.</li>
-                    <li class="font-normal">The ChatGPT will be rendered as HTML on the output text box automatically</li>
-                    <li class="font-normal">Copy the output using the Copy button</li>    
-                </ol>
-            </div>
-            <div id="hide-grow-widget"></div>
+
+            <!-- Sidebar -->
+            <Sidebar height="10%" />
         </div>
-        <!-- Sidebar with a custom height -->
-        <Sidebar height="10%" class=".sticky-sidebar" />
-
-        <!-- Clear floats -->
-        <div style="clear: both;"></div>
     </div>
+</Layout>
 
-
-
-{<script>
-    // Select the input and output elements
-    var inputElement = document.getElementById('input');
-    var outputElement = document.getElementById('output');
-    
-    // Function to convert HTML to Markdown
-    function toHTML() {
-        
-
-        // Get the text content from the content-editable div
-        var textContent = inputElement.value;
-
-        var outputHTML = marked.parse(textContent);
-        outputElement.value = outputHTML;
-
+<style>
+    textarea#input:not(:placeholder-shown) + p#input-instructions,
+    textarea#output:not(:placeholder-shown) + p#output-instructions {
+        display: none;
     }
 
-    // Add event listener to invoke toMarkdown function on input
-    inputElement.addEventListener('input', ()=>{
-      var inputInstructions = document.getElementById('input-instructions');
-      var outputInstructions = document.getElementById('output-instructions');
+    textarea:focus + p {
+        display: none;
+    }
+</style>
 
-      var hasContent = !!inputElement.value.trim();
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
 
-      if (hasContent) {
-        inputInstructions.style.display = 'none'; // Hide instructions if there's content
-        outputInstructions.style.display = 'none';
-      } else {
-          inputInstructions.style.display = 'block';
-          outputInstructions.style.display = 'block';
-          inputElement.focus();
-      }
-      toHTML();
-    });
+<!-- KaTeX for Math Equations -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+<script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 
-    
-    var copyButtonForHTMLCopy = document.getElementById('copy-button');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButtonForHTMLCopy.addEventListener('click', () => {
-      event.preventDefault();
-      var html = outputElement.value;
-      var blob = new Blob([html], {type: 'text/html'});
-      var clipboardItem = new window.ClipboardItem({ 'text/html': blob });
-      navigator.clipboard.write([clipboardItem]);
-      showCopyTooltip();
-   });
- }
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputElement = document.getElementById("input");
+        var outputElement = document.getElementById("output");
+        var copyButton = document.getElementById("copy-button");
+        var pasteBtn = document.getElementById("paste-btn");
+        var clearBtn = document.getElementById("clear-btn");
+        var inputInstructions = document.getElementById("input-instructions");
 
-    var menuItemsToHide = ["menu-item-2062", "menu-item-1477", "menu-item-1479"];
+        // Function to render math equations using KaTeX
+        function renderMath(text) {
+            // Process block math first ($$...$$)
+            text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
+                try {
+                    return katex.renderToString(math.trim(), {
+                        displayMode: true,
+                        throwOnError: false,
+                    });
+                } catch (e) {
+                    return match; // Return original if error
+                }
+            });
 
-    // Iterate over each menu item ID and hide them
-    menuItemsToHide.forEach(function (itemId) {
-        var menuItem = document.getElementById(itemId);
-        if (menuItem) {
-            menuItem.style.display = "none";
+            // Process inline math ($...$) - avoid matching $$
+            text = text.replace(
+                /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
+                function (match, math) {
+                    try {
+                        return katex.renderToString(math.trim(), {
+                            displayMode: false,
+                            throwOnError: false,
+                        });
+                    } catch (e) {
+                        return match; // Return original if error
+                    }
+                },
+            );
+
+            return text;
+        }
+
+        // Function to convert Markdown to HTML with Math support
+        function toHTML() {
+            var textContent = inputElement.value;
+
+            // First render math equations
+            var textWithMath = renderMath(textContent);
+
+            // Then convert markdown to HTML
+            var outputHTML = marked.parse(textWithMath);
+            outputElement.value = outputHTML;
+
+            // Toggle instructions visibility
+            var hasContent = !!inputElement.value.trim();
+            if (inputInstructions) {
+                inputInstructions.style.display = hasContent ? "none" : "block";
+            }
+        }
+
+        // Input event listener
+        inputElement.addEventListener("input", toHTML);
+
+        // Paste button
+        if (pasteBtn) {
+            pasteBtn.addEventListener("click", function () {
+                navigator.clipboard
+                    .readText()
+                    .then(function (text) {
+                        inputElement.value = text;
+                        toHTML();
+                    })
+                    .catch(function (err) {
+                        console.error("Failed to read clipboard: ", err);
+                        alert(
+                            "Unable to access clipboard. Please paste manually.",
+                        );
+                    });
+            });
+        }
+
+        // Clear button
+        if (clearBtn) {
+            clearBtn.addEventListener("click", function () {
+                inputElement.value = "";
+                outputElement.value = "";
+                if (inputInstructions) {
+                    inputInstructions.style.display = "block";
+                }
+            });
+        }
+
+        // Copy button
+        if (copyButton && navigator.clipboard) {
+            copyButton.addEventListener("click", function () {
+                var html = outputElement.value;
+                navigator.clipboard
+                    .writeText(html)
+                    .then(function () {
+                        showCopyTooltip();
+                    })
+                    .catch(function (err) {
+                        console.error("Failed to copy: ", err);
+                    });
+            });
+        }
+
+        function showCopyTooltip() {
+            var tooltip = document.createElement("div");
+            tooltip.className =
+                "fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+            tooltip.textContent = "✓ HTML copied to clipboard!";
+            document.body.appendChild(tooltip);
+
+            setTimeout(function () {
+                tooltip.style.opacity = "0";
+                tooltip.style.transition = "opacity 0.3s";
+                setTimeout(function () {
+                    document.body.removeChild(tooltip);
+                }, 300);
+            }, 2000);
         }
     });
-    function showCopyTooltip() {
-        var tooltip = document.createElement('div');
-        tooltip.className = 'copy-tooltip';
-        tooltip.textContent = 'Text copied to clipboard';
-        document.body.appendChild(tooltip);
-
-        setTimeout(() => {
-            tooltip.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(tooltip);
-            }, 500);
-        }, 1500);
-    }
-
-</script>}
- 
-
-</Layout>
+</script>
