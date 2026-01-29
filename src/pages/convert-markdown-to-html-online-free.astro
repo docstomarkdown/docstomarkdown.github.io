@@ -1,118 +1,430 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Sidebar from '~/components/widgets/Sidebar.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
 
 const metadata = {
-  title: 'Convert Markdown to HTML free online',
-  description: "This tool converts Markdown text into an HTML format. Paste the Markdown in the Input Box and it will be rendered as rich text in the output text. Copy the output and you'll have an HTML output."
+  title: "Convert Markdown to HTML Online - Free",
+  description:
+    "Convert Markdown text into formatted HTML code. Paste your Markdown, see the generated HTML, and copy it for your web projects.",
 };
 ---
+
 <Layout metadata={metadata}>
-  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-    <div style="width: 75%; padding-right: 20px;">
-      <div style="padding-top:10px; padding-left:50px;">
-        <h1 style="color: #2772ed; font-size:32px; font-weight: bold; padding-top:10px;">
-          Convert Markdown to HTML Online - Free
-        </h1>
-        <p style="padding-top:10px;">You can use this tool to convert Markdown to HTML online for free.</p>
-      </div>
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Main content area -->
+      <div class="flex-1">
+        <!-- Header Section -->
+        <div class="text-center mb-6">
+          <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-3">
+            Convert Markdown to HTML Online
+          </h1>
+          <p class="text-gray-600 text-lg">
+            Transform Markdown text into raw HTML code instantly
+          </p>
+        </div>
 
-      <div style="text-align: center;">
-        <a href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b" target="_blank" aria-label="Get it from the Google Workspace Marketplace" rel="noopener">
-          <div style="display: inline-block;">
-            <img alt="Google Workspace Marketplace badge" src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?" style="height: 68px;">
+        <!-- Google Workspace Promo -->
+        <div
+          class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
+        >
+          <div class="flex-shrink-0">
+            <a
+              href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-90 transition-opacity duration-200 block"
+            >
+              <img
+                src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                alt="Get it from the Google Workspace Marketplace"
+                class="h-12"
+              />
+            </a>
           </div>
-        </a>
-      </div>
-      <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      
-      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end; margin-right: 10px; margin-bottom: 5px;">
-        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
+          <div class="text-sm text-gray-700 leading-relaxed">
+            <ul class="list-disc pl-4 space-y-1">
+              <li>
+                <strong>Pro Tip:</strong> Install the
+                <a
+                  href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 font-semibold hover:underline"
+                >
+                  Docs to Markdown Pro Add-on
+                </a>
+                to convert Google Docs to Markdown/HTML automatically.
+              </li>
+              <li>
+                Generates clean, semanitc HTML code ready for web publishing.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Converter Tool Card -->
+        <div
+          class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
+        >
+          <!-- Tool Header -->
+          <div class="flex items-center gap-2 mb-4">
+            <div
+              class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 text-blue-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <span class="font-medium text-gray-600 text-sm"
+              >Markdown to HTML Converter</span
+            >
+          </div>
+
+          <!-- Two Column Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Input Section -->
+            <div class="flex flex-col h-[650px]">
+              <div class="flex justify-between items-center mb-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  <span class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                      ></path>
+                    </svg>
+                    Markdown Input
+                  </span>
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    id="paste-btn"
+                    class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      ></path>
+                    </svg>
+                    Paste
+                  </button>
+                  <button
+                    id="clear-btn"
+                    class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              <div class="relative flex-grow h-full">
+                <textarea
+                  id="markdown-input"
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                  placeholder="Paste your Markdown here..."></textarea>
+              </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="flex flex-col h-[650px]">
+              <div class="flex justify-between items-center mb-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  <span class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4 text-green-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    HTML Output
+                  </span>
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    id="copy-btn"
+                    class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
+                      ></path>
+                    </svg>
+                    Copy HTML
+                  </button>
+                </div>
+              </div>
+              <div
+                class="relative flex-grow border border-gray-300 rounded-xl bg-gray-50 overflow-hidden"
+              >
+                <!-- This is the raw text area for output to facilitate easy copying of CODE -->
+                <textarea
+                  id="html-output"
+                  readonly
+                  class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50 text-gray-700"
+                  placeholder="HTML output will appear here..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- How to Use Section -->
+        <div
+          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <!-- Left: Method 1 -->
+            <div>
+              <h2
+                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-blue-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                How to Convert Markdown to HTML
+              </h2>
+              <ol class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >1</span
+                  >
+                  <span class="text-gray-600"
+                    >Paste your Markdown text in the input box on the left.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >2</span
+                  >
+                  <span class="text-gray-600"
+                    >The equivalent HTML code will be generated on the right.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >3</span
+                  >
+                  <span class="text-gray-600"
+                    >Click "Copy HTML" to copy the snippets to your clipboard.</span
+                  >
+                </li>
+              </ol>
+            </div>
+
+            <!-- Right: Method 2 -->
+            <div>
+              <h2
+                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-green-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Docs to Markdown Pro
+              </h2>
+              <ol class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >1</span
+                  >
+                  <span class="text-gray-600"
+                    >Install <a
+                      href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                      class="text-blue-600 hover:underline"
+                      >Docs to Markdown Pro</a
+                    > from Workspace Marketplace.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >2</span
+                  >
+                  <span class="text-gray-600"
+                    >Open Extensions > Docs to Markdown Pro inside Google Docs.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >3</span
+                  >
+                  <span class="text-gray-600"
+                    >Convert your Google Docs document directly to Markdown or
+                    HTML.</span
+                  >
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <main class="twocols">
-        <textarea id="input" class="input-field" autocomplete="off"></textarea>
-        <p class="text-left-instructions" id="input-instructions">Paste your Markdown here..</p>
-        <textarea id="output" class="input-field" autocomplete="off" readonly></textarea>
-        <p class="text-instructions" id="output-instructions">..get your HTML here</p>
-      </main>
-
-      <div id="hide-grow-widget"></div>    
+      <!-- Sidebar -->
+      <Sidebar height="10%" />
     </div>
-    
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" class=".sticky-sidebar" />
-
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
   </div>
-
-  {<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Select the input and output elements
-      const inputElement = document.getElementById('input');
-      const outputElement = document.getElementById('output');
-      
-      // Function to convert Markdown to HTML
-      function toHTML() {
-        const textContent = inputElement.value;
-        const outputHTML = marked.parse(textContent);
-        outputElement.value = outputHTML;
-      }
-
-      // Add event listener to invoke toHTML function on input
-      inputElement.addEventListener('input', () => {
-        const inputInstructions = document.getElementById('input-instructions');
-        const outputInstructions = document.getElementById('output-instructions');
-
-        const hasContent = !!inputElement.value.trim();
-        if (hasContent) {
-          inputInstructions.style.display = 'none'; // Hide instructions if there's content
-          outputInstructions.style.display = 'none';
-        } else {
-          inputInstructions.style.display = 'block';
-          outputInstructions.style.display = 'block';
-          inputElement.focus();
-        }
-        toHTML();
-      });
-
-      // Add event listener to copy HTML to clipboard
-      const copyButtonForHTMLCopy = document.getElementById('copy-button');
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        copyButtonForHTMLCopy.addEventListener('click', () => {
-          const html = outputElement.value;
-          navigator.clipboard.writeText(html).then(() => {
-            showCopyTooltip();
-          }).catch(err => {
-            console.error('Failed to copy text: ', err);
-          });
-        });
-      }
-
-      function showCopyTooltip() {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'copy-tooltip';
-        tooltip.textContent = 'Text copied to clipboard';
-        document.body.appendChild(tooltip);
-
-        setTimeout(() => {
-          tooltip.style.opacity = '0';
-          setTimeout(() => {
-            document.body.removeChild(tooltip);
-          }, 500);
-        }, 1500);
-      }
-
-      // Hide menu items (ensure the IDs match those in your HTML)
-      const menuItemsToHide = ["menu-item-2062", "menu-item-1477", "menu-item-1479"];
-      menuItemsToHide.forEach(itemId => {
-        const menuItem = document.getElementById(itemId);
-        if (menuItem) {
-          menuItem.style.display = "none";
-        }
-      });
-    });
-  </script>}
 </Layout>
+
+<style>
+  #markdown-input,
+  #html-output {
+    height: 100%;
+  }
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("markdown-input");
+    const output = document.getElementById("html-output");
+    const copyBtn = document.getElementById("copy-btn");
+    const pasteBtn = document.getElementById("paste-btn");
+    const clearBtn = document.getElementById("clear-btn");
+
+    function updatePreview() {
+      if (output && input) {
+        // marked.parse returns HTML string
+        output.value = marked.parse(input.value);
+      }
+    }
+
+    if (input) {
+      input.addEventListener("input", updatePreview);
+    }
+
+    if (pasteBtn) {
+      pasteBtn.addEventListener("click", function () {
+        navigator.clipboard
+          .readText()
+          .then((text) => {
+            if (input) {
+              input.value = text;
+              updatePreview();
+            }
+          })
+          .catch((err) => {
+            console.error("Failed to read clipboard:", err);
+            alert("Unable to access clipboard.");
+          });
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        if (input) {
+          input.value = "";
+          updatePreview();
+        }
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!output) return;
+
+        output.select();
+        navigator.clipboard
+          .writeText(output.value)
+          .then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Copied!
+            `;
+            setTimeout(() => {
+              copyBtn.innerHTML = originalText;
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Copy failed", err);
+            alert("Failed to copy content.");
+          });
+      });
+    }
+  });
+</script>

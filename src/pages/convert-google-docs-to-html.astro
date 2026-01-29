@@ -1,0 +1,563 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Sidebar from "~/components/widgets/Sidebar.astro";
+
+const metadata = {
+    title: "Convert Google Docs to HTML Online - Free",
+    description:
+        "This tool converts Google Docs to HTML online for free. Paste the Google Docs content into the input text box and get the Clean HTML in the output text box.",
+};
+---
+
+<Layout metadata={metadata}>
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Main content area -->
+            <div class="flex-1">
+                <!-- Header Section -->
+                <div class="text-center mb-6">
+                    <h1
+                        class="text-3xl md:text-4xl font-bold text-blue-600 mb-3"
+                    >
+                        Convert Google Docs to HTML Online - Free
+                    </h1>
+                    <p class="text-gray-600 text-lg">
+                        Instantly transform Google Docs content into clean,
+                        publish-ready HTML
+                    </p>
+                </div>
+
+                <!-- Google Workspace Promo -->
+                <div
+                    class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
+                >
+                    <div class="flex-shrink-0">
+                        <a
+                            href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?pann=b"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:opacity-90 transition-opacity duration-200 block"
+                        >
+                            <img
+                                src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                                alt="Get it from the Google Workspace Marketplace"
+                                class="h-12"
+                            />
+                        </a>
+                    </div>
+                    <div class="text-sm text-gray-700 leading-relaxed">
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>
+                                <strong>Pro Tip:</strong> Install the
+                                <a
+                                    href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-blue-600 font-semibold hover:underline"
+                                >
+                                    Docs to Markdown Pro Add-on
+                                </a>
+                                to convert directly within Google Docs.
+                            </li>
+                            <li>
+                                Automatically downloads images and packages
+                                everything into a ZIP file.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Converter Tool Card -->
+                <div
+                    class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
+                >
+                    <!-- Tool Header -->
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                ></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium text-gray-600 text-sm"
+                            >Google Docs to HTML Converter</span
+                        >
+                    </div>
+
+                    <!-- Two Column Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <!-- Input Section -->
+                        <div class="flex flex-col h-[650px]">
+                            <div class="flex justify-between items-center mb-2">
+                                <label
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-blue-500"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                            ></path>
+                                        </svg>
+                                        Paste Google Docs Content Here
+                                    </span>
+                                </label>
+                                <div class="flex gap-2">
+                                    <button
+                                        id="paste-btn"
+                                        class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                                            ></path>
+                                        </svg>
+                                        Paste
+                                    </button>
+                                    <button
+                                        id="clear-btn"
+                                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                            ></path>
+                                        </svg>
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative flex-grow h-full">
+                                <!-- ContentEditable DIV for rich input -->
+                                <div
+                                    id="rich-input"
+                                    contenteditable="true"
+                                    class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                                    style="min-height: 200px;"
+                                >
+                                </div>
+                                <!-- Placeholder -->
+                                <div
+                                    id="input-placeholder"
+                                    class="absolute top-4 left-4 text-gray-400 pointer-events-none"
+                                >
+                                    Paste your Google Docs content here...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Output Section -->
+                        <div class="flex flex-col h-[650px]">
+                            <div class="flex justify-between items-center mb-2">
+                                <label
+                                    class="block text-sm font-medium text-gray-700"
+                                >
+                                    <span class="flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 text-green-500"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                            ></path>
+                                        </svg>
+                                        HTML Output
+                                    </span>
+                                </label>
+                                <div class="flex gap-2">
+                                    <button
+                                        id="copy-html-btn"
+                                        class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
+                                            ></path>
+                                        </svg>
+                                        Copy HTML
+                                    </button>
+                                    <button
+                                        id="download-html-btn"
+                                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                            ></path>
+                                        </svg>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                            <div
+                                class="relative flex-grow border border-gray-300 rounded-xl bg-gray-50 overflow-hidden"
+                            >
+                                <textarea
+                                    id="html-output"
+                                    readonly
+                                    class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50 text-gray-700"
+                                    placeholder="Generated HTML code will appear here..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use Section -->
+                <div
+                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                >
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+                    >
+                        <!-- Left: Method 1 -->
+                        <div>
+                            <h2
+                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-blue-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                </svg>
+                                How to convert Google Docs to Clean HTML using this
+                                online tool?
+                            </h2>
+                            <ol class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >1</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Copy the Google Docs content</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >2</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Paste the content in the Input text box
+                                        of the tool</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >3</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >The content of the Google Docs will be
+                                        converted to the Clean HTML format
+                                        automatically.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >4</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Download or Copy the output</span
+                                    >
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Right: Method 2 -->
+                        <div>
+                            <h2
+                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 text-green-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                </svg>
+                                How to Convert Google Docs to Clean HTML directly
+                                from the Google Docs window using the Docs to HTML
+                                Pro extension?
+                            </h2>
+                            <ol class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >1</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Install the Docs to Markdown Pro
+                                        extension from the Google Workspace
+                                        Marketplace.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >2</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >From the Google Docs Extensions menu,
+                                        select Docs to HTML Pro > Convert to
+                                        HTML.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >3</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >Click the To Clean HTML button.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >4</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >The Google Docs content will be
+                                        converted to the Clean HTML format and
+                                        output will be copied to clipboard
+                                        automatically.</span
+                                    >
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                        >5</span
+                                    >
+                                    <span class="text-gray-600"
+                                        >You can also use the add-on to directly
+                                        publish the content as HTML to GitHub or
+                                        GitLab for your Docs as Code workflow.</span
+                                    >
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <Sidebar height="10%" />
+        </div>
+    </div>
+</Layout>
+
+<style>
+    /* Basic contenteditable styling */
+    [contenteditable]:empty:before {
+        content: attr(placeholder);
+        color: #9ca3af;
+        display: block; /* For Firefox */
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputDiv = document.getElementById("rich-input");
+        const outputTextarea = document.getElementById("html-output");
+        const placeholder = document.getElementById("input-placeholder");
+        const copyBtn = document.getElementById("copy-html-btn");
+        const pasteBtn = document.getElementById("paste-btn");
+        const clearBtn = document.getElementById("clear-btn");
+        const downloadBtn = document.getElementById("download-html-btn");
+
+        function convertToCleanHTML(html) {
+            if (!html) return "";
+
+            // Basic cleanup logic mimicking simple normalization
+            // In a real scenario, you probably want to use DOMPurify + js-beautify here
+            // But since we are moving away from React dependencies, let's keep it simple or implement a basic cleanup
+            // If needed, we can CDN load those libraries. For now, let's just return the innerHTML structure
+            // potentially stripping some style attributes to make it "clean".
+
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = html;
+
+            // Simple cleanup: Remove style attributes
+            const elements = tempDiv.querySelectorAll("*");
+            elements.forEach((el) => {
+                el.removeAttribute("style");
+                // Remove empty spans
+                if (
+                    el.tagName === "SPAN" &&
+                    !el.attributes.length &&
+                    !el.textContent.trim()
+                ) {
+                    el.parentNode.removeChild(el);
+                }
+            });
+
+            // Remove comments
+            return tempDiv.innerHTML.replace(/<!--[\s\S]*?-->/g, "");
+        }
+
+        function updateOutput() {
+            if (!inputDiv || !outputTextarea) return;
+
+            const content = inputDiv.innerHTML;
+            const textContent = inputDiv.textContent;
+
+            if (!textContent.trim() && !inputDiv.querySelector("img")) {
+                outputTextarea.value = "";
+                if (placeholder) placeholder.style.display = "block";
+            } else {
+                if (placeholder) placeholder.style.display = "none";
+                outputTextarea.value = convertToCleanHTML(content);
+            }
+        }
+
+        if (inputDiv) {
+            inputDiv.addEventListener("input", updateOutput);
+
+            // Handle paste events
+            inputDiv.addEventListener("paste", function (e) {
+                setTimeout(updateOutput, 0);
+            });
+        }
+
+        if (pasteBtn) {
+            pasteBtn.addEventListener("click", async function () {
+                inputDiv.focus();
+                try {
+                    alert(
+                        "Please click inside the Input box and press Ctrl+V / Cmd+V to paste.",
+                    );
+                } catch (e) {
+                    alert("Please paste content manually.");
+                }
+            });
+        }
+
+        if (clearBtn) {
+            clearBtn.addEventListener("click", function () {
+                if (inputDiv) {
+                    inputDiv.innerHTML = "";
+                    updateOutput();
+                    inputDiv.focus();
+                }
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener("click", function () {
+                if (!outputTextarea || !outputTextarea.value) return;
+
+                outputTextarea.select();
+                navigator.clipboard
+                    .writeText(outputTextarea.value)
+                    .then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = `Copied!`;
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                        }, 2000);
+                    })
+                    .catch((err) => {
+                        console.error("Copy failed", err);
+                    });
+            });
+        }
+
+        if (downloadBtn) {
+            downloadBtn.addEventListener("click", function () {
+                if (!outputTextarea || !outputTextarea.value) return;
+                const blob = new Blob([outputTextarea.value], {
+                    type: "text/html",
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "document.html";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+    });
+</script>
