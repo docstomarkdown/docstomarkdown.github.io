@@ -1,20 +1,20 @@
-import { getPermalink, getBlogPermalink,getHomePermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getHomePermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
     {
       text: 'Home',
       href: getHomePermalink(),
-      
+
     },
     {
-        text: 'Pricing',
-        href: getPermalink('/pricing'),
-      },
+      text: 'Pricing',
+      href: getPermalink('/pricing'),
+    },
     {
       text: 'Pages',
       links: [
-        
+
         {
           text: 'Terms',
           href: getPermalink('/terms-of-services'),
@@ -25,17 +25,17 @@ export const headerData = {
         },
       ],
     },
-    
+
     {
       text: 'Blog',
       href: getBlogPermalink(),
-      
+
     }, {
-        text: 'Contact',
-        href: getPermalink('/contact-us'),
-        
-      },
-   
+      text: 'Contact',
+      href: getPermalink('/contact-us'),
+
+    },
+
   ],
   actions: [{ text: 'Install Free Add-on', href: 'https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804?utm_source=docstomarkdown.pro&utm_medium=main_menu_install_free_add-on&utm_id=app_home', target: '_blank' }],
 };
@@ -54,7 +54,7 @@ export const footerData = {
         { text: 'Resources', href: '#' },
       ],
     },
-    
+
     {
       title: 'Support',
       links: [
@@ -65,7 +65,7 @@ export const footerData = {
         { text: 'Status', href: '#' },
       ],
     },
-    
+
   ],
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms-of-services') },

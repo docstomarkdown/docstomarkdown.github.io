@@ -16,7 +16,7 @@ const metadata = {
       <div class="flex-1">
         <!-- Header Section -->
         <div class="text-center mb-6">
-          <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-3">
+          <h1 class="text-2xl md:text-3xl font-bold text-blue-600 mb-3">
             Convert Markdown to Google Docs Online
           </h1>
           <p class="text-gray-600 text-lg">
@@ -69,14 +69,15 @@ const metadata = {
         <div
           class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
         >
-          <!-- Tool Header -->
-          <div class="flex items-center gap-2 mb-4">
-            <div
-              class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+          <!-- Tool Header with Guide Link -->
+          <div class="flex justify-end mb-4">
+            <a
+              href="#how-to-use"
+              class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-blue-600 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 text-blue-500"
+                class="h-3.5 w-3.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -85,13 +86,11 @@ const metadata = {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 ></path>
               </svg>
-            </div>
-            <span class="font-medium text-gray-600 text-sm"
-              >Markdown to Google Docs Converter</span
-            >
+              How to Use Guide
+            </a>
           </div>
 
           <!-- Two Column Grid -->
@@ -234,7 +233,7 @@ const metadata = {
                 </div>
               </div>
               <div
-                class="relative flex-grow border border-gray-300 rounded-xl bg-white overflow-hidden"
+                class="relative flex-grow border border-green-200 rounded-xl bg-green-50 overflow-hidden"
               >
                 <div
                   id="preview-container"
@@ -248,37 +247,44 @@ const metadata = {
 
         <!-- How to Use Section -->
         <div
-          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+          id="how-to-use"
+          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6 scroll-mt-24"
         >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <!-- Left: Method 1 -->
+          <div class="flex flex-col gap-12">
+            <!-- Method 1: Online Tool -->
             <div>
-              <h2
-                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 text-blue-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <div class="mb-6">
+                <h2
+                  class="text-xl font-bold text-gray-900 flex items-center gap-2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                Method 1: Online Converter
-              </h2>
-              <ol class="space-y-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-blue-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  Method 1: Using this Online Tool
+                </h2>
+                <p class="text-gray-600 mt-2 ml-8">
+                  Best for quick, one-off conversions. Simply paste your
+                  Markdown and get rich text.
+                </p>
+              </div>
+              <ol class="space-y-4 ml-8">
                 <li class="flex items-start gap-3">
                   <span
                     class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >1</span
                   >
-                  <span class="text-gray-600"
+                  <span class="text-gray-700 font-medium"
                     >Paste your Markdown content in the left input box.</span
                   >
                 </li>
@@ -287,8 +293,9 @@ const metadata = {
                     class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >2</span
                   >
-                  <span class="text-gray-600"
-                    >The content will be formatted as rich text on the right.</span
+                  <span class="text-gray-700 font-medium"
+                    >The content will be automatically rendered as rich text on
+                    the right.</span
                   >
                 </li>
                 <li class="flex items-start gap-3">
@@ -297,46 +304,76 @@ const metadata = {
                     >3</span
                   >
                   <span class="text-gray-600"
-                    >Click "Copy for Google Docs" and paste (Ctrl+V) into your
-                    document.</span
+                    >Click <strong>Copy for Google Docs</strong> to copy the formatted
+                    text.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >4</span
+                  >
+                  <span class="text-gray-600"
+                    >Paste (Ctrl+V / Cmd+V) directly into your Google Doc.</span
                   >
                 </li>
               </ol>
             </div>
 
-            <!-- Right: Method 2 -->
+            <!-- Divider -->
+            <div class="border-t border-gray-100"></div>
+
+            <!-- Method 2: Extension -->
             <div>
-              <h2
-                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 text-green-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <div class="mb-6">
+                <h2
+                  class="text-xl font-bold text-gray-900 flex items-center gap-2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Method 2: Google Docs Add-on
-              </h2>
-              <ol class="space-y-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                    ></path>
+                  </svg>
+                  Method 2: Using the Google Docs Add-on
+                </h2>
+                <p class="text-gray-600 mt-2 ml-8">
+                  Recommended for <span class="text-green-600 underline"
+                    >frequent users</span
+                  >. Convert directly within Google Docs without switching tabs.
+                </p>
+              </div>
+              <ol class="space-y-4 ml-8">
                 <li class="flex items-start gap-3">
                   <span
                     class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >1</span
                   >
-                  <span class="text-gray-600"
-                    >Install <a
+                  <div class="flex flex-col gap-3">
+                    <span class="text-gray-700 font-medium">
+                      Install the Docs to Markdown Pro extension.
+                    </span>
+                    <a
                       href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
-                      class="text-blue-600 hover:underline"
-                      >Docs to Markdown Pro</a
-                    > from Workspace Marketplace.</span
-                  >
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-block hover:opacity-90 transition-opacity duration-200"
+                    >
+                      <img
+                        src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                        alt="Get it from the Google Workspace Marketplace"
+                        class="h-10"
+                      />
+                    </a>
+                  </div>
                 </li>
                 <li class="flex items-start gap-3">
                   <span
@@ -344,8 +381,9 @@ const metadata = {
                     >2</span
                   >
                   <span class="text-gray-600"
-                    >Open Extensions > Docs to Markdown Pro > Markdown/HTML to
-                    Docs.</span
+                    >Open any Google Doc, go to <strong
+                      >Extensions > Docs to Markdown Pro</strong
+                    >.</span
                   >
                 </li>
                 <li class="flex items-start gap-3">
@@ -354,7 +392,17 @@ const metadata = {
                     >3</span
                   >
                   <span class="text-gray-600"
-                    >Paste Markdown directly into the conversion sidebar.</span
+                    >Select <strong>Markdown/HTML to Docs</strong> to see the sidebar.</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                    >4</span
+                  >
+                  <span class="text-gray-600"
+                    >Paste your Markdown and click <strong>Insert</strong> to add
+                    to your document.</span
                   >
                 </li>
               </ol>
@@ -379,6 +427,15 @@ const metadata = {
 <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
 ></script>
 
+<!-- KaTeX for Math Equations -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
 <script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("markdown-input");
@@ -388,9 +445,47 @@ const metadata = {
     const clearBtn = document.getElementById("clear-btn");
     const newDocBtn = document.getElementById("new-doc-btn");
 
+    function renderMath(text) {
+      if (!text) return "";
+      // Process block math ($$...$$)
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
+        try {
+          return katex.renderToString(math.trim(), {
+            displayMode: true,
+            throwOnError: false,
+          });
+        } catch (e) {
+          return match;
+        }
+      });
+      // Process inline math ($...$)
+      text = text.replace(
+        /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
+        function (match, math) {
+          try {
+            return katex.renderToString(math.trim(), {
+              displayMode: false,
+              throwOnError: false,
+            });
+          } catch (e) {
+            return match;
+          }
+        },
+      );
+      return text;
+    }
+
     function updatePreview() {
       if (preview && input) {
-        preview.innerHTML = marked.parse(input.value);
+        // Render math first, then markdown
+        // Note: We render math before markdown so marked doesn't escape the math syntax
+        // However, we need to be careful if marked escapes HTML produced by KaTeX.
+        // Usually, marked does not escape HTML inside markdown unless configured to.
+        // A safer approach often used is:
+        // 1. Render Math -> HTML
+        // 2. Parse Markdown (which keeps HTML)
+        const textWithMath = renderMath(input.value);
+        preview.innerHTML = marked.parse(textWithMath);
       }
     }
 

@@ -17,11 +17,11 @@ const metadata = {
                 <!-- Header Section -->
                 <div class="text-center mb-6">
                     <h1
-                        class="text-3xl md:text-4xl font-bold text-blue-600 mb-3"
+                        class="text-2xl md:text-3xl font-bold text-blue-600 mb-3"
                     >
                         Convert Google Docs to Markdown Online - Free
                     </h1>
-                    <p class="text-gray-600 text-lg">
+                    <p class="text-gray-600 text-lg mb-4">
                         Instantly transform Google Docs content into clean,
                         formatted Markdown
                     </p>
@@ -71,14 +71,15 @@ const metadata = {
                 <div
                     class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
                 >
-                    <!-- Tool Header -->
-                    <div class="flex items-center gap-2 mb-4">
-                        <div
-                            class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                    <!-- Tool Header with Guide Link -->
+                    <div class="flex justify-end mb-4">
+                        <a
+                            href="#how-to-use"
+                            class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-blue-600 transition-colors"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-blue-500"
+                                class="h-3.5 w-3.5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -87,19 +88,16 @@ const metadata = {
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                 ></path>
                             </svg>
-                        </div>
-                        <span class="font-medium text-gray-600 text-sm"
-                            >Google Docs to Markdown Converter</span
-                        >
+                            How to Use Guide
+                        </a>
                     </div>
 
                     <!-- Two Column Grid -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <!-- Input Section -->
-                        <div class="flex flex-col h-[650px]">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -184,8 +182,7 @@ const metadata = {
                             </div>
                         </div>
 
-                        <!-- Output Section -->
-                        <div class="flex flex-col h-[650px]">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -211,7 +208,7 @@ const metadata = {
                                 <div class="flex gap-2">
                                     <button
                                         id="copy-md-btn"
-                                        class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
+                                        class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200 shadow-sm"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -251,13 +248,11 @@ const metadata = {
                                     </button>
                                 </div>
                             </div>
-                            <div
-                                class="relative flex-grow border border-gray-300 rounded-xl bg-gray-50 overflow-hidden"
-                            >
+                            <div class="relative flex-grow">
                                 <textarea
                                     id="markdown-output"
                                     readonly
-                                    class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50 text-gray-700"
+                                    class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-green-50 text-gray-700 border border-green-200 rounded-xl"
                                     placeholder="Generated Markdown will appear here..."
                                 ></textarea>
                             </div>
@@ -267,41 +262,46 @@ const metadata = {
 
                 <!-- How to Use Section -->
                 <div
-                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                    id="how-to-use"
+                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6 scroll-mt-24"
                 >
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
-                    >
-                        <!-- Left: Method 1 -->
+                    <div class="flex flex-col gap-12">
+                        <!-- Method 1: Online Tool -->
                         <div>
-                            <h2
-                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-blue-500"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <div class="mb-6">
+                                <h2
+                                    class="text-xl font-bold text-gray-900 flex items-center gap-2"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                </svg>
-                                How to convert Google Docs to Markdown using this
-                                online tool?
-                            </h2>
-                            <ol class="space-y-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-blue-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                        ></path>
+                                    </svg>
+                                    Method 1: Using this Online Tool
+                                </h2>
+                                <p class="text-gray-600 mt-2 ml-8">
+                                    Best for quick, one-off conversions. Simply
+                                    copy text from your Google Doc and paste it
+                                    here.
+                                </p>
+                            </div>
+                            <ol class="space-y-4 ml-8">
                                 <li class="flex items-start gap-3">
                                     <span
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >1</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Copy the Google Docs content.</span
+                                    <span class="text-gray-700 font-medium"
+                                        >Copy your content from Google Docs.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -309,9 +309,9 @@ const metadata = {
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >2</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Paste the content in the Input text box
-                                        of the tool.</span
+                                    <span class="text-gray-700 font-medium"
+                                        >Paste the content into the Input text
+                                        box above.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -320,9 +320,8 @@ const metadata = {
                                         >3</span
                                     >
                                     <span class="text-gray-600"
-                                        >The content of the Google Docs will be
-                                        converted to the Markdown format
-                                        automatically.</span
+                                        >The tool will automatically convert
+                                        your formatted text to Markdown.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -331,46 +330,71 @@ const metadata = {
                                         >4</span
                                     >
                                     <span class="text-gray-600"
-                                        >Download or Copy the output.</span
+                                        >Use the buttons to <strong>Copy</strong
+                                        > or
+                                        <strong>Download</strong> the result.</span
                                     >
                                 </li>
                             </ol>
                         </div>
 
-                        <!-- Right: Method 2 -->
+                        <!-- Divider -->
+                        <div class="border-t border-gray-100"></div>
+
+                        <!-- Method 2: Extension -->
                         <div>
-                            <h2
-                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-green-500"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <div class="mb-6">
+                                <h2
+                                    class="text-xl font-bold text-gray-900 flex items-center gap-2"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                </svg>
-                                How to Convert Google Docs to Markdown directly from
-                                the Google Docs window using the Docs to Markdown
-                                Pro extension?
-                            </h2>
-                            <ol class="space-y-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-green-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                                        ></path>
+                                    </svg>
+                                    Method 2: Using the Google Docs Add-on
+                                </h2>
+                                <p class="text-gray-600 mt-2 ml-8">
+                                    Recommended for <span
+                                        class="text-green-600 underline"
+                                        >frequent users</span
+                                    >. Convert directly within Google Docs
+                                    without switching tabs.
+                                </p>
+                            </div>
+                            <ol class="space-y-4 ml-8">
                                 <li class="flex items-start gap-3">
                                     <span
                                         class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >1</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Install the Docs to Markdown Pro
-                                        extension from the Google Docs Workspace
-                                        Marketplace.</span
-                                    >
+                                    <div class="flex flex-col gap-3">
+                                        <span class="text-gray-700 font-medium">
+                                            Install the Docs to Markdown Pro
+                                            extension.
+                                        </span>
+                                        <a
+                                            href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-block hover:opacity-90 transition-opacity duration-200"
+                                        >
+                                            <img
+                                                src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                                                alt="Get it from the Google Workspace Marketplace"
+                                                class="h-10"
+                                            />
+                                        </a>
+                                    </div>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span
@@ -378,9 +402,9 @@ const metadata = {
                                         >2</span
                                     >
                                     <span class="text-gray-600"
-                                        >From the Google Docs Extensions menu,
-                                        select Docs to Markdown Pro > Convert to
-                                        Markdown.</span
+                                        >Open any Google Doc, go to <strong
+                                            >Extensions > Docs to Markdown Pro</strong
+                                        >.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -389,7 +413,10 @@ const metadata = {
                                         >3</span
                                     >
                                     <span class="text-gray-600"
-                                        >Click the To Markdown button.</span
+                                        >Select <strong
+                                            >Convert to Markdown</strong
+                                        >
+                                        to see the sidebar.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -398,10 +425,8 @@ const metadata = {
                                         >4</span
                                     >
                                     <span class="text-gray-600"
-                                        >The Google Docs content will be
-                                        converted to the Markdown format and
-                                        output will be copied to clipboard
-                                        automatically.</span
+                                        >Click the <strong>To Markdown</strong> button
+                                        to generate your code.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -410,10 +435,8 @@ const metadata = {
                                         >5</span
                                     >
                                     <span class="text-gray-600"
-                                        >You can also use the add-on to directly
-                                        publish the content as Markdown to
-                                        GitHub or GitLab for your Docs as Code
-                                        workflow.</span
+                                        ><strong>Bonus:</strong> You can also publish
+                                        content directly to GitHub or GitLab.</span
                                     >
                                 </li>
                             </ol>
@@ -461,7 +484,45 @@ const metadata = {
 
         function convertToMarkdown(html) {
             if (!html || !turndownService) return "";
-            return turndownService.turndown(html);
+
+            // Pre-process: Protect math blocks from Turndown escaping
+            const mathTokens = [];
+
+            // Helper to tokenize math
+            const tokenize = (match) => {
+                // We create a temp div to extract the raw text content of the math block
+                // This strips any HTML tags that might have polluted the math (like <br> or <span>)
+                // and gets us back to clean LaTeX
+                const temp = document.createElement("div");
+                temp.innerHTML = match;
+                // Preserve the raw math text
+                mathTokens.push(temp.textContent || temp.innerText || match);
+                // Return a safe token that Turndown won't escape (alphanumeric)
+                return "MATHPH" + (mathTokens.length - 1) + "ENDMATHPH";
+            };
+
+            // 1. Protect Block Math $$...$$
+            // Use [\s\S] to match across newlines
+            let protectedHtml = html.replace(/\$\$([\s\S]+?)\$\$/g, tokenize);
+
+            // 2. Protect Inline Math $...$
+            // Negative lookaround to ensure we don't match $$ or empty $
+            protectedHtml = protectedHtml.replace(
+                /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
+                tokenize,
+            );
+
+            // Convert to Markdown
+            let markdown = turndownService.turndown(protectedHtml);
+
+            // Restore Math Tokens
+            mathTokens.forEach((token, index) => {
+                const placeholder = "MATHPH" + index + "ENDMATHPH";
+                // Replace the placeholder with the original raw math
+                markdown = markdown.replace(placeholder, token);
+            });
+
+            return markdown;
         }
 
         function updateOutput() {

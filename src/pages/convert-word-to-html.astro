@@ -17,7 +17,7 @@ const metadata = {
                 <!-- Header Section -->
                 <div class="text-center mb-6">
                     <h1
-                        class="text-3xl md:text-4xl font-bold text-blue-600 mb-3"
+                        class="text-2xl md:text-3xl font-bold text-blue-600 mb-3"
                     >
                         Convert Word to HTML Online - Free
                     </h1>
@@ -68,14 +68,15 @@ const metadata = {
                 <div
                     class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
                 >
-                    <!-- Tool Header -->
-                    <div class="flex items-center gap-2 mb-4">
-                        <div
-                            class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                    <!-- Tool Header with Guide Link -->
+                    <div class="flex justify-end mb-4">
+                        <a
+                            href="#how-to-use"
+                            class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-blue-600 transition-colors"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-blue-500"
+                                class="h-3.5 w-3.5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -84,13 +85,11 @@ const metadata = {
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                 ></path>
                             </svg>
-                        </div>
-                        <span class="font-medium text-gray-600 text-sm"
-                            >Word to HTML Converter</span
-                        >
+                            How to Use Guide
+                        </a>
                     </div>
 
                     <!-- Two Column Grid -->
@@ -249,12 +248,12 @@ const metadata = {
                                 </div>
                             </div>
                             <div
-                                class="relative flex-grow border border-gray-300 rounded-xl bg-gray-50 overflow-hidden"
+                                class="relative flex-grow border border-green-200 rounded-xl bg-green-50 overflow-hidden"
                             >
                                 <textarea
                                     id="html-output"
                                     readonly
-                                    class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50 text-gray-700"
+                                    class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-green-50 text-gray-700"
                                     placeholder="Generated HTML code will appear here..."
                                 ></textarea>
                             </div>
@@ -264,41 +263,46 @@ const metadata = {
 
                 <!-- How to Use Section -->
                 <div
-                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                    id="how-to-use"
+                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6 scroll-mt-24"
                 >
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
-                    >
-                        <!-- Left: Method 1 -->
+                    <div class="flex flex-col gap-12">
+                        <!-- Method 1: Online Tool -->
                         <div>
-                            <h2
-                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-blue-500"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <div class="mb-6">
+                                <h2
+                                    class="text-xl font-bold text-gray-900 flex items-center gap-2"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                </svg>
-                                How to convert Word documents to HTML using this
-                                online tool?
-                            </h2>
-                            <ol class="space-y-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-blue-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        ></path>
+                                    </svg>
+                                    Method 1: Using this Online Tool
+                                </h2>
+                                <p class="text-gray-600 mt-2 ml-8">
+                                    Best for quick conversions. Simply copy your
+                                    Word document content and paste it here.
+                                </p>
+                            </div>
+                            <ol class="space-y-4 ml-8">
                                 <li class="flex items-start gap-3">
                                     <span
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >1</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Copy the Word document content.</span
+                                    <span class="text-gray-700 font-medium"
+                                        >Paste your Word content in the left
+                                        input box.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -306,9 +310,9 @@ const metadata = {
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >2</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Paste the content in the Input text box
-                                        of the tool.</span
+                                    <span class="text-gray-700 font-medium"
+                                        >The tool will automatically convert it
+                                        to HTML code.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -317,56 +321,70 @@ const metadata = {
                                         >3</span
                                     >
                                     <span class="text-gray-600"
-                                        >The content of the Word document will
-                                        be converted to the HTML format
-                                        automatically.</span
-                                    >
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span
-                                        class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                                        >4</span
-                                    >
-                                    <span class="text-gray-600"
-                                        >Download or Copy the output.</span
+                                        >Use the buttons to <strong>Copy</strong
+                                        > or <strong>Download</strong> the HTML.</span
                                     >
                                 </li>
                             </ol>
                         </div>
 
-                        <!-- Right: Method 2 -->
+                        <!-- Divider -->
+                        <div class="border-t border-gray-100"></div>
+
+                        <!-- Method 2: Extension -->
                         <div>
-                            <h2
-                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-green-500"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <div class="mb-6">
+                                <h2
+                                    class="text-xl font-bold text-gray-900 flex items-center gap-2"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                </svg>
-                                How to Convert Word to HTML directly from the Word
-                                document window using the Docs to Markdown Pro extension?
-                            </h2>
-                            <ol class="space-y-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-green-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                                        ></path>
+                                    </svg>
+                                    Method 2: Using the Google Docs Add-on
+                                </h2>
+                                <p class="text-gray-600 mt-2 ml-8">
+                                    Recommended for <span
+                                        class="text-green-600 underline"
+                                        >frequent users</span
+                                    >. If you use Google Docs, this is the most
+                                    efficient way.
+                                </p>
+                            </div>
+                            <ol class="space-y-4 ml-8">
                                 <li class="flex items-start gap-3">
                                     <span
                                         class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >1</span
                                     >
-                                    <span class="text-gray-600"
-                                        >Install the Docs to Markdown Pro
-                                        extension from the Google Workspace
-                                        Marketplace.</span
-                                    >
+                                    <div class="flex flex-col gap-3">
+                                        <span class="text-gray-700 font-medium">
+                                            Install the Docs to Markdown Pro
+                                            extension.
+                                        </span>
+                                        <a
+                                            href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-block hover:opacity-90 transition-opacity duration-200"
+                                        >
+                                            <img
+                                                src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                                                alt="Get it from the Google Workspace Marketplace"
+                                                class="h-10"
+                                            />
+                                        </a>
+                                    </div>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span
@@ -374,9 +392,7 @@ const metadata = {
                                         >2</span
                                     >
                                     <span class="text-gray-600"
-                                        >From the Word document, select
-                                        Extensions menu > Docs to Markdown Pro >
-                                        Convert to HTML.</span
+                                        >Open your document in Google Docs.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -385,7 +401,9 @@ const metadata = {
                                         >3</span
                                     >
                                     <span class="text-gray-600"
-                                        >Click the To HTML button.</span
+                                        >Go to <strong
+                                            >Extensions > Docs to Markdown Pro</strong
+                                        >.</span
                                     >
                                 </li>
                                 <li class="flex items-start gap-3">
@@ -394,22 +412,8 @@ const metadata = {
                                         >4</span
                                     >
                                     <span class="text-gray-600"
-                                        >The Word document content will be
-                                        converted to the HTML format and output
-                                        will be copied to clipboard
-                                        automatically.</span
-                                    >
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span
-                                        class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                                        >5</span
-                                    >
-                                    <span class="text-gray-600"
-                                        >You can also use the add-on to directly
-                                        publish the content as HTML to GitHub or
-                                        other platforms for your publishing
-                                        workflow.</span
+                                        >Select <strong>Convert to HTML</strong>
+                                        to see the sidebar.</span
                                     >
                                 </li>
                             </ol>
@@ -445,6 +449,9 @@ const metadata = {
 
         function convertToCleanHTML(html) {
             if (!html) return "";
+
+            // Note: Mathematical equations in LaTeX syntax (e.g., $E=mc^2$) are preserved
+            // naturally as text content during this cleanup process.
 
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = html;
