@@ -17,28 +17,92 @@ const metadata = {
                 <!-- Header Section -->
                 <div class="text-center mb-6">
                     <h1
-                        class="text-3xl md:text-4xl font-bold text-blue-600 mb-3"
+                        class="text-2xl md:text-3xl font-bold text-blue-600 mb-3"
                     >
                         Convert ChatGPT to HTML Online - Free
                     </h1>
-                    <p class="text-gray-600 text-lg">
+                    <p class="text-gray-600 text-base">
                         Transform your ChatGPT conversations into clean HTML
                         code instantly
                     </p>
+                </div>
+
+                <!-- ChatGPT to Word Extension Promo -->
+                <div
+                    class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
+                >
+                    <div class="flex-shrink-0">
+                        <a
+                            href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:opacity-90 transition-opacity duration-200 block"
+                        >
+                            <img
+                                src="/chrome-badge.png"
+                                alt="Get it from the Google Chrome Webstore"
+                                class="h-12"
+                            />
+                        </a>
+                    </div>
+                    <div class="text-sm text-gray-700 leading-relaxed">
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>
+                                <strong>Pro Tip:</strong> Use the
+                                <a
+                                    href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-blue-600 font-semibold hover:underline"
+                                >
+                                    ChatGPT to Word or PDF Chrome extension
+                                </a>
+                                to export directly from the ChatGPT interface.
+                            </li>
+                            <li>
+                                Preserves all formatting, math equations, and
+                                code blocks perfectly.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- Converter Tool Card -->
                 <div
                     class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
                 >
-                    <!-- Tool Header -->
-                    <div class="flex items-center gap-2 mb-4">
-                        <div
-                            class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                    <!-- Tool Header with Guide Link -->
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 text-blue-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <span class="font-medium text-gray-600 text-sm"
+                                >ChatGPT to HTML Converter</span
+                            >
+                        </div>
+                        <a
+                            href="#how-to-use"
+                            class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-green-600 transition-colors"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 text-blue-500"
+                                class="h-3.5 w-3.5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -47,13 +111,11 @@ const metadata = {
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                 ></path>
                             </svg>
-                        </div>
-                        <span class="font-medium text-gray-600 text-sm"
-                            >ChatGPT to HTML Converter</span
-                        >
+                            How to Use Guide
+                        </a>
                     </div>
 
                     <!-- Two Column Layout -->
@@ -182,7 +244,7 @@ const metadata = {
                             <div class="relative">
                                 <textarea
                                     id="output"
-                                    class="w-full h-80 p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-green-50"
+                                    class="w-full h-80 p-4 border border-green-200 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-green-50"
                                     placeholder="You will see your HTML here..."
                                     readonly></textarea>
                             </div>
@@ -191,41 +253,48 @@ const metadata = {
                 </div>
 
                 <!-- How to Use Section -->
+                <!-- How to Use Section -->
                 <div
                     class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                    id="how-to-use"
                 >
-                    <!-- Two Column Grid: Steps + Video -->
                     <div
-                        class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+                        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
                     >
-                        <!-- Left: Steps -->
-                        <div>
-                            <h2
-                                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 text-blue-500"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                        <!-- Method 1 Steps (Span 1) -->
+                        <div class="lg:col-span-1">
+                            <div class="mb-6">
+                                <h2
+                                    class="text-xl font-bold text-gray-900 flex items-center gap-2"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    ></path>
-                                </svg>
-                                How to Convert ChatGPT to HTML
-                            </h2>
-                            <ol class="space-y-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6 text-blue-600"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        ></path>
+                                    </svg>
+                                    Method 1: Using this Online Tool
+                                </h2>
+                                <p class="text-gray-600 mt-2 ml-8">
+                                    Best for quick, one-off conversions. Simply
+                                    copy content from ChatGPT and paste it here.
+                                </p>
+                            </div>
+                            <ol class="space-y-4 ml-8">
                                 <li class="flex items-start gap-3">
                                     <span
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >1</span
                                     >
-                                    <span class="text-gray-600"
+                                    <span class="text-gray-700 font-medium"
                                         >Paste your ChatGPT content in the input
                                         text box on the left side.</span
                                     >
@@ -235,7 +304,7 @@ const metadata = {
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >2</span
                                     >
-                                    <span class="text-gray-600"
+                                    <span class="text-gray-700 font-medium"
                                         >The ChatGPT text will be automatically
                                         converted to HTML in the output box.</span
                                     >
@@ -245,7 +314,7 @@ const metadata = {
                                         class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                                         >3</span
                                     >
-                                    <span class="text-gray-600"
+                                    <span class="text-gray-700 font-medium"
                                         >Click the "Copy HTML" button to copy
                                         the output to your clipboard.</span
                                     >
@@ -253,8 +322,8 @@ const metadata = {
                             </ol>
                         </div>
 
-                        <!-- Right: Video -->
-                        <div>
+                        <!-- Video (Span 1) -->
+                        <div class="lg:col-span-1">
                             <h3
                                 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
                             >
@@ -284,7 +353,6 @@ const metadata = {
                                 class="relative w-full"
                                 style="padding-bottom: 56.25%;"
                             >
-                                <!-- Replace VIDEO_ID with your actual YouTube video ID -->
                                 <iframe
                                     class="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-200"
                                     src="https://www.youtube.com/embed/VIDEO_ID_HERE"
@@ -295,6 +363,82 @@ const metadata = {
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Method 2 Card -->
+                <div
+                    class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
+                >
+                    <div class="mb-6">
+                        <h2
+                            class="text-xl font-bold text-gray-900 flex items-center gap-2"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-green-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                                ></path>
+                            </svg>
+                            Method 2: Using the Chrome Extension
+                        </h2>
+                        <p class="text-gray-600 mt-2 ml-8">
+                            Recommended for <span
+                                class="text-green-600 underline"
+                                >frequent users</span
+                            >. Convert directly from ChatGPT interface.
+                        </p>
+                    </div>
+                    <ol class="space-y-4 ml-8">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                >1</span
+                            >
+                            <div class="flex flex-col gap-3">
+                                <span class="text-gray-700 font-medium"
+                                    >Install the ChatGPT to Word/PDF extension.</span
+                                >
+                                <a
+                                    href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-block hover:opacity-90 transition-opacity duration-200"
+                                >
+                                    <img
+                                        src="/chrome-badge.png"
+                                        alt="Get it from the Google Chrome Webstore"
+                                        class="h-10"
+                                    />
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                >2</span
+                            >
+                            <span class="text-gray-600"
+                                >Open your ChatGPT conversation.</span
+                            >
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                                >3</span
+                            >
+                            <span class="text-gray-600"
+                                >Use the extension button to export as HTML.</span
+                            >
+                        </li>
+                    </ol>
                 </div>
 
                 <div id="hide-grow-widget"></div>
