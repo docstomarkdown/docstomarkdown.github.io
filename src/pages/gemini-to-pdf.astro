@@ -29,20 +29,6 @@ const metadata = {
         <div
           class="bg-blue-50 border border-blue-200 rounded-xl p-4 w-full max-w-5xl mx-auto mb-6 shadow-sm flex flex-col md:flex-row items-center gap-4"
         >
-          <div class="flex-shrink-0">
-            <a
-              href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:opacity-90 transition-opacity duration-200 block"
-            >
-              <img
-                src="/chrome-badge.png"
-                alt="Get it from the Chrome Webstore"
-                class="h-12"
-              />
-            </a>
-          </div>
           <div class="text-sm text-gray-700 leading-relaxed">
             <ul class="list-disc pl-4 space-y-1">
               <li>
@@ -62,6 +48,20 @@ const metadata = {
                 perfectly.
               </li>
             </ul>
+          </div>
+          <div class="flex-shrink-0">
+            <a
+              href="https://chromewebstore.google.com/detail/gemini-to-word-pdf-google/edigonllaonjailplgnkhjeogbbgabpf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-90 transition-opacity duration-200 block"
+            >
+              <img
+                src="/chrome-badge.png"
+                alt="Get it from the Chrome Webstore"
+                class="h-12"
+              />
+            </a>
           </div>
         </div>
 
@@ -230,9 +230,9 @@ const metadata = {
           class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
           id="how-to-use"
         >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <!-- Method 1 Steps (Span 1) -->
-            <div class="lg:col-span-1">
+          <div>
+            <!-- Method 1 Steps -->
+            <div>
               <div class="mb-6">
                 <h2
                   class="text-xl font-bold text-gray-900 flex items-center gap-2"
@@ -290,8 +290,8 @@ const metadata = {
               </ol>
             </div>
 
-            <!-- Video (Span 1) -->
-            <div class="lg:col-span-1">
+            <!-- Video Tutorial - Hidden for future use
+            <div>
               <h3
                 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
               >
@@ -326,6 +326,7 @@ const metadata = {
                   allowfullscreen></iframe>
               </div>
             </div>
+            -->
           </div>
         </div>
 
