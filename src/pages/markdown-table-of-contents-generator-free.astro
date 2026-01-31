@@ -17,7 +17,7 @@ const metadata = {
         <!-- Header Section -->
         <div class="text-center mb-6">
           <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-3">
-            Markdown TOC Generator
+            Markdown Table of Contents Generator
           </h1>
           <p class="text-gray-600 text-lg">
             Instantly create a Table of Contents for your Markdown files
@@ -40,7 +40,7 @@ const metadata = {
                 >
                   Docs to Markdown Pro Add-on
                 </a>
-                to generate TOCs directly inside Google Docs.
+                to generate Table of Contents directly inside Google Docs.
               </li>
               <li>
                 Supports automatic anchor link generation for easy navigation.
@@ -68,13 +68,14 @@ const metadata = {
           class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-6"
         >
           <!-- Tool Header -->
-          <div class="flex items-center gap-2 mb-4">
-            <div
-              class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+          <div class="flex justify-end mb-4">
+            <a
+              href="#how-to-use"
+              class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-green-600 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 text-blue-500"
+                class="h-3.5 w-3.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -83,10 +84,11 @@ const metadata = {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"></path>
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
               </svg>
-            </div>
-            <span class="font-medium text-gray-600 text-sm">TOC Generator</span>
+              How to Use Guide
+            </a>
           </div>
 
           <!-- Two Column Grid -->
@@ -184,7 +186,7 @@ const metadata = {
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
                       ></path>
                     </svg>
-                    Generated (TOC)
+                    Generated (Table of Contents)
                   </span>
                 </label>
                 <div class="flex gap-2">
@@ -206,7 +208,7 @@ const metadata = {
                         d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
                       ></path>
                     </svg>
-                    Copy TOC
+                    Copy Table of Contents
                   </button>
                 </div>
               </div>
@@ -232,33 +234,39 @@ const metadata = {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <!-- Left: Method 1 -->
             <div>
-              <h2
-                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 text-blue-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <div class="mb-6">
+                <h2
+                  class="text-xl font-bold text-gray-900 flex items-center gap-2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                How to Generate Table of Contents
-              </h2>
-              <ol class="space-y-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-blue-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  Method 1: Using this Online Tool
+                </h2>
+                <p class="text-gray-600 mt-2 ml-8">
+                  Best for quick, one-off conversions. Simply paste your
+                  Markdown and get the Table of Contents.
+                </p>
+              </div>
+              <ol class="space-y-4 ml-8">
                 <li class="flex items-start gap-3">
                   <span
                     class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >1</span
                   >
-                  <span class="text-gray-600"
-                    >Paste your complete Markdown document in the input box.</span
+                  <span class="text-gray-700 font-medium"
+                    >Paste your Markdown content in the input box on the left.</span
                   >
                 </li>
                 <li class="flex items-start gap-3">
@@ -266,9 +274,9 @@ const metadata = {
                     class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >2</span
                   >
-                  <span class="text-gray-600"
-                    >The tool scans for headings (<code>#</code>, <code>##</code
-                    >, etc.).</span
+                  <span class="text-gray-700 font-medium"
+                    >The Table of Contents will be generated automatically in
+                    the output box.</span
                   >
                 </li>
                 <li class="flex items-start gap-3">
@@ -276,8 +284,8 @@ const metadata = {
                     class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >3</span
                   >
-                  <span class="text-gray-600"
-                    >A nested list with anchor links is generated instantly.</span
+                  <span class="text-gray-700 font-medium"
+                    >Click "Copy Table of Contents" to copy the links.</span
                   >
                 </li>
               </ol>
@@ -285,37 +293,55 @@ const metadata = {
 
             <!-- Right: Method 2 -->
             <div>
-              <h2
-                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 text-green-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <div class="mb-6">
+                <h2
+                  class="text-xl font-bold text-gray-900 flex items-center gap-2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Docs to Markdown Pro
-              </h2>
-              <ol class="space-y-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                    ></path>
+                  </svg>
+                  Method 2: Using Docs to Markdown Pro
+                </h2>
+                <p class="text-gray-600 mt-2 ml-8">
+                  Recommended for
+                  <span class="text-green-600 underline">frequent users</span>.
+                  Generate Table of Contents directly in Google Docs.
+                </p>
+              </div>
+              <ol class="space-y-4 ml-8">
                 <li class="flex items-start gap-3">
                   <span
                     class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
                     >1</span
                   >
-                  <span class="text-gray-600"
-                    >Install <a
+                  <div class="flex flex-col gap-3">
+                    <span class="text-gray-700 font-medium"
+                      >Install Docs to Markdown Pro.</span
+                    >
+                    <a
                       href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
-                      class="text-blue-600 hover:underline"
-                      >Docs to Markdown Pro</a
-                    >.</span
-                  >
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-block hover:opacity-90 transition-opacity duration-200"
+                    >
+                      <img
+                        src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
+                        alt="Get it from the Google Workspace Marketplace"
+                        class="h-10"
+                      />
+                    </a>
+                  </div>
                 </li>
                 <li class="flex items-start gap-3">
                   <span
@@ -323,7 +349,7 @@ const metadata = {
                     >2</span
                   >
                   <span class="text-gray-600"
-                    >Create your document in Google Docs with Headings.</span
+                    >Open your document in Google Docs.</span
                   >
                 </li>
                 <li class="flex items-start gap-3">
@@ -332,7 +358,7 @@ const metadata = {
                     >3</span
                   >
                   <span class="text-gray-600"
-                    >Convert to Markdown, and a TOC can be auto-inserted.</span
+                    >Use the add-on to insert a Table of Contents instantly.</span
                   >
                 </li>
               </ol>

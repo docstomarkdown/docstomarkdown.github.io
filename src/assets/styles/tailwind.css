@@ -308,7 +308,7 @@ body .home-icons-grid {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #a7f3d0 100%);
   border: 2px solid #86efac;
   border-radius: 0.75rem;

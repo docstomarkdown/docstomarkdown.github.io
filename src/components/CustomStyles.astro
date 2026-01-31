@@ -1,35 +1,26 @@
 ---
-import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// Google Sans Flex loaded via Google Fonts CDN in the head
 ---
+
+<!-- Google Fonts: Google Sans Flex -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap"
+  rel="stylesheet"
+/>
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'InterVariable';
-    --aw-font-serif: 'InterVariable';
-    --aw-font-heading: 'InterVariable';
+    --aw-font-sans: "Google Sans Flex", sans-serif;
+    --aw-font-serif: "Google Sans Flex", sans-serif;
+    --aw-font-heading: "Google Sans Flex", sans-serif;
 
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
     --aw-color-accent: rgb(109 40 217);
 
-    --aw-color-text-heading: 'InterVariable';
+    --aw-color-text-heading: "Google Sans Flex";
     --aw-color-text-default: rgb(16 16 16);
     --aw-color-text-muted: rgb(16 16 16 / 66%);
     --aw-color-bg-page: rgb(255 255 255);
@@ -42,9 +33,9 @@ import '@fontsource-variable/inter';
   }
 
   .dark {
-    --aw-font-sans: 'InterVariable';
-    --aw-font-serif: 'InterVariable';
-    --aw-font-heading: 'InterVariable';
+    --aw-font-sans: "Google Sans Flex", sans-serif;
+    --aw-font-serif: "Google Sans Flex", sans-serif;
+    --aw-font-heading: "Google Sans Flex", sans-serif;
 
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
@@ -59,5 +50,48 @@ import '@fontsource-variable/inter';
       background-color: black;
       color: snow;
     }
+  }
+
+  /* Google Sans Flex base styling */
+  body {
+    font-family: "Google Sans Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "wdth" 100,
+      "GRAD" 0,
+      "ROND" 0;
+  }
+
+  /* Headings use bolder weight */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 600;
+    font-variation-settings:
+      "slnt" 0,
+      "wdth" 100,
+      "GRAD" 0,
+      "ROND" 0;
+  }
+
+  /* Stronger emphasis for main headings */
+  h1 {
+    font-weight: 700;
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  h3,
+  h4 {
+    font-weight: 500;
   }
 </style>
