@@ -460,7 +460,7 @@ const metadata = {
 
         // Function to render math equations using KaTeX
         function renderMath(text) {
-            // Process block math first ($$...$$)
+            // 1. Block Math: $$...$$
             text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
                 try {
                     return katex.renderToString(math.trim(), {
@@ -472,7 +472,19 @@ const metadata = {
                 }
             });
 
-            // Process inline math ($...$) - avoid matching $$
+            // 2. Block Math: \[...\]
+            text = text.replace(/\\\[([\s\S]+?)\\\]/g, function (match, math) {
+                try {
+                    return katex.renderToString(math.trim(), {
+                        displayMode: true,
+                        throwOnError: false,
+                    });
+                } catch (e) {
+                    return match; // Return original if error
+                }
+            });
+
+            // 3. Inline Math: $...$ - avoid matching $$
             text = text.replace(
                 /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
                 function (match, math) {
@@ -486,6 +498,18 @@ const metadata = {
                     }
                 },
             );
+
+            // 4. Inline Math: \(...\)
+            text = text.replace(/\\\(([\s\S]+?)\\\)/g, function (match, math) {
+                try {
+                    return katex.renderToString(math.trim(), {
+                        displayMode: false,
+                        throwOnError: false,
+                    });
+                } catch (e) {
+                    return match; // Return original if error
+                }
+            });
 
             return text;
         }

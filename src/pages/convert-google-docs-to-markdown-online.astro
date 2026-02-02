@@ -183,28 +183,8 @@ const metadata = {
                         </div>
 
                         <div class="flex flex-col h-[500px]">
-                            <div class="flex justify-between items-center mb-2">
-                                <label
-                                    class="block text-sm font-medium text-gray-700"
-                                >
-                                    <span class="flex items-center gap-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-4 w-4 text-green-500"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                            ></path>
-                                        </svg>
-                                        Markdown Output
-                                    </span>
-                                </label>
+                            <div class="flex justify-end items-center mb-2">
+                                <!-- Toggle removed -->
                                 <div class="flex gap-2">
                                     <button
                                         id="copy-md-btn"
@@ -224,7 +204,7 @@ const metadata = {
                                                 d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
                                             ></path>
                                         </svg>
-                                        Copy Markdown
+                                        Copy
                                     </button>
                                     <button
                                         id="download-md-btn"
@@ -248,7 +228,7 @@ const metadata = {
                                     </button>
                                 </div>
                             </div>
-                            <div class="relative flex-grow">
+                            <div class="relative flex-grow h-full">
                                 <textarea
                                     id="markdown-output"
                                     readonly
@@ -263,6 +243,7 @@ const metadata = {
                 <!-- How to Use Section -->
                 <!-- Method 1 Card -->
                 <div
+                    id="how-to-use"
                     class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
                 >
                     <div>
@@ -489,6 +470,30 @@ const metadata = {
 
 <script is:inline src="https://cdn.jsdelivr.net/npm/turndown/dist/turndown.js"
 ></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+></script>
+<script is:inline>
+    window.MathJax = {
+        tex: {
+            inlineMath: [
+                ["$", "$"],
+                ["\\(", "\\)"],
+            ],
+            displayMath: [
+                ["$$", "$$"],
+                ["\\[", "\\]"],
+            ],
+        },
+        svg: {
+            fontCache: "global",
+        },
+    };
+</script>
+<script
+    is:inline
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <script is:inline>
     document.addEventListener("DOMContentLoaded", function () {
@@ -501,10 +506,13 @@ const metadata = {
         const downloadBtn = document.getElementById("download-md-btn");
 
         // Initialize Turndown Service
-        // We check if TurndownService is available (loaded via CDN)
         let turndownService;
         if (typeof TurndownService !== "undefined") {
-            turndownService = new TurndownService();
+            turndownService = new TurndownService({
+                headingStyle: "atx",
+                codeBlockStyle: "fenced",
+                emDelimiter: "_",
+            });
         } else {
             console.error("TurndownService not loaded");
         }
@@ -512,31 +520,138 @@ const metadata = {
         function convertToMarkdown(html) {
             if (!html || !turndownService) return "";
 
+            // Pre-process HTML to fix Google Docs quirks
+            html = html.replace(/&nbsp;/g, " ");
+            html = html.replace(
+                /<li[^>]*>\s*<p[^>]*>([\s\S]*?)<\/p>\s*<\/li>/gi,
+                "<li>$1</li>",
+            );
+            html = html.replace(/<p[^>]*>\s*(<br\s*\/?>)?\s*<\/p>/gi, "");
+
             // Pre-process: Protect math blocks from Turndown escaping
             const mathTokens = [];
 
             // Helper to tokenize math
-            const tokenize = (match) => {
-                // We create a temp div to extract the raw text content of the math block
-                // This strips any HTML tags that might have polluted the math (like <br> or <span>)
-                // and gets us back to clean LaTeX
+            const tokenize = (content, isBlock) => {
                 const temp = document.createElement("div");
-                temp.innerHTML = match;
-                // Preserve the raw math text
-                mathTokens.push(temp.textContent || temp.innerText || match);
-                // Return a safe token that Turndown won't escape (alphanumeric)
+
+                // Preserving newlines: Replace common block breaks with newlines before decoding
+                let processedMatch = content
+                    .replace(/<br\s*\/?>/gi, "\n")
+                    .replace(/<\/p>/gi, "\n")
+                    .replace(/<\/div>/gi, "\n");
+
+                temp.innerHTML = processedMatch;
+
+                // Get text content and clean up whitespace
+                let text = (temp.textContent || temp.innerText || "").trim();
+
+                // Normalize newlines (collapse multiple empty lines)
+                text = text.replace(/\n\s*\n/g, "\n");
+
+                if (isBlock) {
+                    text = `$$\n${text}\n$$`;
+                } else {
+                    text = `$${text}$`;
+                }
+
+                mathTokens.push(text);
                 return "MATHPH" + (mathTokens.length - 1) + "ENDMATHPH";
             };
 
-            // 1. Protect Block Math $$...$$
-            // Use [\s\S] to match across newlines
-            let protectedHtml = html.replace(/\$\$([\s\S]+?)\$\$/g, tokenize);
-
-            // 2. Protect Inline Math $...$
-            // Negative lookaround to ensure we don't match $$ or empty $
+            // 1. Protect Block Math $$...$$ and \[...\]
+            // Relaxed Regex: Allows HTML tags or whitespace between characters (e.g. <span>\</span><span>[</span>)
+            let protectedHtml = html.replace(
+                /\$\$(?:<[^>]+>|\s)*([\s\S]+?)(?:<[^>]+>|\s)*\$\$/g,
+                (match, content) => tokenize(content, true),
+            );
             protectedHtml = protectedHtml.replace(
-                /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
-                tokenize,
+                /\\(?:<[^>]+>|\s)*\[([\s\S]+?)\\(?:<[^>]+>|\s)*\]/g,
+                (match, content) => tokenize(content, true),
+            );
+
+            // 1b. Protect "Loose" Bracket Blocks: [ ... ] with newlines (Common in user's copy-paste)
+            // Matches [ followed by block/line breaks, content, block/line breaks, then ]
+            // We use capturing groups ($1 and $3) for the boundaries to ensure we don't accidentally swallow > or <
+            protectedHtml = protectedHtml.replace(
+                /(^|>|\s)\s*\[\s*(?:<br\s*\/?>|<\/?div>|<\/?p>|\n|&nbsp;)+([\s\S]+?)(?:<br\s*\/?>|<\/?div>|<\/?p>|\n|&nbsp;)+\s*\]\s*($|<|\s)/gi,
+                (match, pre, content, post) =>
+                    pre + tokenize(content, true) + post,
+            );
+
+            // 2. Protect Inline Math $...$ and \(...\)
+            protectedHtml = protectedHtml.replace(
+                /(?<!\$)\$(?!\$)(?:<[^>]+>|\s)*([^\$\n]+?)(?:<[^>]+>|\s)*\$(?!\$)/g,
+                (match, content) => tokenize(content, false),
+            );
+            protectedHtml = protectedHtml.replace(
+                /\\(?:<[^>]+>|\s)*\(([\s\S]+?)\\(?:<[^>]+>|\s)*\)/g,
+                (match, content) => tokenize(content, false),
+            );
+
+            // 3. Protect "Loose" LaTeX Symbols (Greek letters, etc. without delimiters)
+            // This fixes (\pi) becoming (\\pi)
+            const looseSymbols = [
+                "alpha",
+                "beta",
+                "gamma",
+                "delta",
+                "epsilon",
+                "zeta",
+                "eta",
+                "theta",
+                "iota",
+                "kappa",
+                "lambda",
+                "mu",
+                "nu",
+                "xi",
+                "omicron",
+                "pi",
+                "rho",
+                "sigma",
+                "tau",
+                "upsilon",
+                "phi",
+                "chi",
+                "psi",
+                "omega",
+                "Gamma",
+                "Delta",
+                "Theta",
+                "Lambda",
+                "Xi",
+                "Pi",
+                "Sigma",
+                "Phi",
+                "Psi",
+                "Omega",
+                "int",
+                "sum",
+                "prod",
+                "sqrt",
+                "frac",
+                "partial",
+                "nabla",
+                "infty",
+                "approx",
+                "sim",
+                "cong",
+                "pm",
+                "mp",
+                "times",
+                "div",
+                "cdot",
+                "neq",
+                "leq",
+                "geq",
+            ];
+            const symbolRegex = new RegExp(
+                `\\\\(${looseSymbols.join("|")})`,
+                "g",
+            );
+            protectedHtml = protectedHtml.replace(symbolRegex, (match) =>
+                tokenize(match, false),
             );
 
             // Convert to Markdown
@@ -545,11 +660,22 @@ const metadata = {
             // Restore Math Tokens
             mathTokens.forEach((token, index) => {
                 const placeholder = "MATHPH" + index + "ENDMATHPH";
-                // Replace the placeholder with the original raw math
-                markdown = markdown.replace(placeholder, token);
+                markdown = markdown.replace(placeholder, () => token);
             });
 
-            return markdown;
+            // Post-process Markdown to fix common annoyances
+            markdown = markdown.replace(/^(#{1,6}\s+\d+)\\\./gm, "$1.");
+            markdown = markdown.replace(
+                /^(\s*[-*+] .*?)(\n{2,})(?=\s*[-*+])/gm,
+                "$1\n",
+            );
+            markdown = markdown.replace(
+                /^(\s*\d+\. .*?)(\n{2,})(?=\s*\d+\.)/gm,
+                "$1\n",
+            );
+            markdown = markdown.replace(/\n{3,}/g, "\n\n");
+
+            return markdown.trim();
         }
 
         function updateOutput() {
@@ -581,14 +707,24 @@ const metadata = {
             pasteBtn.addEventListener("click", async function () {
                 inputDiv.focus();
                 try {
-                    // Note: Full rich text pasting via button is restricted in many browsers
-                    // We trigger a focus and prompt user or try to paste text
-                    // Ideally user should use Ctrl+V
+                    const clipboardItems = await navigator.clipboard.read();
+                    for (const item of clipboardItems) {
+                        if (item.types.includes("text/html")) {
+                            const blob = await item.getType("text/html");
+                            const html = await blob.text();
+                            inputDiv.innerHTML = html;
+                            updateOutput();
+                            return;
+                        }
+                    }
+                    // Fallback if no HTML or read fails (e.g. permission)
+                    const text = await navigator.clipboard.readText();
+                    inputDiv.innerText = text; // Plain text
+                    updateOutput();
+                } catch (e) {
                     alert(
                         "Please click inside the Input box and press Ctrl+V / Cmd+V to paste with formatting.",
                     );
-                } catch (e) {
-                    alert("Please paste content manually.");
                 }
             });
         }

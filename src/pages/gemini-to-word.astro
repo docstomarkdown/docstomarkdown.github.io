@@ -378,6 +378,16 @@ const metadata = {
 
 <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
 ></script>
+
+<!-- KaTeX for Math Equations -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
 <script
   is:inline
   src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"
@@ -391,6 +401,63 @@ const metadata = {
     const clearBtn = document.getElementById("clear-btn");
     const downloadBtn = document.getElementById("download-btn");
 
+    function renderMath(text) {
+      if (!text) return "";
+
+      // 1. Block Math: $$...$$
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
+        try {
+          return katex.renderToString(math.trim(), {
+            displayMode: true,
+            throwOnError: false,
+          });
+        } catch (e) {
+          return match;
+        }
+      });
+
+      // 2. Block Math: \[...\]
+      text = text.replace(/\\\[([\s\S]+?)\\\]/g, function (match, math) {
+        try {
+          return katex.renderToString(math.trim(), {
+            displayMode: true,
+            throwOnError: false,
+          });
+        } catch (e) {
+          return match;
+        }
+      });
+
+      // 3. Inline Math: $...$
+      text = text.replace(
+        /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
+        function (match, math) {
+          try {
+            return katex.renderToString(math.trim(), {
+              displayMode: false,
+              throwOnError: false,
+            });
+          } catch (e) {
+            return match;
+          }
+        },
+      );
+
+      // 4. Inline Math: \(...\)
+      text = text.replace(/\\\(([\s\S]+?)\\\)/g, function (match, math) {
+        try {
+          return katex.renderToString(math.trim(), {
+            displayMode: false,
+            throwOnError: false,
+          });
+        } catch (e) {
+          return match;
+        }
+      });
+
+      return text;
+    }
+
     function updatePreview() {
       if (!inputTextarea || !previewContainer) return;
 
@@ -399,8 +466,10 @@ const metadata = {
         previewContainer.innerHTML =
           '<p class="text-gray-400 italic">Preview will appear here...</p>';
       } else {
+        // Render math first
+        const textWithMath = renderMath(content);
         // Parse markdown to HTML
-        const html = marked.parse(content);
+        const html = marked.parse(textWithMath);
         previewContainer.innerHTML = html;
       }
     }
