@@ -5,7 +5,7 @@ import Sidebar from "~/components/widgets/Sidebar.astro";
 const metadata = {
   title: "Convert Markdown to Google Docs Online - Free",
   description:
-    "Convert Markdown to Google Docs format easily. Paste your Markdown, preview the rich text, and copy-paste directly into Google Docs preserving formatting.",
+    "Transform Markdown text into Google Docs compatible rich text instantly. Paste your Markdown and get formatted text ready for Google Docs.",
 };
 ---
 
@@ -17,11 +17,11 @@ const metadata = {
         <!-- Header Section -->
         <div class="text-center mb-6">
           <h1 class="text-2xl md:text-3xl font-bold text-blue-600 mb-3">
-            Convert Markdown to Google Docs Online
+            Convert Markdown to Google Docs Online - Free
           </h1>
-          <p class="text-gray-600 text-lg">
-            Transform Markdown text into Google Docs compatible rich text
-            instantly
+          <p class="text-gray-600 text-lg mb-4">
+            Instantly transform Markdown content into clean, formatted Google
+            Docs text
           </p>
         </div>
 
@@ -41,11 +41,10 @@ const metadata = {
                 >
                   Docs to Markdown Pro Add-on
                 </a>
-                to convert Markdown directly within Google Docs sidebar.
+                to convert directly within Google Docs.
               </li>
               <li>
-                Preserves bold, italics, lists, links, headers, and code blocks
-                when pasting into Google Docs.
+                Preserves bold, italics, lists, links, headers, and code blocks.
               </li>
             </ul>
           </div>
@@ -96,7 +95,7 @@ const metadata = {
           <!-- Two Column Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <!-- Input Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -162,14 +161,21 @@ const metadata = {
               </div>
               <div class="relative flex-grow h-full">
                 <textarea
-                  id="markdown-input"
-                  class="w-full h-full p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
-                  placeholder="Paste your Markdown here..."></textarea>
+                  id="input"
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl text-base resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                  autocomplete="off"></textarea>
+                <!-- Centered Input Placeholder -->
+                <div
+                  id="input-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Paste your Markdown here...
+                </div>
               </div>
             </div>
 
             <!-- Preview Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -192,7 +198,7 @@ const metadata = {
                 </label>
                 <div class="flex gap-2">
                   <button
-                    id="new-doc-btn"
+                    id="download-button"
                     class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
                   >
                     <svg
@@ -211,7 +217,7 @@ const metadata = {
                     docs.new
                   </button>
                   <button
-                    id="copy-btn"
+                    id="copy-button"
                     class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-200"
                   >
                     <svg
@@ -236,9 +242,16 @@ const metadata = {
                 class="relative flex-grow border border-green-200 rounded-xl bg-green-50 overflow-hidden"
               >
                 <div
-                  id="preview-container"
-                  class="absolute top-0 left-0 w-full h-full p-6 overflow-auto prose max-w-none"
+                  id="output"
+                  class="absolute top-0 left-0 w-full h-full p-4 overflow-auto"
                 >
+                </div>
+                <!-- Centered Output Placeholder -->
+                <div
+                  id="output-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Visual preview will appear here...
                 </div>
               </div>
             </div>
@@ -246,89 +259,18 @@ const metadata = {
         </div>
 
         <!-- How to Use Section -->
-
-        <!-- Method 1 Card -->
-        <div
-          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6 scroll-mt-24"
-          id="how-to-use"
-        >
-          <div>
-            <!-- Method 1 Steps -->
-            <div>
-              <div class="mb-6">
-                <h2
-                  class="text-xl font-bold text-gray-900 flex items-center gap-2"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                  Method 1: Using this Online Tool
-                </h2>
-                <p class="text-gray-600 mt-2 ml-8">
-                  Best for quick conversions. Simply paste your Markdown and
-                  copy the result.
-                </p>
-              </div>
-              <ol class="space-y-4 ml-8">
-                <li class="flex items-start gap-3">
-                  <span
-                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                    >1</span
-                  >
-                  <span class="text-gray-700 font-medium"
-                    >Paste your Markdown content in the Input text box.</span
-                  >
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                    >2</span
-                  >
-                  <span class="text-gray-700 font-medium"
-                    >The tool automatically converts it to Google Docs format.</span
-                  >
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                    >3</span
-                  >
-                  <span class="text-gray-600"
-                    >Click <strong>Copy for Google Docs</strong> to copy the formatted
-                    text.</span
-                  >
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                    >4</span
-                  >
-                  <span class="text-gray-600"
-                    >Paste (Ctrl+V / Cmd+V) directly into your Google Doc.</span
-                  >
-                </li>
-              </ol>
-            </div>
-
-            <!-- Video Tutorial - Hidden for future use
-            <div>
-              <h3
-                class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+        <div class="flex flex-col gap-6 mb-6">
+          <!-- Method 1 Card -->
+          <div
+            class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8"
+          >
+            <div class="mb-6">
+              <h2
+                class="text-xl font-bold text-gray-900 flex items-center gap-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 text-red-500"
+                  class="h-6 w-6 text-blue-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -337,121 +279,113 @@ const metadata = {
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
+                </svg>
+                Method 1: Using this Online Tool
+              </h2>
+              <p class="text-gray-600 mt-2 ml-8">
+                Best for quick conversions. Simply copy your Markdown and paste
+                it here.
+              </p>
+            </div>
+            <ol class="space-y-4 ml-8">
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >1</span
+                >
+                <span class="text-gray-700 font-medium"
+                  >Paste your Markdown content in the left input box.</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >2</span
+                >
+                <span class="text-gray-700 font-medium"
+                  >The tool automatically renders it as rich text in the right
+                  box.</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >3</span
+                >
+                <span class="text-gray-600"
+                  >Click <strong>Copy for Google Docs</strong> to copy the formatted
+                  text.</span
+                >
+              </li>
+            </ol>
+          </div>
+
+          <!-- Method 2 Card -->
+          <div
+            class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8"
+          >
+            <div class="mb-6">
+              <h2
+                class="text-xl font-bold text-gray-900 flex items-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                  ></path>
                 </svg>
-                Video Tutorial
-              </h3>
-              <div class="relative w-full" style="padding-bottom: 56.25%;">
-                <iframe
-                  class="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-200"
-                  src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                  title="How to Convert Markdown to Google Docs - Video Tutorial"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-              </div>
+                Method 2: Using the Google Docs Add-on
+              </h2>
+              <p class="text-gray-600 mt-2 ml-8">
+                Recommended for <span class="text-green-600 underline"
+                  >frequent users</span
+                >. Convert directly within Google Docs.
+              </p>
             </div>
-            -->
-          </div>
-        </div>
-
-        <!-- Method 2 Card -->
-        <div
-          class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
-        >
-          <div class="mb-6">
-            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-green-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
-                ></path>
-              </svg>
-              Method 2: Using the Google Docs Add-on
-            </h2>
-            <p class="text-gray-600 mt-2 ml-8">
-              Recommended for <span class="text-green-600 underline"
-                >frequent users</span
-              >. Convert directly within Google Docs without switching tabs.
-            </p>
-          </div>
-          <ol class="space-y-4 ml-8">
-            <li class="flex items-start gap-3">
-              <span
-                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                >1</span
-              >
-              <div class="flex flex-col gap-3">
-                <span class="text-gray-700 font-medium"
-                  >Install the Docs to Markdown Pro extension.</span
+            <ol class="space-y-4 ml-8">
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >1</span
                 >
-                <a
-                  href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-block hover:opacity-90 transition-opacity duration-200"
+                <div class="flex flex-col gap-3">
+                  <span class="text-gray-700 font-medium">
+                    Install the Docs to Markdown Pro extension.
+                  </span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >2</span
                 >
-                  <img
-                    src="https://workspace.google.com/static/img/marketplace/en/gwmBadge.svg?"
-                    alt="Get it from the Google Workspace Marketplace"
-                    class="h-10"
-                  />
-                </a>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <span
-                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                >2</span
-              >
-              <span class="text-gray-600"
-                >Open any Google Doc, go to <strong
-                  >Extensions > Docs to Markdown Pro</strong
-                >.</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span
-                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                >3</span
-              >
-              <span class="text-gray-600"
-                >Select <strong>Markdown/HTML to Docs</strong> to see the sidebar.</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span
-                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                >4</span
-              >
-              <span class="text-gray-600"
-                >Paste your Markdown code into the sidebar.</span
-              >
-            </li>
-            <li class="flex items-start gap-3">
-              <span
-                class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
-                >5</span
-              >
-              <span class="text-gray-600"
-                >Click the <strong>Insert to Docs</strong> button.</span
-              >
-            </li>
-          </ol>
+                <span class="text-gray-600"
+                  >Open any Google Doc, go to <strong
+                    >Extensions > Docs to Markdown Pro</strong
+                  >.</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-semibold"
+                  >3</span
+                >
+                <span class="text-gray-600"
+                  >Select <strong>Markdown to Docs</strong>.</span
+                >
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
 
@@ -459,176 +393,190 @@ const metadata = {
       <Sidebar height="10%" />
     </div>
   </div>
-</Layout>
 
-<style>
-  #markdown-input,
-  #preview-container {
-    height: 100%;
-  }
-</style>
+  <!-- Include Quill library -->
+  <link
+    rel="preload"
+    href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+    as="style"
+  />
+  <link
+    rel="preload"
+    href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"
+    as="script"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-></script>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Select the input and output elements
+      var inputElement = document.getElementById("input");
+      var outputElement = document.getElementById("output");
+      var inputPlaceholder = document.getElementById("input-placeholder");
+      var outputPlaceholder = document.getElementById("output-placeholder");
+      var pasteBtn = document.getElementById("paste-btn");
+      var clearBtn = document.getElementById("clear-btn");
 
-<!-- KaTeX for Math Equations -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-/>
-<script
-  is:inline
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const input = document.getElementById("markdown-input");
-    const preview = document.getElementById("preview-container");
-    const copyBtn = document.getElementById("copy-btn");
-    const pasteBtn = document.getElementById("paste-btn");
-    const clearBtn = document.getElementById("clear-btn");
-    const newDocBtn = document.getElementById("new-doc-btn");
-
-    function renderMath(text) {
-      if (!text) return "";
-
-      // 1. Block Math: $$...$$
-      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function (match, math) {
-        try {
-          return katex.renderToString(math.trim(), {
-            displayMode: true,
-            throwOnError: false,
-          });
-        } catch (e) {
-          return match;
-        }
-      });
-
-      // 2. Block Math: \[...\]
-      text = text.replace(/\\\[([\s\S]+?)\\\]/g, function (match, math) {
-        try {
-          return katex.renderToString(math.trim(), {
-            displayMode: true,
-            throwOnError: false,
-          });
-        } catch (e) {
-          return match;
-        }
-      });
-
-      // 3. Inline Math: $...$
-      text = text.replace(
-        /(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g,
-        function (match, math) {
-          try {
-            return katex.renderToString(math.trim(), {
-              displayMode: false,
-              throwOnError: false,
-            });
-          } catch (e) {
-            return match;
-          }
-        },
-      );
-
-      // 4. Inline Math: \(...\)
-      text = text.replace(/\\\(([\s\S]+?)\\\)/g, function (match, math) {
-        try {
-          return katex.renderToString(math.trim(), {
-            displayMode: false,
-            throwOnError: false,
-          });
-        } catch (e) {
-          return match;
-        }
-      });
-
-      return text;
-    }
-
-    function updatePreview() {
-      if (preview && input) {
-        // Render math first, then markdown
-        // Note: We render math before markdown so marked doesn't escape the math syntax
-        // However, we need to be careful if marked escapes HTML produced by KaTeX.
-        // Usually, marked does not escape HTML inside markdown unless configured to.
-        // A safer approach often used is:
-        // 1. Render Math -> HTML
-        // 2. Parse Markdown (which keeps HTML)
-        const textWithMath = renderMath(input.value);
-        preview.innerHTML = marked.parse(textWithMath);
-      }
-    }
-
-    if (input) {
-      input.addEventListener("input", updatePreview);
-    }
-
-    if (pasteBtn) {
-      pasteBtn.addEventListener("click", function () {
-        navigator.clipboard
-          .readText()
-          .then((text) => {
-            if (input) {
-              input.value = text;
-              updatePreview();
-            }
-          })
-          .catch((err) => {
-            console.error("Failed to read clipboard:", err);
-            alert("Unable to access clipboard.");
-          });
-      });
-    }
-
-    if (clearBtn) {
-      clearBtn.addEventListener("click", function () {
-        if (input) {
-          input.value = "";
-          updatePreview();
-        }
-      });
-    }
-
-    if (newDocBtn) {
-      newDocBtn.addEventListener("click", function () {
-        window.open("https://docs.new", "_blank");
-      });
-    }
-
-    if (copyBtn) {
-      copyBtn.addEventListener("click", function () {
-        if (!preview) return;
-
-        // Create a temporary Blob with the HTML content for rich copying
-        const blob = new Blob([preview.innerHTML], { type: "text/html" });
-        // We also provide plain text fallback if possible
-        const item = new ClipboardItem({
-          "text/html": blob,
-          "text/plain": new Blob([preview.innerText], { type: "text/plain" }),
+      // Initialize Quill
+      var quill = "";
+      try {
+        quill = new Quill("#output", {
+          theme: "snow",
+          readOnly: true,
+          modules: {
+            toolbar: false, // Disable the toolbar
+          },
         });
+      } catch (e) {
+        console.error("Quill initialization failed:", e);
+      }
 
-        navigator.clipboard
-          .write([item])
-          .then(() => {
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              Copied!
-            `;
-            setTimeout(() => {
-              copyBtn.innerHTML = originalText;
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error("Copy failed", err);
-            alert(
-              "Failed to copy rich text. Please manually select all text in preview and copy.",
-            );
-          });
+      // Function to convert HTML to Markdown
+      function toHTML() {
+        // Get the text content from the textarea
+        var textContent = inputElement.value;
+
+        // Handle Placeholder Visibility
+        if (!textContent.trim()) {
+          if (inputPlaceholder) inputPlaceholder.style.display = "flex";
+          if (outputPlaceholder) outputPlaceholder.style.display = "flex";
+
+          // Clear editor content if empty
+          if (quill && quill.setText) {
+            quill.setText("");
+          }
+        } else {
+          if (inputPlaceholder) inputPlaceholder.style.display = "none";
+          if (outputPlaceholder) outputPlaceholder.style.display = "none";
+
+          if (marked) {
+            var outputHTML = marked.parse(textContent);
+            if (quill && quill.clipboard) {
+              quill.clipboard.dangerouslyPasteHTML(outputHTML);
+            }
+          }
+        }
+      }
+
+      // Add event listener to invoke toMarkdown function on input
+      inputElement.addEventListener("input", () => {
+        toHTML();
       });
+
+      // Paste Button Logic
+      if (pasteBtn) {
+        pasteBtn.addEventListener("click", async () => {
+          try {
+            const text = await navigator.clipboard.readText();
+            inputElement.value = text;
+            toHTML(); // Trigger conversion
+            inputElement.focus();
+          } catch (err) {
+            console.error("Failed to read clipboard contents: ", err);
+            alert("Failed to paste. Please check browser permissions.");
+          }
+        });
+      }
+
+      // Clear Button Logic
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          inputElement.value = "";
+          toHTML(); // Trigger update (which shows placeholders)
+          inputElement.focus();
+        });
+      }
+
+      var downloadButton = document.getElementById("download-button");
+      if (downloadButton && window.URL && window.File) {
+        downloadButton.style.display = "";
+        downloadButton.addEventListener("click", () => {
+          window.open("https://docs.new", "_blank");
+        });
+      }
+
+      var copyButtonForTextCopy = document.getElementById("copy-button");
+      if (
+        copyButtonForTextCopy &&
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+      ) {
+        copyButtonForTextCopy.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (quill && quill.root) {
+            var html = quill.root.innerHTML;
+            var blob = new Blob([html], { type: "text/html" });
+            var clipboardItem = new window.ClipboardItem({
+              "text/html": blob,
+            });
+            navigator.clipboard.write([clipboardItem]);
+            showCopyTooltip();
+          }
+        });
+      }
+
+      function showCopyTooltip() {
+        var tooltip = document.createElement("div");
+        tooltip.className = "copy-tooltip";
+        tooltip.textContent = "Text copied to clipboard";
+        document.body.appendChild(tooltip);
+
+        setTimeout(() => {
+          tooltip.style.opacity = "0";
+          setTimeout(() => {
+            document.body.removeChild(tooltip);
+          }, 500);
+        }, 1500);
+      }
+    });
+  </script>
+
+  <style>
+    /* Tooltip styling */
+    .copy-tooltip {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      z-index: 1000;
     }
-  });
-</script>
+
+    /* Force preview container to never overflow (Applied to Quill editor) */
+    #output .ql-editor {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    #output .ql-editor * {
+      max-width: 100%;
+    }
+
+    /* Consistent font for placeholders */
+    #input-placeholder,
+    #output-placeholder {
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      font-weight: 400;
+    }
+  </style>
+</Layout>

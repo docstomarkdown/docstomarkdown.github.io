@@ -98,7 +98,7 @@ const metadata = {
                     <!-- Two Column Layout -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                         <!-- Input Section -->
-                        <div class="relative">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -164,17 +164,23 @@ const metadata = {
                                     </button>
                                 </div>
                             </div>
-                            <div class="relative">
+                            <div class="relative flex-grow h-full">
                                 <textarea
                                     id="input"
-                                    class="w-full h-80 p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
-                                    placeholder="Paste your ChatGPT markdown here..."
+                                    class="w-full h-full p-4 border border-gray-300 rounded-xl text-base resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
                                 ></textarea>
+                                <!-- Centered Input Placeholder -->
+                                <div
+                                    id="input-placeholder"
+                                    class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                                >
+                                    Paste your ChatGPT markdown here...
+                                </div>
                             </div>
                         </div>
 
                         <!-- Output Section -->
-                        <div class="relative">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -218,12 +224,18 @@ const metadata = {
                                     Copy HTML
                                 </button>
                             </div>
-                            <div class="relative">
+                            <div class="relative flex-grow h-full">
                                 <textarea
                                     id="output"
-                                    class="w-full h-80 p-4 border border-green-200 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-green-50"
-                                    placeholder="You will see your HTML here..."
+                                    class="w-full h-full p-4 border border-green-200 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-green-50"
                                     readonly></textarea>
+                                <!-- Centered Output Placeholder -->
+                                <div
+                                    id="output-placeholder"
+                                    class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                                >
+                                    You will see your HTML here...
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -453,10 +465,11 @@ const metadata = {
     document.addEventListener("DOMContentLoaded", function () {
         var inputElement = document.getElementById("input");
         var outputElement = document.getElementById("output");
+        var inputPlaceholder = document.getElementById("input-placeholder");
+        var outputPlaceholder = document.getElementById("output-placeholder");
         var copyButton = document.getElementById("copy-button");
         var pasteBtn = document.getElementById("paste-btn");
         var clearBtn = document.getElementById("clear-btn");
-        var inputInstructions = document.getElementById("input-instructions");
 
         // Function to render math equations using KaTeX
         function renderMath(text) {
@@ -514,9 +527,25 @@ const metadata = {
             return text;
         }
 
+        function updatePlaceholders() {
+            var hasContent = !!inputElement.value.trim();
+            if (hasContent) {
+                if (inputPlaceholder) inputPlaceholder.style.display = "none";
+                if (outputPlaceholder) outputPlaceholder.style.display = "none";
+            } else {
+                if (inputPlaceholder) inputPlaceholder.style.display = "flex";
+                if (outputPlaceholder) outputPlaceholder.style.display = "flex";
+                outputElement.value = "";
+            }
+        }
+
         // Function to convert Markdown to HTML with Math support
         function toHTML() {
             var textContent = inputElement.value;
+
+            updatePlaceholders();
+
+            if (!textContent.trim()) return;
 
             // First render math equations
             var textWithMath = renderMath(textContent);
@@ -524,12 +553,6 @@ const metadata = {
             // Then convert markdown to HTML
             var outputHTML = marked.parse(textWithMath);
             outputElement.value = outputHTML;
-
-            // Toggle instructions visibility
-            var hasContent = !!inputElement.value.trim();
-            if (inputInstructions) {
-                inputInstructions.style.display = hasContent ? "none" : "block";
-            }
         }
 
         // Input event listener
@@ -558,9 +581,7 @@ const metadata = {
             clearBtn.addEventListener("click", function () {
                 inputElement.value = "";
                 outputElement.value = "";
-                if (inputInstructions) {
-                    inputInstructions.style.display = "block";
-                }
+                updatePlaceholders();
             });
         }
 

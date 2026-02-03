@@ -95,7 +95,7 @@ const metadata = {
                     <!-- Two Column Grid -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                         <!-- Input Section -->
-                        <div class="flex flex-col h-[650px]">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -166,14 +166,14 @@ const metadata = {
                                 <div
                                     id="rich-input"
                                     contenteditable="true"
-                                    class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                                    class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white text-base"
                                     style="min-height: 200px;"
                                 >
                                 </div>
                                 <!-- Placeholder -->
                                 <div
                                     id="input-placeholder"
-                                    class="absolute top-4 left-4 text-gray-400 pointer-events-none"
+                                    class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
                                 >
                                     Paste your Word document content here...
                                 </div>
@@ -181,7 +181,7 @@ const metadata = {
                         </div>
 
                         <!-- Output Section -->
-                        <div class="flex flex-col h-[650px]">
+                        <div class="flex flex-col h-[500px]">
                             <div class="flex justify-between items-center mb-2">
                                 <label
                                     class="block text-sm font-medium text-gray-700"
@@ -254,8 +254,14 @@ const metadata = {
                                     id="markdown-output"
                                     readonly
                                     class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-green-50 text-gray-700"
-                                    placeholder="Generated Markdown will appear here..."
                                 ></textarea>
+                                <!-- Centered Output Placeholder -->
+                                <div
+                                    id="output-placeholder"
+                                    class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                                >
+                                    Generated Markdown will appear here...
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -496,6 +502,7 @@ const metadata = {
         const inputDiv = document.getElementById("rich-input");
         const outputTextarea = document.getElementById("markdown-output");
         const placeholder = document.getElementById("input-placeholder");
+        const outputPlaceholder = document.getElementById("output-placeholder");
         const copyBtn = document.getElementById("copy-md-btn");
         const pasteBtn = document.getElementById("paste-btn");
         const clearBtn = document.getElementById("clear-btn");
@@ -560,9 +567,11 @@ const metadata = {
 
             if (!textContent.trim() && !inputDiv.querySelector("img")) {
                 outputTextarea.value = "";
-                if (placeholder) placeholder.style.display = "block";
+                if (placeholder) placeholder.style.display = "flex";
+                if (outputPlaceholder) outputPlaceholder.style.display = "flex";
             } else {
                 if (placeholder) placeholder.style.display = "none";
+                if (outputPlaceholder) outputPlaceholder.style.display = "none";
                 outputTextarea.value = convertToMarkdown(content);
             }
         }

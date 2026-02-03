@@ -95,7 +95,7 @@ const metadata = {
           <!-- Two Column Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <!-- Input Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -161,13 +161,20 @@ const metadata = {
               <div class="relative flex-grow h-full">
                 <textarea
                   id="html-input"
-                  class="w-full h-full p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
-                  placeholder="Paste your HTML code here..."></textarea>
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl text-base resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
+                ></textarea>
+                <!-- Centered Input Placeholder -->
+                <div
+                  id="input-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Paste your HTML code here...
+                </div>
               </div>
             </div>
 
             <!-- Preview Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -218,6 +225,13 @@ const metadata = {
                   id="preview-container"
                   class="absolute top-0 left-0 w-full h-full p-6 overflow-auto prose max-w-none"
                 >
+                </div>
+                <!-- Centered Output Placeholder -->
+                <div
+                  id="output-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Visual preview will appear here...
                 </div>
               </div>
             </div>
@@ -460,6 +474,8 @@ const metadata = {
   document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("html-input");
     const preview = document.getElementById("preview-container");
+    const inputPlaceholder = document.getElementById("input-placeholder");
+    const outputPlaceholder = document.getElementById("output-placeholder");
     const copyBtn = document.getElementById("copy-btn");
     const pasteBtn = document.getElementById("paste-btn");
     const clearBtn = document.getElementById("clear-btn");
@@ -496,8 +512,16 @@ const metadata = {
 
     function updatePreview() {
       if (preview && input) {
-        const textWithMath = renderMath(input.value);
-        preview.innerHTML = textWithMath;
+        if (!input.value.trim()) {
+          if (inputPlaceholder) inputPlaceholder.style.display = "flex";
+          if (outputPlaceholder) outputPlaceholder.style.display = "flex";
+          preview.innerHTML = "";
+        } else {
+          if (inputPlaceholder) inputPlaceholder.style.display = "none";
+          if (outputPlaceholder) outputPlaceholder.style.display = "none";
+          const textWithMath = renderMath(input.value);
+          preview.innerHTML = textWithMath;
+        }
       }
     }
 

@@ -160,8 +160,15 @@ const metadata = {
               <div class="relative flex-grow h-full">
                 <textarea
                   id="input-markdown"
-                  class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white resize-none font-mono text-sm"
-                  placeholder="Paste your Gemini content here..."></textarea>
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white resize-none text-base"
+                ></textarea>
+                <!-- Centered Input Placeholder -->
+                <div
+                  id="input-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Paste your Gemini content here...
+                </div>
               </div>
             </div>
 
@@ -209,11 +216,20 @@ const metadata = {
                   </button>
                 </div>
               </div>
-              <div class="relative flex-grow h-full">
+              <div
+                class="relative flex-grow border border-green-200 rounded-xl bg-green-50 overflow-hidden"
+              >
                 <div
                   id="preview-container"
-                  class="w-full h-full p-4 border border-gray-300 rounded-xl overflow-auto bg-white prose max-w-none"
+                  class="absolute top-0 left-0 w-full h-full p-6 overflow-auto prose max-w-none"
                 >
+                </div>
+                <!-- Centered Output Placeholder -->
+                <div
+                  id="output-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Word Document preview will appear here...
                 </div>
               </div>
             </div>
@@ -462,15 +478,24 @@ const metadata = {
       if (!inputTextarea || !previewContainer) return;
 
       const content = inputTextarea.value;
-      if (!content.trim()) {
-        previewContainer.innerHTML =
-          '<p class="text-gray-400 italic">Preview will appear here...</p>';
-      } else {
+      const inputPlaceholder = document.getElementById("input-placeholder");
+      const outputPlaceholder = document.getElementById("output-placeholder");
+
+      const hasContent = !!content.trim();
+
+      if (hasContent) {
+        if (inputPlaceholder) inputPlaceholder.style.display = "none";
+        if (outputPlaceholder) outputPlaceholder.style.display = "none";
+
         // Render math first
         const textWithMath = renderMath(content);
         // Parse markdown to HTML
         const html = marked.parse(textWithMath);
         previewContainer.innerHTML = html;
+      } else {
+        if (inputPlaceholder) inputPlaceholder.style.display = "flex";
+        if (outputPlaceholder) outputPlaceholder.style.display = "flex";
+        previewContainer.innerHTML = "";
       }
     }
 

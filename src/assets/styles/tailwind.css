@@ -110,9 +110,10 @@
 
 .hero-subtle-depth {
   background-color: #1d65d6;
-  /* Stronger, Authoritative Blue: Slightly darker and more saturated base */
-  /* Gradient: deep, confident blue at top (#1d65d6) settling into a grounded foundation (#1452b3) */
-  background-image: linear-gradient(180deg, #1d65d6 0%, #1452b3 100%);
+  /* Very subtle radial overlay for minimal visual relief */
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(75, 140, 235, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, #1e68d8 0%, #1960cc 50%, #1452b3 100%);
 }
 
 .hero-list {
@@ -129,121 +130,181 @@
 }
 
 
-/*Home page Grid icon CSS*/
+/*Home page Grid icon CSS - Redesigned Grid Layout*/
 
 body .home-icons-grid {
   display: flex;
-  flex-direction: row;
-  text-align: center;
-  padding: 0 15px;
-  justify-content: center;
-  align-items: flex-start;
-  column-gap: 13px;
   flex-wrap: wrap;
-  margin-top: 80px;
-
+  justify-content: center;
+  gap: 14px;
+  padding: 0 20px;
+  margin-top: 60px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/*This is for larger screens*/
-@media (min-width: 901px) {
-  .home-icons-grid {
-    flex-wrap: wrap;
-    height: auto;
-  }
-
-  /* Four items in a row for larger screens */
-  .home-grid-item {
-    flex-basis: 8% !important;
-  }
-}
-
-/*This is for small screens*/
-@media(max-width: 900px) {
+/* Large screens: fixed item width */
+@media (min-width: 1024px) {
   body .home-icons-grid {
-    flex-wrap: wrap;
-    height: auto;
+    max-width: 1100px;
+    gap: 16px;
   }
 
   .home-grid-item {
-    flex-basis: 25%;
+    width: 140px;
+    flex-shrink: 0;
   }
 }
 
+/* Medium screens */
+@media (max-width: 1023px) and (min-width: 640px) {
+  body .home-icons-grid {
+    max-width: 600px;
+    gap: 12px;
+  }
 
+  .home-grid-item {
+    width: 120px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 639px) {
+  body .home-icons-grid {
+    max-width: 400px;
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .home-grid-item {
+    width: 100px;
+  }
+}
 
 .home-grid-item {
-
-  font-size: 15px;
-  line-height: 1.2;
-
   display: flex;
-  /* Use flexbox */
-  flex-basis: 9%;
   flex-direction: column;
-  /* Arrange content in a column */
   align-items: center;
-  /* Center items horizontally */
+  text-align: center;
+  padding: 14px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
   opacity: 0;
-  /* Set initial opacity */
-  transform: scale(0);
-  /* Set initial scale */
-  animation: fadeInScale 1s ease-in-out 0.1s forwards;
-
-
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-@keyframes fadeInScale {
+.home-grid-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.home-grid-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.home-grid-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.home-grid-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.home-grid-item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.home-grid-item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.home-grid-item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.home-grid-item:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.home-grid-item:nth-child(9) {
+  animation-delay: 0.45s;
+}
+
+.home-grid-item:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+.home-grid-item:nth-child(11) {
+  animation-delay: 0.55s;
+}
+
+.home-grid-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translateY(10px);
   }
 
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
 .home-grid-item i,
 .home-grid-item img {
-  border-radius: 30%;
-  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0;
   background-color: #0c3677;
-  /* Darker, more opaque blue for icon background */
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  font-size: 18px;
+  margin-bottom: 8px;
   color: white;
-  /* Adjust top margin for alignment */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(31, 91, 189, 0.4);
-  /* Mild soft glow */
 }
 
 .home-grid-item:hover i,
 .home-grid-item:hover img {
-  transform: scale(1.15);
-  /* Pop effect */
-  box-shadow: 0 8px 20px rgba(31, 91, 189, 0.6);
-  /* Enhanced glow on hover */
+  transform: scale(1.1);
 }
 
 .home-grid-item p {
-  margin: 10px 0;
-  /* Add vertical margin */
-  display: block;
-  /* Ensure the text displays as a block element */
-  overflow: visible;
-  /* Show the full text content */
-  color: white;
-  text-overflow: ellipsis;
-  /* Add an ellipsis for text overflow if necessary */
-  white-space: normal;
-  /* Allow text to wrap */
-  word-wrap: break-word;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* Small screens: smaller text */
+@media (max-width: 639px) {
+  .home-grid-item {
+    padding: 10px 6px;
+  }
+
+  .home-grid-item i,
+  .home-grid-item img {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .home-grid-item p {
+    font-size: 11px;
+  }
 }
 
 /*Ends home page icons grid*/

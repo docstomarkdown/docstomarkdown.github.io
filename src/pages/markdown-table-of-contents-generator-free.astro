@@ -94,7 +94,7 @@ const metadata = {
           <!-- Two Column Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <!-- Input Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -161,14 +161,20 @@ const metadata = {
               <div class="relative flex-grow h-full">
                 <textarea
                   id="markdown-input"
-                  class="w-full h-full p-4 border border-gray-300 rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
-                  placeholder="Paste your Markdown content with headings (H1, H2, etc.) here..."
+                  class="w-full h-full p-4 border border-gray-300 rounded-xl text-base resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white"
                 ></textarea>
+                <!-- Centered Input Placeholder -->
+                <div
+                  id="input-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Paste your Markdown here...
+                </div>
               </div>
             </div>
 
             <!-- Preview Section -->
-            <div class="flex flex-col h-[650px]">
+            <div class="flex flex-col h-[500px]">
               <div class="flex justify-between items-center mb-2">
                 <label class="block text-sm font-medium text-gray-700">
                   <span class="flex items-center gap-2">
@@ -213,15 +219,21 @@ const metadata = {
                 </div>
               </div>
               <div
-                class="relative flex-grow border border-gray-300 rounded-xl bg-gray-50 overflow-hidden"
+                class="relative flex-grow border border-green-200 rounded-xl bg-green-50 overflow-hidden"
               >
                 <!-- This is the raw text area for output to facilitate easy copying of CODE -->
                 <textarea
                   id="toc-output"
                   readonly
-                  class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50 text-gray-700"
-                  placeholder="Table of Contents will appear here..."
+                  class="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-green-50 text-gray-700"
                 ></textarea>
+                <!-- Centered Output Placeholder -->
+                <div
+                  id="output-placeholder"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 text-base pointer-events-none"
+                >
+                  Table of Contents will appear here...
+                </div>
               </div>
             </div>
           </div>
@@ -231,7 +243,7 @@ const metadata = {
         <div
           class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 mb-6"
         >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div class="flex flex-col gap-6">
             <!-- Left: Method 1 -->
             <div>
               <div class="mb-6">
@@ -395,10 +407,18 @@ const metadata = {
       if (!input || !output || typeof marked === "undefined") return;
 
       const textContent = input.value;
+      const inputPlaceholder = document.getElementById("input-placeholder");
+      const outputPlaceholder = document.getElementById("output-placeholder");
+
       if (!textContent.trim()) {
         output.value = "";
+        if (inputPlaceholder) inputPlaceholder.style.display = "flex";
+        if (outputPlaceholder) outputPlaceholder.style.display = "flex";
         return;
       }
+
+      if (inputPlaceholder) inputPlaceholder.style.display = "none";
+      if (outputPlaceholder) outputPlaceholder.style.display = "none";
 
       try {
         const tokens = marked.lexer(textContent);
@@ -460,6 +480,7 @@ const metadata = {
           input.value = "";
           output.value = "";
           input.focus();
+          generateTOC();
         }
       });
     }
