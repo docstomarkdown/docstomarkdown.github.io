@@ -2,101 +2,154 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Sidebar from '~/components/widgets/Sidebar.astro';
 
-
 const metadata = {
   title: 'Claude to Word',
   description: "This tool converts Claude text into a Microsoft Word format. Paste the content from Claude in the Input Box and it will be rendered as a rich text in the output text. Copy the output and paste in your Word, or click download option to download as Word File."
 };
+
+const cws = 'https://chromewebstore.google.com/detail/eilaijjijfgeckkddafebmkllclibobc';
 ---
 <Layout metadata={metadata}>
-      
-  <div style="display: flex; padding-top: 10px; padding-left: 50px;">
-    <div style="width: 75%; padding-right: 20px;"> 
-     <!--  <div style="padding-top:10px; padding-left:50px;">
-        <h1 style=" color: #2772ed; font-size:32px ;font-weight: bold; padding-top:10px;">Convert ChatGPT to Word Online</h1>
-        <p style="padding-top:10px;">You can use this tool to convert ChatGPT to Word online for free. Alternatively, you can use the <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop">ChatGPT to Word or PDF</a><i class="fa fa-external-link" aria-hidden="true" style="color:blue"></i>&nbsp; Chrome extension to download the response as Word or PDF file in a single click.</p>
-      </div>
-      <div style="text-align: center;">
-        <a href="https://chromewebstore.google.com/detail/chatgpt-to-word-or-pdf/mjdmggegbkookpcmbdllcnbfboikcbop" target="_blank" aria-label="Get it from the Google Chrome Webstore" rel="noopener">
-          <div style="display: inline-block;">
-            <img alt="Google Chrome Webstore badge" alt-text="Get it from the Google Chrome Webstore Marketplace" src="/chrome-badge.png" style="height: 68px;">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-6">
+      <div class="flex-1 min-w-0">
+        <div class="bg-white border border-gray-200 rounded-xl p-2 w-full max-w-5xl mx-auto mt-0 mb-4 shadow-sm">
+          <div class="flex items-center justify-center mb-3">
+            <a
+              href={cws}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-90 transition-opacity duration-200"
+            >
+              <img src="/chrome-badge.png" alt="Get it from the Chrome Web Store" class="h-14 sm:h-16" />
+            </a>
           </div>
-        </a>
-      </div>-->
-      <!-- Include Quill library -->
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" as="style">
-      <link rel="preload" href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js" as="script">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <div id="button-container" class="tool-button-container" style="margin-left:50px; flex; justify-content: flex-start;"><b>If this tool is not working, refresh the page once and try again. Some libraries may take time to load. </b></div><br>
-      <div id="button-container" class="tool-button-container" style="display: flex; justify-content: flex-end;">
-        <button id="download-button" class="tool-styled-button-new"><i class="fas fa-download"></i> Download as Word File</button>
-        <button id="copy-button" class="tool-styled-button-new"><i class="far fa-copy"></i> Copy</button>
-      </div>
-      <main class="twocols">
-        <textarea id="input" class="input-field"  autocomplete="off"></textarea><p class="text-left-instructions" id="input-instructions">Paste your Claude Markdown here..</p>
-        <div id="output-instructions" class ="right-editor-placeholder">..get your Microsoft word content here</div>
-        <div id="output" class="input-field editor-container" autocomplete="off"></div>
-      </main>
-      <div class="mx-10 leading-10">
-        <h2 class="font-bold">How to convert Claude to Word using this online tool?</h2>
-        <ol class=" list-decimal list-inside mx-10">
-          <li class="font-normal">Paste your Claude content in the input text box on the left side.</li>
-          <li class="font-normal">The Claude will be rendered as rich text on the output text box automatically</li>
-          <li class="font-normal">Copy the output using the Copy button</li>
-          <li class="font-normal">Paste the copied content in your Word. Content will be pasted and the formatting will be preserved as well. </li>
-          <li class="font-normal">Alternatively you can download the content as word file using the Download button. </li>
-          <li class="font-normal">Using this online tool you can copy and paste from Claude to Word without losing formatting.</li>
-          <li class="font-normal">You can also copy equations from Claude to Word.</li>
+          <div class="text-sm p-2 text-gray-800 leading-relaxed text-center sm:text-left">
+            <p>
+              Use the
+              <a href={cws} target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold hover:underline">Claude to PDF, Word and Google Docs</a>
+              Chrome extension for one-click export to Word, PDF, or Google Docs—right from Claude. This page is a free online alternative: paste markdown below, preview rich text, then copy or download a .docx.
+            </p>
+          </div>
+        </div>
 
-        </ol>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 claude-word-grid" style="min-height: 650px; max-height: 650px;">
+          <div class="flex flex-col" style="height: 650px;">
+            <div class="mb-2 flex justify-between items-center flex-wrap gap-2">
+              <div class="flex items-center min-w-0">
+                <h2 class="text-xl font-bold text-gray-900">Claude Markdown input</h2>
+                <div class="relative ml-2 group">
+                  <span class="cursor-help text-gray-400 hover:text-gray-600 shrink-0" aria-label="Help">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <div class="absolute left-0 top-full mt-2 w-64 p-2 bg-white shadow-lg rounded-md text-sm text-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10">
+                    Paste Claude markdown here. The right side updates for Word-friendly rich text.
+                  </div>
+                </div>
+              </div>
+              <div class="flex space-x-2">
+                <button
+                  type="button"
+                  id="paste-btn"
+                  class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md flex items-center text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                  Paste
+                </button>
+                <button
+                  type="button"
+                  id="clear-btn"
+                  class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md flex items-center text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="relative flex-grow claude-word-input-wrap" style="height: 600px; min-height: 600px; max-height: 600px;">
+              <textarea
+                id="input"
+                class="claude-md-input absolute top-0 left-0 w-full h-full p-4 border border-gray-300 rounded-md font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent overflow-auto"
+                autocomplete="off"
+              />
+              <p class="claude-instructions-overlay" id="input-instructions">Paste your Claude Markdown here..</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col" style="height: 650px;">
+            <div class="mb-2 flex justify-between items-center flex-wrap gap-2">
+              <h2 class="text-xl font-bold text-gray-900">Rich text (for Word)</h2>
+              <div class="flex flex-wrap gap-2 justify-end">
+                <button id="download-button" type="button" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md flex items-center text-sm">
+                  <i class="fas fa-download mr-1.5"></i> Download .docx
+                </button>
+                <button id="copy-button" type="button" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md flex items-center text-sm">
+                  <i class="far fa-copy mr-1.5"></i> Copy
+                </button>
+              </div>
+            </div>
+            <div
+              class="relative flex-grow border border-gray-300 rounded-md bg-white overflow-hidden claude-quill-outer"
+              style="height: 600px; min-height: 600px; max-height: 600px;"
+            >
+              <p id="output-instructions" class="right-editor-placeholder claude-right-placeholder">..get your Microsoft Word content here</p>
+              <div id="output" class="editor-container claude-quill-host h-full min-h-0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white border border-gray-200 rounded-xl p-5 max-w-3xl shadow-sm">
+          <h2 class="text-lg font-semibold text-gray-800 mb-3 text-center">How to convert Claude to Word with this tool</h2>
+          <ol class="list-decimal text-sm text-gray-800 space-y-2 pl-5 leading-relaxed">
+            <li>Paste your Claude content in the markdown box on the left (or use Paste from the clipboard).</li>
+            <li>It renders as rich text on the right automatically.</li>
+            <li>Use <strong>Copy</strong> to copy formatted HTML, then paste into Microsoft Word, or <strong>Download .docx</strong> to save a file.</li>
+            <li>Formatting is preserved, including lists, emphasis, and much of what Claude outputs.</li>
+            <li>You can also get one-click export from the browser with the <a class="text-blue-600 font-medium hover:underline" href={cws} target="_blank" rel="noopener noreferrer">Claude to PDF, Word and Google Docs</a> extension.</li>
+          </ol>
+        </div>
+
+        <div id="hide-grow-widget" />
       </div>
-      <div id="hide-grow-widget"></div>
+
+      <Sidebar height="10%" class=".sticky-sidebar" />
     </div>
-
-    <!-- Sidebar with a custom height -->
-    <Sidebar height="10%" class=".sticky-sidebar" />
-
-    <!-- Clear floats -->
-    <div style="clear: both;"></div>
   </div>
-
 
 {<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>}
 {<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>}
 {<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>}
 {<script>
-    
     var inputElement = document.getElementById('input');
-    var outputElement = document.getElementById('output');
-    // Initialize Quill
-    var quill = "";
-     quill  = new Quill('#output', {
+    var quill = new Quill('#output', {
         theme: 'snow',
         readOnly: true,
         modules: {
-          toolbar: false, // Disable the toolbar
+          toolbar: false,
         },
       });
-    // Function to convert HTML to Markdown
     function toHTML() {
-        
-
-        // Get the text content from the content-editable div
         var textContent = inputElement.value;
-
         var outputHTML = marked.parse(textContent);
         quill.clipboard.dangerouslyPasteHTML(outputHTML);
-
     }
 
-    // Add event listener to invoke toMarkdown function on input
     inputElement.addEventListener('input', ()=>{
       var inputInstructions = document.getElementById('input-instructions');
       var outputInstructions = document.getElementById('output-instructions');
-
       var hasContent = !!inputElement.value.trim();
       if (hasContent) {
-        inputInstructions.style.display = 'none'; // Hide instructions if there's content
+        inputInstructions.style.display = 'none';
         outputInstructions.style.display = 'none';
       } else {
           inputInstructions.style.display = 'block';
@@ -109,12 +162,11 @@ const metadata = {
     var downloadButton = document.getElementById('download-button');
     if (window.URL && window.File) {
     downloadButton.style.display = '';
-    downloadButton.addEventListener('click', () => {
+    downloadButton.addEventListener('click', (event) => {
       event.preventDefault(); 
       var htmlContent = quill.root.innerHTML;
       var converted = htmlDocx.asBlob(htmlContent, {orientation: 'landscape', margins: {top: 720}});
 
-    
       let url, link;
       try {
         url = URL.createObjectURL(converted);
@@ -132,7 +184,7 @@ const metadata = {
     
     var copyButtonForTextCopy = document.getElementById('copy-button');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-     copyButtonForTextCopy.addEventListener('click', () => {
+     copyButtonForTextCopy.addEventListener('click', (event) => {
       event.preventDefault();
       var html = quill.root.innerHTML;
       var blob = new Blob([html], {type: 'text/html'});
@@ -142,7 +194,25 @@ const metadata = {
    });
  }
 
-    
+    var pasteBtn = document.getElementById('paste-btn');
+    var clearBtn = document.getElementById('clear-btn');
+    if (pasteBtn) {
+      pasteBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          inputElement.value = text;
+          inputElement.dispatchEvent(new Event('input'));
+        } catch (e) {
+          alert('Unable to read clipboard. Paste manually or allow clipboard access.');
+        }
+      });
+    }
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        inputElement.value = '';
+        inputElement.dispatchEvent(new Event('input'));
+      });
+    }
 
     function showCopyTooltip() {
         var tooltip = document.createElement('div');
@@ -157,9 +227,37 @@ const metadata = {
             }, 500);
         }, 1500);
     }
-    
-
-
-
 </script>}
+
+  <style is:global>
+    .claude-quill-outer .ql-container {
+      min-height: 100%;
+      font-size: 0.95rem;
+    }
+    .claude-quill-outer .ql-editor {
+      min-height: 540px;
+    }
+  </style>
+  <style>
+    .claude-instructions-overlay {
+      color: #888;
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.5;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+      max-width: 90%;
+    }
+    .claude-right-placeholder {
+      left: 50% !important;
+      right: auto !important;
+      transform: translate(-50%, -50%) !important;
+      top: 50% !important;
+    }
+  </style>
 </Layout>
